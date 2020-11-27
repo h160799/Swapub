@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Home -->
+    <dimen name="height_catalog_tab">48dp</dimen>
+    <dimen name="space_catalog_grid">16dp</dimen>
+    <dimen name="width_catalog_item">156dp</dimen>
+    <dimen name="height_catalog_item">220dp</dimen>
+    <dimen name="space_outside_horizontal_catalog_item">16dp</dimen>
+    <dimen name="space_inside_horizontal_catalog_item">8dp</dimen>
+    <dimen name="space_outside_vertical_catalog_item">24dp</dimen>
+    <dimen name="space_inside_vertical_catalog_item">12dp</dimen>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>
