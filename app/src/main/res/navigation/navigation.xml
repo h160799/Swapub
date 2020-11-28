@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeItemFragment"
+        android:name="com.johnny.swapub.home.item.HomeItemFragment"
+        android:label="HomeItemFragment" />
+    <fragment
+        android:id="@+id/messageHistoryFragment"
+        android:name="com.johnny.swapub.messageHistory.MessageHistoryFragment"
+        android:label="message_history_fragment"
+        tools:layout="@layout/message_history_fragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.johnny.swapub.profile.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/wishNewsFragment"
+        android:name="com.johnny.swapub.wishNews.WishNewsFragment"
+        android:label="wish_news_fragment"
+        tools:layout="@layout/wish_news_fragment" />
+    <action
+        android:id="@+id/action_global_homeItemFragment"
+        app:destination="@id/homeItemFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_messageHistoryFragment"
+        app:destination="@id/messageHistoryFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_wishNewsFragment"
+        app:destination="@id/wishNewsFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_profileFragment"
+        app:destination="@id/profileFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.johnny.swapub.home.HomeFragment"
+        android:label="HomeFragment" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+</navigation>

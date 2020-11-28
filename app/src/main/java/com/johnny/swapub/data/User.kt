@@ -15,7 +15,6 @@ data class User(
     val favoriteList: List<Product>,
     val swappingList: List<Product>,
     val swappedList: List<Product>
-
 ) : Parcelable
 
 

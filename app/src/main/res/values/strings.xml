@@ -2,4 +2,15 @@
     <string name="app_name">Swapub</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Toolbar -->
+    <string name="message_history">對話紀錄</string>
+    <string name="wish_news">許願動態</string>
+    <string name="profile">個人頁面</string>
+
+
+
+
+
 </resources>

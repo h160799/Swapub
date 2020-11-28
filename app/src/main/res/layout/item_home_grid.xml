@@ -5,17 +5,13 @@
 
     <data>
 
-        <variable name="itemPosition" type="Integer"/>
-        <variable name="itemCount" type="Integer"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_home_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        app:itemPosition="@{itemPosition}"
-        app:itemCount="@{itemCount}">
+        android:paddingTop="16dp">
 
         <ImageView
             android:id="@+id/image_home_main"
