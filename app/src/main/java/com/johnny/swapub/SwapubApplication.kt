@@ -1,14 +1,14 @@
 package com.johnny.swapub
 
 import android.app.Application
-import com.johnny.swapub.data.SwapubRepository
+import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.util.ServiceLocator
 import kotlin.properties.Delegates
 
 class SwapubApplication : Application() {
 
     // Depends on the flavor,
-    val swapubRepository: SwapubRepository?
+    val swapubRepository: SwapubRepository
         get() = ServiceLocator.provideTasksRepository(this)
 
     companion object {
@@ -20,3 +20,5 @@ class SwapubApplication : Application() {
         instance = this
     }
 }
+
+

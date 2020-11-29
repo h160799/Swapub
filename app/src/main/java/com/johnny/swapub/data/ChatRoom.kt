@@ -8,8 +8,12 @@ import kotlinx.android.parcel.Parcelize
 data class ChatRoom (
     val id: String,
     val ownerId: String,
+    val ownerName: String,
+    val ownerImage: String,
     val productId: String,
     val senderId: String,
+    val senderName: String,
+    val senderImage: String,
     val text: Message
 ): Parcelable
 

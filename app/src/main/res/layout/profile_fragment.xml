@@ -97,7 +97,7 @@
             tools:layout_editor_absoluteY="399dp" />
 
         <Button
-            android:id="@+id/textView5"
+            android:id="@+id/my_wish"
             android:layout_width="140dp"
             android:layout_height="100dp"
             android:text="我的動態"

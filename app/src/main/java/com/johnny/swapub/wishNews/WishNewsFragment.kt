@@ -6,7 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.johnny.swapub.MainViewModel
 import com.johnny.swapub.R
+import com.johnny.swapub.databinding.ProductFragmentBinding
+import com.johnny.swapub.databinding.WishNewsFragmentBinding
+import com.johnny.swapub.product.ProductFragment
+import com.johnny.swapub.product.ProductViewModel
+import ext.getVmFactory
 
 class WishNewsFragment : Fragment() {
 
@@ -14,19 +23,22 @@ class WishNewsFragment : Fragment() {
         fun newInstance() = WishNewsFragment()
     }
 
-    private lateinit var viewModel: WishNewsViewModel
+    val viewModel by viewModels<WishNewsViewModel> { getVmFactory() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.wish_news_fragment, container, false)
+        val binding = WishNewsFragmentBinding.inflate(inflater, container,
+            false)
+
+
+
+
+        return binding.root
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(WishNewsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+
 
 }

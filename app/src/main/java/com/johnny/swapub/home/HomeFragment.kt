@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.johnny.swapub.R
+import com.johnny.swapub.databinding.FragmentHomeBinding
+import com.johnny.swapub.databinding.FragmentMessageHistoryBinding
 
 
 class HomeFragment : Fragment() {
@@ -14,9 +16,10 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val binding = FragmentHomeBinding.inflate(inflater, container,
+            false)
+
+
+        return binding.root
     }
-
-
 }

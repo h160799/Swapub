@@ -3,8 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    
-
-
+    <item
+        android:id="@+id/nav_notify"
+        android:title="官方通知" />
+    <item
+        android:id="@+id/nav_setting"
+        android:title="設定" />
+    <item
+        android:id="@+id/nav_club"
+        android:title="社團分類" />
+    <item
+        android:id="@+id/nav_rules"
+        android:title="使用規約" />
 
 </menu>
