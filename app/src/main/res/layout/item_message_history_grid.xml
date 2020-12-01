@@ -79,7 +79,6 @@
             android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="@id/message_bac"
             app:layout_constraintTop_toTopOf="@id/message_name"
-            android:text="@{message.text.time}"
             tools:text="2020-11-24 18:35"
             android:layout_marginRight="10dp" />
 

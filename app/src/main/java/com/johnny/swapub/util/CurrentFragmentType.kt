@@ -16,6 +16,6 @@ enum class CurrentFragmentType(val value: String) {
     MYFAVORITE(""),
     MYWISH(""),
     MYCLUB(""),
-    CLUB(value = "")
+    CLUB("")
 
 }

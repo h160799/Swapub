@@ -8,7 +8,11 @@
     <fragment
         android:id="@+id/homeItemFragment"
         android:name="com.johnny.swapub.home.item.HomeItemFragment"
-        android:label="HomeItemFragment" />
+        android:label="HomeItemFragment" >
+        <argument
+            android:name="product"
+            app:argType="com.johnny.swapub.data.Product" />
+    </fragment>
     <fragment
         android:id="@+id/messageHistoryFragment"
         android:name="com.johnny.swapub.messageHistory.MessageHistoryFragment"

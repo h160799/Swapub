@@ -10,11 +10,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.FragmentHomeItemBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.home.HomeTypeFilter
+import com.johnny.swapub.messageHistory.MessageHistoryAdapter
 import com.johnny.swapub.messageHistory.MessageHistoryViewModel
+import com.johnny.swapub.util.Logger
+import kotlin.reflect.typeOf
 
 class HomeItemFragment(val homeTypeFilter: HomeTypeFilter) : Fragment() {
 
@@ -27,33 +31,31 @@ class HomeItemFragment(val homeTypeFilter: HomeTypeFilter) : Fragment() {
         ): View? {
             // Inflate the layout for this fragment
 
-            val binding = FragmentHomeItemBinding.inflate(inflater, container, false)
+        val binding = FragmentHomeItemBinding.inflate(inflater, container, false)
 
-            // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-            binding.lifecycleOwner = this
-//            binding.viewModel = viewModel
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-            val adapter = HomeItemAdapter(HomeItemAdapter.OnClickListener {
-            })
+        val adapter = HomeItemAdapter(HomeItemAdapter.OnClickListener {
+            viewModel.displayItemProductDetails(it)
+        })
+        binding.recyclerHomeItem.adapter = adapter
+        viewModel.itemInfo.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+                Logger.d( "get$it")
+            }
+        })
 
-
-//            observe 觀察到不一樣時，會立刻執行
-//            viewModel.itemInfo.observe(viewLifecycleOwner, Observer {
-//                it?.let {
-//                    adapter.submitList(it)
-//                    Log.d("productWomen", "get$it")
-//                }
-//            })
-
-
-//        viewModel.navigateToSelecteditemInfo.observe(this.viewLifecycleOwner, Observer {
-//            it?.let {
-//                // Must find the NavController from the Fragment
-//                findNavController().navigate(NavigationDirections.actionGlobalCFragment(it))
-//                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
-//                viewModel.displayItemProductDetailsComplete()
-//            }
-//        })
+        viewModel.navigateToSelecteditemInfo.observe(this.viewLifecycleOwner, Observer {
+            it?.let {
+                // Must find the NavController from the Fragment
+                findNavController().navigate(NavigationDirections.actionGlobalHomeItemFragment(it))
+                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+                viewModel.displayItemProductDetailsComplete()
+            }
+        })
 
 
             return binding.root

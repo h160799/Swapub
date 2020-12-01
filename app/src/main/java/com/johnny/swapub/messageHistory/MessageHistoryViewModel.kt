@@ -25,14 +25,21 @@ class MessageHistoryViewModel(swapubRepository: SwapubRepository) : ViewModel() 
 
     fun addData() {
         val document = chatRoom.document()
-        val data = hashMapOf(
-            "senderImage" to "https://cf.shopee.tw/file/8a9e53d639fc0e77e09dc7b608b48172",
-            "senderName" to "Ni A Yi",
-            "text" to hashMapOf(
-                "responser" to "你那個東西很爛ㄋㄟ ",
-                "time" to Calendar.getInstance().timeInMillis
-            ),
-            "id" to document.id
+        val data = ChatRoom(
+            id = document.id,
+            ownerId = "",
+            ownerName = "",
+            ownerImage = "",
+            productId = "",
+            senderId = "",
+            senderName = "Ni A Yi",
+            senderImage = "https://cf.shopee.tw/file/8a9e53d639fc0e77e09dc7b608b48172",
+            text = Message(
+                asker = "",
+                responser = "你那個東西很爛ㄋㄟ ",
+                time = 0
+
+            )
         )
         document.set(data)
     }
@@ -44,21 +51,7 @@ class MessageHistoryViewModel(swapubRepository: SwapubRepository) : ViewModel() 
             .addOnSuccessListener { result ->
                 val listChatRoom = mutableListOf<ChatRoom>()
                 for (document in result) {
-                    val chatRoom = ChatRoom(
-                            id = document.id,
-                            ownerId = document.getString("ownerId"),
-                            ownerName= document.getString("ownerName") ,
-                            ownerImage = document.getString("ownerImage"),
-                            productId = document.getString("productId"),
-                            senderId = document.getString("senderId"),
-                            senderName = document.getString("senderName"),
-                            senderImage = document.getString("senderImage"),
-                            text = Message(
-                                asker = document.getString("asker"),
-                                responser = document.getString("responser"),
-                                time = document.getString("time")
-                            )
-                    )
+                    val chatRoom = document.toObject(ChatRoom::class.java)
 
                     listChatRoom.add(chatRoom)
                     Logger.d("333$listChatRoom")

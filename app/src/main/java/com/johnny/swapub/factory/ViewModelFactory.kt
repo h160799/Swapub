@@ -26,7 +26,7 @@ class ViewModelFactory constructor(
                    WishNewsViewModel(swapubRepository)
 
                 isAssignableFrom(HomeItemViewModel::class.java) ->
-                    WishNewsViewModel(swapubRepository)
+                    HomeItemViewModel(swapubRepository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

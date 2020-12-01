@@ -24,13 +24,14 @@
     <color name="gray_f0f0f0">#f0f0f0</color>
     <color name="gray_f5f5f5">#f5f5f5</color>
     <color name="gray_AAAAAA">#AAAAAA</color>
-    <color name="blue_gray">#333f51</color>
     <color name="gray_575855">#575855</color>
 
     <!-- Bottom Navigation -->
     <color name="bottom_navigation_item_normal">@color/white_E3DED8</color>
     <color name="bottom_navigation_item_selected">@color/black</color>
 
+    <!-- Main Color-->
+    <color name="blue_gray">#A44F3C</color>
 
 
 

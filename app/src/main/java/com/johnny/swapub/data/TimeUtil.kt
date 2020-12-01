@@ -19,5 +19,6 @@ object TimeUtil {
 
         /// 輸出為毫秒為單位
         return simpleDateFormat.parse(date).time
+
     }
 }
