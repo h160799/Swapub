@@ -1,11 +1,10 @@
-package ext
+package com.johnny.swapub.ext
 
 import android.app.Activity
 import android.view.Gravity
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.johnny.swapub.SwapubApplication
-import factory.ViewModelFactory
+import com.johnny.swapub.factory.ViewModelFactory
 
 fun Activity.getVmFactory(): ViewModelFactory {
     val repository = (applicationContext as SwapubApplication).swapubRepository

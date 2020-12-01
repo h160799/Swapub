@@ -1,12 +1,9 @@
 package com.johnny.swapub
 
-import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.UserManager
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
@@ -17,7 +14,6 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -27,12 +23,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.johnny.swapub.databinding.ActivityMainBinding
 import com.johnny.swapub.databinding.NavHeaderDrawerBinding
 import com.johnny.swapub.util.CurrentFragmentType
-import com.johnny.swapub.util.Logger
-import ext.getVmFactory
+import com.johnny.swapub.ext.getVmFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import java.util.Observer
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,6 +57,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.search.setOnClickListener {
             findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_searchFragment)
+        }
+
+        binding.textToolbarLogo.setOnClickListener {
+            findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_addToFavoriteFragment)
         }
 
 
@@ -123,6 +121,14 @@ class MainActivity : AppCompatActivity() {
                 R.id.messageHistoryFragment -> CurrentFragmentType.MESSAGEHISTORY
                 R.id.wishNewsFragment -> CurrentFragmentType.WISHNEWS
                 R.id.profileFragment -> CurrentFragmentType.PROFILE
+                R.id.searchFragment -> CurrentFragmentType.SEARCH
+                R.id.conversationFragment -> CurrentFragmentType.CONVERSATION
+                R.id.tradingStyleFragment -> CurrentFragmentType.TRADINGSTYLE
+                R.id.myTradingFragment -> CurrentFragmentType.MYTRADING
+                R.id.myFavoriteFragment -> CurrentFragmentType.MYFAVORITE
+                R.id.myWishFragment -> CurrentFragmentType.MYWISH
+                R.id.myClubFragment -> CurrentFragmentType.MYCLUB
+                R.id.clubFragment -> CurrentFragmentType.CLUB
                 else -> viewModel.currentFragmentType.value
             }
         }
@@ -138,8 +144,21 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
         NavigationUI.setupWithNavController(binding.drawerNavView, navController)
 
+        binding.drawerNavView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_club -> {
+                    viewModel.navigate.value = 1
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_clubFragment)
+                    true
+                }
+                else -> false
+            }
+        }
         binding.drawerLayout.fitsSystemWindows = true
         binding.drawerLayout.clipToPadding = false
+
+
 
         actionBarDrawerToggle = object : ActionBarDrawerToggle(
             this,
@@ -152,7 +171,9 @@ class MainActivity : AppCompatActivity() {
                 super.onDrawerOpened(drawerView)
 
             }
-
+        }.apply {
+            binding.drawerLayout.addDrawerListener(this)
+            syncState()
         }
 
 

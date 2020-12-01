@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blue_gray"
+        tools:context=".detail.DetailFragment">
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="80dp"
+            android:background="@color/white_E3DED8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/response_name"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Jolin Tsai"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/white_E3DED8"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/pt_sans"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line" />
+
+        <ImageView
+            android:id="@+id/go_back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/go_back"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line"
+            android:layout_marginLeft="20dp" />
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@color/white_E3DED8"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:id="@+id/product_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:fontFamily="@font/pt_sans"
+            android:textColor="@color/white_E3DED8"
+            android:textStyle="bold"
+            android:gravity="top"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@id/product_image"
+            app:layout_constraintTop_toTopOf="@id/product_image"
+            android:text="MacBook Pro"
+            android:layout_marginLeft="15dp" />
+
+        <TextView
+            android:id="@+id/product_bac1"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:background="@color/white_E3DED8"
+            app:layout_constraintStart_toStartOf="@id/product_title"
+            app:layout_constraintBottom_toBottomOf="@id/product_image" />
+
+        <TextView
+            android:layout_width="59dp"
+            android:layout_height="19dp"
+            android:background="@color/blue_gray"
+            android:text="商品描述"
+            android:textSize="13sp"
+            android:fontFamily="@font/pt_sans"
+            android:textColor="@color/white_E3DED8"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="@id/product_bac1"
+            app:layout_constraintEnd_toEndOf="@id/product_bac1"
+            app:layout_constraintTop_toTopOf="@id/product_bac1"
+            app:layout_constraintBottom_toBottomOf="@id/product_bac1"/>
+
+        <TextView
+            android:id="@+id/trading_style"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:text="日文教學 40 小時"
+            android:textSize="10sp"
+            android:fontFamily="@font/pt_sans"
+            android:textColor="@color/white_E3DED8"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/product_bac1"
+            app:layout_constraintBottom_toBottomOf="@id/product_bac1"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/choose_trading_style"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:background="@drawable/bg_round_button"
+            android:text="選擇成交方式"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/trading_style"
+            android:layout_marginRight="20dp" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white_E3DED8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/choose_trading_style"/>
+
+        <ScrollView
+            android:id="@+id/recycler_conversation"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+        <View
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="60dp"
+            android:background="@color/white_E3DED8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/editText"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/bg_round_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="20dp" />
+
+        <EditText
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/editText"
+            app:layout_constraintEnd_toEndOf="@id/editText"
+            app:layout_constraintTop_toTopOf="@id/editText"
+            app:layout_constraintBottom_toBottomOf="@id/editText"/>
+
+        <ImageView
+            android:id="@+id/enter"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/go_back"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@id/editText"
+            app:layout_constraintTop_toBottomOf="@id/line3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

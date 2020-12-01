@@ -1,4 +1,4 @@
-package myFavorite
+package com.johnny.swapub.myFavorite
 
 import androidx.lifecycle.ViewModel
 

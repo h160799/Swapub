@@ -1,11 +1,8 @@
-package ext
+package com.johnny.swapub.ext
 
 import androidx.fragment.app.Fragment
 import com.johnny.swapub.SwapubApplication
-import com.johnny.swapub.data.User
-import factory.MessageHistoryViewModelFactory
-import factory.ProfileViewModelFactory
-import factory.ViewModelFactory
+import com.johnny.swapub.factory.ViewModelFactory
 
 fun Fragment.getVmFactory(): ViewModelFactory {
     val repository = (requireContext().applicationContext as SwapubApplication).swapubRepository

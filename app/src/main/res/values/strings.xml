@@ -12,7 +12,12 @@
     <string name="profile">個人頁面</string>
 
 
+    <string name="trading_product">物品交易</string>
+    <string name="trading_money">金錢交易</string>
+    <string name="trading_service">服務交易</string>
 
+    <string name="newest">Newest</string>
+    <string name="nearest">Nearest</string>
 
 
 </resources>

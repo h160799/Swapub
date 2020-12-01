@@ -1,21 +1,13 @@
 package com.johnny.swapub.wishNews
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.johnny.swapub.MainViewModel
-import com.johnny.swapub.R
-import com.johnny.swapub.databinding.ProductFragmentBinding
 import com.johnny.swapub.databinding.WishNewsFragmentBinding
-import com.johnny.swapub.product.ProductFragment
-import com.johnny.swapub.product.ProductViewModel
-import ext.getVmFactory
+import com.johnny.swapub.ext.getVmFactory
 
 class WishNewsFragment : Fragment() {
 

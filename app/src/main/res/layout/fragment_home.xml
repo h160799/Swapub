@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         tools:context=".home.HomeFragment">
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager_catalog"
+            android:id="@+id/viewpager_home"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -21,11 +21,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs_catalog"
+                android:id="@+id/tabs_home"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_catalog_tab"
                 app:tabSelectedTextColor="@color/white_E3DED8"
-                app:tabTextColor="@color/gray_575855">
+                app:tabTextColor="@color/black"
+                app:tabIndicatorColor="@color/white_E3DED8">
 
             </com.google.android.material.tabs.TabLayout>
 

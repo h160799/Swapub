@@ -11,7 +11,7 @@
         android:id="@+id/item_wish_news_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray_575855">
+        android:background="@color/blue_gray">
 
         <ImageView
             android:id="@+id/news_image"

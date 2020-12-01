@@ -1,18 +1,15 @@
 package com.johnny.swapub.profile
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
-import com.johnny.swapub.databinding.FragmentMessageHistoryBinding
 import com.johnny.swapub.databinding.ProfileFragmentBinding
-import ext.getVmFactory
+import com.johnny.swapub.ext.getVmFactory
 
 class ProfileFragment : Fragment() {
 

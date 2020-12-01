@@ -1,17 +1,15 @@
 package com.johnny.swapub.search
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
-import com.johnny.swapub.databinding.ProfileFragmentBinding
 import com.johnny.swapub.databinding.SearchFragmentBinding
-import com.johnny.swapub.profile.ProfileViewModel
-import ext.getVmFactory
+import com.johnny.swapub.ext.getVmFactory
 
 class SearchFragment : Fragment() {
 
@@ -28,6 +26,9 @@ class SearchFragment : Fragment() {
         val binding = SearchFragmentBinding.inflate(inflater, container,
             false)
 
+        binding.goBack.setOnClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
 
 
         return binding.root

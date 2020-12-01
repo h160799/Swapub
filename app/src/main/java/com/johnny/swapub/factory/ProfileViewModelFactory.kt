@@ -1,4 +1,4 @@
-package factory
+package com.johnny.swapub.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

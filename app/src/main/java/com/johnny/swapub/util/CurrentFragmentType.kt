@@ -9,4 +9,13 @@ enum class CurrentFragmentType(val value: String) {
     MESSAGEHISTORY(getString(R.string.message_history)),
     WISHNEWS(getString(R.string.wish_news)),
     PROFILE(getString(R.string.profile)),
+    SEARCH(""),
+    CONVERSATION(""),
+    TRADINGSTYLE(""),
+    MYTRADING(""),
+    MYFAVORITE(""),
+    MYWISH(""),
+    MYCLUB(""),
+    CLUB(value = "")
+
 }

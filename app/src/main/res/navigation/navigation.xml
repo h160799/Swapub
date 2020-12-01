@@ -13,7 +13,11 @@
         android:id="@+id/messageHistoryFragment"
         android:name="com.johnny.swapub.messageHistory.MessageHistoryFragment"
         android:label="message_history_fragment"
-        tools:layout="@layout/message_history_fragment" />
+        tools:layout="@layout/fragment_message_history" >
+        <argument
+            android:name="chatRoom"
+            app:argType="com.johnny.swapub.data.ChatRoom" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.johnny.swapub.profile.ProfileFragment"
@@ -73,19 +77,19 @@
         app:popUpToInclusive="true" />
     <fragment
         android:id="@+id/myClubFragment"
-        android:name="myClub.MyClubFragment"
+        android:name="com.johnny.swapub.myClub.MyClubFragment"
         android:label="MyClubFragment" />
     <fragment
         android:id="@+id/myFavoriteFragment"
-        android:name="myFavorite.MyFavoriteFragment"
+        android:name="com.johnny.swapub.myFavorite.MyFavoriteFragment"
         android:label="MyFavoriteFragment" />
     <fragment
         android:id="@+id/myTradingFragment"
-        android:name="myTrading.MyTradingFragment"
+        android:name="com.johnny.swapub.myTrading.MyTradingFragment"
         android:label="MyTradingFragment" />
     <fragment
         android:id="@+id/myWishFragment"
-        android:name="myWish.MyWishFragment"
+        android:name="com.johnny.swapub.myWish.MyWishFragment"
         android:label="MyWishFragment" />
     <action
         android:id="@+id/action_global_myWishFragment"
@@ -105,6 +109,42 @@
     <action
         android:id="@+id/action_global_myClubFragment"
         app:destination="@id/myClubFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/conversationFragment"
+        android:name="com.johnny.swapub.messageHistory.conversation.ConversationFragment"
+        android:label="ConversationFragment" />
+    <action
+        android:id="@+id/action_global_conversationFragment"
+        app:destination="@id/conversationFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/clubFragment"
+        android:name="com.johnny.swapub.club.ClubFragment"
+        android:label="ClubFragment" />
+    <fragment
+        android:id="@+id/tradingStyleFragment"
+        android:name="com.johnny.swapub.messageHistory.TradingStyle.TradingStyleFragment"
+        android:label="TradingStyleFragment" />
+    <action
+        android:id="@+id/action_global_clubFragment"
+        app:destination="@id/clubFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/action_global_tradingStyleFragment"
+        app:destination="@id/tradingStyleFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/addToFavoriteFragment"
+        android:name="com.johnny.swapub.addToFavorite.AddToFavoriteFragment"
+        android:label="AddToFavoriteFragment" />
+    <action
+        android:id="@+id/action_global_addToFavoriteFragment"
+        app:destination="@id/addToFavoriteFragment"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
 </navigation>

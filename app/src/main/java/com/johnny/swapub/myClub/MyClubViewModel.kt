@@ -1,7 +1,7 @@
-package myTrading
+package com.johnny.swapub.myClub
 
 import androidx.lifecycle.ViewModel
 
-class MyTradingViewModel : ViewModel() {
+class MyClubViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

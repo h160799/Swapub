@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_575855"
+        android:background="@color/blue_gray"
         tools:context="com.johnny.swapub.wishNews.WishNewsFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

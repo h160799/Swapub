@@ -1,7 +1,7 @@
-package myClub
+package com.johnny.swapub.club
 
 import androidx.lifecycle.ViewModel
 
-class MyClubViewModel : ViewModel() {
+class ClubViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

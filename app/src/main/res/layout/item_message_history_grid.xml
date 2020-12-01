@@ -6,7 +6,8 @@
     <data>
         <variable
             name="message"
-            type="com.johnny.swapub.data.ChatRoom" />
+            type="com.johnny.swapub.data.ChatRoom"/>
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,6 +37,7 @@
             app:layout_constraintTop_toTopOf="@id/message_bac"
             app:layout_constraintStart_toStartOf="@id/message_bac"
             android:layout_marginLeft="10dp"
+            app:imageUrl="@{message.senderImage}"
             tools:src="@drawable/ic_nav_profile_selected" />
 
         <TextView
@@ -51,6 +53,7 @@
             app:layout_constraintStart_toEndOf="@id/user_head"
             app:layout_constraintTop_toTopOf="@id/message_bac"
             android:layout_marginLeft="5dp"
+            android:text="@{message.senderName}"
             tools:text="Johnny Lin" />
 
         <TextView
@@ -61,6 +64,7 @@
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/gray_575855"
             android:layout_marginTop="13dp"
+            android:text="@{message.text.responser}"
             app:layout_constraintStart_toStartOf="@id/message_name"
             app:layout_constraintTop_toBottomOf="@id/message_name"
             tools:text="來我的志工活動 8 小時..." />
@@ -75,6 +79,7 @@
             android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="@id/message_bac"
             app:layout_constraintTop_toTopOf="@id/message_name"
+            android:text="@{message.text.time}"
             tools:text="2020-11-24 18:35"
             android:layout_marginRight="10dp" />
 

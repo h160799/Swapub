@@ -9,6 +9,9 @@
     <color name="yellow">#ffff00</color>
     <color name="white_E3DED8">#E3DED8</color>
 
+    <!-- Orange Series -->
+    <color name="orange_ff7902">#ff7902</color>
+
     <!-- Black Series -->
     <color name="black">#000000</color>
     <color name="black_3f3a3a">#3f3a3a</color>
@@ -27,6 +30,8 @@
     <!-- Bottom Navigation -->
     <color name="bottom_navigation_item_normal">@color/white_E3DED8</color>
     <color name="bottom_navigation_item_selected">@color/black</color>
+
+
 
 
 </resources>
