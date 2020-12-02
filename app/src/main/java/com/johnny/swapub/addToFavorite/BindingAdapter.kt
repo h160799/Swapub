@@ -1,9 +1,8 @@
-package com.johnny.swapub.addToFavorite
+package com.johnny.swapub
 
 import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
-import com.johnny.swapub.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 

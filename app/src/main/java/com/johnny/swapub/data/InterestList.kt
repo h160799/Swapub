@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class InterestList(
-    val senderId: String,
-    val status: Boolean
+    val senderId: String? = "",
+    val status: Boolean? = null
 ): Parcelable

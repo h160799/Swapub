@@ -129,6 +129,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.myWishFragment -> CurrentFragmentType.MYWISH
                 R.id.myClubFragment -> CurrentFragmentType.MYCLUB
                 R.id.clubFragment -> CurrentFragmentType.CLUB
+                R.id.productFragment -> CurrentFragmentType.PRODUCT
+
                 else -> viewModel.currentFragmentType.value
             }
         }

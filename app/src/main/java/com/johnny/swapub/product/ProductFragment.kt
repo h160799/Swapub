@@ -11,10 +11,6 @@ import com.johnny.swapub.ext.getVmFactory
 
 class ProductFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ProductFragment()
-    }
-
     val viewModel by viewModels<ProductViewModel> { getVmFactory() }
 
     override fun onCreateView(

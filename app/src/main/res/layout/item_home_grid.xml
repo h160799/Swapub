@@ -13,17 +13,17 @@
         android:id="@+id/item_home_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp">
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/image_home_main"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:scaleType="centerCrop"
+            app:imageUrl="@{home_property.productImage[0]}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/white_E3DED8"
             tools:src="@color/white_E3DED8" />
 
 

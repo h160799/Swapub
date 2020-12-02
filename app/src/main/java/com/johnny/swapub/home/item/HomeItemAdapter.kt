@@ -15,7 +15,7 @@ class HomeItemAdapter(val onClickListener: OnClickListener) :
     class HomeItemViewHolder(private var binding: ItemHomeGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
-            binding.homeProperty = product
+            binding.homeProperty= product
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()

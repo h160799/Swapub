@@ -12,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/blue_gray">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/layout_swipe_refresh_home_item"
@@ -29,7 +30,7 @@
                 android:id="@+id/recycler_home_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="30dp"
+                android:padding="5dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"
                 tools:itemCount="21"

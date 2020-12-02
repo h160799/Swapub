@@ -19,5 +19,7 @@
     <string name="newest">Newest</string>
     <string name="nearest">Nearest</string>
 
+    <string name="error">Error</string>
+
 
 </resources>
