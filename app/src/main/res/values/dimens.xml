@@ -28,7 +28,8 @@
     <dimen name="size_bottom_nav_icon">36dp</dimen>
 
 
-
+    <!-- Detail -->
+    <dimen name="height_detail_gallery">500dp</dimen>
 
 
 

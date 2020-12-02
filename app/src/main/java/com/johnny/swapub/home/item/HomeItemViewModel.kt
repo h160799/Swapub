@@ -61,6 +61,8 @@ class HomeItemViewModel(val homeTypeFilter: HomeTypeFilter, val swapubRepository
 
     val product = FirebaseFirestore.getInstance()
         .collection("product")
+    val user =  FirebaseFirestore.getInstance()
+        .collection("user")
 
     fun addData() {
         val document = product.document()
@@ -100,6 +102,38 @@ class HomeItemViewModel(val homeTypeFilter: HomeTypeFilter, val swapubRepository
         document.set(data)
     }
 
+    fun addUserData() {
+        val document = user.document()
+        val data = User(
+            id = "12345678",
+            name = "Dato",
+            image = "https://files.bountyhunter.co/bhuntr/public/201508/5e68c386-cc1e-4724-b336-aa1459a90fe6_800x800.jpg",
+            clubList = mutableListOf(
+                Club(
+                    id = "",
+                    name = "",
+                    productList = null
+                )
+            ),
+            place = Place(
+                country = "台灣",
+                city = "台北市"
+            ),
+            favoriteList  = null,
+            swappingList = null,
+            swappedList = null
+        )
+        document.set(data)
+    }
+
+
+
+
+
+
+
+
+
 //    private fun getData() {
 //
 //        product
@@ -120,6 +154,7 @@ class HomeItemViewModel(val homeTypeFilter: HomeTypeFilter, val swapubRepository
     init {
 //        addData()
 //        getData()
+//        addUserData()
         getProductsResult()
     }
 

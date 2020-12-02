@@ -2,25 +2,27 @@ package com.johnny.swapub.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.remote.SwapubRepository
-import com.johnny.swapub.home.HomeTypeFilter
-import com.johnny.swapub.home.item.HomeItemViewModel
-import com.johnny.swapub.product.ProductFragmentArgs
-
+import com.johnny.swapub.product.ProductViewModel
 
 @Suppress("UNCHECKED_CAST")
-class HomeItemViewModelFactory(
+class ProductViewModelFactory(
     private val swapubRepository: SwapubRepository,
-    private val homeTypeFilter: HomeTypeFilter
+    private val product: Product
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>) =
         with(modelClass) {
             when {
-                isAssignableFrom(HomeItemViewModel::class.java) ->
-                    HomeItemViewModel(homeTypeFilter, swapubRepository)
+                isAssignableFrom(ProductViewModel::class.java) ->
+                    ProductViewModel(swapubRepository, product)
+
+//                isAssignableFrom(Add2cartViewModel::class.java) ->
+//                    Add2cartViewModel(stylishRepository, product)
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }
         } as T
 }
+

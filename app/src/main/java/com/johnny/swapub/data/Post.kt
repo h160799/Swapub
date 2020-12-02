@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data  class Post(
-    val id: String,
-    val posterId: String,
-    val content: String,
-    val productImage: String
+    val id: String? = "",
+    val posterId: String? = "",
+    val content: String? = "",
+    val productImage: String? = ""
 ):Parcelable

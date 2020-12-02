@@ -73,7 +73,11 @@
     <fragment
         android:id="@+id/productFragment"
         android:name="com.johnny.swapub.product.ProductFragment"
-        android:label="ProductFragment" />
+        android:label="ProductFragment" >
+        <argument
+            android:name="productArg"
+            app:argType="com.johnny.swapub.data.Product" />
+    </fragment>
     <action
         android:id="@+id/action_global_productFragment"
         app:destination="@id/productFragment"

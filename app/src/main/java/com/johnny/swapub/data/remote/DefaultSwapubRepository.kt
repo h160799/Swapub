@@ -3,6 +3,7 @@ package com.johnny.swapub.data.remote
 import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.Result
+import com.johnny.swapub.data.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
@@ -18,5 +19,8 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getMessage()
     }
 
+    override suspend fun getUserDetail(product: Product): Result<User>{
+        return swapubRemoteDataSource.getUserDetail(product)
+    }
 
 }

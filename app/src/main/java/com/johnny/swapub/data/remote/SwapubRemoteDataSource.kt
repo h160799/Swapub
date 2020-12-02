@@ -1,5 +1,6 @@
 package com.johnny.swapub.data.remote
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.johnny.swapub.R
@@ -7,6 +8,7 @@ import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.Result
+import com.johnny.swapub.data.User
 import com.johnny.swapub.data.remote.SwapubDataSource
 import com.johnny.swapub.util.Logger
 import kotlin.coroutines.coroutineContext
@@ -17,6 +19,8 @@ object SwapubRemoteDataSource: SwapubDataSource {
 
     private const val PATH_PORDUCT = "product"
     private const val PATH_CHATROOM = "chatRoom"
+    private const val PATH_USER = "user"
+
 
     override suspend fun getProduct(): Result<List<Product>> = suspendCoroutine{ continuation ->
         FirebaseFirestore.getInstance()
@@ -67,4 +71,31 @@ object SwapubRemoteDataSource: SwapubDataSource {
                 }
             }
     }
+
+    override suspend fun getUserDetail(product: Product): Result<User> = suspendCoroutine{ continuation ->
+        FirebaseFirestore.getInstance()
+            .collection(PATH_USER).whereEqualTo("id", product.user)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    var user = User()
+                    for (document in task.result!!) {
+                        Logger.d(document.id + " => " + document.data)
+
+                        user = task.result!!.toObjects(User::class.java)[0]
+
+                    }
+                    continuation.resume(Result.Success(data = user))
+                } else {
+                    task.exception?.let {
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                }
+            }
+    }
+
+
 }
