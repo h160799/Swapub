@@ -37,18 +37,10 @@ class AddToFavoriteFragment : DialogFragment() {
         viewModel.itemInformation.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
-                Logger.d( "get$it")
+                Logger.d( "qqqqq$it")
             }
         })
 
-        viewModel.navigateToSelectedItemInfo.observe(this.viewLifecycleOwner, Observer {
-            it?.let {
-                // Must find the NavController from the Fragment
-                findNavController().navigate(NavigationDirections.actionGlobalProductFragment(it))
-                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
-                viewModel.displayItemProductDetailsComplete()
-            }
-        })
 
         binding.back.setOnClickListener {
             findNavController().navigateUp()
