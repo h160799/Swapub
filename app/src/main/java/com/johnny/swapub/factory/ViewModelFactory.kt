@@ -3,12 +3,9 @@ package com.johnny.swapub.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.johnny.swapub.MainViewModel
-import com.johnny.swapub.addToFavorite.AddToFavoriteFragment
 import com.johnny.swapub.addToFavorite.AddToFavoriteViewModel
 import com.johnny.swapub.data.remote.SwapubRepository
-import com.johnny.swapub.home.item.HomeItemViewModel
 import com.johnny.swapub.messageHistory.MessageHistoryViewModel
-import com.johnny.swapub.myFavorite.MyFavoriteAdapter
 import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.profile.ProfileViewModel
 import com.johnny.swapub.wishNews.WishNewsViewModel
@@ -37,7 +34,7 @@ class ViewModelFactory constructor(
                     MyFavoriteViewModel(swapubRepository)
 
                 isAssignableFrom(AddToFavoriteViewModel::class.java) ->
-                    MyFavoriteViewModel(swapubRepository)
+                    AddToFavoriteViewModel(swapubRepository)
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }

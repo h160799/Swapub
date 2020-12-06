@@ -21,8 +21,6 @@ android {
 
     defaultConfig {
         applicationId "com.johnny.swapub"
-        applicationId "com.myricseptember.firebaseauthgoogle"
-
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
@@ -64,8 +62,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
     implementation 'com.google.firebase:firebase-firestore:22.0.0'
 
-    implementation 'com.google.firebase:firebase-core:16.0.3'
-    implementation 'com.google.firebase:firebase-auth:16.0.5'
+    implementation 'com.google.firebase:firebase-core:18.0.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
     testImplementation 'junit:junit:4.12'
 
 //    androidTestImplementation 'androidx.test.com.johnny.swapub.ext:junit:1.1.2'
@@ -85,7 +83,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
 
-    implementation 'com.google.android.gms:play-services-auth:16.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    // View
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
 
 

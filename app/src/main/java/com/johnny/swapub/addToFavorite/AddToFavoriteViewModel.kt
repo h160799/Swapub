@@ -3,29 +3,20 @@ package com.johnny.swapub.addToFavorite
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.FirebaseFirestore
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
-import com.johnny.swapub.data.*
+import com.johnny.swapub.data.LoadApiStatus
+import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.remote.SwapubRepository
-import com.johnny.swapub.home.HomeTypeFilter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class AddToFavoriteViewModel(
-    val swapubRepository: SwapubRepository
-) : ViewModel() {
-
-    private val _itemInformation = MutableLiveData<List<Product>>()
-    val itemInformation: LiveData<List<Product>>
-        get() = _itemInformation
-
-
-    private val _navigateToSelectedItemInfo = MutableLiveData<Product>()
-    val navigateToSelectedItemInfo: MutableLiveData<Product>
-        get() = _navigateToSelectedItemInfo
+class AddToFavoriteViewModel(val swapubRepository: SwapubRepository) : ViewModel() {
+    private val _product = MutableLiveData<List<Product>>()
+    val product: LiveData<List<Product>>
+        get() = _product
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -51,26 +42,11 @@ class AddToFavoriteViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    fun displayItemProductDetails(product: Product) {
-        _navigateToSelectedItemInfo.value = product
-    }
-
-    fun displayItemProductDetailsComplete() {
-        _navigateToSelectedItemInfo.value = null
-    }
-
-    val product = FirebaseFirestore.getInstance()
-        .collection("product")
-    val user =  FirebaseFirestore.getInstance()
-        .collection("user")
-
-
     init {
-        getAllProducts()
+        getProductsResult()
     }
 
-
-    fun getAllProducts() {
+    fun getProductsResult() {
 
         coroutineScope.launch {
 
@@ -78,7 +54,7 @@ class AddToFavoriteViewModel(
 
             val result = swapubRepository.getProduct()
 
-            _itemInformation.value = when (result) {
+            _product.value = when (result) {
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -108,6 +84,5 @@ class AddToFavoriteViewModel(
         super.onCleared()
         viewModelJob.cancel()
     }
-
 
 }
