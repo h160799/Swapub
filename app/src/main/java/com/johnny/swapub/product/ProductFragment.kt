@@ -31,8 +31,6 @@ class ProductFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        val product = ProductFragmentArgs.fromBundle(requireArguments()).productArg
-
         val adapter = ProductGalleryAdapter()
 
         binding.recyclerDetailGallery.adapter = adapter
@@ -46,45 +44,24 @@ class ProductFragment : Fragment() {
             }
         })
 
-        viewModel.userDetail.observe(viewLifecycleOwner,{
-            it.let {
-                Logger.d("hhhhhh$it")
-
-            }
+        viewModel.userFavorList.observe(viewLifecycleOwner, {
+            Logger.d("userFavorList$it")
+            viewModel.isFavor(it)
         })
-
-
-        viewModel.productDetail.observe(viewLifecycleOwner, {
-            it?.let {
-                Logger.d("RRRRRR$it")
-            }
-        })
-
 
         binding.addFavorite.setOnClickListener {
-            if (viewModel.isFavor.value == 0) {
-                binding.addFavorite.setBackgroundResource(R.drawable.heart_selected)
-                viewModel.isFavor.value = 1
-                viewModel.addProductToFavorList(viewModel.productDetail.value?.id)
-                viewModel.setFavor.value = 1
+            if (viewModel.isFavor.value == true) {
+                viewModel.isFavor.value = false
+                viewModel.productDetail.value?.id?.let { productId -> viewModel.removeProductToFavorList(productId) }
             } else {
-                binding.addFavorite.setBackgroundResource(R.drawable.heart)
-                viewModel.isFavor.value = 0
-                viewModel.setFavor.value = 0
+                viewModel.isFavor.value = true
+                viewModel.productDetail.value?.id?.let { productId -> viewModel.addProductToFavorList(productId) }
             }
-
-            viewModel.isFavor.observe(viewLifecycleOwner,{
-                it?.let {
-                    Logger.d("ttttt$it")
-                }
-            })
-
         }
 
-//
-//        binding.addFavorite.setOnClickListener {
-//            viewModel.addProductToFavorList(product)
-//        }
+        viewModel.isFavor.observe(viewLifecycleOwner, {
+            Logger.d("isFavor$it")
+        })
 
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_homeFragment)

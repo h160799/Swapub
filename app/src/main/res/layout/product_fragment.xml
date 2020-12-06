@@ -148,6 +148,7 @@
             android:id="@+id/recycler_detail"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/recycler_detail_gallery"
             app:layout_constraintStart_toStartOf="@id/recycler_detail_gallery"
@@ -267,7 +268,7 @@
                     android:id="@+id/add_favorite"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/heart"
+                    android:src="@{viewModel.isFavor == true ? @drawable/heart_red : @drawable/heart}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/product_title" />
 

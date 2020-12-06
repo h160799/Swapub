@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+        name="viewModel"
+        type="com.johnny.swapub.addToFavorite.AddToFavoriteViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,45 +18,48 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_favorite"
-            android:layout_width="300dp"
-            android:layout_height="350dp"
-            android:background="@color/gray_888888"
+            android:layout_width="350dp"
+            android:layout_height="400dp"
+            android:background="@color/gray_646464"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-<!--            android:onClick="@{() -> viewModel.nothing()}"-->
-
-            <ImageView
-                android:id="@+id/product_image"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:background="@color/white_E3DED8"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_product_image"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="16dp" />
+                tools:itemCount="1"
+                tools:listitem="@layout/item_add_to_favorite"/>
 
             <ImageView
                 android:id="@+id/like"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@color/orange_ff7902"
-                android:layout_marginTop="20dp"
-                app:layout_constraintEnd_toEndOf="@id/product_image"
-                app:layout_constraintTop_toBottomOf="@id/product_image" />
+                android:src="@drawable/heart_red"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
+                app:layout_constraintEnd_toEndOf="@id/recycler_product_image"
+                app:layout_constraintTop_toBottomOf="@id/recycler_product_image"
+                android:layout_marginRight="25dp" />
 
             <ImageView
                 android:id="@+id/no_like"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@color/black"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="@id/product_image"
-                app:layout_constraintTop_toBottomOf="@id/product_image"/>
+                android:src="@drawable/heart_black"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="25dp"
+                app:layout_constraintStart_toStartOf="@id/recycler_product_image"
+                app:layout_constraintTop_toBottomOf="@id/recycler_product_image"
+                android:layout_marginLeft="25dp" />
 
             <TextView
                 android:id="@+id/back"

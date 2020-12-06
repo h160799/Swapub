@@ -12,11 +12,14 @@ interface SwapubDataSource {
 
     suspend fun getUserDetail(product: Product): Result<User>
 
-    suspend fun getUserFavor(userL: User): Result<List<String>>
+    suspend fun getUserFavor(userL: String): Result<List<String>>
 
     suspend fun getFavoriteList(userL: String): Result<User>
 
     suspend fun getFavoriteProduct(productId: List<String>): Result<List<Product>>
+
+    suspend fun updateProductToFavorList(productId: String, favoriteList: MutableList<String>): Result<Boolean>
+
 
 
 }

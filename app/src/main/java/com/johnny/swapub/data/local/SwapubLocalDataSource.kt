@@ -20,17 +20,19 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getUserFavor(userL: User): Result<List<String>> {
+    override suspend fun getUserFavor(userL: String): Result<List<String>> {
         TODO("Not yet implemented")
     }
-
-
 
     override suspend fun getFavoriteList(userL: String): Result<User> {
         TODO("Not yet implemented")
     }
 
     override suspend fun getFavoriteProduct(productId: List<String>): Result<List<Product>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateProductToFavorList(productId: String, favoriteList: MutableList<String>): Result<Boolean> {
         TODO("Not yet implemented")
     }
 

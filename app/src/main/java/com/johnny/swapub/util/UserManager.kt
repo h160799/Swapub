@@ -5,8 +5,8 @@ import com.johnny.swapub.data.User
 object UserManager {
 
     var user = User(
-        "12345678","","",mutableListOf(),null, mutableListOf(),mutableListOf(),mutableListOf()
+        "TSobJG5UBPbgdz6PHxN8","","",mutableListOf(),null, mutableListOf(),mutableListOf(),mutableListOf()
     )
-
+    var userId = "TSobJG5UBPbgdz6PHxN8"
 
 }

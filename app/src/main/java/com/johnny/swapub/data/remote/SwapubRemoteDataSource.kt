@@ -101,18 +101,20 @@ object SwapubRemoteDataSource: SwapubDataSource {
     }
 
 
-    override suspend fun getUserFavor(userL: User): Result<List<String>> = suspendCoroutine{ continuation ->
+    override suspend fun getUserFavor(userL: String): Result<List<String>> = suspendCoroutine{ continuation ->
         FirebaseFirestore.getInstance()
-            .collection(PATH_USER).whereEqualTo("id", userL.id)
+            .collection(PATH_USER).whereEqualTo("id", userL)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-        var userFavorList = mutableListOf<String>()
+                    var userFavorList = listOf<String>()
                     for (document in task.result!!) {
                         Logger.d(document.id + " => " + document.data)
 
                         val user = document.toObject(User::class.java)
-                        userFavorList.add(user.toString())
+                        if (user.favoriteList != null) {
+                            userFavorList = user.favoriteList
+                        }
                     }
                     continuation.resume(Result.Success(userFavorList))
                 } else {
@@ -181,4 +183,25 @@ object SwapubRemoteDataSource: SwapubDataSource {
                 }
             }
     }
+
+    override suspend fun updateProductToFavorList(productId: String, favoriteList: MutableList<String>): Result<Boolean> = suspendCoroutine {
+            continuation ->
+        val addProductToFavorList = FirebaseFirestore.getInstance().collection(PATH_USER).document(UserManager.userId)
+        addProductToFavorList
+            .update("favoriteList", favoriteList)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Logger.i("Swapub: $productId")
+                    continuation.resume(Result.Success(true))
+                } else {
+                    task.exception?.let {
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                }
+            }
+    }
 }
+
