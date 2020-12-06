@@ -10,6 +10,7 @@ import com.johnny.swapub.data.LoadApiStatus
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.User
 import com.johnny.swapub.data.remote.SwapubRepository
+import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -31,13 +32,21 @@ class ProductViewModel(
     val product = FirebaseFirestore.getInstance()
         .collection("product")
 
+    val user = FirebaseFirestore.getInstance()
+        .collection("user")
 
     private val _userDetail = MutableLiveData<User>()
     val userDetail: LiveData<User>
         get() = _userDetail
 
-    val user = FirebaseFirestore.getInstance()
-        .collection("user")
+    private val _userFavorList = MutableLiveData<List<String>>()
+    val userFavorList: LiveData<List<String>>
+    get() = _userFavorList
+
+    val isFavor = MutableLiveData<Int>()
+    val setFavor = MutableLiveData<Int>()
+
+
 
 
 
@@ -70,6 +79,7 @@ class ProductViewModel(
 init {
 
     getUserDetail(arguments)
+    getUserFavor()
 }
 
 
@@ -108,10 +118,73 @@ init {
         }
     }
 
+
+
+
+
+
+    fun getUserFavor() {
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            val result = swapubRepository.getUserFavor(userL = User())
+
+           _userFavorList.value = when (result) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+            _refreshStatus.value = false
+        }
+    }
+
+
+
+    fun addProductToFavorList(arguments: String?){
+        val list = mutableListOf<String>()
+
+        _userFavorList.value?.let {
+            for(string in it) {
+                list.add(string)
+            }
+            arguments?.let { it1 -> list.add(it1) }
+        }
+        _userFavorList.value = list
+
+        coroutineScope.launch { user.whereEqualTo("id", UserManager.user.id).get().addOnSuccessListener { it ->
+            it.documents.let {documents ->
+                for(document in documents){
+                    document.reference.update("favoriteList", userFavorList.value)
+                }
+            }
+        } }
+
+    }
+
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
+
 
 
 }

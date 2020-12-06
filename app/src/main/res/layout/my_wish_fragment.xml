@@ -4,12 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.johnny.swapub.myWish.MyWishViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/blue_gray"
         tools:context="com.johnny.swapub.myWish.MyWishFragment">
 
         <ImageView
@@ -23,16 +26,16 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="20dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="100dp"
-            android:layout_marginStart="100dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_myWish_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="My Wish"
-            android:textSize="40dp"
-            android:layout_marginLeft="100dp" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

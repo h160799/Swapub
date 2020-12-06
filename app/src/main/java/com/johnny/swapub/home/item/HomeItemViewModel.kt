@@ -16,7 +16,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.Result
 
-class HomeItemViewModel(val homeTypeFilter: HomeTypeFilter, val swapubRepository: SwapubRepository) : ViewModel() {
+class HomeItemViewModel(
+    val homeTypeFilter: HomeTypeFilter,
+    val swapubRepository: SwapubRepository
+) : ViewModel() {
 
     private val _itemInfo = MutableLiveData<List<Product>>()
     val itemInfo: LiveData<List<Product>>
@@ -119,9 +122,15 @@ class HomeItemViewModel(val homeTypeFilter: HomeTypeFilter, val swapubRepository
                 country = "台灣",
                 city = "台北市"
             ),
-            favoriteList  = null,
-            swappingList = null,
-            swappedList = null
+            favoriteList  = mutableListOf(
+
+            ),
+            swappingList = mutableListOf(
+
+            ),
+            swappedList = mutableListOf(
+
+            )
         )
         document.set(data)
     }

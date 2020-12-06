@@ -9,11 +9,11 @@ data class User(
     val id: String? = "",
     val name: String? = "",
     val image: String = "",
-    val clubList: List<Club>? = listOf(),
+    val clubList: List<Club>? = mutableListOf(),
     val place: Place? = null,
-    val favoriteList: List<Product>? = null,
-    val swappingList: List<Product>? = null,
-    val swappedList: List<Product>? = null
+    val favoriteList: List<String>? = mutableListOf(),
+    val swappingList: List<String>? = mutableListOf(),
+    val swappedList: List<String>? = mutableListOf()
 ) : Parcelable
 
 

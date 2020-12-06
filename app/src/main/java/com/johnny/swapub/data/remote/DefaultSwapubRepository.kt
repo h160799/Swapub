@@ -23,4 +23,18 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getUserDetail(product)
     }
 
+    override suspend fun getUserFavor(userL: User): Result<List<String>> {
+        return swapubRemoteDataSource.getUserFavor(userL)
+    }
+
+
+    override suspend fun getFavoriteList(userL: String): Result<User> {
+        return swapubRemoteDataSource.getFavoriteList(userL)
+    }
+
+    override suspend fun getFavoriteProduct(productId: List<String>): Result<List<Product>> {
+        return swapubRemoteDataSource.getFavoriteProduct(productId)
+    }
+
+
 }

@@ -12,4 +12,11 @@ interface SwapubRepository {
 
     suspend fun getUserDetail(product: Product): Result<User>
 
+    suspend fun getUserFavor(userL: User): Result<List<String>>
+
+    suspend fun getFavoriteList(userL: String): Result<User>
+
+    suspend fun getFavoriteProduct(productId: List<String>): Result<List<Product>>
+
+
 }

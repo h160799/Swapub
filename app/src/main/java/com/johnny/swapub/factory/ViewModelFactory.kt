@@ -6,6 +6,9 @@ import com.johnny.swapub.MainViewModel
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.home.item.HomeItemViewModel
 import com.johnny.swapub.messageHistory.MessageHistoryViewModel
+import com.johnny.swapub.myFavorite.MyFavoriteAdapter
+import com.johnny.swapub.myFavorite.MyFavoriteViewModel
+import com.johnny.swapub.profile.ProfileViewModel
 import com.johnny.swapub.wishNews.WishNewsViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -25,6 +28,11 @@ class ViewModelFactory constructor(
                 isAssignableFrom(WishNewsViewModel::class.java) ->
                    WishNewsViewModel(swapubRepository)
 
+                isAssignableFrom(ProfileViewModel::class.java) ->
+                    WishNewsViewModel(swapubRepository)
+
+                isAssignableFrom(MyFavoriteViewModel::class.java) ->
+                    MyFavoriteViewModel(swapubRepository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
