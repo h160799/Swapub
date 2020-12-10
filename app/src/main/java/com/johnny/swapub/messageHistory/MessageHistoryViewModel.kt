@@ -1,35 +1,47 @@
 package com.johnny.swapub.messageHistory
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.johnny.swapub.R
-import com.johnny.swapub.SwapubApplication
-import com.johnny.swapub.data.ChatRoom
-import com.johnny.swapub.data.LoadApiStatus
-import com.johnny.swapub.data.Message
-import com.johnny.swapub.data.TimeUtil
+import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubRepository
-import com.johnny.swapub.util.Logger
-import com.johnny.swapub.util.ServiceLocator.swapubRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import java.util.*
 
-class MessageHistoryViewModel(val swapubRepository: SwapubRepository) : ViewModel() {
+class MessageHistoryViewModel(
+    private val swapubRepository: SwapubRepository
+
+    ) : ViewModel() {
     private val _allMessageHistory = MutableLiveData<List<ChatRoom>>()
-
     val allMessageHistory: LiveData<List<ChatRoom>>
-
         get() = _allMessageHistory
 
-    val chatRoom = FirebaseFirestore.getInstance()
+    private val _chatRoom = MutableLiveData<ChatRoom>().apply {
+        value
+    }
+
+    val chatRoom: LiveData<ChatRoom>
+        get() = _chatRoom
+
+    var liveChatRooms = MutableLiveData<List<ChatRoom>>()
+
+    var isEmpty = MutableLiveData<Boolean>()
+
+
+    // Handle navigation to conversation
+    private val _navigateToConversation = MutableLiveData<ChatRoom>()
+    val navigateToConversation: LiveData<ChatRoom>
+        get() = _navigateToConversation
+
+
+    val chatRoomA = FirebaseFirestore.getInstance()
         .collection("chatRoom")
+
+    val message = FirebaseFirestore.getInstance()
+        .collection("message")
 
 
     // status: The internal MutableLiveData that stores the status of the most recent request
@@ -56,82 +68,37 @@ class MessageHistoryViewModel(val swapubRepository: SwapubRepository) : ViewMode
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    fun addData() {
-        val document = chatRoom.document()
-        val data = ChatRoom(
-            id = document.id,
-            ownerId = "",
-            ownerName = "",
-            ownerImage = "",
-            productId = "",
-            senderId = "",
-            senderName = "Ni A Yi",
-            senderImage = "https://cf.shopee.tw/file/8a9e53d639fc0e77e09dc7b608b48172",
-            text = Message(
-                asker = "",
-                responser = "你那個東西很爛ㄋㄟ ",
-                time = 0
 
-            )
-        )
+
+    init {
+//        addMessage()
+        getMessageHistory()
+    }
+
+
+
+    fun addMessage() {
+        val document = chatRoomA.document().collection("message").document()
+        val data = Message(
+            id = "12345678",
+            senderImage = "https://stickershop.line-scdn.net/stickershop/v1/product/583/LINEStorePC/main.png;compress=true",
+            text = "好像不錯唷",
+            time = Calendar.getInstance().timeInMillis,
+            image = ""
+               )
+
         document.set(data)
     }
 
-//    private fun getData() {
-//
-//        chatRoom
-//            .get()
-//            .addOnSuccessListener { result ->
-//                val listChatRoom = mutableListOf<ChatRoom>()
-//                for (document in result) {
-//                    val chatRoom = document.toObject(ChatRoom::class.java)
-//
-//                    listChatRoom.add(chatRoom)
-//                    Logger.d("333$listChatRoom")
-//                }
-//
-//                _allMessageHistory.value = listChatRoom
-//            }
-//    }
 
-    init {
-//        addData()
-//        getData()
-        getChatroomsResult()
+    fun getMessageHistory() {
+        liveChatRooms = swapubRepository.getMessageHistory()
+        _status.value = LoadApiStatus.DONE
+        _refreshStatus.value = false
     }
 
-    fun getChatroomsResult() {
-
-        coroutineScope.launch {
-
-            _status.value = LoadApiStatus.LOADING
-
-            val result = swapubRepository.getMessage()
-
-            _allMessageHistory.value = when (result) {
-                is com.johnny.swapub.data.Result.Success -> {
-                    _error.value = null
-                    _status.value = LoadApiStatus.DONE
-                    result.data
-                }
-                is com.johnny.swapub.data.Result.Fail -> {
-                    _error.value = result.error
-                    _status.value = LoadApiStatus.ERROR
-                    null
-                }
-                is com.johnny.swapub.data.Result.Error -> {
-                    _error.value = result.exception.toString()
-                    _status.value = LoadApiStatus.ERROR
-                    null
-                }
-                else -> {
-                    _error.value = SwapubApplication.instance.getString(R.string.error)
-                    _status.value = LoadApiStatus.ERROR
-                    null
-                }
-            }
-            _refreshStatus.value = false
-        }
+    fun navigateToConversation(chatRoom: ChatRoom) {
+        _navigateToConversation.value = chatRoom
     }
 
     override fun onCleared() {

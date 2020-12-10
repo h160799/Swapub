@@ -72,15 +72,16 @@ class HomeItemViewModel(
         val data = Product(
             id = document.id,
             user = "12345678", //userId
-            productTitle = "圍巾",
-            description = "超級保暖，透氣不悶濕．",
-            tradingStyle = "日文教學 10 小時．",
+            productTitle =
+                    "日本KINTO 提式輕巧保溫瓶 500ml共8色可選",
+            description = "時尚又實用",
+            tradingStyle = "物品交換．大容量馬克杯",
             categoryList = mutableListOf(
                 "配件"
             ),
             time = 0,
             productImage = mutableListOf(
-                "https://image-cdn-flare.qdm.cloud/q58cd0f6b43d44/image/cache/data/2019/03/22/fcdc868fe3c41e33b2cb884e70c01a92-max-w-1024.jpg"
+                "https://s.yimg.com/zp/MerchandiseImages/A377C865AC-SP-6987044.jpg"
             ),
             location = Location(
                 countries = mutableListOf(
@@ -134,11 +135,6 @@ class HomeItemViewModel(
         )
         document.set(data)
     }
-
-
-
-
-
 
 
 

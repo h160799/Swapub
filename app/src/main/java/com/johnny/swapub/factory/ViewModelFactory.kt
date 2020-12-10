@@ -3,9 +3,11 @@ package com.johnny.swapub.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.johnny.swapub.MainViewModel
+import com.johnny.swapub.SignInViewModel
 import com.johnny.swapub.addToFavorite.AddToFavoriteViewModel
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.messageHistory.MessageHistoryViewModel
+import com.johnny.swapub.messageHistory.conversation.ConversationViewModel
 import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.profile.ProfileViewModel
 import com.johnny.swapub.wishNews.WishNewsViewModel
@@ -21,8 +23,9 @@ class ViewModelFactory constructor(
                 isAssignableFrom(MainViewModel::class.java) ->
                     MainViewModel(swapubRepository)
 
-                isAssignableFrom(MessageHistoryViewModel::class.java) ->
-                   MessageHistoryViewModel(swapubRepository)
+                isAssignableFrom(SignInViewModel::class.java) ->
+                    SignInViewModel(swapubRepository)
+
 
                 isAssignableFrom(WishNewsViewModel::class.java) ->
                    WishNewsViewModel(swapubRepository)
@@ -35,6 +38,12 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(AddToFavoriteViewModel::class.java) ->
                     AddToFavoriteViewModel(swapubRepository)
+
+                isAssignableFrom(MessageHistoryViewModel::class.java) ->
+                    MessageHistoryViewModel(swapubRepository)
+
+
+
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }

@@ -10,6 +10,7 @@
             type="com.johnny.swapub.product.ProductViewModel" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,6 +53,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+    <ScrollView
+        android:id="@+id/recycler_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_detail_gallery"
             android:layout_width="360dp"
@@ -62,7 +78,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_product_gallery" />
 
         <com.mikhaellopez.circularimageview.CircularImageView
@@ -144,20 +160,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/user_head" />
 
-        <ScrollView
-            android:id="@+id/recycler_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:scrollbars="none"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/recycler_detail_gallery"
-            app:layout_constraintStart_toStartOf="@id/recycler_detail_gallery"
-            app:layout_constraintTop_toBottomOf="@id/line2">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/product_title"
@@ -169,8 +171,8 @@
                     android:textColor="@color/white_E3DED8"
                     android:textSize="30sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="@id/recycler_detail_gallery"
+                    app:layout_constraintTop_toTopOf="@id/line2" />
 
                 <TextView
                     android:id="@+id/product_bac1"
@@ -178,7 +180,7 @@
                     android:layout_height="28dp"
                     android:layout_marginTop="15dp"
                     android:background="@color/white_E3DED8"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/product_title"
                     app:layout_constraintTop_toBottomOf="@id/product_title" />
 
                 <TextView
@@ -268,6 +270,7 @@
                     android:id="@+id/add_favorite"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:layout_marginEnd="15dp"
                     android:src="@{viewModel.isFavor == true ? @drawable/heart_red : @drawable/heart}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/product_title" />

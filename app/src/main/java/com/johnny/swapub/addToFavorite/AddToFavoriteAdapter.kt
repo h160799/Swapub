@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.johnny.swapub.R
 import com.johnny.swapub.data.Product
 
-class AddToFavoriteAdapter(private var products: List<Product> = mutableListOf()
+class AddToFavoriteAdapter(private var products: List<Product> = mutableListOf(),val viewModel: AddToFavoriteViewModel
 ) : RecyclerView.Adapter<AddToFavoriteAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,6 +22,7 @@ class AddToFavoriteAdapter(private var products: List<Product> = mutableListOf()
         val product = products[position]
         holder.name.text = product.productTitle
         holder.city.text = product.location?.countries?.get(0)?.cities?.get(0)?.name
+        viewModel.productId.value = products[position].id
         Glide.with(holder.image)
             .load(product.productImage?.get(0))
             .into(holder.image)

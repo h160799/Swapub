@@ -54,6 +54,202 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/line">
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c1"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="@color/orange_ff7902"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c2"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="@color/colorPrimary"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/c1"
+                app:layout_constraintTop_toTopOf="@id/c1"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c3"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="#FCFC2A"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/c2"
+                app:layout_constraintTop_toTopOf="@id/c2"/>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c4"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="#C31818"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="@id/c1"
+                app:layout_constraintTop_toBottomOf="@id/c1"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c5"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="#1825C3"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/c4"
+                app:layout_constraintTop_toTopOf="@id/c4"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c6"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="#0A9F16"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/c5"
+                app:layout_constraintTop_toTopOf="@id/c5"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c7"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="#A78E09"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="@id/c4"
+                app:layout_constraintTop_toBottomOf="@id/c4"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c8"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="#095EA7"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/c7"
+                app:layout_constraintTop_toTopOf="@id/c7"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c9"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:cardCornerRadius="50dp"
+                app:cardElevation="0px"
+                app:cardBackgroundColor="#BA1B5F"
+                android:layout_marginStart="20dp"
+                app:layout_constraintStart_toEndOf="@id/c8"
+                app:layout_constraintTop_toTopOf="@id/c8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="時尚愛美團"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c1"
+                app:layout_constraintEnd_toEndOf="@id/c1"
+                app:layout_constraintTop_toBottomOf="@id/c1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="婆婆媽媽團"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c2"
+                app:layout_constraintEnd_toEndOf="@id/c2"
+                app:layout_constraintTop_toBottomOf="@id/c2"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="生活用品團"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c3"
+                app:layout_constraintEnd_toEndOf="@id/c3"
+                app:layout_constraintTop_toBottomOf="@id/c3"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="美妝交流團"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c4"
+                app:layout_constraintEnd_toEndOf="@id/c4"
+                app:layout_constraintTop_toBottomOf="@id/c4"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="書籍分享團"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c5"
+                app:layout_constraintEnd_toEndOf="@id/c5"
+                app:layout_constraintTop_toBottomOf="@id/c5"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="經典男裝團"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c6"
+                app:layout_constraintEnd_toEndOf="@id/c6"
+                app:layout_constraintTop_toBottomOf="@id/c6"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="健身運動團"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c7"
+                app:layout_constraintEnd_toEndOf="@id/c7"
+                app:layout_constraintTop_toBottomOf="@id/c7"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="志工招募館"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c8"
+                app:layout_constraintEnd_toEndOf="@id/c8"
+                app:layout_constraintTop_toBottomOf="@id/c8"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="電玩手遊團"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@id/c9"
+                app:layout_constraintEnd_toEndOf="@id/c9"
+                app:layout_constraintTop_toBottomOf="@id/c9"/>
+
+
+
+
+
+
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/layout_swipe_refresh_club_item"
                 android:layout_width="match_parent"
@@ -64,19 +260,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_bias="0.0">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_club_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="30dp"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="3"
-                    tools:itemCount="21"
-                    tools:listitem="@layout/item_club_grid">
 
 
 
-                </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/recycler_club_item"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingLeft="30dp"-->
+<!--                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+<!--                    app:spanCount="3"-->
+<!--                    tools:itemCount="21"-->
+<!--                    tools:listitem="@layout/item_club_grid">-->
+
+
+
+<!--                </androidx.recyclerview.widget.RecyclerView>-->
+
+
+
+
+
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

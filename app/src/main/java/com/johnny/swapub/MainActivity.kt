@@ -12,6 +12,7 @@ import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -22,16 +23,23 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.johnny.swapub.databinding.ActivityMainBinding
 import com.johnny.swapub.databinding.NavHeaderDrawerBinding
 import com.johnny.swapub.util.CurrentFragmentType
 import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.util.Logger
+import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
 class MainActivity : AppCompatActivity() {
-
+    companion object {
+        fun getLaunchIntent(from: Context) = Intent(from, MainActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        }
+    }
 
     /**
      * Lazily initialize our [MainViewModel].
@@ -49,11 +57,7 @@ class MainActivity : AppCompatActivity() {
     private var actionBarDrawerToggle: ActionBarDrawerToggle? = null
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    companion object {
-        fun getLaunchIntent(from: Context) = Intent(from, MainActivity::class.java).apply {
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        }
-    }
+
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,6 +75,7 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_addToFavoriteFragment)
         }
 
+        Logger.d("userManager${UserManager.userId}")
 
         val window = window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -199,4 +204,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
+
 

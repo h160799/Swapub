@@ -122,7 +122,11 @@
     <fragment
         android:id="@+id/conversationFragment"
         android:name="com.johnny.swapub.messageHistory.conversation.ConversationFragment"
-        android:label="ConversationFragment" />
+        android:label="ConversationFragment" >
+        <argument
+            android:name="chatRoom"
+            app:argType="com.johnny.swapub.data.ChatRoom" />
+    </fragment>
     <action
         android:id="@+id/action_global_conversationFragment"
         app:destination="@id/conversationFragment"
@@ -155,4 +159,13 @@
         app:destination="@id/addToFavoriteFragment"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/imageDialog"
+        android:name="com.johnny.swapub.messageHistory.conversation.dialog.ImageDialog"
+        android:label="ImageDialog" >
+        <argument
+            android:name="messageTypeKey"
+            app:argType="string" />
+    </fragment>
+    <action android:id="@+id/action_global_imageDialog" app:destination="@id/imageDialog" />
 </navigation>

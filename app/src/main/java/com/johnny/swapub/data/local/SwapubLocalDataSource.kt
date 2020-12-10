@@ -1,10 +1,8 @@
 package com.johnny.swapub.data.local
 
 import android.content.Context
-import com.johnny.swapub.data.ChatRoom
-import com.johnny.swapub.data.Product
-import com.johnny.swapub.data.Result
-import com.johnny.swapub.data.User
+import androidx.lifecycle.MutableLiveData
+import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubDataSource
 
 class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
@@ -12,7 +10,7 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getMessage(): Result<List<ChatRoom>> {
+    override fun getMessage(documentId: String): MutableLiveData<List<Message>> {
         TODO("Not yet implemented")
     }
 
@@ -33,6 +31,18 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
     }
 
     override suspend fun updateProductToFavorList(productId: String, favoriteList: MutableList<String>): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun addUserToFirebase(user: User): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getMessageHistory(): MutableLiveData<List<ChatRoom>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun postMessage(message: Message, document: String): Result<Boolean> {
         TODO("Not yet implemented")
     }
 

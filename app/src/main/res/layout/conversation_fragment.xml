@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+<variable
+    name="viewModel"
+    type="com.johnny.swapub.messageHistory.conversation.ConversationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,11 +28,11 @@
             android:id="@+id/response_name"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="Jolin Tsai"
+            tools:text="Jolin Tsai"
             android:gravity="center"
             android:includeFontPadding="false"
             android:textColor="@color/white_E3DED8"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,8 +53,8 @@
 
         <ImageView
             android:id="@+id/product_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@color/white_E3DED8"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
@@ -60,11 +62,14 @@
             app:layout_constraintTop_toBottomOf="@id/line"
             android:layout_marginLeft="20dp" />
 
+
+
         <TextView
             android:id="@+id/product_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="22sp"
+            android:text="MacBook Pro"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/white_E3DED8"
             android:textStyle="bold"
@@ -72,23 +77,24 @@
             android:layout_marginStart="15dp"
             app:layout_constraintStart_toEndOf="@id/product_image"
             app:layout_constraintTop_toTopOf="@id/product_image"
-            android:text="MacBook Pro"
             android:layout_marginLeft="15dp" />
+
+
 
         <TextView
             android:id="@+id/product_bac1"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
             android:background="@color/white_E3DED8"
             app:layout_constraintStart_toStartOf="@id/product_title"
             app:layout_constraintBottom_toBottomOf="@id/product_image" />
 
         <TextView
-            android:layout_width="59dp"
-            android:layout_height="19dp"
+            android:layout_width="68dp"
+            android:layout_height="28dp"
             android:background="@color/blue_gray"
-            android:text="商品描述"
-            android:textSize="13sp"
+            android:text="交易條件"
+            android:textSize="15sp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/white_E3DED8"
             android:gravity="center"
@@ -97,12 +103,14 @@
             app:layout_constraintTop_toTopOf="@id/product_bac1"
             app:layout_constraintBottom_toBottomOf="@id/product_bac1"/>
 
+
+
         <TextView
             android:id="@+id/trading_style"
             android:layout_width="200dp"
             android:layout_height="0dp"
+            android:textSize="13sp"
             android:text="日文教學 40 小時"
-            android:textSize="10sp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/white_E3DED8"
             android:layout_marginBottom="5dp"
@@ -111,20 +119,23 @@
             app:layout_constraintBottom_toBottomOf="@id/product_bac1"
             android:layout_marginLeft="10dp" />
 
+
+
         <TextView
             android:id="@+id/choose_trading_style"
             android:layout_width="80dp"
-            android:layout_height="20dp"
+            android:layout_height="30dp"
             android:background="@drawable/bg_round_button"
-            android:text="選擇成交方式"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:gravity="center"
             android:textStyle="bold"
+            android:text="選擇成交方式"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trading_style"
             android:layout_marginRight="20dp" />
+
 
         <View
             android:id="@+id/line2"
@@ -135,24 +146,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/choose_trading_style"/>
 
-        <ScrollView
-            android:id="@+id/recycler_conversation"
-            android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_conversation"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:reverseLayout="true"
+            app:stackFromEnd="true"
+            app:layout_constraintTop_toBottomOf="@id/line2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line2">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line3"
+            tools:listitem="@layout/item_conversation"/>
 
 
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </ScrollView>
         <View
             android:id="@+id/line3"
             android:layout_width="match_parent"
@@ -162,33 +169,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <ImageView
-            android:id="@+id/editText"
-            android:layout_width="320dp"
+        <EditText
+            android:id="@+id/editText_bac"
+            android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="50dp"
+            android:hint="  輸入訊息"
+            android:text="@={viewModel.message.text}"
             android:background="@drawable/bg_round_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line3"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginLeft="20dp" />
 
-        <EditText
-            android:layout_width="280dp"
-            android:layout_height="30dp"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@id/editText"
-            app:layout_constraintEnd_toEndOf="@id/editText"
-            app:layout_constraintTop_toTopOf="@id/editText"
-            app:layout_constraintBottom_toBottomOf="@id/editText"/>
+
 
         <ImageView
-            android:id="@+id/enter"
+            android:id="@+id/enter_text"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/go_back"
-            android:layout_marginStart="20dp"
-            app:layout_constraintStart_toEndOf="@id/editText"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toEndOf="@id/editText_bac"
+            app:layout_constraintTop_toBottomOf="@id/line3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="20dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_photos"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/go_back"
+            android:layout_marginEnd="10dp"
+            android:tint="@color/black"
+            app:fabSize="mini"
+            app:layout_constraintEnd_toStartOf="@id/editText_bac"
             app:layout_constraintTop_toBottomOf="@id/line3"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginLeft="20dp" />

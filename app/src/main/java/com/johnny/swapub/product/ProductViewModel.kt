@@ -6,10 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
-import com.johnny.swapub.data.LoadApiStatus
-import com.johnny.swapub.data.Product
-import com.johnny.swapub.data.Result
-import com.johnny.swapub.data.User
+import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineScope
@@ -235,6 +232,58 @@ class ProductViewModel(
             }
         }
     }
+
+
+//    fun addMessage(message: Message){
+//        coroutineScope.launch {
+//
+//            _status.value = LoadApiStatus.LOADING
+//            val favoriteList: MutableList<String> = mutableListOf()
+//            _userFavorList.value.let {
+//                if (it != null) {
+//                    for (list in it) {
+//                        favoriteList.add(list)
+//                    }
+//                }
+//            }
+//            var isInFavoriteList = false
+//            for (list in favoriteList) {
+//                if (list == productId) {
+//                    isInFavoriteList = true
+//                }
+//            }
+//            if (!isInFavoriteList) {
+//                favoriteList.add(productId)
+//            }
+//
+//            when (val result = swapubRepository.updateProductToFavorList(productId, favoriteList)) {
+//                is Result.Success -> {
+//                    _error.value = null
+//                    _status.value = LoadApiStatus.DONE
+//                }
+//                is Result.Fail -> {
+//                    _error.value = result.error
+//                    _status.value = LoadApiStatus.ERROR
+//                }
+//                is Result.Error -> {
+//                    _error.value = result.exception.toString()
+//                    _status.value = LoadApiStatus.ERROR
+//                }
+//                else -> {
+//                    _error.value = SwapubApplication.instance.getString(R.string.error)
+//                    _status.value = LoadApiStatus.ERROR
+//                }
+//            }
+//        }
+//    }
+
+
+
+
+
+
+
+
 
     override fun onCleared() {
         super.onCleared()

@@ -6,9 +6,9 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class User(
-    val id: String? = "",
-    val name: String? = "",
-    val image: String = "",
+    var id: String = "",
+    var name: String? = "",
+    var image: String = "",
     val clubList: List<Club>? = mutableListOf(),
     val place: Place? = null,
     val favoriteList: List<String>? = mutableListOf(),

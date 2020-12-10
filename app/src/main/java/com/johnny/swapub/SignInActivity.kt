@@ -2,9 +2,16 @@ package com.johnny.swapub
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.annotation.RequiresApi
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -13,9 +20,16 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.johnny.swapub.data.User
+import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.util.Logger
+import com.johnny.swapub.util.UserManager
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity() {
+
+    val viewModel by viewModels<SignInViewModel> { getVmFactory() }
+
 
     val RC_SIGN_IN: Int = 1
     lateinit var mGoogleSignInClient: GoogleSignInClient
@@ -23,12 +37,23 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
         configureGoogleSignIn()
         setupUI()
         firebaseAuth = FirebaseAuth.getInstance()
+
+
+        val window = window
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor =
+            Color.TRANSPARENT // calculateStatusColor(Color.WHITE, (int) alphaValue)
     }
 
     companion object {
@@ -84,7 +109,13 @@ class SignInActivity : AppCompatActivity() {
         val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
-
+                UserManager.userId = acct.email.toString()
+                var user = User().apply {
+                    this.id = acct.email.toString()
+                    this.image = acct.photoUrl.toString()
+                    this.name = acct.displayName
+                }
+                viewModel.addUserToFirebase(user)
                 startActivity(MainActivity.getLaunchIntent(this))
             } else {
                 Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
@@ -93,4 +124,29 @@ class SignInActivity : AppCompatActivity() {
     }
 }
 
+//private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+//    val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+//    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+//
+//        if (it.isSuccessful) {
+//            val user = FirebaseAuth.getInstance().currentUser
+//            user?.let {
+//                val currentUser = User(
+//                    name = user.displayName,
+//                    image = user.photoUrl.toString()
+//                )
+//                UserManager.user.value = currentUser
+//                viewModel.addUserToFirebase(currentUser)
+//            }
+//
+//            Log.w("google","${user?.displayName},${user?.photoUrl}")
+//
+//
+//            startActivity(MainActivity.getLaunchIntent(this))
+//        } else {
+//            Toast.makeText(this, "Google sign in failed:(", Toast.LENGTH_LONG).show()
+//        }
+//    }
+//}
+//}
 

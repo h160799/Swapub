@@ -40,21 +40,30 @@ class AddToFavoriteFragment : Fragment(), CardStackListener {
 
         viewModel.getProductsResult()
 
-        adapter = AddToFavoriteAdapter()
+        adapter = AddToFavoriteAdapter(listOf(), viewModel)
 
         viewModel.product.observe(viewLifecycleOwner, {
-            adapter = AddToFavoriteAdapter(it)
+            adapter = AddToFavoriteAdapter(it, viewModel)
             Logger.d("product = $it")
             setupCardStackView()
             setupButton()
         })
 
+        viewModel.productId.observe(viewLifecycleOwner, {
+            Logger.d("productId=$it")
+        })
+
+        viewModel.userFavorList.observe(viewLifecycleOwner, {
+            Logger.d("list=$it")
+
+        })
 
         return binding.root
     }
 
     override fun onCardDragging(direction: Direction?, ratio: Float) {
         Log.d("CardStackView", "onCardDragging: d = ${direction?.name}, r = $ratio")
+        viewModel.productId.value?.let { viewModel.addSwipeProductToFavorList(it) }
     }
 
     override fun onCardSwiped(direction: Direction?) {
