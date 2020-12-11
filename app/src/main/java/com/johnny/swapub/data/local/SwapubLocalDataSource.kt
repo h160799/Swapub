@@ -10,6 +10,10 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
+    override suspend fun getOneProduct(productId: String): Result<Product> {
+        TODO("Not yet implemented")
+    }
+
     override fun getMessage(documentId: String): MutableLiveData<List<Message>> {
         TODO("Not yet implemented")
     }
@@ -43,6 +47,10 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
     }
 
     override suspend fun postMessage(message: Message, document: String): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> {
         TODO("Not yet implemented")
     }
 

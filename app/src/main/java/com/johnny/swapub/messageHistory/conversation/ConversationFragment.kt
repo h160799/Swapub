@@ -23,7 +23,6 @@ import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.databinding.ConversationFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
-import com.johnny.swapub.messageHistory.MessageHistoryFragmentArgs
 import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,7 +30,8 @@ import java.util.*
 
 class ConversationFragment : Fragment() {
 
-    val viewModel by viewModels<ConversationViewModel> { getVmFactory(MessageHistoryFragmentArgs.fromBundle(requireArguments()).chatRoom) }
+    val viewModel by viewModels<ConversationViewModel> { getVmFactory(ConversationFragmentArgs.fromBundle(requireArguments()).chatRoom) }
+
 
     private var saveUri: Uri? = null
 
@@ -71,15 +71,19 @@ class ConversationFragment : Fragment() {
             }
         })
 
+        viewModel.conversationProduct.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+        Logger.d("aaaa$it")
+        })
+
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_messageHistoryFragment)
         }
 
 
         if (viewModel.chatRoom.value?.senderId == UserManager.userId) {
-            binding.responseName.text = viewModel.chatRoom.value?.ownerName
-        } else {
             binding.responseName.text = viewModel.chatRoom.value?.senderName
+        } else {
+            binding.responseName.text = viewModel.chatRoom.value?.ownerName
         }
 
         viewModel.image.observe(viewLifecycleOwner, androidx.lifecycle.Observer {

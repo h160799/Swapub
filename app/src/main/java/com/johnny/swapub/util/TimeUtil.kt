@@ -1,4 +1,4 @@
-package com.johnny.swapub.data
+package com.johnny.swapub.util
 
 import java.text.SimpleDateFormat
 import java.util.*
@@ -8,7 +8,7 @@ object TimeUtil {
     fun StampToDate(time: Long): String {
         // 進來的time以秒為單位，Date輸入為毫秒為單位，要注意
 
-        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
 
         return simpleDateFormat.format(Date(time))
     }
@@ -21,6 +21,9 @@ object TimeUtil {
 
         return simpleDateFormat.format(Date(time))
     }
+
+
+
 
     @JvmStatic
     fun DateToStamp(date: String, locale: Locale): Long {

@@ -1,6 +1,5 @@
 package com.johnny.swapub.product
 
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,12 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.R
-import com.johnny.swapub.data.Product
+import com.johnny.swapub.data.ChatRoom
+import com.johnny.swapub.data.Message
 import com.johnny.swapub.databinding.ProductFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.util.Logger
-import kotlinx.android.synthetic.main.item_club_grid.*
 
 class ProductFragment : Fragment() {
 
@@ -25,8 +25,10 @@ class ProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = ProductFragmentBinding.inflate(inflater, container,
-            false)
+        val binding = ProductFragmentBinding.inflate(
+            inflater, container,
+            false
+        )
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
@@ -35,9 +37,9 @@ class ProductFragment : Fragment() {
 
         binding.recyclerDetailGallery.adapter = adapter
         viewModel.productDetail.observe(viewLifecycleOwner, Observer {
-            it?.let{
+            it?.let {
                 val imageList = mutableListOf<String>()
-                for (image in it.productImage!!){
+                for (image in it.productImage!!) {
                     imageList.add(image)
                 }
                 adapter.submitList(imageList)
@@ -52,10 +54,18 @@ class ProductFragment : Fragment() {
         binding.addFavorite.setOnClickListener {
             if (viewModel.isFavor.value == true) {
                 viewModel.isFavor.value = false
-                viewModel.productDetail.value?.id?.let { productId -> viewModel.removeProductToFavorList(productId) }
+                viewModel.productDetail.value?.id?.let { productId ->
+                    viewModel.removeProductToFavorList(
+                        productId
+                    )
+                }
             } else {
                 viewModel.isFavor.value = true
-                viewModel.productDetail.value?.id?.let { productId -> viewModel.addProductToFavorList(productId) }
+                viewModel.productDetail.value?.id?.let { productId ->
+                    viewModel.addProductToFavorList(
+                        productId
+                    )
+                }
             }
         }
 
@@ -63,14 +73,29 @@ class ProductFragment : Fragment() {
             Logger.d("isFavor$it")
         })
 
-        binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
-        }
+        binding.interestToTrade.setOnClickListener {
+            it.let {
+                viewModel.postInterestMessage(viewModel.addChatRoom())
+                viewModel.interestMessage.observe(viewLifecycleOwner, Observer {if(it == true){
+                    let {
+                        viewModel.postInterestMessageText(viewModel.addMessage(), String())
+                    }
+                }
+                })
 
-        return binding.root
+                Logger.d("mmm$it")
+                findNavController().navigate(NavigationDirections.actionGlobalMessageHistoryFragment())
+            }
+
+            binding.goBack.setOnClickListener {
+                findNavController().navigate(R.id.action_global_homeFragment)
+            }
+        }
+            return binding.root
+
+        }
 
     }
 
 
 
-}

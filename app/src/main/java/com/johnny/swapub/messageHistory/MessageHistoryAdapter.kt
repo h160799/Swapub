@@ -64,16 +64,16 @@ class MessageHistoryAdapter(val onClickListener: OnClickListener, val viewModel:
     override fun onBindViewHolder(holder:MessageHistoryViewHolder, position: Int) {
         val chatRoom = getItem(position)
 
-        if (UserManager.userId == chatRoom.senderId) {
-            holder.itemView.user_head.visibility = View.GONE
-            viewModel.isEmpty.value = true
-        }else if (UserManager.userId == chatRoom.ownerId) {
-            holder.itemView.image_chat_owner.visibility = View.GONE
-            viewModel.isEmpty.value = true
+//        if (UserManager.userId == chatRoom.senderId) {
+//            holder.itemView.user_head.visibility = View.GONE
+//            viewModel.isEmpty.value = true
+//        }else if (UserManager.userId == chatRoom.ownerId) {
+//            holder.itemView.image_chat_owner.visibility = View.GONE
+//            viewModel.isEmpty.value = true
 //            } else {
 //                holder.itemView.visibility = View.GONE
 //                holder.itemView.layoutParams.height = 0
-        }
+//        }
 
         holder.itemView.setOnClickListener {
             onClickListener.onClick(chatRoom)

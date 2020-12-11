@@ -13,6 +13,10 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getProduct()
     }
 
+    override suspend fun getOneProduct(productId: String): Result<Product> {
+        return swapubRemoteDataSource.getOneProduct(productId)
+    }
+
     override fun getMessage(documentId: String): MutableLiveData<List<Message>> {
         return swapubRemoteDataSource.getMessage(documentId)
     }
@@ -48,4 +52,9 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
     override suspend fun postMessage(message: Message, document: String):Result<Boolean> {
         return swapubRemoteDataSource.postMessage(message, document)
     }
+
+    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> {
+        return swapubRemoteDataSource.postInterestMessage(chatRoom)
+    }
+
 }

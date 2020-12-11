@@ -4,10 +4,8 @@ import androidx.fragment.app.Fragment
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.data.Product
-import com.johnny.swapub.factory.ConversationViewModelFactory
-import com.johnny.swapub.factory.HomeItemViewModelFactory
-import com.johnny.swapub.factory.ProductViewModelFactory
-import com.johnny.swapub.factory.ViewModelFactory
+import com.johnny.swapub.data.User
+import com.johnny.swapub.factory.*
 import com.johnny.swapub.home.HomeTypeFilter
 
 fun Fragment.getVmFactory(): ViewModelFactory {
@@ -26,7 +24,7 @@ fun Fragment.getVmFactory(product: Product): ProductViewModelFactory {
 
 fun Fragment.getVmFactory(chatRoom: ChatRoom): ConversationViewModelFactory {
     val repository = (requireContext().applicationContext as SwapubApplication).swapubRepository
-    return ConversationViewModelFactory(repository, chatRoom)
+    return ConversationViewModelFactory(repository,chatRoom )
 }
 
 

@@ -95,6 +95,7 @@ class ConversationAdapter(val viewModel: ConversationViewModel) :
                 holder.itemView.cardView_chatToDetail_received.visibility = View.VISIBLE
                 holder.itemView.image_chatToDetail_receivedTime.visibility = View.VISIBLE
                 holder.itemView.image_chatToDetail_sentTime.visibility = View.GONE
+                holder.itemView.image_chat_sender_bac.visibility = View.GONE
             }
             //左邊的訊息
         } else {

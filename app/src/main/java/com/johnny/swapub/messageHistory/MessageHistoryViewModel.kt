@@ -22,7 +22,6 @@ class MessageHistoryViewModel(
     private val _chatRoom = MutableLiveData<ChatRoom>().apply {
         value
     }
-
     val chatRoom: LiveData<ChatRoom>
         get() = _chatRoom
 

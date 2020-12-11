@@ -29,7 +29,7 @@ import java.util.*
 @Parcelize
 data class ChatRoom(
     val id: String? = "",
-    val time: Long? = -1,
+    var time: Long? = -1,
     val productId: String? = "",
     val ownerId: String? = "",
     val ownerName: String? = "",

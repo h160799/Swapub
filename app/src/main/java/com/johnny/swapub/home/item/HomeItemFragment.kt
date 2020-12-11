@@ -1,4 +1,5 @@
 package com.johnny.swapub.home.item
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,8 +22,8 @@ class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-        ): View? {
-            // Inflate the layout for this fragment
+    ): View? {
+        // Inflate the layout for this fragment
 
         val binding = FragmentHomeItemBinding.inflate(inflater, container, false)
 
@@ -37,18 +38,10 @@ class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
         viewModel.itemInfo.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
-                Logger.d( "get$it")
+                Logger.d("get$it")
             }
         })
 
-//        viewModel.navigateToSelecteditemInfo.observe(this.viewLifecycleOwner, Observer {
-//            it?.let {
-//                // Must find the NavController from the Fragment
-//                findNavController().navigate(R.id.action_global_productFragment)
-//                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
-//                viewModel.displayItemProductDetailsComplete()
-//            }
-//        })
 
         viewModel.navigateToSelecteditemInfo.observe(this.viewLifecycleOwner, Observer {
             it?.let {
@@ -60,7 +53,6 @@ class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
         })
 
 
-            return binding.root
-        }
-
+        return binding.root
+    }
 }

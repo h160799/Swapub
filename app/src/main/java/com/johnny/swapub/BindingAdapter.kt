@@ -4,12 +4,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.johnny.swapub.data.TimeUtil
-import com.johnny.swapub.product.ProductGalleryAdapter
-import java.text.SimpleDateFormat
+import com.johnny.swapub.util.TimeUtil
 
 
 @BindingAdapter("imageUrl")

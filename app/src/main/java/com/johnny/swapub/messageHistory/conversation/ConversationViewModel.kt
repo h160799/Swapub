@@ -8,6 +8,7 @@ import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.data.LoadApiStatus
 import com.johnny.swapub.data.Message
+import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
@@ -38,6 +39,10 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
     val document = MutableLiveData<String>().apply {
         value =  chatRoom.value?.id
     }
+
+    private val _conversationProduct = MutableLiveData<Product>()
+    val conversationProduct: LiveData<Product>
+        get() = _conversationProduct
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -71,9 +76,8 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
         message.value?.senderImage = UserManager.user.image
         message.value?.id = UserManager.userId.toString()
         getLiveMessagesResult()
+        arguments.productId?.let { getOneProduct(it) }
     }
-
-
 
 
     fun getLiveMessagesResult() {
@@ -107,6 +111,42 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
                     _status.value = LoadApiStatus.ERROR
                 }
             }
+        }
+    }
+
+
+    fun getOneProduct(productId: String) {
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            val result = swapubRepository.getOneProduct(productId)
+
+            _conversationProduct.value = when (result) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    Logger.d("ccc${result.data}")
+                    result.data
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+            _refreshStatus.value = false
         }
     }
 

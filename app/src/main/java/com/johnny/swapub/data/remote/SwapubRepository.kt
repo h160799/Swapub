@@ -6,6 +6,8 @@ import com.johnny.swapub.data.*
 interface SwapubRepository {
     suspend fun getProduct(): Result<List<Product>>
 
+    suspend fun getOneProduct(productId: String): Result<Product>
+
     fun getMessage(documentId: String): MutableLiveData<List<Message>>
 
     suspend fun getUserDetail(product: Product): Result<User>
@@ -24,5 +26,5 @@ interface SwapubRepository {
 
     suspend fun postMessage(message: Message, document: String): Result<Boolean>
 
-
+    suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean>
 }

@@ -18,9 +18,7 @@
         android:name="com.johnny.swapub.messageHistory.MessageHistoryFragment"
         android:label="message_history_fragment"
         tools:layout="@layout/fragment_message_history" >
-        <argument
-            android:name="chatRoom"
-            app:argType="com.johnny.swapub.data.ChatRoom" />
+
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -76,7 +74,7 @@
         android:label="ProductFragment" >
         <argument
             android:name="productArg"
-            app:argType="com.johnny.swapub.data.Product" />
+            app:argType="com.johnny.swapub.data.Product"/>
     </fragment>
     <action
         android:id="@+id/action_global_productFragment"

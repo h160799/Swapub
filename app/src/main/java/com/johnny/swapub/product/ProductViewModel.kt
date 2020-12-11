@@ -13,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
 class ProductViewModel(
     private val swapubRepository: SwapubRepository,
@@ -43,6 +44,9 @@ class ProductViewModel(
             value = false
         }
 
+    private val _interestMessage = MutableLiveData<Boolean>()
+    val interestMessage: LiveData<Boolean>
+        get() = _interestMessage
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -234,55 +238,89 @@ class ProductViewModel(
     }
 
 
-//    fun addMessage(message: Message){
-//        coroutineScope.launch {
-//
-//            _status.value = LoadApiStatus.LOADING
-//            val favoriteList: MutableList<String> = mutableListOf()
-//            _userFavorList.value.let {
-//                if (it != null) {
-//                    for (list in it) {
-//                        favoriteList.add(list)
-//                    }
-//                }
-//            }
-//            var isInFavoriteList = false
-//            for (list in favoriteList) {
-//                if (list == productId) {
-//                    isInFavoriteList = true
-//                }
-//            }
-//            if (!isInFavoriteList) {
-//                favoriteList.add(productId)
-//            }
-//
-//            when (val result = swapubRepository.updateProductToFavorList(productId, favoriteList)) {
-//                is Result.Success -> {
-//                    _error.value = null
-//                    _status.value = LoadApiStatus.DONE
-//                }
-//                is Result.Fail -> {
-//                    _error.value = result.error
-//                    _status.value = LoadApiStatus.ERROR
-//                }
-//                is Result.Error -> {
-//                    _error.value = result.exception.toString()
-//                    _status.value = LoadApiStatus.ERROR
-//                }
-//                else -> {
-//                    _error.value = SwapubApplication.instance.getString(R.string.error)
-//                    _status.value = LoadApiStatus.ERROR
-//                }
-//            }
-//        }
-//    }
+    fun postInterestMessage(chatRoom: ChatRoom)  {
 
 
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            when (val result = swapubRepository.postInterestMessage(chatRoom)) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    _interestMessage.value = false
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.you_know_nothing)
+                    _status.value = LoadApiStatus.ERROR
+                }
+            }
+        }
+    }
 
 
+  fun addChatRoom(): ChatRoom{
+      return ChatRoom(
+          id = "",
+          time = Calendar.getInstance().timeInMillis,
+          productId = _productDetail.value?.id,
+          ownerId = _productDetail.value?.user,
+          ownerName = userDetail.value?.name,
+          ownerImage = userDetail.value?.image,
+          senderId = UserManager.userId,
+          senderName = "",
+          senderImage = "",
+          text = "我有興趣，想多了解！！！"
+      )
+  }
 
 
+    fun postInterestMessageText(message: Message, document: String) {
 
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            when (val result = swapubRepository.postMessage(message, document)) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.you_know_nothing)
+                    _status.value = LoadApiStatus.ERROR
+                }
+            }
+        }
+    }
+
+    fun addMessage(): Message{
+        return Message(
+            id = "",
+            time = Calendar.getInstance().timeInMillis,
+            image = userDetail.value?.image,
+            senderImage = "",
+            text = "我有興趣，想多了解！！！"
+        )
+    }
 
 
     override fun onCleared() {

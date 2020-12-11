@@ -11,12 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.databinding.FragmentMessageHistoryBinding
 import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.product.ProductFragmentArgs
 import com.johnny.swapub.util.Logger
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MessageHistoryFragment : Fragment() {
 
-    val viewModel by viewModels<MessageHistoryViewModel> { getVmFactory() }
+    val viewModel by viewModels<MessageHistoryViewModel> {  getVmFactory() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +37,8 @@ class MessageHistoryFragment : Fragment() {
                 adapter.submitList(it)
             }
         })
+
+
 
 
         adapter.setHasStableIds(true)

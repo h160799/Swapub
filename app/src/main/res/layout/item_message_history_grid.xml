@@ -39,14 +39,14 @@
             app:layout_constraintTop_toTopOf="@id/message_bac"
             app:layout_constraintStart_toStartOf="@id/message_bac">
 
-            <ImageView
-                android:id="@+id/image_chat_sender"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{message.senderImage}"
-                app:layout_constraintDimensionRatio="5:7"
-                tools:src="@tools:sample/backgrounds/scenic" />
+<!--            <ImageView-->
+<!--                android:id="@+id/image_chat_sender"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                app:imageUrl="@{message.senderImage}"-->
+<!--                app:layout_constraintDimensionRatio="5:7"-->
+<!--                tools:src="@tools:sample/backgrounds/scenic" />-->
 
             <ImageView
                 android:id="@+id/image_chat_owner"
