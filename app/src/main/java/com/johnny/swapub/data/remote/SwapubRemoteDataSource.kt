@@ -318,18 +318,65 @@ object SwapubRemoteDataSource: SwapubDataSource {
         }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun postMessage(message: Message, document: String): Result<Boolean> =
+    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> =
+        suspendCoroutine { continuation ->
+
+            val chatRooms = FirebaseFirestore.getInstance().collection(PATH_CHAT_ROOM)
+//            val document = chatRoom.id?.let { chatRooms.document(it) }
+
+            chatRoom.time = Calendar.getInstance().timeInMillis
+
+            chatRooms
+                .whereEqualTo("senderId", UserManager.userId)
+                .whereEqualTo("productId",chatRoom.productId)
+                .get()
+                .addOnSuccessListener {
+                    if (it.isEmpty) {
+                        chatRooms
+                                .add(chatRoom)
+                            .addOnSuccessListener {  documentReference ->
+                                    documentReference.update("id",documentReference.id ) }
+                                    .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        Logger.i("Swapub: $chatRoom")
+                                        continuation.resume(Result.Success(true))
+                                    } else {
+                                        task.exception?.let {
+                                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                                            continuation.resume(Result.Error(it))
+                                            return@addOnCompleteListener
+                                        }
+                                        continuation.resume(
+                                            Result.Fail(
+                                                SwapubApplication.instance.getString(
+                                                    R.string.you_know_nothing
+                                                )
+                                            )
+                                        )
+                                    }
+                                }
+
+                    } else {
+                        Logger.d("聊天室已存在")
+                    }
+
+
+                }
+        }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    override suspend fun postMessage(message: Message, chatRoomId: String): Result<Boolean> =
         suspendCoroutine { continuation ->
 
             val messages =
                 FirebaseFirestore.getInstance()
                     .collection(PATH_CHAT_ROOM)
-                    .document(document)
+                    .document(chatRoomId)
                     .collection(PATH_MESSAGE)
 
             val updateMessages = FirebaseFirestore.getInstance()
                 .collection(PATH_CHAT_ROOM)
-                .document(document)
+                .document(chatRoomId)
 
             val document = messages
                 .document()
@@ -363,48 +410,42 @@ object SwapubRemoteDataSource: SwapubDataSource {
         }
 
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> =
+    override suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom> =
         suspendCoroutine { continuation ->
 
-            val chatRooms = FirebaseFirestore.getInstance().collection(PATH_CHAT_ROOM)
-            val document = chatRoom.id?.let { chatRooms.document(it) }
-
-            chatRoom.time = Calendar.getInstance().timeInMillis
-
-            chatRooms
-                .whereEqualTo("id", chatRoom.id)
+            FirebaseFirestore.getInstance()
+                .collection(PATH_CHAT_ROOM)
+                .whereEqualTo("senderId", chatRoom.senderId)
+                .whereEqualTo("productId", chatRoom.productId)
                 .get()
-                .addOnSuccessListener {
-                    if (it.isEmpty) {
-                        if (document != null) {
-                            document
-                                .set(chatRoom)
-                                .addOnCompleteListener { task ->
-                                    if (task.isSuccessful) {
-                                        Logger.i("Swapub: $chatRoom")
-                                        continuation.resume(Result.Success(true))
-                                    } else {
-                                        task.exception?.let {
-                                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                                            continuation.resume(Result.Error(it))
-                                            return@addOnCompleteListener
-                                        }
-                                        continuation.resume(
-                                            Result.Fail(
-                                                SwapubApplication.instance.getString(
-                                                    R.string.you_know_nothing
-                                                )
-                                            )
-                                        )
-                                    }
-                                }
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+
+                        for (document in task.result!!) {
+                            Logger.d(document.id + " => " + document.data)
+
+                            val chatRoom = document.toObject(ChatRoom::class.java)
+                            continuation.resume(Result.Success(chatRoom))
                         }
                     } else {
-                        Logger.d("聊天室已存在")
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.error
+                                )
+
+                            )
+                        )
                     }
                 }
+
         }
+
 }
 
 

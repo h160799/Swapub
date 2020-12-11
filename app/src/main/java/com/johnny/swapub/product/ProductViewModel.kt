@@ -48,6 +48,20 @@ class ProductViewModel(
     val interestMessage: LiveData<Boolean>
         get() = _interestMessage
 
+    private val _interestMessageText = MutableLiveData<Boolean>()
+    val interestMessageText: LiveData<Boolean>
+        get() = _interestMessageText
+
+
+    private val _addChatRoom = MutableLiveData<ChatRoom>()
+    val addChatRoom: LiveData<ChatRoom>
+        get() = _addChatRoom
+
+
+
+
+
+
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
 
@@ -249,7 +263,7 @@ class ProductViewModel(
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
-                    _interestMessage.value = false
+                    _interestMessage.value = true
                 }
                 is com.johnny.swapub.data.Result.Fail -> {
                     _error.value = result.error
@@ -284,17 +298,18 @@ class ProductViewModel(
   }
 
 
-    fun postInterestMessageText(message: Message, document: String) {
+    fun postInterestMessageText(message: Message, chatRoom: ChatRoom) {
 
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = swapubRepository.postMessage(message, document)) {
+            when (val result = chatRoom.id?.let { swapubRepository.postMessage(message, it) }) {
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
+                    _interestMessageText.value = true
                 }
                 is com.johnny.swapub.data.Result.Fail -> {
                     _error.value = result.error
@@ -314,12 +329,58 @@ class ProductViewModel(
 
     fun addMessage(): Message{
         return Message(
-            id = "",
+            id = UserManager.userId,
             time = Calendar.getInstance().timeInMillis,
-            image = userDetail.value?.image,
+            image = "",
             senderImage = "",
             text = "我有興趣，想多了解！！！"
         )
+    }
+
+//    fun getAddedChatRoom() {
+//
+//        var chatRoom = addChatRoom()
+//        FirebaseFirestore.getInstance()
+//            .collection("chatRoom")
+//            .whereEqualTo("senderId", chatRoom.senderId)
+//            .whereEqualTo("productId", chatRoom.productId)
+//            .get()
+//            .addOnSuccessListener {
+//                chatRoom = it.toObjects(ChatRoom::class.java)[0]
+//                _addChatRoom.value = chatRoom
+//            }
+//    }
+
+
+    fun getAddedChatRoom(chatRoom: ChatRoom) {
+
+        coroutineScope.launch {
+            _status.value = LoadApiStatus.LOADING
+            val result = swapubRepository.getAddedChatRoom(chatRoom)
+            _addChatRoom.value = when (result) {
+                is Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
+                }
+                is Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+            _refreshStatus.value = false
+        }
     }
 
 

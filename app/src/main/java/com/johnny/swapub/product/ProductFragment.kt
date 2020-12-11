@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.NavigationDirections
@@ -74,23 +76,32 @@ class ProductFragment : Fragment() {
         })
 
         binding.interestToTrade.setOnClickListener {
-            it.let {
-                viewModel.postInterestMessage(viewModel.addChatRoom())
-                viewModel.interestMessage.observe(viewLifecycleOwner, Observer {if(it == true){
-                    let {
-                        viewModel.postInterestMessageText(viewModel.addMessage(), String())
-                    }
-                }
-                })
+            val chatRoom = viewModel.addChatRoom()
+                viewModel.postInterestMessage(chatRoom)
 
-                Logger.d("mmm$it")
-                findNavController().navigate(NavigationDirections.actionGlobalMessageHistoryFragment())
+                Logger.d("")
+        }
+
+        viewModel.interestMessage.observe(viewLifecycleOwner, Observer {
+            viewModel.getAddedChatRoom(viewModel.addChatRoom())
+            })
+
+        viewModel.addChatRoom.observe(viewLifecycleOwner, Observer {
+            val message = viewModel.addMessage()
+            it?.let {
+                viewModel.postInterestMessageText(message, it)
             }
+        })
+
+        viewModel.interestMessageText.observe(viewLifecycleOwner, Observer {
+           findNavController().navigate(ProductFragmentDirections.actionGlobalMessageHistoryFragment())
+        })
+
 
             binding.goBack.setOnClickListener {
                 findNavController().navigate(R.id.action_global_homeFragment)
             }
-        }
+
             return binding.root
 
         }

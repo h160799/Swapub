@@ -137,7 +137,11 @@
     <fragment
         android:id="@+id/tradingStyleFragment"
         android:name="com.johnny.swapub.messageHistory.TradingStyle.TradingStyleFragment"
-        android:label="TradingStyleFragment" />
+        android:label="TradingStyleFragment" >
+        <argument
+            android:name="chatRoom"
+            app:argType="com.johnny.swapub.data.ChatRoom" />
+    </fragment>
     <action
         android:id="@+id/action_global_clubFragment"
         app:destination="@id/clubFragment"

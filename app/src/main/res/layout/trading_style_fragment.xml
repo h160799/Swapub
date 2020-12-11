@@ -70,10 +70,10 @@
                     android:theme="@style/PaymentColorTheme"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-                    <!--                android:checkedButton="@={viewModel.selectedTimeRadio}"-->
+<!--                                    android:checkedButton="@={viewModel.selectedTimeRadio}"-->
 
                     <RadioButton
-                        android:id="@+id/radio_shipping_morning"
+                        android:id="@+id/radio_trading_by_goods"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/pt_sans"
@@ -103,7 +103,7 @@
                         android:textSize="20sp" />
 
                     <RadioButton
-                        android:id="@+id/radio_shipping_afternoon"
+                        android:id="@+id/radio_trading_by_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
@@ -126,7 +126,7 @@
                         android:textSize="20sp" />
 
                     <RadioButton
-                        android:id="@+id/radio_shipping_anytime"
+                        android:id="@+id/radio_trading_by_service"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
@@ -147,6 +147,18 @@
                         android:background="@color/white_E3DED8"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/radio_trading_free"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:letterSpacing="0.15"
+                        android:text="@string/trading_free"
+                        android:textColor="@color/white_E3DED8"
+                        android:textSize="16sp" />
 
                 </RadioGroup>
 

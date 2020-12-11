@@ -7,7 +7,7 @@ import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.profile.ProfileViewModel
 
 @Suppress("UNCHECKED_CAST")
-class ProfileViewModelFactory(
+class UserViewModelFactory(
     private val swapubRepository: SwapubRepository,
     private val user: User?
 ) : ViewModelProvider.Factory {

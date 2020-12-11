@@ -27,4 +27,6 @@ interface SwapubRepository {
     suspend fun postMessage(message: Message, document: String): Result<Boolean>
 
     suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean>
+
+    suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom>
 }

@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.johnny.swapub.R
+import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.databinding.TradingStyleFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.messageHistory.conversation.ConversationFragmentArgs
 
 class TradingStyleFragment : Fragment() {
 
@@ -15,7 +20,7 @@ class TradingStyleFragment : Fragment() {
         fun newInstance() = TradingStyleFragment()
     }
 
-    val viewModel by viewModels<TradingStyleViewModel> { getVmFactory() }
+    val viewModel by viewModels<TradingStyleViewModel> { getVmFactory(TradingStyleFragmentArgs.fromBundle(requireArguments()).chatRoom) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +28,12 @@ class TradingStyleFragment : Fragment() {
     ): View? {
         val binding = TradingStyleFragmentBinding.inflate(inflater, container,
             false)
+
+
+        binding.goBack.setOnClickListener {
+                findNavController().navigate(TradingStyleFragmentDirections.actionGlobalConversationFragment(viewModel.chatRoom))
+
+            }
 
 
         return binding.root

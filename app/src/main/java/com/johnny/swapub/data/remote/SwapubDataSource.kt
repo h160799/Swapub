@@ -28,4 +28,6 @@ interface SwapubDataSource {
 
     suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean>
 
+    suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom>
+
 }

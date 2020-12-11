@@ -54,5 +54,9 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
+    override suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom> {
+        TODO("Not yet implemented")
+    }
+
 
 }

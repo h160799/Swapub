@@ -44,6 +44,7 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
     val conversationProduct: LiveData<Product>
         get() = _conversationProduct
 
+
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
 
@@ -149,6 +150,10 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
             _refreshStatus.value = false
         }
     }
+
+
+
+
 
     override fun onCleared() {
         super.onCleared()

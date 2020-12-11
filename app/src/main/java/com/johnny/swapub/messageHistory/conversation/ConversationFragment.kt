@@ -21,6 +21,7 @@ import app.appworks.school.stylish.customerService.ConversationAdapter
 import com.google.firebase.storage.FirebaseStorage
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
+import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.databinding.ConversationFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.util.Logger
@@ -107,6 +108,18 @@ class ConversationFragment : Fragment() {
             }
             Handler().postDelayed({ binding.editTextBac.text.clear() }, 500)
         }
+
+
+        binding.chooseTradingStyle.setOnClickListener {
+            viewModel.chatRoom.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+                findNavController().navigate(ConversationFragmentDirections.actionGlobalTradingStyleFragment(it))
+
+            })
+        }
+
+
+
+
 
         (activity as AppCompatActivity).bottomNavView.visibility = View.GONE
 

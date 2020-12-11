@@ -15,6 +15,8 @@
     <string name="trading_product">物品交易</string>
     <string name="trading_money">金錢交易</string>
     <string name="trading_service">服務交易</string>
+    <string name="trading_free">免費獲取</string>
+
 
     <string name="newest">Newest</string>
     <string name="nearest">Nearest</string>
