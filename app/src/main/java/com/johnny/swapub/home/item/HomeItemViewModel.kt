@@ -76,9 +76,7 @@ class HomeItemViewModel(
                     "日本KINTO 提式輕巧保溫瓶 500ml共8色可選",
             description = "時尚又實用",
             tradingStyle = "物品交換．大容量馬克杯",
-            categoryList = mutableListOf(
-                "配件"
-            ),
+            category = "配件",
             time = 0,
             productImage = mutableListOf(
                 "https://s.yimg.com/zp/MerchandiseImages/A377C865AC-SP-6987044.jpg"
@@ -137,24 +135,6 @@ class HomeItemViewModel(
     }
 
 
-
-
-//    private fun getData() {
-//
-//        product
-//            .get()
-//            .addOnSuccessListener { result ->
-//                val listProduct = mutableListOf<Product>()
-//                for (document in result) {
-//                    val product = document.toObject(Product::class.java)
-//
-//                    listProduct.add(product)
-//                    Logger.d("333$listProduct")
-//                }
-//
-//                _itemInfo.value = listProduct
-//            }
-//    }
 
     init {
 //        addData()

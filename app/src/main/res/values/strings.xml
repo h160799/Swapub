@@ -11,11 +11,17 @@
     <string name="wish_news">許願動態</string>
     <string name="profile">個人頁面</string>
 
-
+    <!-- TradingStyleFragment -->
     <string name="trading_product">物品交易</string>
     <string name="trading_money">金錢交易</string>
     <string name="trading_service">服務交易</string>
     <string name="trading_free">免費獲取</string>
+    <string name="trading_select">   送出成功\n請等待對方確認</string>
+
+
+    <!-- TradingSuccessOrNotFragment -->
+    <string name="trading_status_ok">恭喜交易成功</string>
+    <string name="trading_status_no">您已拒絕交易</string>
 
 
     <string name="newest">Newest</string>
@@ -23,6 +29,7 @@
 
     <string name="error">Error</string>
     <string name="you_know_nothing">You know nothing</string>
+
 
 
 </resources>

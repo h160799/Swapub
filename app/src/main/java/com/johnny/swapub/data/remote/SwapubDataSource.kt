@@ -30,4 +30,18 @@ interface SwapubDataSource {
 
     suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom>
 
+    suspend fun postTradingType(chatRoomId: String,tradingType: TradingType): Result<Boolean>
+
+    suspend fun updateTradingSelect(chatRoomId: String, tradingSelect: Boolean ): Result<Boolean>
+
+    suspend fun getTradingType(chatRoomId: String): Result<TradingType>
+
+    suspend fun updateProductTradable(productId: String, tradable: Boolean ): Result<Boolean>
+
+    suspend fun deleteTradingType(chatRoomId: String): Result<Boolean>
+
+    suspend fun postTradingInfo(product: Product): Result<Boolean>
+
+
+
 }

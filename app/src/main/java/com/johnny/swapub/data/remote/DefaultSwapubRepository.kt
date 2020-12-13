@@ -61,4 +61,28 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getAddedChatRoom(chatRoom)
     }
 
+    override suspend fun postTradingType(chatRoomId: String,tradingType: TradingType): Result<Boolean>{
+        return swapubRemoteDataSource.postTradingType(chatRoomId,tradingType)
+    }
+
+    override suspend fun updateTradingSelect(chatRoomId: String, tradingSelect: Boolean ): Result<Boolean>{
+        return swapubRemoteDataSource.updateTradingSelect(chatRoomId, tradingSelect)
+    }
+
+    override suspend fun getTradingType(chatRoomId: String): Result<TradingType>{
+        return swapubRemoteDataSource.getTradingType(chatRoomId)
+    }
+
+    override suspend fun updateProductTradable(productId: String, tradable: Boolean ): Result<Boolean> {
+        return swapubRemoteDataSource.updateProductTradable(productId, tradable)
+    }
+
+    override suspend fun deleteTradingType(chatRoomId: String): Result<Boolean> {
+        return swapubRemoteDataSource.deleteTradingType(chatRoomId)
+    }
+
+    override suspend fun postTradingInfo(product: Product): Result<Boolean> {
+        return swapubRemoteDataSource.postTradingInfo(product)
+    }
+
 }

@@ -29,7 +29,6 @@ class MessageHistoryViewModel(
 
     var isEmpty = MutableLiveData<Boolean>()
 
-
     // Handle navigation to conversation
     private val _navigateToConversation = MutableLiveData<ChatRoom>()
     val navigateToConversation: LiveData<ChatRoom>

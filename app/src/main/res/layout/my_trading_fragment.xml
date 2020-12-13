@@ -10,7 +10,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/blue_gray"
         tools:context="com.johnny.swapub.myTrading.MyTradingFragment">
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="80dp"
+            android:background="@color/white_E3DED8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="我的交易"
+            android:textColor="@color/white_E3DED8"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/pt_sans"
+            app:layout_constraintBottom_toTopOf="@id/line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/go_back"
@@ -23,16 +49,27 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="20dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="100dp"
-            android:layout_marginStart="100dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="My Trading"
-            android:textSize="40dp"
-            android:layout_marginLeft="100dp" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/trading_post"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/white_E3DED8"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line" >
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="POST"
+                android:textSize="15sp"
+                android:gravity="center"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

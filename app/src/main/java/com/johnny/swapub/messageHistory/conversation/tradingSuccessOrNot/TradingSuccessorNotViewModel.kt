@@ -1,4 +1,4 @@
-package com.johnny.swapub.messageHistory.conversation
+package com.johnny.swapub.messageHistory.conversation.tradingSuccessOrNot
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,46 +7,27 @@ import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.data.LoadApiStatus
-import com.johnny.swapub.data.Message
 import com.johnny.swapub.data.Product
+import com.johnny.swapub.data.TradingType
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.util.Logger
-import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ConversationViewModel(private val swapubRepository: SwapubRepository,
-                            private val arguments: ChatRoom
-) : ViewModel() {
+class TradingSuccessorNotViewModel(
+    val swapubRepository: SwapubRepository,
+    val arguments: ChatRoom
 
-    private val _chatRoom = MutableLiveData<ChatRoom>().apply {
-        value = arguments
-    }
+): ViewModel() {
 
-    val chatRoom: LiveData<ChatRoom>
-        get() = _chatRoom
+    val chatRoom = arguments
 
-    var image = MutableLiveData<String>()
+    private val _tradingTypeInfo = MutableLiveData<TradingType>()
+    val tradingTypeInfo: LiveData<TradingType>
+        get() = _tradingTypeInfo
 
-    var liveMessages = MutableLiveData<List<Message>>()
-
-    val message = MutableLiveData<Message>().apply {
-        value = Message()
-    }
-
-    val document = MutableLiveData<String>().apply {
-        value =  chatRoom.value?.id
-    }
-
-    val tradingStyle = MutableLiveData<Boolean>().apply {
-        value = arguments.ownerId == UserManager.userId
-    }
-
-    private val _conversationProduct = MutableLiveData<Product>()
-    val conversationProduct: LiveData<Product>
-        get() = _conversationProduct
 
 
     // status: The internal MutableLiveData that stores the status of the most recent request
@@ -74,61 +55,21 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
 
-    init {
-        Logger.i("------------------------------------")
-        Logger.i("[${this::class.simpleName}]${this}")
-        Logger.i("------------------------------------")
-        message.value?.senderImage = UserManager.user.image
-        message.value?.id = UserManager.userId.toString()
-        getLiveMessagesResult()
-        arguments.productId?.let { getOneProduct(it) }
-    }
+init {
+    chatRoom.id?.let { getTradingType(it) }
+}
 
 
-    fun getLiveMessagesResult() {
-        liveMessages = swapubRepository.getMessage(document.value.toString())
-        _status.value = LoadApiStatus.DONE
-        _refreshStatus.value = false
-    }
 
-
-    fun postMessage(message: Message, document: String) {
+    fun getTradingType(chatRoomId: String) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = swapubRepository.postMessage(message, document)) {
-                is com.johnny.swapub.data.Result.Success -> {
-                    _error.value = null
-                    _status.value = LoadApiStatus.DONE
-                }
-                is com.johnny.swapub.data.Result.Fail -> {
-                    _error.value = result.error
-                    _status.value = LoadApiStatus.ERROR
-                }
-                is com.johnny.swapub.data.Result.Error -> {
-                    _error.value = result.exception.toString()
-                    _status.value = LoadApiStatus.ERROR
-                }
-                else -> {
-                    _error.value = SwapubApplication.instance.getString(R.string.you_know_nothing)
-                    _status.value = LoadApiStatus.ERROR
-                }
-            }
-        }
-    }
+            val result = swapubRepository.getTradingType(chatRoomId)
 
-
-    fun getOneProduct(productId: String) {
-
-        coroutineScope.launch {
-
-            _status.value = LoadApiStatus.LOADING
-
-            val result = swapubRepository.getOneProduct(productId)
-
-            _conversationProduct.value = when (result) {
+           _tradingTypeInfo.value = when (result) {
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -155,8 +96,86 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
         }
     }
 
+    fun updateProductTradable(productId: String, tradable: Boolean) {
 
+        coroutineScope.launch {
 
+            _status.value = LoadApiStatus.LOADING
+
+            when (val result = swapubRepository.updateProductTradable(productId, tradable)) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.you_know_nothing)
+                    _status.value = LoadApiStatus.ERROR
+                }
+            }
+        }
+    }
+
+    fun deleteTradingType(chatRoomId: String) {
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            when (val result = swapubRepository.deleteTradingType(chatRoomId)) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.you_know_nothing)
+                    _status.value = LoadApiStatus.ERROR
+                }
+            }
+        }
+    }
+
+    fun updateTradingSelect(chatRoomId: String, tradingSelect: Boolean) {
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            when (val result = swapubRepository.updateTradingSelect(chatRoomId, tradingSelect)) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.you_know_nothing)
+                    _status.value = LoadApiStatus.ERROR
+                }
+            }
+        }
+    }
 
 
     override fun onCleared() {

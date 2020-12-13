@@ -13,6 +13,7 @@ import com.johnny.swapub.databinding.FragmentMessageHistoryBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.product.ProductFragmentArgs
 import com.johnny.swapub.util.Logger
+import com.johnny.swapub.util.UserManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MessageHistoryFragment : Fragment() {
@@ -46,6 +47,9 @@ class MessageHistoryFragment : Fragment() {
 
         viewModel.navigateToConversation.observe(viewLifecycleOwner, Observer {
             it?.let {
+                Logger.d("444$it")
+                Logger.d("333${UserManager.userId}")
+
                 findNavController().navigate(
                     MessageHistoryFragmentDirections.actionGlobalConversationFragment(it)
                 )

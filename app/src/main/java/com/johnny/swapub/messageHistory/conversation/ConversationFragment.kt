@@ -45,9 +45,7 @@ class ConversationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = ConversationFragmentBinding.inflate(
-            inflater, container,
-            false
-        )
+            inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -87,6 +85,11 @@ class ConversationFragment : Fragment() {
             binding.responseName.text = viewModel.chatRoom.value?.ownerName
         }
 
+
+
+
+
+
         viewModel.image.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             viewModel.message.value?.image = it
             viewModel.message.value?.text = ""
@@ -113,12 +116,14 @@ class ConversationFragment : Fragment() {
         binding.chooseTradingStyle.setOnClickListener {
             viewModel.chatRoom.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
                 findNavController().navigate(ConversationFragmentDirections.actionGlobalTradingStyleFragment(it))
-
             })
         }
 
-
-
+        binding.tradingConfirm.setOnClickListener {
+            viewModel.chatRoom.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+                findNavController().navigate(ConversationFragmentDirections.actionGlobalTradingSuccessorNotFragment(it))
+            })
+        }
 
 
         (activity as AppCompatActivity).bottomNavView.visibility = View.GONE

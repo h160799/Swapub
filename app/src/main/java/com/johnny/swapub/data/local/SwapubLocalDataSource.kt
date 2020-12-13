@@ -58,5 +58,29 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
+    override suspend fun postTradingType(chatRoomId: String,tradingType: TradingType): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateTradingSelect(chatRoomId: String, tradingSelect: Boolean): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getTradingType(chatRoomId: String): Result<TradingType> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateProductTradable(productId: String, tradable: Boolean): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deleteTradingType(chatRoomId: String): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun postTradingInfo(product: Product): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
 
 }

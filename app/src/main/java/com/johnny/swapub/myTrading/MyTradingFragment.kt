@@ -13,9 +13,7 @@ import com.johnny.swapub.ext.getVmFactory
 
 class MyTradingFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MyTradingFragment()
-    }
+
 
     val viewModel by viewModels<MyTradingViewModel> { getVmFactory() }
 

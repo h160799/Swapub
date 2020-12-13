@@ -18,8 +18,7 @@ class ProductViewModelFactory(
                 isAssignableFrom(ProductViewModel::class.java) ->
                     ProductViewModel(swapubRepository, product)
 
-//                isAssignableFrom(Add2cartViewModel::class.java) ->
-//                    Add2cartViewModel(stylishRepository, product)
+
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }

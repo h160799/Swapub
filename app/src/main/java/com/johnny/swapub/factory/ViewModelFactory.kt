@@ -9,6 +9,7 @@ import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.messageHistory.MessageHistoryViewModel
 import com.johnny.swapub.messageHistory.conversation.ConversationViewModel
 import com.johnny.swapub.myFavorite.MyFavoriteViewModel
+import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
 import com.johnny.swapub.profile.ProfileViewModel
 import com.johnny.swapub.wishNews.WishNewsViewModel
 
@@ -41,6 +42,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(MessageHistoryViewModel::class.java) ->
                     MessageHistoryViewModel(swapubRepository)
+
+                isAssignableFrom(TradingPostViewModel::class.java) ->
+                    TradingPostViewModel(swapubRepository)
 
 
 

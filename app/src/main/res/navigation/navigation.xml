@@ -136,7 +136,7 @@
         android:label="ClubFragment" />
     <fragment
         android:id="@+id/tradingStyleFragment"
-        android:name="com.johnny.swapub.messageHistory.TradingStyle.TradingStyleFragment"
+        android:name="com.johnny.swapub.messageHistory.conversation.tradingStyle.TradingStyleFragment"
         android:label="TradingStyleFragment" >
         <argument
             android:name="chatRoom"
@@ -170,4 +170,30 @@
             app:argType="string" />
     </fragment>
     <action android:id="@+id/action_global_imageDialog" app:destination="@id/imageDialog" />
+    <fragment
+        android:id="@+id/tradingSuccessorNotFragment"
+        android:name="com.johnny.swapub.messageHistory.conversation.tradingSuccessOrNot.TradingSuccessorNotFragment"
+        android:label="TradingSuccessorNotFragment" >
+        <argument
+            android:name="chatRoom"
+            app:argType="com.johnny.swapub.data.ChatRoom" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_tradingSuccessorNotFragment"
+        app:destination="@id/tradingSuccessorNotFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/tradingPostFragment"
+        android:name="com.johnny.swapub.myTrading.tradingPost.TradingPostFragment"
+        android:label="TradingPostFragment" >
+        <argument
+            android:name="product"
+            app:argType="com.johnny.swapub.data.Product" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_tradingPostFragment"
+        app:destination="@id/tradingPostFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
 </navigation>

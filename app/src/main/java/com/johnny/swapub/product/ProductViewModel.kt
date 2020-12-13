@@ -337,20 +337,6 @@ class ProductViewModel(
         )
     }
 
-//    fun getAddedChatRoom() {
-//
-//        var chatRoom = addChatRoom()
-//        FirebaseFirestore.getInstance()
-//            .collection("chatRoom")
-//            .whereEqualTo("senderId", chatRoom.senderId)
-//            .whereEqualTo("productId", chatRoom.productId)
-//            .get()
-//            .addOnSuccessListener {
-//                chatRoom = it.toObjects(ChatRoom::class.java)[0]
-//                _addChatRoom.value = chatRoom
-//            }
-//    }
-
 
     fun getAddedChatRoom(chatRoom: ChatRoom) {
 

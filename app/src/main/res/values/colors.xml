@@ -6,6 +6,8 @@
     <color name="translucent_80">#cc000000</color>
     <color name="translucent_30">#4D000000</color>
 
+    <!-- Main Color-->
+    <color name="blue_gray">#A44F3C</color>
 
     <!-- White Series -->
     <color name="white">#ffffff</color>
@@ -30,14 +32,17 @@
     <color name="gray_575855">#575855</color>
     <color name="gary_e0e0e0">#E0E0E0</color>
 
+    <!-- Red Series -->
+    <color name="red_FF0D0D">#FF0D0D</color>
+
+
 
 
     <!-- Bottom Navigation -->
     <color name="bottom_navigation_item_normal">@color/white_E3DED8</color>
     <color name="bottom_navigation_item_selected">@color/black</color>
 
-    <!-- Main Color-->
-    <color name="blue_gray">#A44F3C</color>
+
 
 
 </resources>

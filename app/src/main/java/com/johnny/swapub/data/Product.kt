@@ -10,16 +10,17 @@ data class Product(
     val productTitle: String? = "",
     val description: String? = "",
     val tradingStyle: String = "",
-    val categoryList: List<String>? = listOf(),
+    val category: String = "",
     val time: Long = 0,
     val productImage: List<String>? = listOf(),//image url
     val location: Location? = null,
-    val tradable: Boolean? = null,
+    val tradable: Boolean? = false,
     val interestList: InterestList? = null
 ): Parcelable
 
 @Parcelize
-data class ChooseTradingStyle(
+data class TradingType(
+    val id: String? = "",
     var productId: String? = "",
     var type: String = "",
     var text: String? = "",

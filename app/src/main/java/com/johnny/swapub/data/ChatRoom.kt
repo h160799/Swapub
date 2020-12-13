@@ -11,6 +11,7 @@ data class ChatRoom(
     val id: String? = "",
     var time: Long? = -1,
     val productId: String? = "",
+    var tradingSelect: Boolean? = false,
     val ownerId: String? = "",
     val ownerName: String? = "",
     val ownerImage: String? = "",

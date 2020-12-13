@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="viewModel"
+    type="com.johnny.swapub.messageHistory.conversation.tradingStyle.TradingStyleViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue_gray"
-        tools:context=".messageHistory.TradingStyle.TradingStyleFragment">
+        tools:context=".messageHistory.conversation.tradingStyle.TradingStyleFragment">
 
         <View
             android:id="@+id/line"
@@ -28,7 +30,7 @@
             android:layout_height="40dp"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:text="選擇交易方式"
+            android:text="擬定交易"
             android:textColor="@color/white_E3DED8"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -59,18 +61,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
+                <TextView
+                    android:id="@+id/title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pt_sans"
+                    android:textColor="@color/white_E3DED8"
+                    android:textSize="18sp"
+                    android:text="STEP 1  選擇交易方式"
+                    android:textStyle="bold"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
                 <RadioGroup
                     android:id="@+id/radios_choose_trading_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="24dp"
                     android:theme="@style/PaymentColorTheme"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-<!--                                    android:checkedButton="@={viewModel.selectedTimeRadio}"-->
+                    app:layout_constraintTop_toBottomOf="@id/title1">
 
                     <RadioButton
                         android:id="@+id/radio_trading_by_goods"
@@ -82,77 +95,36 @@
                         android:text="@string/trading_product"
                         android:textColor="@color/white_E3DED8"
                         android:textSize="16sp" />
-                    <!--                android:textColor="@{viewModel.invalidCheckout != null ? (viewModel.selectedTimeRadio == 0 ? @color/red_d0021b : @color/white_E3DED8) : @color/white_E3DED8}"-->
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/white_E3DED8" />
-
-                    <EditText
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/white_E3DED8"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
 
                     <RadioButton
                         android:id="@+id/radio_trading_by_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/pt_sans"
                         android:gravity="center"
                         android:letterSpacing="0.15"
                         android:text="@string/trading_money"
                         android:textColor="@color/white_E3DED8"
                         android:textSize="16sp" />
-                    <!--                android:textColor="@{viewModel.invalidCheckout != null ? (viewModel.selectedTimeRadio == 0 ? @color/red_d0021b : @color/white_E3DED8) : @color/white_E3DED8}"-->
-
-                    <EditText
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/white_E3DED8"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
 
                     <RadioButton
                         android:id="@+id/radio_trading_by_service"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/pt_sans"
                         android:gravity="center"
                         android:letterSpacing="0.15"
                         android:text="@string/trading_service"
                         android:textColor="@color/white_E3DED8"
                         android:textSize="16sp" />
-                    <!--                android:textColor="@{viewModel.invalidCheckout != null ? (viewModel.selectedTimeRadio == 0 ? @color/red_d0021b : @color/white_E3DED8) : @color/white_E3DED8}"-->
-
-                    <EditText
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@color/white_E3DED8"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
 
                     <RadioButton
                         android:id="@+id/radio_trading_free"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="5dp"
                         android:fontFamily="@font/pt_sans"
                         android:gravity="center"
                         android:letterSpacing="0.15"
@@ -161,6 +133,54 @@
                         android:textSize="16sp" />
 
                 </RadioGroup>
+
+                <TextView
+                    android:id="@+id/title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pt_sans"
+                    android:textColor="@color/white_E3DED8"
+                    android:textSize="18sp"
+                    android:text="STEP 2  填寫交易敘述"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/radios_choose_trading_style"/>
+
+                <EditText
+                    android:id="@+id/trading_editText"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.tradingEditText}"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white_E3DED8"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/title2"
+                    app:layout_constraintTop_toBottomOf="@id/title2"/>
+
+                <TextView
+                    android:id="@+id/title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pt_sans"
+                    android:textColor="@color/white_E3DED8"
+                    android:textSize="18sp"
+                    android:text="STEP 3  增加照片說明"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"
+                    app:layout_constraintStart_toStartOf="@id/title2"
+                    app:layout_constraintTop_toBottomOf="@id/trading_editText"/>
+
+                <ImageView
+                    android:id="@+id/trading_product_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@color/white_E3DED8"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="@id/title3"
+                    app:layout_constraintTop_toBottomOf="@id/title3"/>
 
                 <TextView
                     android:id="@+id/choose_trading_style_selecting"
@@ -174,7 +194,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radios_choose_trading_style" />
+                    app:layout_constraintTop_toBottomOf="@id/trading_product_image" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
