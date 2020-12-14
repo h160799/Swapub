@@ -93,15 +93,6 @@
         android:id="@+id/myTradingFragment"
         android:name="com.johnny.swapub.myTrading.MyTradingFragment"
         android:label="MyTradingFragment" />
-    <fragment
-        android:id="@+id/myWishFragment"
-        android:name="com.johnny.swapub.myWish.MyWishFragment"
-        android:label="MyWishFragment" />
-    <action
-        android:id="@+id/action_global_myWishFragment"
-        app:destination="@id/myWishFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
     <action
         android:id="@+id/action_global_myTradingFragment"
         app:destination="@id/myTradingFragment"

@@ -14,7 +14,6 @@ enum class CurrentFragmentType(val value: String) {
     TRADINGSTYLE(""),
     MYTRADING(""),
     MYFAVORITE(""),
-    MYWISH(""),
     MYCLUB(""),
     CLUB(""),
     PRODUCT("")

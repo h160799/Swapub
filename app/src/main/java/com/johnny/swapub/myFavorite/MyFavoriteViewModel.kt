@@ -73,7 +73,7 @@ init {
 
             _status.value = LoadApiStatus.LOADING
 
-            val result = swapubRepository.getFavoriteList(userL = UserManager.user.id.toString())
+            val result = swapubRepository.getFavoriteList(UserManager.userId)
 
             _userF.value = when (result) {
                 is com.johnny.swapub.data.Result.Success -> {

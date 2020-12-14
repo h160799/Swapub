@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubDataSource
+import com.johnny.swapub.util.UserManager
 
 class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
     override suspend fun getProduct(): Result<List<Product>> {
@@ -79,6 +80,10 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
     }
 
     override suspend fun postTradingInfo(product: Product): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getPostProduct(userId: String): Result<List<Product>> {
         TODO("Not yet implemented")
     }
 

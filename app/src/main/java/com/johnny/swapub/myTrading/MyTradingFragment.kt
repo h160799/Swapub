@@ -10,6 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.MyTradingFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.myFavorite.MyFavoriteAdapter
+import com.johnny.swapub.util.Logger
+import java.util.Observer
 
 class MyTradingFragment : Fragment() {
 
@@ -23,6 +26,31 @@ class MyTradingFragment : Fragment() {
     ): View? {
         val binding = MyTradingFragmentBinding.inflate(inflater, container,
             false)
+
+
+        val adapter = MyTradingAdapter(MyTradingAdapter.OnClickListener {
+        })
+        binding.recyclerMyTradingItem.adapter = adapter
+        viewModel.myTradingList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            it?.let {
+                adapter.submitList(it)
+                Logger.d( "uuu$it")
+            }
+        })
+
+
+        viewModel.postProduct.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            adapter.submitList(it)
+            Logger.w("getPostProduct$it")
+        })
+
+
+        binding.tradingPost.setOnClickListener{
+            findNavController().navigate(R.id.action_global_tradingPostFragment)
+        }
+
+
+
 
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_profileFragment)

@@ -35,9 +35,7 @@ class ProfileFragment : Fragment() {
         binding.myFavorite.setOnClickListener {
             findNavController().navigate(R.id.action_global_myFavoriteFragment)
         }
-        binding.myWish.setOnClickListener {
-            findNavController().navigate(R.id.action_global_myWishFragment)
-        }
+
 
         return binding.root
     }

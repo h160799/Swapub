@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_gray"
+        android:background="@color/yellow_F8E2A9"
         tools:context=".club.ClubFragment">
 
         <View
@@ -29,10 +29,11 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="社團分類"
-            android:textColor="@color/white_E3DED8"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
+            android:layout_marginTop="20dp"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +44,8 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
             android:src="@drawable/go_back"
+            android:layout_marginTop="20dp"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,6 +53,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/blue_gray"
             app:layout_constraintTop_toBottomOf="@id/line">
 
             <androidx.cardview.widget.CardView
@@ -62,7 +64,7 @@
                 app:cardElevation="0px"
                 app:cardBackgroundColor="@color/orange_ff7902"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="40dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -85,6 +87,8 @@
                 app:cardElevation="0px"
                 app:cardBackgroundColor="#FCFC2A"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/c2"
                 app:layout_constraintTop_toTopOf="@id/c2"/>
 

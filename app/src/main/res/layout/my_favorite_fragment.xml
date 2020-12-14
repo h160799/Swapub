@@ -15,6 +15,13 @@
         android:background="@color/blue_gray"
         tools:context="com.johnny.swapub.myWish.MyWishFragment">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/yellow_F8E2A9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
         <View
             android:id="@+id/line"
             android:layout_width="match_parent"
@@ -31,10 +38,11 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="我的收藏"
-            android:textColor="@color/white_E3DED8"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
+            android:layout_marginTop="20dp"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,10 +54,9 @@
             android:layout_height="25dp"
             android:src="@drawable/go_back"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginLeft="20dp" />
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="@id/title"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_myFavorite_item"

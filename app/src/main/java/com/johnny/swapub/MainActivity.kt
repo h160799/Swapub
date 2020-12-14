@@ -139,7 +139,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.tradingStyleFragment -> CurrentFragmentType.TRADINGSTYLE
                 R.id.myTradingFragment -> CurrentFragmentType.MYTRADING
                 R.id.myFavoriteFragment -> CurrentFragmentType.MYFAVORITE
-                R.id.myWishFragment -> CurrentFragmentType.MYWISH
                 R.id.myClubFragment -> CurrentFragmentType.MYCLUB
                 R.id.clubFragment -> CurrentFragmentType.CLUB
                 R.id.productFragment -> CurrentFragmentType.PRODUCT

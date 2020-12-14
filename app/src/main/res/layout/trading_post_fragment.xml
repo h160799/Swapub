@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="viewModel"
+    type="com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,6 +14,13 @@
         android:layout_height="match_parent"
         android:background="@color/blue_gray"
         tools:context=".myTrading.tradingPost.TradingPostFragment">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/yellow_F8E2A9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <View
             android:id="@+id/line"
@@ -28,11 +37,12 @@
             android:layout_height="40dp"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:text="交易設定"
-            android:textColor="@color/white_E3DED8"
+            android:text="交易物件設定"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
+            android:layout_marginTop="20dp"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,11 +53,10 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
             android:src="@drawable/go_back"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="@id/title"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -67,8 +76,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/pt_sans"
-                    android:text="[交易物件設定]"
-                    android:textColor="@color/white_E3DED8"
+                    android:text="[物件名稱]"
+                    android:textColor="@color/red_A44F3C"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -79,9 +88,10 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/red_A44F3C"
                     android:textColor="@color/black"
                     android:textSize="16sp"
+                    android:text="@={viewModel.productTitleEditText}"
                     app:layout_constraintStart_toStartOf="@id/title1"
                     app:layout_constraintTop_toBottomOf="@id/title1"
                     tools:text="PS5" />
@@ -95,7 +105,7 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="[物件敘述]"
-                    android:textColor="@color/white_E3DED8"
+                    android:textColor="@color/red_A44F3C"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -106,9 +116,10 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/red_A44F3C"
                     android:textColor="@color/black"
                     android:textSize="15sp"
+                    android:text="@={viewModel.descriptionEditText}"
                     app:layout_constraintStart_toStartOf="@id/title2"
                     app:layout_constraintTop_toBottomOf="@id/title2"
                     tools:text="2020最新首購品\n光碟版" />
@@ -120,7 +131,7 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="[交易方式]"
-                    android:textColor="@color/white_E3DED8"
+                    android:textColor="@color/red_A44F3C"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/title2"
@@ -131,12 +142,13 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/red_A44F3C"
                     android:textColor="@color/black"
                     android:textSize="15sp"
+                    android:text="@={viewModel.tradingStyleEditText}"
                     app:layout_constraintStart_toStartOf="@id/title3"
                     app:layout_constraintTop_toBottomOf="@id/title3"
-                    tools:text="NT 35990" />
+                    tools:text="金錢交易\nNT 35990" />
 
                 <TextView
                     android:id="@+id/title4"
@@ -145,20 +157,33 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="[交易標籤]"
-                    android:textColor="@color/white_E3DED8"
+                    android:textColor="@color/red_A44F3C"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/title3"
                     app:layout_constraintTop_toBottomOf="@id/tradingStyle" />
+
+                <TextView
+                    android:id="@+id/title4-1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/red_A44F3C"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:text="ex. 遊戲電玩、配件、男裝"
+                    app:layout_constraintStart_toEndOf="@id/title4"
+                    app:layout_constraintBottom_toBottomOf="@id/title4" />
 
                 <EditText
                     android:id="@+id/category"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/red_A44F3C"
                     android:textColor="@color/black"
                     android:textSize="15sp"
+                    android:text="@={viewModel.categoryEditText}"
                     app:layout_constraintStart_toStartOf="@id/title4"
                     app:layout_constraintTop_toBottomOf="@id/title4"
                     tools:text="電玩遊戲" />
@@ -170,18 +195,30 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="[交易地點]"
-                    android:textColor="@color/white_E3DED8"
+                    android:textColor="@color/red_A44F3C"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/title4"
                     app:layout_constraintTop_toBottomOf="@id/category" />
+
+                <TextView
+                    android:id="@+id/title5-1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="ex. 台灣．台北市"
+                    android:textColor="@color/red_A44F3C"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/title5"
+                    app:layout_constraintBottom_toBottomOf="@id/title5" />
 
                 <EditText
                     android:id="@+id/location"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/red_A44F3C"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="@id/title5"
@@ -196,7 +233,7 @@
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="[新增照片]"
-                    android:textColor="@color/white_E3DED8"
+                    android:textColor="@color/red_A44F3C"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/title5"
@@ -215,15 +252,18 @@
                     android:id="@+id/trading_post_ok"
                     android:layout_width="100dp"
                     android:layout_height="30dp"
-                    android:layout_marginTop="40dp"
                     android:background="@drawable/bg_round_button"
                     android:gravity="center"
                     android:text="送出"
+                    android:textColor="@color/red_A44F3C"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/product_image" />
+                    app:layout_constraintTop_toBottomOf="@id/product_image"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

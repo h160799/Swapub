@@ -599,35 +599,67 @@ object SwapubRemoteDataSource: SwapubDataSource {
     override suspend fun postTradingInfo(product: Product): Result<Boolean>
             = suspendCoroutine { continuation ->
 
-            product.id?.let {
-                FirebaseFirestore.getInstance()
-                    .collection(PATH_PRODUCT)
-                    .document(it)
-                    .set(product)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Logger.i("Swapub: $product")
-                            continuation.resume(Result.Success(true))
-                        } else {
-                            task.exception?.let {
-                                Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                                continuation.resume(Result.Error(it))
-                                return@addOnCompleteListener
-                            }
-                            continuation.resume(
-                                Result.Fail(
-                                    SwapubApplication.instance.getString(
-                                        R.string.you_know_nothing
-                                    )
+        FirebaseFirestore.getInstance()
+            .collection(PATH_PRODUCT)
+            .add(product)
+              .addOnSuccessListener { documentReference ->
+                    documentReference.update("id", documentReference.id)
+            }
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Logger.i("Swapub: $product")
+                    continuation.resume(Result.Success(true))
+                } else {
+                    task.exception?.let {
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(
+                        Result.Fail(
+                            SwapubApplication.instance.getString(
+                                R.string.you_know_nothing
+                            )
+                        )
+                    )
+                }
+            }
+    }
+
+
+
+    override suspend fun getPostProduct( userId: String): Result<List<Product>>
+            = suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_PRODUCT)
+                .whereEqualTo("user", userId)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val list = mutableListOf<Product>()
+                        for (document in task.result!!) {
+                            val product = document.toObject(Product::class.java)
+                            continuation.resume(Result.Success(list))
+                              list.add(product)
+
+
+                        }
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.error
                                 )
                             )
-                        }
+                        )
                     }
-            }
-
-        }
-
-
+                }
+    }
 
 
 

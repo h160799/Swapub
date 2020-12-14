@@ -24,9 +24,9 @@
                 android:id="@+id/tabs_home"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_catalog_tab"
-                app:tabSelectedTextColor="@color/white_E3DED8"
-                app:tabTextColor="@color/black"
-                app:tabIndicatorColor="@color/white_E3DED8">
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextColor="@color/gray_999999"
+                app:tabIndicatorColor="@color/black">
 
             </com.google.android.material.tabs.TabLayout>
 

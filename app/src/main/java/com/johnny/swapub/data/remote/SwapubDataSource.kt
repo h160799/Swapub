@@ -2,6 +2,7 @@ package com.johnny.swapub.data.remote
 
 import androidx.lifecycle.MutableLiveData
 import com.johnny.swapub.data.*
+import com.johnny.swapub.util.UserManager
 
 interface SwapubDataSource {
     suspend fun getProduct(): Result<List<Product>>
@@ -41,6 +42,8 @@ interface SwapubDataSource {
     suspend fun deleteTradingType(chatRoomId: String): Result<Boolean>
 
     suspend fun postTradingInfo(product: Product): Result<Boolean>
+
+    suspend fun getPostProduct(userId: String): Result<List<Product>>
 
 
 

@@ -2,7 +2,7 @@
 <resources>
 
     <style name="NavDrawerTextStyle" parent="Base.TextAppearance.AppCompat">
-        <item name="android:textColor">@color/white_E3DED8</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:textSize">16dp</item>
         <item name="android:fontFamily">@font/pt_sans</item>

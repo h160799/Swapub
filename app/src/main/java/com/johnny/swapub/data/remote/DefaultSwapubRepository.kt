@@ -2,6 +2,7 @@ package com.johnny.swapub.data.remote
 
 import androidx.lifecycle.MutableLiveData
 import com.johnny.swapub.data.*
+import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
@@ -85,4 +86,7 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.postTradingInfo(product)
     }
 
+    override suspend fun getPostProduct(userId: String): Result<List<Product>>{
+        return swapubRemoteDataSource.getPostProduct(userId)
+    }
 }

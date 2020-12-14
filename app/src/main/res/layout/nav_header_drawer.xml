@@ -9,13 +9,16 @@
         <variable
             name="viewModel"
             type="com.johnny.swapub.MainViewModel" />
+        <variable
+            name="userManeager"
+            type="com.johnny.swapub.util.UserManager" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="280dp"
         android:layout_height="150dp"
-        android:background="@color/blue_gray"
+        android:background="@color/yellow_F8E2A9"
         android:elevation="1dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
@@ -27,13 +30,12 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_nav_profile_selected"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_nav_profile" />
+            android:src="@drawable/me"
+            app:imageUrl="@{userManeager.userId}" />
 
-        <!--        android:outlineProvider="@{viewModel.outlineProvider}"-->
-        <!--        app:imageUrl="@{viewModel.user.picture}"-->
+
 
         <TextView
             android:id="@+id/image_drawer_name"
@@ -44,7 +46,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/pt_sans"
             android:text="Johnny Lin"
-            android:textColor="@color/white_E3DED8"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

@@ -9,9 +9,9 @@ data class Product(
     val user: String? = "",
     val productTitle: String? = "",
     val description: String? = "",
-    val tradingStyle: String = "",
-    val category: String = "",
-    val time: Long = 0,
+    val tradingStyle: String? = "",
+    val category: String? = "",
+    val time: Long = -1,
     val productImage: List<String>? = listOf(),//image url
     val location: Location? = null,
     val tradable: Boolean? = false,

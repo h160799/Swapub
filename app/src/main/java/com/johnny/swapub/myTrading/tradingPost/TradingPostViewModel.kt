@@ -12,15 +12,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
 
 class TradingPostViewModel(
     val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
-    private val _tradingPostInfo = MutableLiveData<Product>()
-    val tradingPostInfo: LiveData<Product>
-        get() = _tradingPostInfo
-
+    val productTitleEditText = MutableLiveData<String>()
+    val descriptionEditText = MutableLiveData<String>()
+    val tradingStyleEditText = MutableLiveData<String>()
+    val categoryEditText = MutableLiveData<String>()
 
 
     // status: The internal MutableLiveData that stores the status of the most recent request
@@ -81,11 +82,11 @@ class TradingPostViewModel(
         return Product(
             id = "",
             user = UserManager.userId,
-            productTitle = "",
-            description = "",
-            tradingStyle = "",
-            category = "",
-            time = 0,
+            productTitle = productTitleEditText.value,
+            description = descriptionEditText.value,
+            tradingStyle = tradingStyleEditText.value,
+            category = categoryEditText.value,
+            time = Calendar.getInstance().timeInMillis,
             productImage = mutableListOf(
                 ""
             ),
@@ -110,6 +111,8 @@ class TradingPostViewModel(
             )
         )
     }
+
+
 
     override fun onCleared() {
         super.onCleared()
