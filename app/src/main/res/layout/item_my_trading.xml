@@ -19,8 +19,7 @@
             android:id="@+id/my_trading_bac"
             android:layout_width="350dp"
             android:layout_height="80dp"
-            app:cardBackgroundColor="@color/white_E3DED8"
-            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@android:color/transparent"
             android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
@@ -36,7 +35,8 @@
             android:layout_marginStart="10dp"
             app:layout_constraintTop_toTopOf="@id/my_trading_bac"
             app:layout_constraintBottom_toBottomOf="@id/my_trading_bac"
-            app:layout_constraintStart_toStartOf="@id/my_trading_bac"/>
+            app:layout_constraintStart_toStartOf="@id/my_trading_bac"
+            tools:background="@color/black"/>
 
         <TextView
             android:id="@+id/my_trading_title"
@@ -80,7 +80,7 @@
             android:layout_width="58dp"
             android:layout_height="18dp"
             android:background="@color/white_E3DED8"
-            android:textSize="15dp"
+            android:textSize="12dp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
             android:text="尚未交易完成"
@@ -97,10 +97,11 @@
             android:layout_width="58dp"
             android:layout_height="18dp"
             android:background="@color/white_E3DED8"
-            android:textSize="15dp"
+            android:textSize="12dp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/red_A44F3C"
             android:text="交易完成"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="@id/tradable_bac"
             app:layout_constraintEnd_toEndOf="@id/tradable_bac"
             app:layout_constraintTop_toTopOf="@id/tradable_bac"
