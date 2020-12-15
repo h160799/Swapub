@@ -187,4 +187,13 @@
         app:destination="@id/tradingPostFragment"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/makeWishesFragment"
+        android:name="com.johnny.swapub.profile.makeWishes.MakeWishesFragment"
+        android:label="MakeWishesFragment" />
+    <action
+        android:id="@+id/action_global_makeWishesFragment"
+        app:destination="@id/makeWishesFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
 </navigation>

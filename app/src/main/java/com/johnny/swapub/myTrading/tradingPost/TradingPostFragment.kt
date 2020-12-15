@@ -36,9 +36,7 @@ class TradingPostFragment : Fragment() {
 
         }
 
-//        viewModel.tradingPostEditText.observe(viewLifecycleOwner, Observer {
-//            Logger.d("520$it")
-//        })
+
 
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_myTradingFragment)

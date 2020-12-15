@@ -6,27 +6,48 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
+import com.johnny.swapub.databinding.MakeWishesFragmentBinding
+import com.johnny.swapub.databinding.TradingPostFragmentBinding
+import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
+
 
 class MakeWishesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MakeWishesFragment()
+        val viewModel by viewModels<MakeWishesViewModel> { getVmFactory() }
+
+        override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+        ): View? {
+            val binding = MakeWishesFragmentBinding.inflate(inflater, container,
+                false)
+            binding.viewModel = viewModel
+            binding.lifecycleOwner = this
+
+
+
+            binding.editTextWishable.setOnCheckedChangeListener { _, check ->
+                viewModel.wishableSelect.value = check
+            }
+
+
+            binding.postContent.setOnClickListener {
+                viewModel.postTradingInfo(viewModel.addProduct())
+                findNavController().navigate(R.id.action_global_profileFragment)
+
+            }
+
+            binding.goBack.setOnClickListener {
+                findNavController().navigate(R.id.action_global_profileFragment)
+            }
+
+            return binding.root
+        }
+
+
+
     }
-
-    private lateinit var viewModel: MakeWishesViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.make_wishes_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MakeWishesViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
-}

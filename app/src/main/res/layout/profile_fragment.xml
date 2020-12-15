@@ -55,7 +55,7 @@
             android:fontFamily="@font/pt_sans"
             android:textSize="15sp"
             android:gravity="start"
-            android:text="許個願望吧..."
+            android:text="新增交易物件/發佈許願文..."
             android:layout_marginStart="10dp"
             app:layout_constraintTop_toTopOf="@id/head"
             app:layout_constraintBottom_toBottomOf="@id/head"

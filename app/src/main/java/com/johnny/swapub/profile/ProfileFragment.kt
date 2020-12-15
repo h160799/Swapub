@@ -13,9 +13,7 @@ import com.johnny.swapub.ext.getVmFactory
 
 class ProfileFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
+
 
     private lateinit var viewModel: ProfileViewModel
 
@@ -26,6 +24,9 @@ class ProfileFragment : Fragment() {
         val binding = ProfileFragmentBinding.inflate(inflater, container,
             false)
 
+        binding.makeAWish.setOnClickListener {
+            findNavController().navigate(R.id.action_global_makeWishesFragment)
+        }
         binding.myTrading.setOnClickListener {
             findNavController().navigate(R.id.action_global_myTradingFragment)
         }

@@ -15,6 +15,7 @@ data class Product(
     val productImage: List<String>? = listOf(),//image url
     val location: Location? = null,
     val tradable: Boolean? = false,
+    val wishable: Boolean? = false,
     val interestList: InterestList? = null
 ): Parcelable
 

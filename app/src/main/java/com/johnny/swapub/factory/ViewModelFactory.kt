@@ -12,6 +12,7 @@ import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.myTrading.MyTradingViewModel
 import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
 import com.johnny.swapub.profile.ProfileViewModel
+import com.johnny.swapub.profile.makeWishes.MakeWishesViewModel
 import com.johnny.swapub.wishNews.WishNewsViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -48,7 +49,10 @@ class ViewModelFactory constructor(
                     TradingPostViewModel(swapubRepository)
 
                 isAssignableFrom(MyTradingViewModel::class.java) ->
-                    MyTradingViewModel(swapubRepository)
+                MyTradingViewModel(swapubRepository)
+
+                isAssignableFrom(MakeWishesViewModel::class.java) ->
+                    MakeWishesViewModel(swapubRepository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
