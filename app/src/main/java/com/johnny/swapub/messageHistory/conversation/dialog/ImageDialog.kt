@@ -35,7 +35,6 @@ class ImageDialog:  AppCompatDialogFragment() {
         return binding.root
     }
 
-
     interface IMessage {
         var message: String
     }

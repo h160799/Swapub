@@ -22,7 +22,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="100dp"
             android:background="@color/yellow_F8E2A9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -31,7 +31,7 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="100dp"
             android:background="@color/white_E3DED8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -39,7 +39,7 @@
         <TextView
             android:id="@+id/response_name"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             tools:text="Jolin Tsai"
             android:text="@{viewModel.chatRoom.ownerName}"
             android:gravity="center"
@@ -48,10 +48,9 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="18dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/line" />
 
         <ImageView
@@ -60,10 +59,9 @@
             android:layout_height="25dp"
             android:src="@drawable/go_back"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/line" />
+            app:layout_constraintTop_toTopOf="@id/response_name"
+            app:layout_constraintBottom_toBottomOf="@id/response_name" />
 
 
         <ImageView

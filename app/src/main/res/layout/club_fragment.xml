@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="社團分類"
@@ -33,11 +33,10 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/go_back"
@@ -45,10 +44,9 @@
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
             android:src="@drawable/go_back"
-            android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@id/line"
+            app:layout_constraintBottom_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/title" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

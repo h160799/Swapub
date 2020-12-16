@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.johnny.swapub.databinding.WishNewsFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.profile.ProfileAdapter
+import com.johnny.swapub.util.Logger
 
 class WishNewsFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = WishNewsFragment()
-    }
 
     val viewModel by viewModels<WishNewsViewModel> { getVmFactory() }
 
@@ -23,14 +21,26 @@ class WishNewsFragment : Fragment() {
     ): View? {
         val binding = WishNewsFragmentBinding.inflate(inflater, container,
             false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
+        val adapter = WishNewsAdapter(WishNewsAdapter.OnClickListener {
+        })
+
+        binding.recyclerWishNewsItem.adapter = adapter
+        viewModel.getAllWishProduct.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            it?.let {
+                adapter.submitList(it)
+                Logger.d( "getget$it")
+            }
+        })
+
+
+
 
 
 
 
         return binding.root
-
     }
-
-
-
 }

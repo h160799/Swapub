@@ -12,6 +12,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -44,6 +45,7 @@ class SignInActivity : AppCompatActivity() {
         configureGoogleSignIn()
         setupUI()
         firebaseAuth = FirebaseAuth.getInstance()
+
 
 
         val window = window

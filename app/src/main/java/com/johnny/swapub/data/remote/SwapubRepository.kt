@@ -5,6 +5,8 @@ import com.johnny.swapub.data.*
 import com.johnny.swapub.util.UserManager
 
 interface SwapubRepository {
+    suspend fun getUserInfo(userId: String): Result<User>
+
     suspend fun getProduct(): Result<List<Product>>
 
     suspend fun getOneProduct(productId: String): Result<Product>
@@ -45,6 +47,9 @@ interface SwapubRepository {
 
     suspend fun getPostProduct(userId: String): Result<List<Product>>
 
+    suspend fun getWishContent(userId: String): Result<List<Product>>
+
+    suspend fun getAllWishContent(): Result<List<Product>>
 
 
 }

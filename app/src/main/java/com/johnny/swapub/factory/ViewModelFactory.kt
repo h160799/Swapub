@@ -7,7 +7,6 @@ import com.johnny.swapub.SignInViewModel
 import com.johnny.swapub.addToFavorite.AddToFavoriteViewModel
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.messageHistory.MessageHistoryViewModel
-import com.johnny.swapub.messageHistory.conversation.ConversationViewModel
 import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.myTrading.MyTradingViewModel
 import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
@@ -29,12 +28,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(SignInViewModel::class.java) ->
                     SignInViewModel(swapubRepository)
 
-
                 isAssignableFrom(WishNewsViewModel::class.java) ->
                    WishNewsViewModel(swapubRepository)
-
-                isAssignableFrom(ProfileViewModel::class.java) ->
-                    WishNewsViewModel(swapubRepository)
 
                 isAssignableFrom(MyFavoriteViewModel::class.java) ->
                     MyFavoriteViewModel(swapubRepository)
@@ -53,6 +48,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(MakeWishesViewModel::class.java) ->
                     MakeWishesViewModel(swapubRepository)
+
+                isAssignableFrom(ProfileViewModel::class.java) ->
+                    ProfileViewModel(swapubRepository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

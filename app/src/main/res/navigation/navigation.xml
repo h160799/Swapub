@@ -24,7 +24,11 @@
         android:id="@+id/profileFragment"
         android:name="com.johnny.swapub.profile.ProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/profile_fragment" >
+        <argument
+            android:name="product"
+            app:argType="com.johnny.swapub.data.Product" />
+    </fragment>
     <fragment
         android:id="@+id/wishNewsFragment"
         android:name="com.johnny.swapub.wishNews.WishNewsFragment"

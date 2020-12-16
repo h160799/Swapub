@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.product.ProductViewModel
+import com.johnny.swapub.profile.ProfileViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ProductViewModelFactory(

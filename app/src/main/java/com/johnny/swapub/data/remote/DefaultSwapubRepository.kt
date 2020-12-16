@@ -10,6 +10,10 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
                               private val swapubLocalDataSource: SwapubDataSource,
                               private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : SwapubRepository {
+    override suspend fun getUserInfo(userId: String): Result<User>{
+        return swapubRemoteDataSource.getUserInfo(userId)
+    }
+
     override suspend fun getProduct(): Result<List<Product>> {
         return swapubRemoteDataSource.getProduct()
     }
@@ -88,5 +92,13 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
 
     override suspend fun getPostProduct(userId: String): Result<List<Product>>{
         return swapubRemoteDataSource.getPostProduct(userId)
+    }
+
+    override suspend fun getWishContent(userId: String): Result<List<Product>>{
+        return swapubRemoteDataSource.getWishContent(userId)
+    }
+
+    override suspend fun getAllWishContent(): Result<List<Product>>{
+        return swapubRemoteDataSource.getAllWishContent()
     }
 }

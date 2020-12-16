@@ -30,7 +30,7 @@
                 android:id="@+id/recycler_home_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="7dp"
+                android:padding="2dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"
                 tools:itemCount="21"

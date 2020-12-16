@@ -10,12 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.ProfileFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.util.Logger
 
 class ProfileFragment : Fragment() {
 
-
-
-    private lateinit var viewModel: ProfileViewModel
+    val viewModel by viewModels<ProfileViewModel> { getVmFactory()  }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +22,20 @@ class ProfileFragment : Fragment() {
     ): View? {
         val binding = ProfileFragmentBinding.inflate(inflater, container,
             false)
+
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
+        val adapter = ProfileAdapter(ProfileAdapter.OnClickListener {
+        })
+
+        binding.recyclerMyWishItem.adapter = adapter
+        viewModel.getWishProduct.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            it?.let {
+                adapter.submitList(it)
+                Logger.d( "5566$it")
+            }
+        })
 
         binding.makeAWish.setOnClickListener {
             findNavController().navigate(R.id.action_global_makeWishesFragment)

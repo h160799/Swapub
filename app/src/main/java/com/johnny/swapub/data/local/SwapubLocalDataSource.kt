@@ -7,6 +7,10 @@ import com.johnny.swapub.data.remote.SwapubDataSource
 import com.johnny.swapub.util.UserManager
 
 class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
+    override suspend fun getUserInfo(userId: String): Result<User> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun getProduct(): Result<List<Product>> {
         TODO("Not yet implemented")
     }
@@ -84,6 +88,14 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
     }
 
     override suspend fun getPostProduct(userId: String): Result<List<Product>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getWishContent(userId: String): Result<List<Product>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getAllWishContent(): Result<List<Product>> {
         TODO("Not yet implemented")
     }
 

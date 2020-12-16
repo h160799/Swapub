@@ -3,7 +3,6 @@ package com.johnny.swapub.data.remote
 import android.icu.util.Calendar
 import android.os.Build
 import android.util.Log
-import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
@@ -11,14 +10,13 @@ import com.google.firebase.firestore.Query
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
-import com.johnny.swapub.data.remote.SwapubDataSource
 import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
 import com.johnny.swapub.util.UserManager.hasToken
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-object SwapubRemoteDataSource: SwapubDataSource {
+object SwapubRemoteDataSource : SwapubDataSource {
 
     private const val PATH_PRODUCT = "product"
     private const val PATH_MESSAGE = "message"
@@ -26,6 +24,32 @@ object SwapubRemoteDataSource: SwapubDataSource {
     private const val PATH_CHAT_ROOM = "chatRoom"
     private const val PATH_TRADING_TYPE = "tradingType"
 
+    override suspend fun getUserInfo(userId: String): Result<User> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_USER)
+                .whereEqualTo("id", userId)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        var user = User()
+                        for (document in task.result!!) {
+                            Logger.d(document.id + " => " + document.data)
+
+                            user = document.toObject(User::class.java)
+                        }
+                        continuation.resume(Result.Success(user))
+
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                    }
+                }
+        }
 
 
     override suspend fun getProduct(): Result<List<Product>> = suspendCoroutine { continuation ->
@@ -138,7 +162,8 @@ object SwapubRemoteDataSource: SwapubDataSource {
         suspendCoroutine { continuation ->
             Log.d("jjj", " ${product.user}")
             FirebaseFirestore.getInstance()
-                .collection(PATH_USER).whereEqualTo("id", product.user)
+                .collection(PATH_USER)
+                .whereEqualTo("id", product.user)
                 .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -167,7 +192,8 @@ object SwapubRemoteDataSource: SwapubDataSource {
     override suspend fun getUserFavor(userL: String): Result<List<String>> =
         suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
-                .collection(PATH_USER).whereEqualTo("id", userL)
+                .collection(PATH_USER)
+                .whereEqualTo("id", userL)
                 .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -250,11 +276,13 @@ object SwapubRemoteDataSource: SwapubDataSource {
                 }
         }
 
-    override suspend fun updateProductToFavorList(productId: String, favoriteList: MutableList<String>): Result<Boolean>
-            = suspendCoroutine { continuation ->
+    override suspend fun updateProductToFavorList(
+        productId: String,
+        favoriteList: MutableList<String>
+    ): Result<Boolean> = suspendCoroutine { continuation ->
         val addProductToFavorList = FirebaseFirestore.getInstance()
-                .collection(PATH_USER)
-                .document(UserManager.userId)
+            .collection(PATH_USER)
+            .document(UserManager.userId)
         addProductToFavorList
             .update("favoriteList", favoriteList)
             .addOnCompleteListener { task ->
@@ -272,12 +300,10 @@ object SwapubRemoteDataSource: SwapubDataSource {
             }
     }
 
-
     override suspend fun addUserToFirebase(user: User): Result<Boolean> =
         suspendCoroutine { continuation ->
             var userCollection = FirebaseFirestore.getInstance().collection(PATH_USER)
             var document = userCollection.document(user.id)
-
 
             userCollection
                 .whereEqualTo("id", UserManager.userId)
@@ -322,7 +348,8 @@ object SwapubRemoteDataSource: SwapubDataSource {
     override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> =
         suspendCoroutine { continuation ->
 
-            val chatRooms = FirebaseFirestore.getInstance().collection(PATH_CHAT_ROOM)
+            val chatRooms = FirebaseFirestore.getInstance()
+                .collection(PATH_CHAT_ROOM)
 //            val document = chatRoom.id?.let { chatRooms.document(it) }
 
             chatRoom.time = Calendar.getInstance().timeInMillis
@@ -361,8 +388,6 @@ object SwapubRemoteDataSource: SwapubDataSource {
                     } else {
                         Logger.d("聊天室已存在")
                     }
-
-
                 }
         }
 
@@ -411,7 +436,6 @@ object SwapubRemoteDataSource: SwapubDataSource {
                 }
         }
 
-
     override suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom> =
         suspendCoroutine { continuation ->
 
@@ -440,16 +464,17 @@ object SwapubRemoteDataSource: SwapubDataSource {
                                 SwapubApplication.instance.getString(
                                     R.string.error
                                 )
-
                             )
                         )
                     }
                 }
-
         }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun postTradingType(chatRoomId: String,tradingType: TradingType): Result<Boolean> =
+    override suspend fun postTradingType(
+        chatRoomId: String,
+        tradingType: TradingType
+    ): Result<Boolean> =
         suspendCoroutine { continuation ->
 
             FirebaseFirestore.getInstance()
@@ -479,39 +504,41 @@ object SwapubRemoteDataSource: SwapubDataSource {
         }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun updateTradingSelect(chatRoomId: String, tradingSelect: Boolean ): Result<Boolean>
-            = suspendCoroutine { continuation ->
+    override suspend fun updateTradingSelect(
+        chatRoomId: String,
+        tradingSelect: Boolean
+    ): Result<Boolean> = suspendCoroutine { continuation ->
 
-            FirebaseFirestore.getInstance()
-                .collection(PATH_CHAT_ROOM)
-                .document(chatRoomId)
-                .update("tradingSelect",tradingSelect)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Logger.i("aaaaa: $tradingSelect")
-                        continuation.resume(Result.Success(true))
-                    } else {
-                        task.exception?.let {
-                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                            continuation.resume(Result.Error(it))
-                            return@addOnCompleteListener
-                        }
-                        continuation.resume(
-                            Result.Fail(
-                                SwapubApplication.instance.getString(
-                                    R.string.you_know_nothing
-                                )
+        FirebaseFirestore.getInstance()
+            .collection(PATH_CHAT_ROOM)
+            .document(chatRoomId)
+            .update("tradingSelect", tradingSelect)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Logger.i("aaaaa: $tradingSelect")
+                    continuation.resume(Result.Success(true))
+                } else {
+                    task.exception?.let {
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(
+                        Result.Fail(
+                            SwapubApplication.instance.getString(
+                                R.string.you_know_nothing
                             )
                         )
-                    }
+                    )
                 }
-        }
+            }
+    }
 
-    override suspend fun getTradingType(chatRoomId: String): Result<TradingType>
-            = suspendCoroutine { continuation ->
+    override suspend fun getTradingType(chatRoomId: String): Result<TradingType> =
+        suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
                 .collection(PATH_TRADING_TYPE)
-                .whereEqualTo("id",chatRoomId)
+                .whereEqualTo("id", chatRoomId)
                 .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -537,13 +564,15 @@ object SwapubRemoteDataSource: SwapubDataSource {
         }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun updateProductTradable(productId: String, tradable: Boolean ): Result<Boolean>
-            = suspendCoroutine { continuation ->
+    override suspend fun updateProductTradable(
+        productId: String,
+        tradable: Boolean
+    ): Result<Boolean> = suspendCoroutine { continuation ->
 
         FirebaseFirestore.getInstance()
             .collection(PATH_PRODUCT)
             .document(productId)
-            .update("tradable",tradable)
+            .update("tradable", tradable)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Logger.i("aaaaa: $tradable")
@@ -566,70 +595,67 @@ object SwapubRemoteDataSource: SwapubDataSource {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun deleteTradingType(chatRoomId: String): Result<Boolean>
-            = suspendCoroutine { continuation ->
+    override suspend fun deleteTradingType(chatRoomId: String): Result<Boolean> =
+        suspendCoroutine { continuation ->
 
-        FirebaseFirestore.getInstance()
-            .collection(PATH_TRADING_TYPE)
-            .document(chatRoomId)
-            .delete()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Logger.i("aaaaa: $chatRoomId")
-                    continuation.resume(Result.Success(true))
-                } else {
-                    task.exception?.let {
-                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                        continuation.resume(Result.Error(it))
-                        return@addOnCompleteListener
-                    }
-                    continuation.resume(
-                        Result.Fail(
-                            SwapubApplication.instance.getString(
-                                R.string.you_know_nothing
+            FirebaseFirestore.getInstance()
+                .collection(PATH_TRADING_TYPE)
+                .document(chatRoomId)
+                .delete()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Logger.i("aaaaa: $chatRoomId")
+                        continuation.resume(Result.Success(true))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.you_know_nothing
+                                )
                             )
                         )
-                    )
+                    }
                 }
-            }
-    }
-
+        }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun postTradingInfo(product: Product): Result<Boolean>
-            = suspendCoroutine { continuation ->
+    override suspend fun postTradingInfo(product: Product): Result<Boolean> =
+        suspendCoroutine { continuation ->
 
-        FirebaseFirestore.getInstance()
-            .collection(PATH_PRODUCT)
-            .add(product)
-              .addOnSuccessListener { documentReference ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_PRODUCT)
+                .add(product)
+                .addOnSuccessListener { documentReference ->
                     documentReference.update("id", documentReference.id)
-            }
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Logger.i("Swapub: $product")
-                    continuation.resume(Result.Success(true))
-                } else {
-                    task.exception?.let {
-                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                        continuation.resume(Result.Error(it))
-                        return@addOnCompleteListener
-                    }
-                    continuation.resume(
-                        Result.Fail(
-                            SwapubApplication.instance.getString(
-                                R.string.you_know_nothing
+                }
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Logger.i("Swapub: $product")
+                        continuation.resume(Result.Success(true))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.you_know_nothing
+                                )
                             )
                         )
-                    )
+                    }
                 }
-            }
-    }
+        }
 
-
-
-    override suspend fun getPostProduct( userId: String): Result<List<Product>>
-            = suspendCoroutine { continuation ->
+    override suspend fun getPostProduct(userId: String): Result<List<Product>> =
+        suspendCoroutine { continuation ->
             FirebaseFirestore.getInstance()
                 .collection(PATH_PRODUCT)
                 .whereEqualTo("user", userId)
@@ -639,11 +665,10 @@ object SwapubRemoteDataSource: SwapubDataSource {
                         val list = mutableListOf<Product>()
                         for (document in task.result!!) {
                             val product = document.toObject(Product::class.java)
-                            continuation.resume(Result.Success(list))
-                              list.add(product)
-
-
+                            list.add(product)
                         }
+                        continuation.resume(Result.Success(list))
+
                     } else {
                         task.exception?.let {
                             Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
@@ -659,11 +684,73 @@ object SwapubRemoteDataSource: SwapubDataSource {
                         )
                     }
                 }
-    }
+        }
+
+    override suspend fun getWishContent(userId: String): Result<List<Product>> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_PRODUCT)
+                .whereEqualTo("user", userId)
+                .whereEqualTo("wishable", true)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val list = mutableListOf<Product>()
+                        for (document in task.result!!) {
+                            val product = document.toObject(Product::class.java)
+                            list.add(product)
+                        }
+                        continuation.resume(Result.Success(list))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.error
+                                )
+                            )
+                        )
+                    }
+                }
+        }
+
+    override suspend fun getAllWishContent(): Result<List<Product>> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_PRODUCT)
+                .whereEqualTo("wishable", true)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val list = mutableListOf<Product>()
+                        for (document in task.result!!) {
+                            val product = document.toObject(Product::class.java)
+                            list.add(product)
+                        }
+                        continuation.resume(Result.Success(list))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.error
+                                )
+                            )
+                        )
+                    }
+                }
+        }
+
 
 
 
 }
-
-
 

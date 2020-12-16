@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.data.Message
+import com.johnny.swapub.data.User
 import com.johnny.swapub.databinding.ItemConversationBinding
 import com.johnny.swapub.messageHistory.conversation.ConversationViewModel
 import com.johnny.swapub.util.UserManager

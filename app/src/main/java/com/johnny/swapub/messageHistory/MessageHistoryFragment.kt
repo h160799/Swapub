@@ -40,8 +40,6 @@ class MessageHistoryFragment : Fragment() {
         })
 
 
-
-
         adapter.setHasStableIds(true)
         binding.recyclerMessageHistoryItem.adapter = adapter
 

@@ -13,6 +13,7 @@ import com.johnny.swapub.databinding.MakeWishesFragmentBinding
 import com.johnny.swapub.databinding.TradingPostFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
+import com.johnny.swapub.util.Logger
 
 
 class MakeWishesFragment : Fragment() {
@@ -38,7 +39,6 @@ class MakeWishesFragment : Fragment() {
             binding.postContent.setOnClickListener {
                 viewModel.postTradingInfo(viewModel.addProduct())
                 findNavController().navigate(R.id.action_global_profileFragment)
-
             }
 
             binding.goBack.setOnClickListener {

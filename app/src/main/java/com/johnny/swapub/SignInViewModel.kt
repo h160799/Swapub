@@ -22,7 +22,6 @@ class SignInViewModel(
     val user = MutableLiveData<User>()
 
     // status: The internal MutableLiveData that stores the status of the most recent request
-
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
         get() = _status

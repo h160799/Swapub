@@ -8,20 +8,16 @@ import com.johnny.swapub.data.User
 
 object UserManager {
 
-    var user = User(
-//        "TSobJG5UBPbgdz6PHxN8","","",mutableListOf(),null, mutableListOf(),mutableListOf(),mutableListOf()
-    )
-//    var userId = "TSobJG5UBPbgdz6PHxN8"
+    var user = User()
 
     private val sharedPreferences = SwapubApplication.instance.getSharedPreferences(
-        "myToken", Context.MODE_PRIVATE)
-
+        "myToken", Context.MODE_PRIVATE
+    )
 
     var userId: String
         get() {              //取得token
             return sharedPreferences.getString("myToken", null)!!
         }
-
         set(token) {         //給token
             sharedPreferences.edit().putString("myToken", token).apply()
         }

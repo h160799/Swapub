@@ -24,7 +24,6 @@ class ProductViewModel(
     private val _productDetail = MutableLiveData<Product>().apply {
         value = arguments
     }
-
     val productDetail: LiveData<Product>
         get() = _productDetail
 

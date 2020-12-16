@@ -32,8 +32,7 @@
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="我的交易"
@@ -41,10 +40,10 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/go_back"
@@ -56,25 +55,6 @@
             app:layout_constraintTop_toTopOf="@id/title"
             app:layout_constraintBottom_toBottomOf="@id/title"/>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/trading_post"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/white_E3DED8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="30dp"
-                android:gravity="center"
-                android:text="來點交易吧"
-                android:textSize="15sp" />
-
-        </androidx.cardview.widget.CardView>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_myTrading_item"
             android:layout_width="match_parent"
@@ -82,7 +62,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_marginTop="5dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/trading_post"
+            app:layout_constraintTop_toBottomOf="@id/line"
             tools:listitem="@layout/item_my_trading"/>
 
 

@@ -45,9 +45,6 @@ class MyTradingFragment : Fragment() {
         })
 
 
-        binding.tradingPost.setOnClickListener{
-            findNavController().navigate(R.id.action_global_tradingPostFragment)
-        }
 
 
 
