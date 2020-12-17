@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+<group>
     <item
         android:id="@+id/nav_notify"
         android:title="官方通知" />
@@ -40,16 +41,11 @@
         android:id="@+id/nav_7"
         android:enabled="false"
         android:title="" />
-    <item
-        android:id="@+id/nav_8"
-        android:enabled="false"
-        android:title="" />
-    <item
-        android:id="@+id/nav_9"
-        android:enabled="false"
-        android:title="" />
+
     <item
         android:id="@+id/nav_rules"
         android:title="使用規約" />
+
+</group>
 
 </menu>

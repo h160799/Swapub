@@ -18,7 +18,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@color/yellow_F8E2A9"
+            android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="80dp"
-            android:background="@color/white_E3DED8"
+            android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,7 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="交易物件設定"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
@@ -52,7 +52,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
-            android:src="@drawable/go_back"
+            android:src="@drawable/left_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/title"
             app:layout_constraintBottom_toBottomOf="@id/title"/>

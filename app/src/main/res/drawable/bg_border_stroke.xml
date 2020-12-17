@@ -12,7 +12,7 @@
                 android:color="@color/black"
                 android:dashWidth="10dp"
                 android:dashGap="10dp" />
-            <solid android:color="@color/yellow_FCF0D2" />
+            <solid android:color="@color/white" />
             <corners android:radius="5dp" />
         </shape>
     </item>

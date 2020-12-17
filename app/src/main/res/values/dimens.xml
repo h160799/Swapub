@@ -17,8 +17,8 @@
     <dimen name="height_all_bottom_layout">80dp</dimen>
 
     <!-- Toolbar -->
-    <dimen name="height_toolbar">60dp</dimen>
-    <dimen name="height_status_bar_origin">30dp</dimen>
+    <dimen name="height_toolbar">45dp</dimen>
+    <dimen name="height_status_bar_origin">20dp</dimen>
 
     <!-- Nav view of Drawer -->
     <dimen name="width_drawer">304dp</dimen>

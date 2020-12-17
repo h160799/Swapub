@@ -71,20 +71,18 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_searchFragment)
         }
 
-        binding.textToolbarLogo.setOnClickListener {
-            findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_addToFavoriteFragment)
-        }
+
 
         Logger.d("userManager${UserManager.userId}")
 
-        val window = window
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor =
-            Color.TRANSPARENT // calculateStatusColor(Color.WHITE, (int) alphaValue)
+//        val window = window
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+//        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//        window.statusBarColor =
+//            Color.TRANSPARENT // calculateStatusColor(Color.WHITE, (int) alphaValue)
 
 
         setupBottomNav()
@@ -201,6 +199,7 @@ class MainActivity : AppCompatActivity() {
         bindingNavHeader.viewModel = viewModel
         binding.drawerNavView.addHeaderView(bindingNavHeader.root)
 
+        binding.toolbar.setNavigationIcon(R.drawable.baseline_menu_white_18)
 
     }
 }

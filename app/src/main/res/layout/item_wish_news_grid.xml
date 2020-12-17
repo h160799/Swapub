@@ -13,21 +13,22 @@
         android:id="@+id/item_wish_news_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue_gray">
+        android:background="@color/white">
 
         <com.github.florent37.shapeofview.shapes.CircleView
             android:id="@+id/user_head"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="15dp"
             android:elevation="4dp"
-            app:layout_constraintStart_toStartOf="@id/myWish_image"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/wish_page_user_head"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +45,7 @@
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
-            android:textSize="13dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/user_head"
             app:layout_constraintTop_toTopOf="@id/user_head"
@@ -58,7 +59,7 @@
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
-            android:textSize="9dp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@id/user_head"
             app:layout_constraintStart_toEndOf="@id/user_head"
             android:text="2 小時" />
@@ -70,8 +71,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/pt_sans"
             android:text="[求]"
+            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@id/user_head"
             app:layout_constraintTop_toBottomOf="@id/user_head" />
 
@@ -82,7 +84,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
-            android:textSize="13sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/wish"
             app:layout_constraintTop_toBottomOf="@id/wish"
             android:text="@{wish_news_product.productTitle}"
@@ -95,7 +97,8 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/wish_content"
             app:layout_constraintTop_toBottomOf="@id/wish_content"
             android:text="[交換代價]" />
@@ -107,7 +110,7 @@
             android:layout_marginTop="5dp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
-            android:textSize="13sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/swap"
             app:layout_constraintTop_toBottomOf="@id/swap"
             android:text="@{wish_news_product.tradingStyle}"
@@ -116,11 +119,9 @@
 
         <ImageView
             android:id="@+id/myWish_image"
-            android:layout_width="350dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/swap_content"
@@ -128,9 +129,9 @@
             tools:background="@color/white_E3DED8" />
         <View
             android:layout_width="match_parent"
-            android:layout_height="6dp"
+            android:layout_height="4dp"
             android:layout_marginTop="15dp"
-            android:background="@color/white_E3DED8"
+            android:background="@color/gray_cccccc"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/myWish_image" />
 

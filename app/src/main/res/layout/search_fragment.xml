@@ -10,12 +10,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_gray"
+        android:background="@color/white"
         tools:context=".search.SearchFragment">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="55dp"
             android:background="@color/yellow_F8E2A9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -24,7 +24,7 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="55dp"
             android:background="@color/white_E3DED8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -58,7 +58,7 @@
             android:id="@+id/go_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/go_back"
+            android:src="@drawable/left_arrow"
             app:layout_constraintBottom_toBottomOf="@id/search_editText"
             app:layout_constraintEnd_toStartOf="@id/search_editText"
             app:layout_constraintStart_toStartOf="parent"

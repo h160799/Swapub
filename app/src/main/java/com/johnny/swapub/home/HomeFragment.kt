@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.FragmentHomeBinding
@@ -29,6 +31,10 @@ class HomeFragment : Fragment() {
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater, container,
             false)
+
+        binding.buttonFloatingFavorite.setOnClickListener {
+            findNavController().navigate(R.id.action_global_addToFavoriteFragment)
+        }
 
         return binding.root
     }

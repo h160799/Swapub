@@ -24,14 +24,24 @@
                 android:id="@+id/tabs_home"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_catalog_tab"
-                app:tabSelectedTextColor="@color/black"
+                app:tabSelectedTextColor="@color/white"
                 app:tabTextColor="@color/gray_999999"
-                app:tabIndicatorColor="@color/black">
+                app:tabIndicatorColor="@color/white">
 
             </com.google.android.material.tabs.TabLayout>
-
         </androidx.viewpager.widget.ViewPager>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_floating_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/floating_favorite"
+            android:background="@color/gray_4C4E58"
+            android:alpha="0.7"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,19 +3,12 @@ package com.johnny.swapub.messageHistory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.fragment.findNavController
+
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.data.ChatRoom
-import com.johnny.swapub.data.Message
 import com.johnny.swapub.databinding.ItemMessageHistoryGridBinding
-import com.johnny.swapub.home.item.HomeItemAdapter
 import com.johnny.swapub.util.Logger
-import com.johnny.swapub.util.UserManager
-import kotlinx.android.synthetic.main.item_message_history_grid.view.*
 
 class MessageHistoryAdapter(val onClickListener: OnClickListener, val viewModel: MessageHistoryViewModel)  :
     androidx.recyclerview.widget.ListAdapter<ChatRoom, MessageHistoryAdapter.MessageHistoryViewHolder>(

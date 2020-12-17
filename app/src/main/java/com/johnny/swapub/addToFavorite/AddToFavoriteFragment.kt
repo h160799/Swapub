@@ -10,6 +10,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -22,6 +23,7 @@ import com.johnny.swapub.databinding.FragmentAddToFavoriteBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.util.Logger
 import com.yuyakaido.android.cardstackview.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class AddToFavoriteFragment : Fragment(), CardStackListener {
 
@@ -30,10 +32,13 @@ class AddToFavoriteFragment : Fragment(), CardStackListener {
     private val manager by lazy { CardStackLayoutManager(context, this) }
     private lateinit var adapter: AddToFavoriteAdapter
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         binding = FragmentAddToFavoriteBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel

@@ -4,27 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="com.johnny.swapub.util.CurrentFragmentType"/>
-        <import type="android.view.View"/>
+
+        <import type="com.johnny.swapub.util.CurrentFragmentType" />
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.johnny.swapub.MainViewModel" />
 
     </data>
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue_gray">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/yellow_F8E2A9"
-        tools:context=".MainActivity">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/yellow_F8E2A9"
+            tools:context=".MainActivity">
 
-    <fragment
+            <fragment
                 android:id="@+id/myNavHostFragment"
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
@@ -38,15 +42,13 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_toolbar"
-                android:background="@color/yellow_F8E2A9"
+                android:layout_marginTop="10dp"
+                android:background="@color/black"
+                android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME || viewModel.currentFragmentType == CurrentFragmentType.PROFILE || viewModel.currentFragmentType == CurrentFragmentType.MESSAGEHISTORY || viewModel.currentFragmentType == CurrentFragmentType.WISHNEWS ? View.VISIBLE : View.GONE}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                android:layout_marginTop="40dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME || viewModel.currentFragmentType == CurrentFragmentType.PROFILE || viewModel.currentFragmentType == CurrentFragmentType.MESSAGEHISTORY || viewModel.currentFragmentType == CurrentFragmentType.WISHNEWS ? View.VISIBLE : View.GONE}"
-                app:navigationIcon="@drawable/toolbar_menu_hdpi">
-
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:id="@+id/text_toolbar_title"
@@ -54,58 +56,47 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:includeFontPadding="false"
-                    android:textColor="@color/black"
+                    android:text="@{viewModel.currentFragmentType.value}"
+                    android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:fontFamily="@font/pt_sans"
-                    android:text="@{viewModel.currentFragmentType.value}"
+                    android:layout_marginBottom="15dp"
                     android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.GONE : View.VISIBLE}"
+                    app:fontFamily="@font/pt_sans"
                     tools:layout_editor_absoluteX="176dp"
                     tools:layout_editor_absoluteY="30dp"
                     tools:text="Mine For Yours"
                     tools:visibility="visible" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/text_toolbar_logo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/black"
-                    android:text="Mine For Yours"
-                    app:fontFamily="@font/pt_sans"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:layout_marginStart="60dp"
+                    android:foregroundGravity="center"
+                    android:src="@drawable/main_logo"
                     android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.VISIBLE : View.GONE}"
                     tools:visibility="gone" />
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/favorite_button"-->
-<!--                    android:layout_width="25dp"-->
-<!--                    android:layout_height="25dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:src="@drawable/star_icon"-->
-<!--                    android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.VISIBLE : View.GONE}" />-->
-
             </androidx.appcompat.widget.Toolbar>
 
-        <ImageView
-            android:id="@+id/search"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/search_icon"
-            app:layout_constraintTop_toTopOf="@id/toolbar"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar"
-            app:layout_constraintEnd_toEndOf="@id/toolbar"
-            android:layout_marginEnd="10dp"
-            android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.VISIBLE : View.GONE}" />
+            <ImageView
+                android:id="@+id/search"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/search_icon_2"
+                android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/toolbar"
+                app:layout_constraintEnd_toEndOf="@id/toolbar"
+                app:layout_constraintTop_toTopOf="@id/toolbar" />
 
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white_E3DED8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bottomNavView"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white_E3DED8"
+                app:layout_constraintBottom_toTopOf="@id/bottomNavView"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavView"
@@ -113,12 +104,12 @@
                 android:layout_height="@dimen/height_bottom_nav_view_main"
                 android:background="@color/yellow_F8E2A9"
                 android:elevation="@dimen/elevation_all"
+                app:itemIconSize="@dimen/size_bottom_nav_icon"
                 app:itemIconTint="@drawable/bottom_nav_item_selector"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:itemIconSize="@dimen/size_bottom_nav_icon"
-                app:menu="@menu/bottom_nav_menu"/>
+                app:menu="@menu/bottom_nav_menu" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -126,10 +117,10 @@
             android:id="@+id/drawerNavView"
             android:layout_width="280dp"
             android:layout_height="match_parent"
-            app:itemTextAppearance="@style/NavDrawerTextStyle"
-            android:background="@color/yellow_F8E2A9"
             android:layout_gravity="start"
+            android:background="@color/yellow_F8E2A9"
             android:fitsSystemWindows="true"
+            app:itemTextAppearance="@style/NavDrawerTextStyle"
             app:menu="@menu/navdrawer_menu"
             tools:ignore="UnusedAttribute">
 

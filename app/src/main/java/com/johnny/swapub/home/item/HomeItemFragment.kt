@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.NavigationDirections
+import com.johnny.swapub.R
 import com.johnny.swapub.databinding.FragmentHomeItemBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.home.HomeTypeFilter
@@ -51,6 +52,7 @@ class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
                 viewModel.displayItemProductDetailsComplete()
             }
         })
+
 
 
         return binding.root

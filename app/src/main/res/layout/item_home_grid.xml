@@ -34,7 +34,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:src="@color/black" />
+            tools:src="@color/white_E3DED8" />
 
 
 
