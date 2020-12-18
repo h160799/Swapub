@@ -101,4 +101,9 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
     override suspend fun getAllWishContent(): Result<List<Product>>{
         return swapubRemoteDataSource.getAllWishContent()
     }
+
+    override fun getLiveSearch(field: String, searchKey: String): MutableLiveData<List<Product>>{
+        return swapubRemoteDataSource.getLiveSearch(field, searchKey)
+    }
+
 }

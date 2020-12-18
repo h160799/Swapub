@@ -36,7 +36,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/floating_favorite"
-            android:background="@color/gray_4C4E58"
             android:alpha="0.7"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="20dp"

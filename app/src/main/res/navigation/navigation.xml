@@ -66,7 +66,8 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.johnny.swapub.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment" >
+    </fragment>
     <action
         android:id="@+id/action_global_searchFragment"
         app:destination="@id/searchFragment"

@@ -1,6 +1,7 @@
 package com.johnny.swapub.home.item
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,7 +54,10 @@ class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
             }
         })
 
-
+        val swipeRefresh = binding.layoutSwipeRefreshHomeItem
+        swipeRefresh.setOnRefreshListener {
+            swipeRefresh.isRefreshing = false
+        }
 
         return binding.root
     }

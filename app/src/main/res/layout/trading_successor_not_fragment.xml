@@ -12,12 +12,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_gray"
+        android:background="@color/white"
         tools:context=".messageHistory.conversation.tradingStyle.TradingStyleFragment">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="55dp"
             android:background="@color/yellow_F8E2A9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="55dp"
             android:background="@color/white_E3DED8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,7 +39,7 @@
             android:layout_marginEnd="100dp"
             android:fontFamily="@font/pt_sans"
             android:text="提出時間："
-            android:textColor="@color/red_A44F3C"
+            android:textColor="@color/white"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line" />
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/pt_sans"
-            android:textColor="@color/red_A44F3C"
+            android:textColor="@color/white"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@id/time"
             app:layout_constraintTop_toTopOf="@id/time"
@@ -60,14 +60,14 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="確認交易"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -78,7 +78,7 @@
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/go_back"
+            android:src="@drawable/left_arrow"
             app:layout_constraintBottom_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/title" />
@@ -91,17 +91,18 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp">
+                android:layout_height="0dp"
+                android:background="@color/white">
 
                 <TextView
                     android:id="@+id/title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="[交易方式]"
-                    android:textColor="@color/red_A44F3C"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -111,58 +112,77 @@
                     android:id="@+id/radios_choose_trading_style"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:text="@{viewModel.tradingTypeInfo.type}"
-                    android:textColor="@color/red_A44F3C"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/title1"
                     app:layout_constraintTop_toBottomOf="@id/title1"
                     tools:text="服務交換" />
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_cccccc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/radios_choose_trading_style" />
 
                 <TextView
                     android:id="@+id/title2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="[交易敘述]"
-                    android:textColor="@color/red_A44F3C"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radios_choose_trading_style" />
+                    app:layout_constraintTop_toBottomOf="@id/line2" />
 
                 <TextView
                     android:id="@+id/trading_editText"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:text="@{viewModel.tradingTypeInfo.text}"
-                    android:textColor="@color/red_A44F3C"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/title2"
                     app:layout_constraintTop_toBottomOf="@id/title2"
                     tools:text="用日文教學 100 小時作為交換．" />
 
+                <View
+                    android:id="@+id/line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_cccccc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/trading_editText" />
+
                 <TextView
                     android:id="@+id/title3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="[照片說明]"
-                    android:textColor="@color/red_A44F3C"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@id/title2"
-                    app:layout_constraintTop_toBottomOf="@id/trading_editText" />
+                    app:layout_constraintTop_toBottomOf="@id/line3" />
 
                 <ImageView
                     android:id="@+id/trading_product_image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_border_stroke"
                     app:imageUrl="@{viewModel.tradingTypeInfo.image}"
                     app:layout_constraintStart_toStartOf="@id/title3"
                     app:layout_constraintTop_toBottomOf="@id/title3" />
@@ -173,12 +193,14 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="60dp"
-                    android:background="@drawable/bg_round_button"
+                    android:background="@drawable/bg_round_button_gray"
                     android:gravity="center"
                     android:text="同意交易"
-                    android:textColor="@color/red_A44F3C"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    android:layout_marginEnd="30dp"
+                    app:layout_constraintEnd_toStartOf="@id/trading_style_no"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/trading_product_image" />
 
@@ -188,12 +210,14 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="60dp"
                     android:layout_marginEnd="50dp"
-                    android:background="@drawable/bg_round_button"
+                    android:background="@drawable/bg_round_button_gray"
                     android:gravity="center"
                     android:text="拒絕交易"
-                    android:textColor="@color/red_A44F3C"
+                    android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    android:layout_marginStart="30dp"
+                    app:layout_constraintStart_toEndOf="@id/trading_style_ok"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/trading_product_image" />
 

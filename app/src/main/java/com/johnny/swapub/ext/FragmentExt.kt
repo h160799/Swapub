@@ -27,6 +27,8 @@ fun Fragment.getVmFactory(chatRoom: ChatRoom): ChatRoomViewModelFactory {
     return ChatRoomViewModelFactory(repository,chatRoom )
 }
 
+
+
 //fun Fragment.getVmFactory(user: User): UserViewModelFactory {
 //    val repository = (requireContext().applicationContext as SwapubApplication).swapubRepository
 //    return UserViewModelFactory(repository,user )

@@ -5,6 +5,12 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.johnny.swapub.search.SearchViewModel" />
+
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +24,7 @@
             android:layout_height="55dp"
             android:background="@color/yellow_F8E2A9"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/line"
@@ -31,28 +37,56 @@
 
         <ImageView
             android:id="@+id/search_editText"
-            android:layout_width="320dp"
+            android:layout_width="350dp"
             android:layout_height="35dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/bg_round_button"
             app:layout_constraintBottom_toTopOf="@id/line"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_search"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="6dp"
+            android:alpha="0.7"
+            app:layout_constraintBottom_toBottomOf="@id/search_editText"
+            app:layout_constraintStart_toStartOf="@id/search_editText"
+            app:layout_constraintTop_toTopOf="@id/search_editText"
+            app:srcCompat="@drawable/ic_search_black" />
 
         <EditText
-            android:layout_width="280dp"
+            android:id="@+id/edit_search"
+            android:layout_width="300dp"
             android:layout_height="30dp"
-            android:textSize="15sp"
             android:background="@null"
-            android:inputType="text"
-            android:hint="開始搜尋"
             android:fontFamily="@font/pt_sans"
-            android:outlineSpotShadowColor="@color/black"
+            android:hint="開始搜尋"
+            android:inputType="text"
+            android:text="@={viewModel.editSearch}"
+            android:shadowColor="@color/black"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_marginStart="27dp"
+            android:layout_marginEnd="27dp"
             app:layout_constraintBottom_toBottomOf="@id/search_editText"
             app:layout_constraintEnd_toEndOf="@id/search_editText"
             app:layout_constraintStart_toStartOf="@id/search_editText"
             app:layout_constraintTop_toTopOf="@id/search_editText" />
+
+        <ImageView
+            android:id="@+id/image_search_clear"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="6dp"
+            android:alpha="0.7"
+            android:visibility="@{TextUtils.isEmpty(viewModel.editSearch) ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@id/search_editText"
+            app:layout_constraintEnd_toEndOf="@id/search_editText"
+            app:layout_constraintTop_toTopOf="@id/search_editText"
+            app:srcCompat="@drawable/icons_clean" />
 
         <ImageView
             android:id="@+id/go_back"
@@ -64,65 +98,96 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/search_editText" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="熱門搜尋"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:fontFamily="@font/pt_sans"-->
+<!--            android:text="熱門搜尋"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="25sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="PS5"
-            android:textColor="@color/gray_999999"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="55dp"-->
+<!--            android:fontFamily="@font/pt_sans"-->
+<!--            android:text="PS5"-->
+<!--            android:textColor="@color/gray_999999"-->
+<!--            android:textSize="15sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="Dyson V11"
-            android:textColor="@color/gray_999999"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="75dp"-->
+<!--            android:fontFamily="@font/pt_sans"-->
+<!--            android:text="Dyson V11"-->
+<!--            android:textColor="@color/gray_999999"-->
+<!--            android:textSize="15sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="Switch"
-            android:textColor="@color/gray_999999"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="100dp"-->
+<!--            android:fontFamily="@font/pt_sans"-->
+<!--            android:text="Switch"-->
+<!--            android:textColor="@color/gray_999999"-->
+<!--            android:textSize="15sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="125dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="Iphone 11"
-            android:textColor="@color/gray_999999"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="125dp"-->
+<!--            android:fontFamily="@font/pt_sans"-->
+<!--            android:text="Iphone 11"-->
+<!--            android:textColor="@color/gray_999999"-->
+<!--            android:textSize="15sp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
 
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
+                    android:padding="2dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:spanCount="3"
+                    tools:itemCount="21"
+                    tools:listitem="@layout/item_search_grid" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

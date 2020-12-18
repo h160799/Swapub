@@ -99,5 +99,9 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
+    override fun getLiveSearch(field: String, searchKey: String): MutableLiveData<List<Product>> {
+        TODO("Not yet implemented")
+    }
+
 
 }

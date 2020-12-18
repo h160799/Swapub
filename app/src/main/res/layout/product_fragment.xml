@@ -14,22 +14,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_gray"
+        android:background="@color/white"
         tools:context=".detail.DetailFragment">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="55dp"
             android:background="@color/yellow_F8E2A9"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="80dp"
-            android:background="@color/white_E3DED8"
+            android:layout_marginTop="55dp"
+            android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,214 +40,175 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="交易物件頁面"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
-            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/go_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
-            android:src="@drawable/go_back"
+            android:src="@drawable/left_arrow"
             app:layout_constraintBottom_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/title" />
 
-    <ScrollView
-        android:id="@+id/recycler_detail"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_detail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_detail_gallery"
-            android:layout_width="360dp"
-            android:layout_height="360dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:background="@color/white_E3DED8"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        <ScrollView
+            android:id="@+id/recycler_detail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_product_gallery" />
+            app:layout_constraintTop_toBottomOf="@id/line">
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/user_head"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="340dp"
-            app:imageUrl="@{viewModel.userDetail.image}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/recycler_detail_gallery" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/product_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="@{viewModel.userDetail.name}"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/user_head"
-            app:layout_constraintTop_toBottomOf="@id/recycler_detail_gallery" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_detail_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="380dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_product_gallery" />
 
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/user_head"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="350dp"
+                    app:imageUrl="@{viewModel.userDetail.image}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/recycler_detail_gallery"
+                    tools:background="@drawable/me" />
 
-        <TextView
-            android:id="@+id/product_country"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="@{viewModel.userDetail.place.country}"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/user_head"
-            app:layout_constraintStart_toEndOf="@id/user_head"
-            tools:text="台灣" />
+                <TextView
+                    android:id="@+id/product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/pt_sans"
+                    android:text="@{viewModel.userDetail.name}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/user_head"
+                    app:layout_constraintTop_toBottomOf="@id/recycler_detail_gallery" />
 
+                <TextView
+                    android:id="@+id/product_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/pt_sans"
+                    android:text="@{viewModel.userDetail.place.country}"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@id/product_name"
+                    app:layout_constraintTop_toBottomOf="@id/product_name"
+                    tools:text="台灣" />
 
-        <TextView
-            android:id="@+id/product_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="@{viewModel.userDetail.place.city}"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/product_country"
-            app:layout_constraintStart_toEndOf="@id/product_country"
-            tools:text="台中市" />
+                <TextView
+                    android:id="@+id/product_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/pt_sans"
+                    android:text="@{viewModel.userDetail.place.city}"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@id/product_country"
+                    app:layout_constraintStart_toEndOf="@id/product_country"
+                    tools:text="台中市" />
 
-
-        <TextView
-            android:id="@+id/product_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="2 小時"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@id/recycler_detail_gallery"
-            app:layout_constraintTop_toTopOf="@id/product_name" />
-
-        <View
-            android:id="@+id/line2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/white_E3DED8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/user_head" />
-
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/white_E3DED8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/product_country" />
 
                 <TextView
                     android:id="@+id/product_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="350dp"
+                    android:layout_height="0dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@fon30t/pt_sans"
                     android:text="@{viewModel.productDetail.productTitle}"
                     android:textColor="@color/black"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/recycler_detail_gallery"
+                    app:layout_constraintStart_toStartOf="@id/user_head"
                     app:layout_constraintTop_toTopOf="@id/line2" />
 
                 <TextView
-                    android:id="@+id/product_bac1"
-                    android:layout_width="82dp"
-                    android:layout_height="28dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/product_title"
-                    app:layout_constraintTop_toBottomOf="@id/product_title" />
-
-                <TextView
+                    android:id="@+id/description_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/blue_gray"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/pt_sans"
                     android:gravity="center"
                     android:text="商品描述"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@id/product_bac1"
-                    app:layout_constraintEnd_toEndOf="@id/product_bac1"
-                    app:layout_constraintStart_toStartOf="@id/product_bac1"
-                    app:layout_constraintTop_toTopOf="@id/product_bac1" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/product_title"
+                    app:layout_constraintTop_toBottomOf="@id/product_title" />
 
                 <TextView
                     android:id="@+id/product_description"
                     android:layout_width="350dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="@{viewModel.productDetail.description}"
-                    android:textColor="@color/black"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="@id/product_bac1"
-                    app:layout_constraintTop_toBottomOf="@id/product_bac1" />
+                    app:layout_constraintStart_toStartOf="@id/description_title"
+                    app:layout_constraintTop_toBottomOf="@id/description_title" />
 
                 <TextView
-                    android:id="@+id/product_bac2"
-                    android:layout_width="82dp"
-                    android:layout_height="28dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/black"
-                    app:layout_constraintStart_toStartOf="@id/product_description"
-                    app:layout_constraintTop_toBottomOf="@id/product_description" />
-
-                <TextView
+                    android:id="@+id/tradingStyle_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/blue_gray"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="交易條件"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@id/product_bac2"
-                    app:layout_constraintEnd_toEndOf="@id/product_bac2"
-                    app:layout_constraintStart_toStartOf="@id/product_bac2"
-                    app:layout_constraintTop_toTopOf="@id/product_bac2" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/product_description"
+                    app:layout_constraintTop_toBottomOf="@id/product_description" />
 
                 <TextView
                     android:id="@+id/trading_style"
                     android:layout_width="350dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/pt_sans"
                     android:text="@{viewModel.productDetail.tradingStyle}"
-                    android:textColor="@color/black"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="@id/product_bac2"
-                    app:layout_constraintTop_toBottomOf="@id/product_bac2" />
+                    app:layout_constraintStart_toStartOf="@id/tradingStyle_title"
+                    app:layout_constraintTop_toBottomOf="@id/tradingStyle_title" />
 
                 <ImageView
                     android:layout_width="104dp"
@@ -264,12 +225,13 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:background="@drawable/bg_round_button"
+                    android:alpha="0.7"
+                    android:background="@color/gray_646464"
+                    android:fontFamily="@font/pt_sans"
                     android:gravity="center"
                     android:text="我有興趣交易"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/pt_sans"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -277,12 +239,12 @@
 
                 <ImageView
                     android:id="@+id/add_favorite"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="32dp"
+                    android:layout_height="28dp"
                     android:layout_marginEnd="15dp"
                     android:src="@{viewModel.isFavor == true ? @drawable/heart_red : @drawable/heart}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/product_title" />
+                    app:layout_constraintBottom_toBottomOf="@id/product_country"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

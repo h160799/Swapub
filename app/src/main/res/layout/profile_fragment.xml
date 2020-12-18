@@ -80,7 +80,7 @@
                 <View
                     android:id="@+id/line"
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
+                    android:layout_height="0.8dp"
                     android:layout_marginTop="10dp"
                     android:background="@color/gray_cccccc"
                     app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +141,7 @@
 
                 <View
                     android:id="@+id/line3"
-                    android:layout_width="3dp"
+                    android:layout_width="0.8dp"
                     android:layout_height="40dp"
                     android:background="@color/gray_cccccc"
                     app:layout_constraintBottom_toTopOf="@id/line2"
@@ -151,7 +151,7 @@
 
                 <View
                     android:id="@+id/line4"
-                    android:layout_width="3dp"
+                    android:layout_width="0.8dp"
                     android:layout_height="40dp"
                     android:background="@color/gray_cccccc"
                     app:layout_constraintBottom_toTopOf="@id/line2"

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="myFavorite_property"
-            type="com.johnny.swapub.data.Product" />
+<variable
+    name="mySearch_property"
+    type="com.johnny.swapub.data.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_home_grid"
+        android:id="@+id/item_search_grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="2dp">
@@ -18,14 +18,14 @@
 
 
         <ImageView
-            android:id="@+id/image_my_favorite_main"
+            android:id="@+id/image_search_product"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:imageUrl="@{myFavorite_property.productImage[0]}"
+            app:imageUrl="@{mySearch_property.productImage[0]}"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:src="@color/black" />
 

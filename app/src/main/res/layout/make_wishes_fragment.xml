@@ -83,44 +83,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/pt_sans"
-                    android:gravity="center"
-                    android:text="Johnny Lin"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@id/head"
-                    app:layout_constraintStart_toEndOf="@id/head"
-                    app:layout_constraintTop_toTopOf="@id/head" />
-
-                <com.github.florent37.shapeofview.shapes.CircleView
-                    android:id="@+id/head"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="10dp"
-                    android:elevation="4dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/user_head"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/me" />
-
-                </com.github.florent37.shapeofview.shapes.CircleView>
 
                 <TextView
                     android:id="@+id/addPics"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_border_stroke"
                     android:fontFamily="@font/pt_sans"
@@ -129,15 +97,15 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/head"
-                    app:layout_constraintTop_toBottomOf="@id/head" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/line2"
                     android:layout_width="match_parent"
                     android:layout_height="6dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/gray_646464"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/addPics" />
 
@@ -365,7 +333,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:textColor="@color/gray_646464"
                     android:checked="@={viewModel.wishableSelect}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/wishable"

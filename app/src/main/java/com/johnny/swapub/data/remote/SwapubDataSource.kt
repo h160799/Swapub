@@ -51,4 +51,6 @@ interface SwapubDataSource {
 
     suspend fun getAllWishContent(): Result<List<Product>>
 
+    fun getLiveSearch(field: String, searchKey: String): MutableLiveData<List<Product>>
+
 }

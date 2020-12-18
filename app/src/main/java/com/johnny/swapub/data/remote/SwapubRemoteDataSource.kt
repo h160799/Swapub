@@ -749,6 +749,34 @@ object SwapubRemoteDataSource : SwapubDataSource {
                 }
         }
 
+    override fun getLiveSearch(field: String, searchKey: String): MutableLiveData<List<Product>> {
+        val liveData = MutableLiveData<List<Product>>()
+
+        FirebaseFirestore.getInstance()
+            .collection(PATH_PRODUCT)
+            .whereEqualTo("tradable", false)
+            .orderBy(field)
+            .startAt(searchKey.toUpperCase())
+            .endAt(searchKey.toLowerCase()+"\uf8ff")
+            .addSnapshotListener { snapshot, exception ->
+
+                Logger.i("addSnapshotListener detect")
+
+                exception?.let {
+                    Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                }
+
+                val list = mutableListOf<Product>()
+                for (document in snapshot!!) {
+                    Logger.d(document.id + " => " + document.data)
+                    val event = document.toObject(Product::class.java)
+                    list.add(event)
+                }
+
+                liveData.value = list
+            }
+        return liveData
+    }
 
 
 

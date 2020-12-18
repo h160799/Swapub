@@ -94,7 +94,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white_E3DED8"
+                android:background="@color/white"
+                android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.MESSAGEHISTORY ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toTopOf="@id/bottomNavView"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -109,6 +110,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME || viewModel.currentFragmentType == CurrentFragmentType.PROFILE || viewModel.currentFragmentType == CurrentFragmentType.MESSAGEHISTORY || viewModel.currentFragmentType == CurrentFragmentType.WISHNEWS ? View.VISIBLE : View.GONE}"
                 app:menu="@menu/bottom_nav_menu" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
