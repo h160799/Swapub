@@ -17,4 +17,13 @@
     </style>
 
 
+    <style name="WishableSwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/gray_cccccc</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/black</item>
+
+    </style>
+
 </resources>

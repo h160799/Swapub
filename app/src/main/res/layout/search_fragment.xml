@@ -65,6 +65,7 @@
             android:fontFamily="@font/pt_sans"
             android:hint="開始搜尋"
             android:inputType="text"
+            android:textCursorDrawable="@null"
             android:text="@={viewModel.editSearch}"
             android:shadowColor="@color/black"
             android:textColor="@color/black"

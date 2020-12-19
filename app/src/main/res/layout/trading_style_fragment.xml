@@ -185,6 +185,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:hint="請填寫交易敘述"
+                    android:background="@null"
+                    android:textCursorDrawable="@null"
                     android:text="@={viewModel.tradingEditText}"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray_cccccc"

@@ -74,6 +74,9 @@ class ConversationFragment : Fragment() {
         Logger.d("aaaa$it")
         })
 
+
+
+
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_messageHistoryFragment)
         }

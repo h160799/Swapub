@@ -66,17 +66,16 @@
                     tools:layout_editor_absoluteX="176dp"
                     tools:layout_editor_absoluteY="30dp"
                     tools:text="Mine For Yours"
-                    tools:visibility="visible" />
+                    tools:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/text_toolbar_logo"
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="60dp"
                     android:foregroundGravity="center"
-                    android:src="@drawable/main_logo"
-                    android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.VISIBLE : View.GONE}"
-                    tools:visibility="gone" />
+                    android:layout_marginStart="100dp"
+                    android:src="@drawable/logo_8"
+                    android:visibility="@{viewModel.currentFragmentType == CurrentFragmentType.HOME ? View.VISIBLE : View.GONE}" />
 
             </androidx.appcompat.widget.Toolbar>
 

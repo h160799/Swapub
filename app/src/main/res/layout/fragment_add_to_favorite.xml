@@ -80,6 +80,5 @@
             </com.yuyakaido.android.cardstackview.CardStackView>
 
         </RelativeLayout>
-
     </LinearLayout>
 </layout>

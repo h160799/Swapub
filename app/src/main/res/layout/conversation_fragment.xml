@@ -117,49 +117,47 @@
 
         <TextView
             android:id="@+id/trading_style"
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            android:textSize="13sp"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
             android:text="@{viewModel.conversationProduct.tradingStyle}"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintStart_toEndOf="@id/product_bac1"
-            app:layout_constraintBottom_toBottomOf="@id/product_bac1"
-            android:layout_marginLeft="10dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/product_bac1"
+            app:layout_constraintBottom_toBottomOf="@id/product_bac1" />
 
         <TextView
             android:id="@+id/choose_trading_style"
             android:layout_width="80dp"
             android:layout_height="30dp"
-            android:background="@drawable/bg_round_button_gray_cccccc"
+            android:background="@color/gray_cccccc"
             android:textSize="12sp"
             android:gravity="center"
             android:textStyle="bold"
             android:text="擬定交易"
             android:textColor="@color/red_A44F3C"
             android:visibility="@{viewModel.tradingStyle == false &amp;&amp; viewModel.chatRoom.tradingSelect == false ? View.VISIBLE : View.GONE}"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trading_style"
-            android:layout_marginRight="20dp" />
+            app:layout_constraintBottom_toTopOf="@id/line2" />
 
         <TextView
             android:layout_width="80dp"
             android:layout_height="30dp"
-            android:background="@drawable/bg_round_button_gray_cccccc"
+            android:background="@color/gray_cccccc"
             android:textSize="12sp"
             android:gravity="center"
             android:textStyle="bold"
             android:text="等待交易確認"
             android:visibility="@{viewModel.tradingStyle == false &amp;&amp; viewModel.chatRoom.tradingSelect == true ? View.VISIBLE : View.GONE}"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trading_style"
-            android:layout_marginRight="20dp" />
+            app:layout_constraintBottom_toTopOf="@id/line2" />
 
         <TextView
             android:id="@+id/trading_confirm"
@@ -172,17 +170,16 @@
             android:textColor="@color/red_A44F3C"
             android:text="交易確認"
             android:visibility="@{viewModel.tradingStyle == true &amp;&amp; viewModel.chatRoom.tradingSelect == true &amp;&amp; viewModel.conversationProduct.tradable == false ? View.VISIBLE : View.GONE}"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trading_style"
-            android:layout_marginRight="20dp" />
+            app:layout_constraintBottom_toTopOf="@id/line2" />
 
         <TextView
             android:id="@+id/trading_status_ok"
             android:layout_width="80dp"
             android:layout_height="30dp"
-            android:background="@drawable/bg_round_button_gray"
+            android:background="@color/gray_999999"
             android:textSize="12sp"
             android:gravity="center"
             android:textStyle="bold"
@@ -190,21 +187,20 @@
             android:text="交易完成"
             android:clickable="false"
             android:visibility="@{viewModel.conversationProduct.tradable == true ? View.VISIBLE : View.GONE}"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/trading_style"
-            android:layout_marginRight="20dp" />
+            app:layout_constraintBottom_toTopOf="@id/line2" />
 
 
         <View
             android:id="@+id/line2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="45dp"
-            android:background="@color/white_E3DED8"
+            android:layout_marginTop="50dp"
+            android:background="@color/gray_cccccc"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/trading_style_title" />
+            app:layout_constraintTop_toBottomOf="@id/trading_style" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_conversation"
@@ -228,13 +224,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <EditText
-            android:id="@+id/editText_bac"
+        <ImageView
+            android:id="@+id/editText_background"
             android:layout_width="300dp"
             android:layout_height="40dp"
+            android:background="@drawable/bg_round_button_gray"
+            app:layout_constraintStart_toEndOf="@id/add_photos"
+            app:layout_constraintEnd_toStartOf="@id/enter_text"
+            app:layout_constraintTop_toBottomOf="@id/line3"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <EditText
+            android:id="@+id/editText_bac"
+            android:layout_width="270dp"
+            android:layout_height="30dp"
             android:hint="  輸入訊息"
             android:text="@={viewModel.message.text}"
-            android:background="@drawable/bg_round_button"
+            android:background="@color/gray_f0f0f0"
+            android:textCursorDrawable="@null"
             app:layout_constraintStart_toEndOf="@id/add_photos"
             app:layout_constraintEnd_toStartOf="@id/enter_text"
             app:layout_constraintTop_toBottomOf="@id/line3"
@@ -246,7 +253,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/send_icon"
-            app:layout_constraintStart_toEndOf="@id/editText_bac"
+            app:layout_constraintStart_toEndOf="@id/editText_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line3"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -256,7 +263,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/camera_icon"
-            app:layout_constraintEnd_toStartOf="@id/editText_bac"
+            app:layout_constraintEnd_toStartOf="@id/editText_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line3"
             app:layout_constraintBottom_toBottomOf="parent" />

@@ -56,6 +56,7 @@ class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
 
         val swipeRefresh = binding.layoutSwipeRefreshHomeItem
         swipeRefresh.setOnRefreshListener {
+            viewModel.getProductsResult()
             swipeRefresh.isRefreshing = false
         }
 

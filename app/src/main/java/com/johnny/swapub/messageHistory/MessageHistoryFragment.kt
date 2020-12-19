@@ -54,6 +54,12 @@ class MessageHistoryFragment : Fragment() {
             }
         })
 
+        val swipeRefresh = binding.layoutSwipeRefreshMessageHistoryItem
+        swipeRefresh.setOnRefreshListener {
+            viewModel.addMessage()
+            swipeRefresh.isRefreshing = false
+        }
+
         (activity as AppCompatActivity).bottomNavView.visibility = View.VISIBLE
         return binding.root
     }
