@@ -55,6 +55,7 @@ object SwapubRemoteDataSource : SwapubDataSource {
     override suspend fun getProduct(): Result<List<Product>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_PRODUCT)
+            .whereEqualTo("tradable",false)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {

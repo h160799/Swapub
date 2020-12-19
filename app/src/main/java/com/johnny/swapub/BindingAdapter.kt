@@ -34,3 +34,6 @@ fun bindDisplayFormatTimex(textView: TextView, time: Long?) {
     textView.text = time?.let { TimeUtil.StampToDatex(it) }
 }
 
+
+
+
