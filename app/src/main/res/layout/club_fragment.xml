@@ -33,10 +33,10 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/go_back"
@@ -48,252 +48,284 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/title" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c1"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="@color/orange_ff7902"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c2"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c1"
-                app:layout_constraintTop_toTopOf="@id/c1"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c3"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#FCFC2A"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="40dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/c2"
-                app:layout_constraintTop_toTopOf="@id/c2"/>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c4"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#C31818"
-                android:layout_marginTop="40dp"
-                app:layout_constraintStart_toStartOf="@id/c1"
-                app:layout_constraintTop_toBottomOf="@id/c1"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c5"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#1825C3"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c4"
-                app:layout_constraintTop_toTopOf="@id/c4"/>
-
-            <com.github.florent37.shapeofview.shapes.CircleView
-                android:id="@+id/c6"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardElevation="0px"
-                android:background="@android:color/transparent"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c5"
-                app:layout_constraintTop_toTopOf="@id/c5">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
 
                 <ImageView
+                    android:id="@+id/men_clothes"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/plant_photo"/>
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/men_clothes"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </com.github.florent37.shapeofview.shapes.CircleView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="男裝周邊"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/men_clothes"
+                    app:layout_constraintTop_toTopOf="@id/men_clothes" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c7"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#A78E09"
-                android:layout_marginTop="40dp"
-                app:layout_constraintStart_toStartOf="@id/c4"
-                app:layout_constraintTop_toBottomOf="@id/c4"/>
+                <ImageView
+                    android:id="@+id/women_clothes"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/women_clothes"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/men_clothes" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c8"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#095EA7"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c7"
-                app:layout_constraintTop_toTopOf="@id/c7"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="女裝周邊"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/women_clothes"
+                    app:layout_constraintTop_toTopOf="@id/women_clothes" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c9"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#BA1B5F"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c8"
-                app:layout_constraintTop_toTopOf="@id/c8"/>
+                <ImageView
+                    android:id="@+id/sporty"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/sporty"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/women_clothes" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="時尚愛美團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c1"
-                app:layout_constraintEnd_toEndOf="@id/c1"
-                app:layout_constraintTop_toBottomOf="@id/c1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="運動健身"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/sporty"
+                    app:layout_constraintTop_toTopOf="@id/sporty" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="婆婆媽媽團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c2"
-                app:layout_constraintEnd_toEndOf="@id/c2"
-                app:layout_constraintTop_toBottomOf="@id/c2"/>
+                <ImageView
+                    android:id="@+id/makeup"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/makeup"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sporty" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="生活用品團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c3"
-                app:layout_constraintEnd_toEndOf="@id/c3"
-                app:layout_constraintTop_toBottomOf="@id/c3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="美妝保養"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/makeup"
+                    app:layout_constraintTop_toTopOf="@id/makeup" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="美妝交流團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c4"
-                app:layout_constraintEnd_toEndOf="@id/c4"
-                app:layout_constraintTop_toBottomOf="@id/c4"/>
+                <ImageView
+                    android:id="@+id/artwork"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/artwork"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/makeup" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="書籍分享團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c5"
-                app:layout_constraintEnd_toEndOf="@id/c5"
-                app:layout_constraintTop_toBottomOf="@id/c5"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="藝術設計"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/artwork"
+                    app:layout_constraintTop_toTopOf="@id/artwork" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="植物愛好團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c6"
-                app:layout_constraintEnd_toEndOf="@id/c6"
-                app:layout_constraintTop_toBottomOf="@id/c6"/>
+                <ImageView
+                    android:id="@+id/book_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/book_share"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/artwork" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="健身運動團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c7"
-                app:layout_constraintEnd_toEndOf="@id/c7"
-                app:layout_constraintTop_toBottomOf="@id/c7"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="書籍分享"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/book_share"
+                    app:layout_constraintTop_toTopOf="@id/book_share" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="志工招募館"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c8"
-                app:layout_constraintEnd_toEndOf="@id/c8"
-                app:layout_constraintTop_toBottomOf="@id/c8"/>
+                <ImageView
+                    android:id="@+id/life_life"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/life_life"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/book_share" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="電玩手遊團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c9"
-                app:layout_constraintEnd_toEndOf="@id/c9"
-                app:layout_constraintTop_toBottomOf="@id/c9"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="品味生活"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/life_life"
+                    app:layout_constraintTop_toTopOf="@id/life_life" />
+
+                <ImageView
+                    android:id="@+id/consumer_electronic"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/consumer_electronic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/life_life" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="電子產品"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/consumer_electronic"
+                    app:layout_constraintTop_toTopOf="@id/consumer_electronic" />
+
+                <ImageView
+                    android:id="@+id/plant_design"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/plant_design"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/consumer_electronic" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="植物盆景"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/plant_design"
+                    app:layout_constraintTop_toTopOf="@id/plant_design" />
+
+                <ImageView
+                    android:id="@+id/video_games"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/video_games"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/plant_design" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="遊戲電玩"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/video_games"
+                    app:layout_constraintTop_toTopOf="@id/video_games" />
+
+                <ImageView
+                    android:id="@+id/fashion"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/fashion"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/video_games" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:alpha="0.7"
+                    android:fontFamily="@font/pt_sans"
+                    android:gravity="center"
+                    android:text="精品時尚"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/fashion"
+                    app:layout_constraintTop_toTopOf="@id/fashion" />
 
 
-
-
-
-
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/layout_swipe_refresh_club_item"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.0">
-
-
-
-
-
-
-
-
-<!--                <androidx.recyclerview.widget.RecyclerView-->
-<!--                    android:id="@+id/recycler_club_item"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:paddingLeft="30dp"-->
-<!--                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-<!--                    app:spanCount="3"-->
-<!--                    tools:itemCount="21"-->
-<!--                    tools:listitem="@layout/item_club_grid">-->
-
-
-
-<!--                </androidx.recyclerview.widget.RecyclerView>-->
-
-
-
-
-
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
