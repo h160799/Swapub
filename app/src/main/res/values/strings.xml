@@ -32,6 +32,8 @@
     <string name="error">Error</string>
     <string name="you_know_nothing">You know nothing</string>
 
+    <string name="do_nothing">無權限無法做事!</string>
+    <string name="load_img_fail">讀取圖片失敗</string>
 
 
 </resources>
