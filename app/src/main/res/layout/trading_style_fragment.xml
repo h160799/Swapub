@@ -236,7 +236,7 @@
                     android:layout_height="300dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="30dp"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:background="@drawable/bg_border_stroke"
                     app:layout_constraintStart_toStartOf="@id/title3"
                     app:layout_constraintTop_toBottomOf="@id/title3"

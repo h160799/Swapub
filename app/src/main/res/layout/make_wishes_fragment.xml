@@ -121,7 +121,7 @@
                     android:background="@drawable/bg_border_stroke"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -157,7 +157,7 @@
                     android:background="@drawable/bg_border_stroke"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     app:layout_constraintStart_toEndOf="@id/image_post_1"
                     app:layout_constraintTop_toTopOf="@id/image_post_1"
                     android:visibility="@{viewModel.image1 != null ? View.VISIBLE : View.GONE}" />
@@ -195,7 +195,7 @@
                     android:background="@drawable/bg_border_stroke"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     app:layout_constraintStart_toEndOf="@id/image_post_2"
                     app:layout_constraintTop_toTopOf="@id/image_post_2" />
 
@@ -231,7 +231,7 @@
                     android:background="@drawable/bg_border_stroke"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     app:layout_constraintStart_toEndOf="@id/image_post_3"
                     app:layout_constraintTop_toTopOf="@id/image_post_3" />
 
@@ -267,7 +267,7 @@
                     android:background="@drawable/bg_border_stroke"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     app:layout_constraintStart_toEndOf="@id/image_post_4"
                     app:layout_constraintTop_toTopOf="@id/image_post_4" />
 
