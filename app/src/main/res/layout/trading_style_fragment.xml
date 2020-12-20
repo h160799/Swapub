@@ -217,20 +217,30 @@
                     app:layout_constraintTop_toBottomOf="@id/line3" />
 
                 <TextView
-                    android:id="@+id/trading_product_image"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_border_stroke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/pt_sans"
                     android:gravity="center"
                     android:text="+加入照片"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/title3"
-                    app:layout_constraintTop_toBottomOf="@id/title3" />
+                    app:layout_constraintStart_toStartOf="@id/trading_product_image"
+                    app:layout_constraintEnd_toEndOf="@id/trading_product_image"
+                    app:layout_constraintTop_toTopOf="@id/trading_product_image"
+                    app:layout_constraintBottom_toBottomOf="@id/trading_product_image"/>
 
+                <ImageView
+                    android:id="@+id/trading_product_image"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/bg_border_stroke"
+                    app:layout_constraintStart_toStartOf="@id/title3"
+                    app:layout_constraintTop_toBottomOf="@id/title3"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

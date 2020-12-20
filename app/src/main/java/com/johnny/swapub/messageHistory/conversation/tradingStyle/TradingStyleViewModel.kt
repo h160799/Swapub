@@ -29,6 +29,9 @@ class TradingStyleViewModel(
         value = TradingType()
     }
 
+    var image = MutableLiveData<String>()
+
+
     val tradingEditText = MutableLiveData<String>()
 
 
