@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.johnny.swapub.profile.makeWishes.MakeWishesViewModel" />
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,44 +86,219 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <TextView
-                    android:id="@+id/addPics"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="15dp"
+                    android:id="@+id/photo_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_border_stroke"
+                    android:layout_marginStart="15dp"
                     android:fontFamily="@font/pt_sans"
                     android:gravity="center"
-                    android:text="+加入照片"
+                    android:text="增加照片"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/image_post_1"
+                    app:layout_constraintBottom_toBottomOf="@id/image_post_1"
+                    app:layout_constraintStart_toStartOf="@id/image_post_1"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_1"/>
+
+                <ImageView
+                    android:id="@+id/image_post_1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="45dp"
+                    android:background="@drawable/bg_border_stroke"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:alpha="0.6"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_1"
+                    app:layout_constraintTop_toTopOf="@id/image_post_1"
+                    android:background="@drawable/icons_clean"
+                    android:visibility="@{viewModel.image1 != null &amp;&amp; viewModel.image2 == null ? View.VISIBLE : View.GONE}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/image_post_2"
+                    app:layout_constraintBottom_toBottomOf="@id/image_post_2"
+                    app:layout_constraintStart_toStartOf="@id/image_post_2"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_2"
+                    android:visibility="@{viewModel.image1 != null ? View.VISIBLE : View.GONE}" />
+
+
+                <ImageView
+                    android:id="@+id/image_post_2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/bg_border_stroke"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/image_post_1"
+                    app:layout_constraintTop_toTopOf="@id/image_post_1"
+                    android:visibility="@{viewModel.image1 != null ? View.VISIBLE : View.GONE}" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:alpha="0.6"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_2"
+                    app:layout_constraintTop_toTopOf="@id/image_post_2"
+                    android:background="@drawable/icons_clean"
+                    android:visibility="@{viewModel.image2 != null &amp;&amp; viewModel.image3 == null ? View.VISIBLE : View.GONE}" />/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/image_post_3"
+                    app:layout_constraintBottom_toBottomOf="@id/image_post_3"
+                    app:layout_constraintStart_toStartOf="@id/image_post_3"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_3"
+                    android:visibility="@{viewModel.image2 != null ? View.VISIBLE : View.GONE}"/>
+
+
+                <ImageView
+                    android:id="@+id/image_post_3"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="15dp"
+                    android:visibility="@{viewModel.image2 != null ? View.VISIBLE : View.GONE}"
+                    android:background="@drawable/bg_border_stroke"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/image_post_2"
+                    app:layout_constraintTop_toTopOf="@id/image_post_2" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:alpha="0.6"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_3"
+                    app:layout_constraintTop_toTopOf="@id/image_post_3"
+                    android:background="@drawable/icons_clean"
+                    android:visibility="@{viewModel.image3 != null &amp;&amp; viewModel.image4 == null ? View.VISIBLE : View.GONE}" />/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/image_post_4"
+                    app:layout_constraintBottom_toBottomOf="@id/image_post_4"
+                    app:layout_constraintStart_toStartOf="@id/image_post_4"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_4"
+                    android:visibility="@{viewModel.image3 != null ? View.VISIBLE : View.GONE}" />
+
+                <ImageView
+                    android:id="@+id/image_post_4"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="15dp"
+                    android:visibility="@{viewModel.image3 != null ? View.VISIBLE : View.GONE}"
+                    android:background="@drawable/bg_border_stroke"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/image_post_3"
+                    app:layout_constraintTop_toTopOf="@id/image_post_3" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:alpha="0.6"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_4"
+                    app:layout_constraintTop_toTopOf="@id/image_post_4"
+                    android:background="@drawable/icons_clean"
+                    android:visibility="@{viewModel.image4 != null &amp;&amp; viewModel.image5 == null ? View.VISIBLE : View.GONE}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="@id/image_post_5"
+                    app:layout_constraintBottom_toBottomOf="@id/image_post_5"
+                    app:layout_constraintStart_toStartOf="@id/image_post_5"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_5"
+                    android:visibility="@{viewModel.image4 != null ? View.VISIBLE : View.GONE}" />
+
+                <ImageView
+                    android:id="@+id/image_post_5"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="15dp"
+                    android:visibility="@{viewModel.image4 != null ? View.VISIBLE : View.GONE}"
+                    android:background="@drawable/bg_border_stroke"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/image_post_4"
+                    app:layout_constraintTop_toTopOf="@id/image_post_4" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:alpha="0.6"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="@id/image_post_5"
+                    app:layout_constraintTop_toTopOf="@id/image_post_5"
+                    android:background="@drawable/icons_clean"
+                    android:visibility="@{viewModel.image5 != null  ? View.VISIBLE : View.GONE}" />
+
                 <View
                     android:id="@+id/line2"
                     android:layout_width="match_parent"
                     android:layout_height="6dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/gray_646464"
+                    android:background="@color/gray_cccccc"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/addPics" />
+                    app:layout_constraintTop_toBottomOf="@id/image_post_1" />
 
                 <TextView
                     android:id="@+id/product_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginStart="15dp"
                     android:fontFamily="@font/pt_sans"
                     android:gravity="center"
                     android:text="物件名稱"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/addPics"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/line2" />
 
                 <EditText
@@ -147,7 +325,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="6dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/gray_cccccc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/editText_product_title" />
 
@@ -189,7 +367,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="6dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/gray_cccccc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/editText_product_description" />
 
@@ -231,7 +409,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="6dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/gray_cccccc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/editText_trading_style" />
 
@@ -262,7 +440,7 @@
                     android:inputType="text"
                     android:outlineSpotShadowColor="@color/black"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/gray_646464"
+                    android:textColorHint="@color/gray_cccccc"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="@id/trading_location"
                     app:layout_constraintTop_toBottomOf="@id/trading_location" />
@@ -272,7 +450,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="6dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/gray_cccccc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/editText_trading_location" />
 
@@ -314,7 +492,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="6dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/white_E3DED8"
+                    android:background="@color/gray_cccccc"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/editText_product_category" />
 

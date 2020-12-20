@@ -46,9 +46,7 @@ class ConversationFragment : Fragment() {
     private var saveUri: Uri? = null
 
     private companion object {
-        const val PHOTO_FROM_GALLERY = 1
         private const val REQUEST_EXTERNAL_STORAGE = 200
-
     }
 
     override fun onCreateView(

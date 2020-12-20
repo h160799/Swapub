@@ -24,7 +24,14 @@ class MakeWishesViewModel(
     val tradingStyleEditText = MutableLiveData<String>()
     val categoryEditText = MutableLiveData<String>()
 
+    var image1 = MutableLiveData<String>()
+    var image2 = MutableLiveData<String>()
+    var image3 = MutableLiveData<String>()
+    var image4 = MutableLiveData<String>()
+    var image5 = MutableLiveData<String>()
+
     val wishableSelect = MutableLiveData<Boolean>()
+
 
 
 
@@ -80,6 +87,13 @@ class MakeWishesViewModel(
     }
 
     fun addProduct() : Product {
+        val images = mutableListOf<String>()
+        if (image1.value != null) { images.add(image1.value.toString()) }
+        if (image2.value != null) { images.add(image2.value.toString()) }
+        if (image3.value != null) { images.add(image3.value.toString()) }
+        if (image4.value != null) { images.add(image4.value.toString()) }
+        if (image5.value != null) { images.add(image5.value.toString()) }
+
         return Product(
             id = "",
             user = UserManager.userId,
@@ -88,9 +102,7 @@ class MakeWishesViewModel(
             tradingStyle = tradingStyleEditText.value,
             category = categoryEditText.value,
             time = Calendar.getInstance().timeInMillis,
-            productImage = mutableListOf(
-                ""
-            ),
+            productImage = images,
             location = Location(
                 countries = mutableListOf(
                     Country(
