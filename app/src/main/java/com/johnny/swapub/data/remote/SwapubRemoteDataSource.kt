@@ -1,6 +1,7 @@
 package com.johnny.swapub.data.remote
 
 import android.icu.util.Calendar
+import android.media.Image
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -505,10 +506,8 @@ object SwapubRemoteDataSource : SwapubDataSource {
         }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun updateTradingSelect(
-        chatRoomId: String,
-        tradingSelect: Boolean
-    ): Result<Boolean> = suspendCoroutine { continuation ->
+    override suspend fun updateTradingSelect(chatRoomId: String, tradingSelect: Boolean): Result<Boolean> =
+        suspendCoroutine { continuation ->
 
         FirebaseFirestore.getInstance()
             .collection(PATH_CHAT_ROOM)
@@ -779,6 +778,34 @@ object SwapubRemoteDataSource : SwapubDataSource {
         return liveData
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    override suspend fun updateUserInfo(userId: String, image: String, name:String, place:String): Result<Boolean> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_USER)
+                .document(userId)
+                .update("image", image,"name", name, "place", place)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        continuation.resume(Result.Success(true))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.you_know_nothing
+                                )
+                            )
+                        )
+                    }
+                }.addOnSuccessListener {
+
+                }
+        }
 
 
 }

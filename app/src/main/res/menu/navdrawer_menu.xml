@@ -51,14 +51,7 @@
         android:id="@+id/nav_5"
         android:enabled="false"
         android:title="" />
-    <item
-        android:id="@+id/nav_6"
-        android:enabled="false"
-        android:title="" />
-    <item
-        android:id="@+id/nav_7"
-        android:enabled="false"
-        android:title="" />
+
     </group>
 
 

@@ -103,20 +103,7 @@ class MakeWishesViewModel(
             category = categoryEditText.value,
             time = Calendar.getInstance().timeInMillis,
             productImage = images,
-            location = Location(
-                countries = mutableListOf(
-                    Country(
-                        id = "",
-                        name = "",
-                        cities = mutableListOf(
-                            City(
-                                id = "",
-                                name = ""
-                            )
-                        )
-                    )
-                )
-            ),
+            location = "",
             wishable = wishableSelect.value,
             tradable = false,
             interestList = InterestList(

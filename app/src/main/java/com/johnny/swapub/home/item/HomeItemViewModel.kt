@@ -81,20 +81,7 @@ class HomeItemViewModel(
             productImage = mutableListOf(
                 "https://s.yimg.com/zp/MerchandiseImages/A377C865AC-SP-6987044.jpg"
             ),
-            location = Location(
-                countries = mutableListOf(
-                    Country(
-                        id = document.id,
-                        name = "台灣",
-                        cities = mutableListOf(
-                            City(
-                                id = document.id,
-                                name = "台北市"
-                            )
-                        )
-                    )
-                )
-            ),
+            location = "",
             tradable = false,
             interestList = InterestList(
                     senderId = "23456789",
@@ -117,10 +104,7 @@ class HomeItemViewModel(
                     productList = null
                 )
             ),
-            place = Place(
-                country = "台灣",
-                city = "台北市"
-            ),
+            place = "",
             favoriteList  = mutableListOf(
 
             ),

@@ -13,6 +13,7 @@ import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
 import com.johnny.swapub.profile.ProfileViewModel
 import com.johnny.swapub.profile.makeWishes.MakeWishesViewModel
 import com.johnny.swapub.search.SearchViewModel
+import com.johnny.swapub.setting.SettingViewModel
 import com.johnny.swapub.wishNews.WishNewsViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -55,6 +56,9 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(SearchViewModel::class.java) ->
                     SearchViewModel(swapubRepository)
+
+                isAssignableFrom(SettingViewModel::class.java) ->
+                    SettingViewModel(swapubRepository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow_F8E2A9"
+        android:background="@color/black"
         tools:context=".club.ClubFragment">
 
         <View

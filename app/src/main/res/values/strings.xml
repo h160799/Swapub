@@ -32,8 +32,38 @@
     <string name="error">Error</string>
     <string name="you_know_nothing">You know nothing</string>
 
-    <string name="do_nothing">無權限無法做事!</string>
     <string name="load_img_fail">讀取圖片失敗</string>
+    <string name="do_nothing">無權限無法做事!</string>
+    <!-- TradingSuccessOrNotFragment -->
+
+
+    <!-- CityOptions -->
+    <string-array name="city_options">
+        <item name="optional">-----</item>
+        <item name="taipei_city">台北市</item>
+        <item name="new_taipei_city">新北市</item>
+        <item name="taoyuan_city">桃園市</item>
+        <item name="taichung_city">台中市</item>
+        <item name="kaohsiung_city">高雄市</item>
+        <item name="tainan_city">台南市</item>
+        <item name="keelung_city">基隆市</item>
+        <item name="hsinchu_city">新竹市</item>
+        <item name="chiayi_city">嘉義市</item>
+        <item name="hsinchu_county">新竹縣</item>
+        <item name="miaoli_county">苗栗縣</item>
+        <item name="changhua_county">彰化縣</item>
+        <item name="nantou_county">南投縣</item>
+        <item name="yunlin_county">雲林縣</item>
+        <item name="chiayi_county">嘉義縣</item>
+        <item name="pingtung_county">屏東縣</item>
+        <item name="yilan_county">宜蘭縣</item>
+        <item name="hualien_county">花蓮縣</item>
+        <item name="taitung_county">台東縣</item>
+        <item name="penghu_county">澎湖縣</item>
+        <item name="kinmen_county">金門縣</item>
+        <item name="lienchiang_county">連江縣</item>
+
+    </string-array>
 
 
 </resources>

@@ -184,6 +184,13 @@ class MainActivity : AppCompatActivity() {
                     findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_clubFragment)
                     true
                 }
+
+                R.id.nav_setting -> {
+                    viewModel.navigate.value = 1
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                    findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_settingFragment)
+                    true
+                }
                 else -> false
             }
         }

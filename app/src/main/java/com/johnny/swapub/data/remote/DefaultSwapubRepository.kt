@@ -106,4 +106,8 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getLiveSearch(field, searchKey)
     }
 
+    override suspend fun updateUserInfo(userId: String, image: String, name:String, place:String): Result<Boolean>{
+        return swapubRemoteDataSource.updateUserInfo(userId, image, name, place)
+    }
+
 }

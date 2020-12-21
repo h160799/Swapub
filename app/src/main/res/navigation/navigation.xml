@@ -201,4 +201,13 @@
         app:destination="@id/makeWishesFragment"
         app:popUpTo="@id/navigation"
         app:popUpToInclusive="true" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.johnny.swapub.setting.SettingFragment"
+        android:label="SettingFragment" />
+    <action
+        android:id="@+id/action_global_settingFragment"
+        app:destination="@id/settingFragment"
+        app:popUpTo="@id/navigation"
+        app:popUpToInclusive="true" />
 </navigation>

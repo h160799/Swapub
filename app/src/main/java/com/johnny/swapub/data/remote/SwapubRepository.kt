@@ -53,4 +53,7 @@ interface SwapubRepository {
 
     fun getLiveSearch(field: String, searchKey: String): MutableLiveData<List<Product>>
 
+    suspend fun updateUserInfo(userId: String,  image: String, name:String, place:String): Result<Boolean>
+
+
 }

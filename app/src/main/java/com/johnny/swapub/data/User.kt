@@ -10,7 +10,7 @@ data class User(
     var name: String? = "",
     var image: String = "",
     val clubList: List<Club>? = mutableListOf(),
-    val place: Place? = null,
+    val place: String? = "",
     val favoriteList: List<String>? = mutableListOf(),
     val swappingList: List<String>? = mutableListOf(),
     val swappedList: List<String>? = mutableListOf()

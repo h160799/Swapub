@@ -1,8 +1,10 @@
-package com.johnny.swapub.myTrading.tradingPost
+package com.johnny.swapub.setting
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
@@ -14,30 +16,34 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.util.*
 
-class TradingPostViewModel(
+class SettingViewModel(
     val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
-    val productTitleEditText = MutableLiveData<String>()
-    val descriptionEditText = MutableLiveData<String>()
-    val tradingStyleEditText = MutableLiveData<String>()
-    val categoryEditText = MutableLiveData<String>()
+    var userId: String = UserManager.userId
+
+    private val _userData = MutableLiveData<User>()
+    val userData: LiveData<User>
+        get() = _userData
+
+    val nameEditText = MutableLiveData<String>()
+
+    val editTextPlace = MutableLiveData<String>()
+
+    var userImage = MutableLiveData<String>()
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
-
     val status: LiveData<LoadApiStatus>
         get() = _status
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
-
     val error: LiveData<String>
         get() = _error
 
     // status for the loading icon of swl
     private val _refreshStatus = MutableLiveData<Boolean>()
-
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
@@ -48,14 +54,50 @@ class TradingPostViewModel(
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
 
+init {
+    getUser(userId)
+}
 
-    fun postTradingInfo(product: Product) {
+
+    fun getUser(userId:String) {
+
+        coroutineScope.launch {
+            _status.value = LoadApiStatus.LOADING
+            val result = swapubRepository.getUserInfo(userId)
+            _userData.value = when (result) {
+                is Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
+                }
+                is Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+            _refreshStatus.value = false
+
+        }
+    }
+
+    fun updateUserInfo(userId: String, image:String, name: String, place:String) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = swapubRepository.postTradingInfo(product)) {
+            when (val result = swapubRepository.updateUserInfo(userId,image,name,place)) {
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -76,31 +118,5 @@ class TradingPostViewModel(
         }
     }
 
-    fun addProduct() : Product{
-        return Product(
-            id = "",
-            user = UserManager.userId,
-            productTitle = productTitleEditText.value,
-            description = descriptionEditText.value,
-            tradingStyle = tradingStyleEditText.value,
-            category = categoryEditText.value,
-            time = Calendar.getInstance().timeInMillis,
-            productImage = mutableListOf(
-                ""
-            ),
-            location = "",
-            tradable = false,
-            interestList = InterestList(
-                senderId = "",
-                status = false
-            )
-        )
-    }
 
-
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
 }
