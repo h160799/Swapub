@@ -160,6 +160,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.clubFragment -> CurrentFragmentType.CLUB
                 R.id.productFragment -> CurrentFragmentType.PRODUCT
                 R.id.makeWishesFragment -> CurrentFragmentType.MAKEWISHES
+                R.id.settingFragment -> CurrentFragmentType.SETTING
+
 
                 else -> viewModel.currentFragmentType.value
             }

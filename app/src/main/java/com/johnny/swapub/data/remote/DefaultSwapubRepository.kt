@@ -58,8 +58,8 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.postMessage(message, document)
     }
 
-    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> {
-        return swapubRemoteDataSource.postInterestMessage(chatRoom)
+    override suspend fun postInterestMessage(chatRoom: ChatRoom,user: User): Result<Boolean> {
+        return swapubRemoteDataSource.postInterestMessage(chatRoom,user)
     }
 
     override suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom>{

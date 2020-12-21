@@ -55,7 +55,7 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> {
+    override suspend fun postInterestMessage(chatRoom: ChatRoom, user: User): Result<Boolean> {
         TODO("Not yet implemented")
     }
 

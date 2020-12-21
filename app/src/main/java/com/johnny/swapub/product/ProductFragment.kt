@@ -1,6 +1,7 @@
 package com.johnny.swapub.product
 
 import android.os.Bundle
+import android.os.UserManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -76,9 +77,11 @@ class ProductFragment : Fragment() {
         })
 
         binding.interestToTrade.setOnClickListener {
-            val chatRoom = viewModel.addChatRoom()
-                viewModel.postInterestMessage(chatRoom)
 
+            viewModel.getSenderInfo(viewModel.userId)
+
+            val chatRoom = viewModel.addChatRoom()
+            viewModel.senderInfo.value?.let { it1 -> viewModel.postInterestMessage(chatRoom, it1) }
                 Logger.d("")
         }
 

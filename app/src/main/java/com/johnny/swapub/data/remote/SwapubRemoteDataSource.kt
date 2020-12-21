@@ -347,7 +347,7 @@ object SwapubRemoteDataSource : SwapubDataSource {
         }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> =
+    override suspend fun postInterestMessage(chatRoom: ChatRoom, user: User): Result<Boolean> =
         suspendCoroutine { continuation ->
 
             val chatRooms = FirebaseFirestore.getInstance()
@@ -358,6 +358,8 @@ object SwapubRemoteDataSource : SwapubDataSource {
 
             chatRooms
                 .whereEqualTo("senderId", UserManager.userId)
+                .whereEqualTo("senderName",user.name)
+                .whereEqualTo("senderImage",user.image)
                 .whereEqualTo("productId", chatRoom.productId)
                 .get()
                 .addOnSuccessListener {

@@ -96,6 +96,7 @@ class SettingFragment : Fragment() {
                    }
                }
            }
+           findNavController().navigate(R.id.action_global_homeFragment)
        }
 
 

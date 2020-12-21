@@ -21,6 +21,12 @@ class ProductViewModel(
 
 ) : ViewModel() {
 
+    private val _senderInfo = MutableLiveData<User>()
+    val senderInfo: LiveData<User>
+        get() = _senderInfo
+
+    var userId: String = UserManager.userId
+
     private val _productDetail = MutableLiveData<Product>().apply {
         value = arguments
     }
@@ -59,8 +65,6 @@ class ProductViewModel(
 
 
 
-
-
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
 
@@ -86,47 +90,78 @@ class ProductViewModel(
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
 
-
     init {
         getUserDetail(arguments)
         getUserFavor()
     }
 
 
+fun getSenderInfo(userId: String){
+    coroutineScope.launch {
+
+        _status.value = LoadApiStatus.LOADING
+
+        val result = swapubRepository.getUserInfo(userId)
+
+        _senderInfo.value = when (result) {
+            is com.johnny.swapub.data.Result.Success -> {
+                _error.value = null
+                _status.value = LoadApiStatus.DONE
+                result.data
+            }
+            is com.johnny.swapub.data.Result.Fail -> {
+                _error.value = result.error
+                _status.value = LoadApiStatus.ERROR
+                null
+            }
+            is com.johnny.swapub.data.Result.Error -> {
+                _error.value = result.exception.toString()
+                _status.value = LoadApiStatus.ERROR
+                null
+            }
+            else -> {
+                _error.value = SwapubApplication.instance.getString(R.string.error)
+                _status.value = LoadApiStatus.ERROR
+                null
+            }
+        }
+        _refreshStatus.value = false
+    }
+}
 
     fun getUserDetail(arguments: Product) {
 
         coroutineScope.launch {
 
-            _status.value = LoadApiStatus.LOADING
+        _status.value = LoadApiStatus.LOADING
 
-            val result = swapubRepository.getUserDetail(arguments)
+        val result = swapubRepository.getUserDetail(arguments)
 
-            _userDetail.value = when (result) {
-                is com.johnny.swapub.data.Result.Success -> {
-                    _error.value = null
-                    _status.value = LoadApiStatus.DONE
-                    result.data
-                }
-                is com.johnny.swapub.data.Result.Fail -> {
-                    _error.value = result.error
-                    _status.value = LoadApiStatus.ERROR
-                    null
-                }
-                is com.johnny.swapub.data.Result.Error -> {
-                    _error.value = result.exception.toString()
-                    _status.value = LoadApiStatus.ERROR
-                    null
-                }
-                else -> {
-                    _error.value = SwapubApplication.instance.getString(R.string.error)
-                    _status.value = LoadApiStatus.ERROR
-                    null
-                }
+        _userDetail.value = when (result) {
+            is com.johnny.swapub.data.Result.Success -> {
+                _error.value = null
+                _status.value = LoadApiStatus.DONE
+                result.data
             }
-            _refreshStatus.value = false
+            is com.johnny.swapub.data.Result.Fail -> {
+                _error.value = result.error
+                _status.value = LoadApiStatus.ERROR
+                null
+            }
+            is com.johnny.swapub.data.Result.Error -> {
+                _error.value = result.exception.toString()
+                _status.value = LoadApiStatus.ERROR
+                null
+            }
+            else -> {
+                _error.value = SwapubApplication.instance.getString(R.string.error)
+                _status.value = LoadApiStatus.ERROR
+                null
+            }
         }
+        _refreshStatus.value = false
     }
+}
 
     fun getUserFavor() {
 
@@ -251,14 +286,14 @@ class ProductViewModel(
     }
 
 
-    fun postInterestMessage(chatRoom: ChatRoom)  {
+    fun postInterestMessage(chatRoom: ChatRoom, user: User)  {
 
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = swapubRepository.postInterestMessage(chatRoom)) {
+            when (val result = swapubRepository.postInterestMessage(chatRoom, user)) {
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -290,8 +325,8 @@ class ProductViewModel(
           ownerName = userDetail.value?.name,
           ownerImage = userDetail.value?.image,
           senderId = UserManager.userId,
-          senderName = "",
-          senderImage = "",
+          senderName = senderInfo.value?.name,
+          senderImage = senderInfo.value?.image,
           text = "我有興趣，想多了解！！！"
       )
   }
@@ -331,7 +366,7 @@ class ProductViewModel(
             id = UserManager.userId,
             time = Calendar.getInstance().timeInMillis,
             image = "",
-            senderImage = "",
+            senderImage ="",
             text = "我有興趣，想多了解！！！"
         )
     }
