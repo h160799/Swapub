@@ -74,8 +74,8 @@
 
                 <ImageView
                     android:id="@+id/tradable_bac"
-                    android:layout_width="80dp"
-                    android:layout_height="20dp"
+                    android:layout_width="76dp"
+                    android:layout_height="18dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
                     app:layout_constraintBottom_toBottomOf="@id/my_trading_image"
@@ -83,8 +83,8 @@
 
                 <TextView
                     android:id="@+id/tradable_not_yet"
-                    android:layout_width="78dp"
-                    android:layout_height="18dp"
+                    android:layout_width="74dp"
+                    android:layout_height="16dp"
                     android:background="@color/black"
                     android:fontFamily="@font/pt_sans"
                     android:text="尚未交易完成"
@@ -95,11 +95,11 @@
                     app:layout_constraintEnd_toEndOf="@id/tradable_bac"
                     app:layout_constraintStart_toStartOf="@id/tradable_bac"
                     app:layout_constraintTop_toTopOf="@id/tradable_bac" />
-                
+
                 <TextView
                     android:id="@+id/tradable_ok"
-                    android:layout_width="78dp"
-                    android:layout_height="18dp"
+                    android:layout_width="74dp"
+                    android:layout_height="16dp"
                     android:background="@color/black"
                     android:fontFamily="@font/pt_sans"
                     android:gravity="center"
