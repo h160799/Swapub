@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.databinding.ItemMessageHistoryGridBinding
 import com.johnny.swapub.util.Logger
+import com.johnny.swapub.util.UserManager
+import kotlinx.android.synthetic.main.item_message_history_grid.view.*
 
 class MessageHistoryAdapter(val onClickListener: OnClickListener, val viewModel: MessageHistoryViewModel)  :
     androidx.recyclerview.widget.ListAdapter<ChatRoom, MessageHistoryAdapter.MessageHistoryViewHolder>(
@@ -41,7 +43,7 @@ class MessageHistoryAdapter(val onClickListener: OnClickListener, val viewModel:
         }
 
         override fun areContentsTheSame(oldItem: ChatRoom, newItem: ChatRoom): Boolean {
-            return oldItem == newItem
+            return oldItem.id == newItem.id
         }
     }
 
@@ -56,17 +58,18 @@ class MessageHistoryAdapter(val onClickListener: OnClickListener, val viewModel:
 
     override fun onBindViewHolder(holder:MessageHistoryViewHolder, position: Int) {
         val chatRoom = getItem(position)
-
-//        if (UserManager.userId == chatRoom.senderId) {
-//            holder.itemView.user_head.visibility = View.GONE
-//            viewModel.isEmpty.value = true
-//        }else if (UserManager.userId == chatRoom.ownerId) {
-//            holder.itemView.image_chat_owner.visibility = View.GONE
-//            viewModel.isEmpty.value = true
-//            } else {
-//                holder.itemView.visibility = View.GONE
-//                holder.itemView.layoutParams.height = 0
-//        }
+        if (UserManager.userId == chatRoom.senderId) {
+            holder.itemView.text_chat_title.text = chatRoom.ownerName
+            holder.itemView.image_chat_sender.visibility = View.GONE
+            viewModel.isEmpty.value = true
+        }else if (UserManager.userId == chatRoom.ownerId) {
+            holder.itemView.text_chat_title.text = chatRoom.senderName
+            holder.itemView.image_chat_owner.visibility = View.GONE
+            viewModel.isEmpty.value = true
+            } else {
+                holder.itemView.visibility = View.GONE
+                holder.itemView.layoutParams.height = 0
+        }
 
         holder.itemView.setOnClickListener {
             onClickListener.onClick(chatRoom)

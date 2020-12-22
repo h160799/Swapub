@@ -87,7 +87,10 @@ class SettingFragment : Fragment() {
 
 
        binding.saveContent.setOnClickListener {
+           findNavController().navigate(R.id.action_global_homeFragment)
+
            viewModel.userImage.value?.let { it1 ->
+               Logger.d("dimage${viewModel.userImage.value}")
                viewModel.nameEditText.value?.let { it2 ->
                    viewModel.editTextPlace.value?.let { it3 ->
                        viewModel.updateUserInfo(UserManager.userId,
@@ -96,7 +99,6 @@ class SettingFragment : Fragment() {
                    }
                }
            }
-           findNavController().navigate(R.id.action_global_homeFragment)
        }
 
 

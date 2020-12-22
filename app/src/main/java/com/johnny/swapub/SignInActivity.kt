@@ -112,6 +112,8 @@ class SignInActivity : AppCompatActivity() {
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 UserManager.userId = acct.email.toString()
+                UserManager.userName = acct.displayName.toString()
+                UserManager.userImage = acct.photoUrl.toString()
                 var user = User().apply {
                     this.id = acct.email.toString()
                     this.image = acct.photoUrl.toString()

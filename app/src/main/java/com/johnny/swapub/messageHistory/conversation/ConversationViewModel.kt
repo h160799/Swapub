@@ -78,7 +78,7 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
         Logger.i("------------------------------------")
         Logger.i("[${this::class.simpleName}]${this}")
         Logger.i("------------------------------------")
-        message.value?.senderImage = UserManager.user.image
+        message.value?.senderImage = UserManager.userImage
         message.value?.id = UserManager.userId.toString()
         getLiveMessagesResult()
         arguments.productId?.let { getOneProduct(it) }

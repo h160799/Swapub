@@ -92,9 +92,9 @@ class ConversationFragment : Fragment() {
 
 
         if (viewModel.chatRoom.value?.senderId == UserManager.userId) {
-            binding.responseName.text = viewModel.chatRoom.value?.senderName
-        } else {
             binding.responseName.text = viewModel.chatRoom.value?.ownerName
+        } else {
+            binding.responseName.text = viewModel.chatRoom.value?.senderName
         }
 
         viewModel.image.observe(viewLifecycleOwner, androidx.lifecycle.Observer {

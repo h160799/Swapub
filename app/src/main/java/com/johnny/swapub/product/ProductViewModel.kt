@@ -8,6 +8,7 @@ import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubRepository
+import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -93,6 +94,8 @@ class ProductViewModel(
     init {
         getUserDetail(arguments)
         getUserFavor()
+        Logger.d("userimage${UserManager.userImage}")
+
     }
 
 
@@ -325,8 +328,8 @@ fun getSenderInfo(userId: String){
           ownerName = userDetail.value?.name,
           ownerImage = userDetail.value?.image,
           senderId = UserManager.userId,
-          senderName = senderInfo.value?.name,
-          senderImage = senderInfo.value?.image,
+          senderName = UserManager.userName,
+          senderImage = UserManager.userImage,
           text = "我有興趣，想多了解！！！"
       )
   }
@@ -366,7 +369,7 @@ fun getSenderInfo(userId: String){
             id = UserManager.userId,
             time = Calendar.getInstance().timeInMillis,
             image = "",
-            senderImage ="",
+            senderImage =UserManager.userImage,
             text = "我有興趣，想多了解！！！"
         )
     }

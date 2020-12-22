@@ -32,6 +32,8 @@ class SettingViewModel(
 
     var userImage = MutableLiveData<String>()
 
+    val newUserData = MutableLiveData<User>()
+
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
@@ -117,6 +119,16 @@ init {
             }
         }
     }
+
+    fun setUserData(){
+        val userData = userData
+        userData.value?.image = userImage.toString()
+        userData.value?.name = nameEditText.toString()
+        userData.value?.place = editTextPlace.toString()
+
+        val newUserData = userData.value
+    }
+
 
 
 }
