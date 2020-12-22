@@ -126,12 +126,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/swap_content"
             app:imageUrl="@{wish_news_product.productImage[0]}"
-            tools:background="@color/white_E3DED8" />
+            tools:background="@color/black" />
         <View
             android:layout_width="match_parent"
             android:layout_height="4dp"
             android:layout_marginTop="15dp"
-            android:background="@color/gray_cccccc"
+            android:background="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/myWish_image" />
 

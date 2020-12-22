@@ -53,18 +53,18 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/line">
+            app:layout_constraintTop_toTopOf="@id/line">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
                 android:background="@color/white">
 
                 <ImageView
                     android:id="@+id/men_clothes"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_height="160dp"
                     android:background="@drawable/men_clothes"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -87,7 +87,7 @@
                 <ImageView
                     android:id="@+id/women_clothes"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/women_clothes"
                     app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
                 <ImageView
                     android:id="@+id/sporty"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/sporty"
                     app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +135,7 @@
                 <ImageView
                     android:id="@+id/makeup"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/makeup"
                     app:layout_constraintStart_toStartOf="parent"
@@ -159,7 +159,7 @@
                 <ImageView
                     android:id="@+id/artwork"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/artwork"
                     app:layout_constraintStart_toStartOf="parent"
@@ -183,7 +183,7 @@
                 <ImageView
                     android:id="@+id/book_share"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/book_share"
                     app:layout_constraintStart_toStartOf="parent"
@@ -207,7 +207,7 @@
                 <ImageView
                     android:id="@+id/life_life"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/life_life"
                     app:layout_constraintStart_toStartOf="parent"
@@ -231,7 +231,7 @@
                 <ImageView
                     android:id="@+id/consumer_electronic"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/consumer_electronic"
                     app:layout_constraintStart_toStartOf="parent"
@@ -255,7 +255,7 @@
                 <ImageView
                     android:id="@+id/plant_design"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/plant_design"
                     app:layout_constraintStart_toStartOf="parent"
@@ -279,7 +279,7 @@
                 <ImageView
                     android:id="@+id/video_games"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/video_games"
                     app:layout_constraintStart_toStartOf="parent"
@@ -303,7 +303,7 @@
                 <ImageView
                     android:id="@+id/fashion"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/fashion"
                     app:layout_constraintStart_toStartOf="parent"
@@ -327,7 +327,7 @@
                 <ImageView
                     android:id="@+id/volunteer"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/volunteer"
                     app:layout_constraintStart_toStartOf="parent"
