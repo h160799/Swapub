@@ -93,14 +93,15 @@ init {
         }
     }
 
-    fun updateUserInfo(userId: String, image:String, name: String, place:String) {
+    fun updateUserInfo(user: User) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = swapubRepository.updateUserInfo(userId,image,name,place)) {
+            when (val result = swapubRepository.updateUserInfo(user)) {
                 is com.johnny.swapub.data.Result.Success -> {
+                    userData.value?.image = userImage.value.toString()
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
                 }
@@ -120,15 +121,20 @@ init {
         }
     }
 
-    fun setUserData(){
-        val userData = userData
-        userData.value?.image = userImage.toString()
-        userData.value?.name = nameEditText.toString()
-        userData.value?.place = editTextPlace.toString()
+    fun setUserData(): User{
+        return User(
+            id = UserManager.userId,
+            image = userImage.value.toString(),
+            name = nameEditText.value,
+            place = editTextPlace.value,
+            clubList = userData.value?.clubList,
+            favoriteList = userData.value?.favoriteList,
+            swappingList = userData.value?.swappingList,
+            swappedList = userData.value?.swappedList
 
-        val newUserData = userData.value
+
+        )
     }
-
 
 
 }

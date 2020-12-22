@@ -103,7 +103,7 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateUserInfo(userId: String, image: String, name: String, place: String): Result<Boolean> {
+    override suspend fun updateUserInfo(user: User): Result<Boolean> {
         TODO("Not yet implemented")
     }
 

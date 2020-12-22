@@ -781,12 +781,15 @@ object SwapubRemoteDataSource : SwapubDataSource {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun updateUserInfo(userId: String, image: String, name:String, place:String): Result<Boolean> =
+    override suspend fun updateUserInfo(user:User): Result<Boolean> =
+
         suspendCoroutine { continuation ->
+            Logger.d("ggyy${user.id}")
             FirebaseFirestore.getInstance()
                 .collection(PATH_USER)
-                .document(userId)
-                .update("image", image,"name", name, "place", place)
+                .document(user.id)
+
+                .update("image", user.image,"name", user.name, "place", user.image)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         continuation.resume(Result.Success(true))

@@ -13,13 +13,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.firestore.auth.User
 import com.google.firebase.storage.FirebaseStorage
@@ -72,9 +75,9 @@ class SettingFragment : Fragment() {
 
 
 
-        viewModel.nameEditText.observe(viewLifecycleOwner, Observer {
-            Logger.w("name${it}")
-        })
+//        viewModel.nameEditText.observe(viewLifecycleOwner, Observer {
+//            Logger.w("name${it}")
+//        })
 
         binding.spinnerPlace.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, v: View?, position: Int, id: Long) {
@@ -86,20 +89,15 @@ class SettingFragment : Fragment() {
         }
 
 
-       binding.saveContent.setOnClickListener {
-           findNavController().navigate(R.id.action_global_homeFragment)
 
-           viewModel.userImage.value?.let { it1 ->
-               Logger.d("dimage${viewModel.userImage.value}")
-               viewModel.nameEditText.value?.let { it2 ->
-                   viewModel.editTextPlace.value?.let { it3 ->
-                       viewModel.updateUserInfo(UserManager.userId,
-                           it1, it2, it3
-                       )
-                   }
-               }
-           }
-       }
+viewModel.userData.observe(viewLifecycleOwner, Observer {
+    binding.drawerName.setText(it.name)
+})
+
+        binding.saveContent.setOnClickListener {
+            viewModel.updateUserInfo(viewModel.setUserData())
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
 
 
 
