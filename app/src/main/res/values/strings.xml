@@ -23,6 +23,9 @@
     <string name="trading_status_ok">恭喜交易成功</string>
     <string name="trading_status_no">您已拒絕交易</string>
 
+    <!-- ProductFragment -->
+    <string name="send_successful">已發送訊息給對方</string>
+
 
     <string name="newest">Newest</string>
     <string name="nearest">Nearest</string>

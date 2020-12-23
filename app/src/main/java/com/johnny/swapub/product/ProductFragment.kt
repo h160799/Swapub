@@ -1,27 +1,28 @@
 package com.johnny.swapub.product
 
 import android.os.Bundle
-import android.os.UserManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.R
-import com.johnny.swapub.data.ChatRoom
-import com.johnny.swapub.data.Message
 import com.johnny.swapub.databinding.ProductFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.util.Logger
 
 class ProductFragment : Fragment() {
 
-    val viewModel by viewModels<ProductViewModel> { getVmFactory(ProductFragmentArgs.fromBundle(requireArguments()).productArg) }
+    val viewModel by viewModels<ProductViewModel> {
+        getVmFactory(
+            ProductFragmentArgs.fromBundle(
+                requireArguments()
+            ).productArg
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,12 +83,12 @@ class ProductFragment : Fragment() {
 
             val chatRoom = viewModel.addChatRoom()
             viewModel.senderInfo.value?.let { it1 -> viewModel.postInterestMessage(chatRoom, it1) }
-                Logger.d("")
+            Logger.d("")
         }
 
         viewModel.interestMessage.observe(viewLifecycleOwner, Observer {
             viewModel.getAddedChatRoom(viewModel.addChatRoom())
-            })
+        })
 
         viewModel.addChatRoom.observe(viewLifecycleOwner, Observer {
             val message = viewModel.addMessage()
@@ -97,19 +98,16 @@ class ProductFragment : Fragment() {
         })
 
         viewModel.interestMessageText.observe(viewLifecycleOwner, Observer {
-           findNavController().navigate(ProductFragmentDirections.actionGlobalMessageHistoryFragment())
+            findNavController().navigate(ProductFragmentDirections.actionGlobalMessageHistoryFragment())
+            Toast.makeText(context, R.string.send_successful, Toast.LENGTH_SHORT).show()
         })
 
-
-            binding.goBack.setOnClickListener {
-                findNavController().navigate(R.id.action_global_homeFragment)
-            }
-
-            return binding.root
-
+        binding.goBack.setOnClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
         }
-
+        return binding.root
     }
+}
 
 
 

@@ -263,12 +263,14 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:visibility="@{viewModel.image4 != null ? View.VISIBLE : View.GONE}"
                     android:background="@drawable/bg_border_stroke"
                     android:textSize="15sp"
                     android:textStyle="bold"
                     android:scaleType="centerCrop"
                     app:layout_constraintStart_toEndOf="@id/image_post_4"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/image_post_4" />
 
                 <ImageView
