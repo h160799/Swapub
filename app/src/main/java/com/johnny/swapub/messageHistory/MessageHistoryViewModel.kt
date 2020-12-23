@@ -104,5 +104,8 @@ class MessageHistoryViewModel(
         viewModelJob.cancel()
     }
 
-
+    fun onConversationlNavigated() {
+        _navigateToConversation.value = null
+    }
 }
+

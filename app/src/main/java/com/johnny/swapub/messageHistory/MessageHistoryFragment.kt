@@ -51,6 +51,7 @@ class MessageHistoryFragment : Fragment() {
                 findNavController().navigate(
                     MessageHistoryFragmentDirections.actionGlobalConversationFragment(it)
                 )
+                viewModel.onConversationlNavigated()
             }
         })
 

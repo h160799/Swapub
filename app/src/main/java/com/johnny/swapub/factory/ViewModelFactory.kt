@@ -7,6 +7,14 @@ import com.johnny.swapub.SignInViewModel
 import com.johnny.swapub.addToFavorite.AddToFavoriteViewModel
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.messageHistory.MessageHistoryViewModel
+import com.johnny.swapub.myClub.clubArtWork.ClubArtWorkViewModel
+import com.johnny.swapub.myClub.clubBookShare.ClubBookShareViewModel
+import com.johnny.swapub.myClub.clubElectronicProduct.ClubElectronicProductViewModel
+import com.johnny.swapub.myClub.clubFashion.ClubFashionViewModel
+import com.johnny.swapub.myClub.clubLiveLife.ClubLiveLifeViewModel
+import com.johnny.swapub.myClub.clubMakeup.ClubMakeupViewModel
+import com.johnny.swapub.myClub.clubMenClothes.ClubMenClothesViewModel
+import com.johnny.swapub.myClub.clubPlant.ClubPlantViewModel
 import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.myTrading.MyTradingViewModel
 import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
@@ -59,6 +67,35 @@ class ViewModelFactory constructor(
 
                 isAssignableFrom(SettingViewModel::class.java) ->
                     SettingViewModel(swapubRepository)
+
+                isAssignableFrom(ClubArtWorkViewModel::class.java) ->
+                    ClubArtWorkViewModel(swapubRepository)
+
+                isAssignableFrom(ClubBookShareViewModel::class.java) ->
+                    ClubBookShareViewModel(swapubRepository)
+
+                isAssignableFrom(ClubElectronicProductViewModel::class.java) ->
+                    ClubElectronicProductViewModel(swapubRepository)
+
+                isAssignableFrom(ClubFashionViewModel::class.java) ->
+                    ClubFashionViewModel(swapubRepository)
+
+                isAssignableFrom(ClubLiveLifeViewModel::class.java) ->
+                    ClubLiveLifeViewModel(swapubRepository)
+
+                isAssignableFrom(ClubMakeupViewModel::class.java) ->
+                    ClubMakeupViewModel(swapubRepository)
+
+                isAssignableFrom(ClubMenClothesViewModel::class.java) ->
+                    ClubMenClothesViewModel(swapubRepository)
+
+                isAssignableFrom(ClubPlantViewModel::class.java) ->
+                    ClubPlantViewModel(swapubRepository)
+
+
+
+
+
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

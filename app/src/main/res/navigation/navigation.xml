@@ -70,9 +70,7 @@
     </fragment>
     <action
         android:id="@+id/action_global_searchFragment"
-        app:destination="@id/searchFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/searchFragment" />
     <fragment
         android:id="@+id/productFragment"
         android:name="com.johnny.swapub.product.ProductFragment"
@@ -83,9 +81,7 @@
     </fragment>
     <action
         android:id="@+id/action_global_productFragment"
-        app:destination="@id/productFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/productFragment" />
     <fragment
         android:id="@+id/myClubFragment"
         android:name="com.johnny.swapub.myClub.MyClubFragment"
@@ -100,19 +96,13 @@
         android:label="MyTradingFragment" />
     <action
         android:id="@+id/action_global_myTradingFragment"
-        app:destination="@id/myTradingFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/myTradingFragment" />
     <action
         android:id="@+id/action_global_myFavoriteFragment"
-        app:destination="@id/myFavoriteFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/myFavoriteFragment" />
     <action
         android:id="@+id/action_global_myClubFragment"
-        app:destination="@id/myClubFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/myClubFragment" />
     <fragment
         android:id="@+id/conversationFragment"
         android:name="com.johnny.swapub.messageHistory.conversation.ConversationFragment"
@@ -123,9 +113,7 @@
     </fragment>
     <action
         android:id="@+id/action_global_conversationFragment"
-        app:destination="@id/conversationFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/conversationFragment" />
     <fragment
         android:id="@+id/clubFragment"
         android:name="com.johnny.swapub.club.ClubFragment"
@@ -140,23 +128,17 @@
     </fragment>
     <action
         android:id="@+id/action_global_clubFragment"
-        app:destination="@id/clubFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/clubFragment" />
     <action
         android:id="@+id/action_global_tradingStyleFragment"
-        app:destination="@id/tradingStyleFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/tradingStyleFragment" />
     <fragment
         android:id="@+id/addToFavoriteFragment"
         android:name="com.johnny.swapub.addToFavorite.AddToFavoriteFragment"
         android:label="AddToFavoriteFragment" />
     <action
         android:id="@+id/action_global_addToFavoriteFragment"
-        app:destination="@id/addToFavoriteFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/addToFavoriteFragment" />
     <fragment
         android:id="@+id/imageDialog"
         android:name="com.johnny.swapub.messageHistory.conversation.dialog.ImageDialog"
@@ -176,38 +158,19 @@
     </fragment>
     <action
         android:id="@+id/action_global_tradingSuccessorNotFragment"
-        app:destination="@id/tradingSuccessorNotFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
-    <fragment
-        android:id="@+id/tradingPostFragment"
-        android:name="com.johnny.swapub.myTrading.tradingPost.TradingPostFragment"
-        android:label="TradingPostFragment" >
-        <argument
-            android:name="product"
-            app:argType="com.johnny.swapub.data.Product" />
-    </fragment>
-    <action
-        android:id="@+id/action_global_tradingPostFragment"
-        app:destination="@id/tradingPostFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/tradingSuccessorNotFragment" />
     <fragment
         android:id="@+id/makeWishesFragment"
         android:name="com.johnny.swapub.profile.makeWishes.MakeWishesFragment"
         android:label="MakeWishesFragment" />
     <action
         android:id="@+id/action_global_makeWishesFragment"
-        app:destination="@id/makeWishesFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/makeWishesFragment" />
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.johnny.swapub.setting.SettingFragment"
         android:label="SettingFragment" />
     <action
         android:id="@+id/action_global_settingFragment"
-        app:destination="@id/settingFragment"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="true" />
+        app:destination="@id/settingFragment" />
 </navigation>
