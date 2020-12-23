@@ -60,7 +60,7 @@
         android:checkableBehavior="single">
     <item
         android:id="@+id/nav_rules"
-        android:title="使用規約" />
+        android:title="隱私權政策" />
     </group>
 
 

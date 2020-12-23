@@ -18,6 +18,7 @@ import com.johnny.swapub.myClub.clubPlant.ClubPlantViewModel
 import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.myTrading.MyTradingViewModel
 import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
+import com.johnny.swapub.privacyPolicy.PrivacyPolicyViewModel
 import com.johnny.swapub.profile.ProfileViewModel
 import com.johnny.swapub.profile.makeWishes.MakeWishesViewModel
 import com.johnny.swapub.search.SearchViewModel
@@ -92,7 +93,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(ClubPlantViewModel::class.java) ->
                     ClubPlantViewModel(swapubRepository)
 
-
+                isAssignableFrom(PrivacyPolicyViewModel::class.java) ->
+                    PrivacyPolicyViewModel(swapubRepository)
 
 
 

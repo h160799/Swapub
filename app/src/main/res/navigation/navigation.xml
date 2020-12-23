@@ -173,4 +173,8 @@
     <action
         android:id="@+id/action_global_settingFragment"
         app:destination="@id/settingFragment" />
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.johnny.swapub.privacyPolicy.PrivacyPolicyFragment"
+        android:label="PrivacyPolicyFragment" /><action android:id="@+id/action_global_privacyPolicyFragment" app:destination="@id/privacyPolicyFragment"/>
 </navigation>
