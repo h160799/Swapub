@@ -4,7 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="viewModel"
+    type="com.johnny.swapub.myClub.MyClubViewModel" />
+        <variable
+            name="clubFashion"
+            type="String" />
+        <variable
+            name="clubMenClothes"
+            type="String" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,15 +86,16 @@
                     android:background="@color/white"
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
-                    android:paddingEnd="5dp">
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubMenClothes == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+                <ImageView
                         android:id="@+id/men_clothes"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/men_clothes"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -110,9 +120,11 @@
                     android:background="@color/white"
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
-                    android:paddingEnd="5dp">
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubWomenMenClothes == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                   <ImageView
                         android:id="@+id/women_clothes"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -143,9 +155,11 @@
                     android:background="@color/white"
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
-                    android:paddingEnd="5dp">
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubSporty == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                <ImageView
                         android:id="@+id/sporty"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -175,9 +189,11 @@
                     android:background="@color/white"
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
-                    android:paddingEnd="5dp">
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubMakeup == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                <ImageView
                         android:id="@+id/makeup"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -208,7 +224,9 @@
                     android:background="@color/white"
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
-                    android:paddingEnd="5dp">
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubArtWork == true ? View.VISIBLE : View.GONE}">
+
 
                     <ImageView
                         android:id="@+id/artwork"
@@ -241,9 +259,11 @@
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubBookShare == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                <ImageView
                         android:id="@+id/book_share"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -274,9 +294,11 @@
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubLiveLife == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                <ImageView
                         android:id="@+id/life_life"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -307,9 +329,11 @@
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubElectronicProduct == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                <ImageView
                         android:id="@+id/consumer_electronic"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -340,9 +364,11 @@
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubPlant == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                <ImageView
                         android:id="@+id/plant_design"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -373,9 +399,11 @@
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubVideoGame == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                <ImageView
                         android:id="@+id/video_games"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
@@ -407,15 +435,16 @@
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubFashion == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+                <ImageView
                         android:id="@+id/fashion"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/fashion"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -440,9 +469,11 @@
                     android:paddingStart="5dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="5dp"
-                    android:background="@color/white">
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubVolunteer == true ? View.VISIBLE : View.GONE}">
 
-                    <ImageView
+
+                <ImageView
                         android:id="@+id/volunteer"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"

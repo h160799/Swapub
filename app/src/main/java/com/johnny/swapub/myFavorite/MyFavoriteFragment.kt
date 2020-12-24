@@ -30,6 +30,7 @@ class MyFavoriteFragment : Fragment() {
         })
 
         binding.recyclerMyFavoriteItem.adapter = adapter
+
         viewModel.favoriteListPage.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)

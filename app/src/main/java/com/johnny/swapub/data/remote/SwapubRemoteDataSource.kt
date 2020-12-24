@@ -24,6 +24,8 @@ object SwapubRemoteDataSource : SwapubDataSource {
     private const val PATH_USER = "user"
     private const val PATH_CHAT_ROOM = "chatRoom"
     private const val PATH_TRADING_TYPE = "tradingType"
+    private const val PATH_CLUB = "club"
+
 
     override suspend fun getUserInfo(userId: String): Result<User> =
         suspendCoroutine { continuation ->
@@ -857,6 +859,63 @@ object SwapubRemoteDataSource : SwapubDataSource {
                             }
                         }
                         continuation.resume(Result.Success(userClubList))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                    }
+                }
+        }
+
+    override suspend fun getClub(clubIds: List<String>): Result<List<Club>> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_CLUB)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val list = mutableListOf<Club>()
+                        for (document in task.result!!) {
+                            Logger.d(document.id + " => " + document.data)
+
+                            val club = document.toObject(Club::class.java)
+                            for (clubId in clubIds) {
+                                if (club.id == clubId)
+                                    list.add(club)
+                            }
+                        }
+                        continuation.resume(Result.Success(list))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                    }
+                }
+        }
+
+
+    override suspend fun getUserClubList(userL: String): Result<User> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_USER)
+                .whereEqualTo("id", userL)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        var getUser = User()
+                        for (document in task.result!!) {
+                            Logger.d(document.id + " => " + document.data)
+
+                            val user = document.toObject(User::class.java)
+                            getUser = user
+                        }
+                        continuation.resume(Result.Success(getUser))
                     } else {
                         task.exception?.let {
                             Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")

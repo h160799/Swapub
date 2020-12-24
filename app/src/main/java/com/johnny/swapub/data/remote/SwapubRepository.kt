@@ -59,4 +59,8 @@ interface SwapubRepository {
 
     suspend fun getUserClub(userL: String): Result<List<String>>
 
+    suspend fun getClub(clubIds: List<String>): Result<List<Club>>
+
+    suspend fun getUserClubList(userL: String): Result<User>
+
 }

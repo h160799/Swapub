@@ -20,6 +20,7 @@ import com.johnny.swapub.club.clubSporty.ClubSportyViewModel
 import com.johnny.swapub.club.clubVideoGame.ClubVideoGameViewModel
 import com.johnny.swapub.club.clubVolunteer.ClubVolunteerViewModel
 import com.johnny.swapub.club.clubWomenClothes.ClubWomenClothesViewModel
+import com.johnny.swapub.myClub.MyClubViewModel
 import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.myTrading.MyTradingViewModel
 import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
@@ -113,6 +114,8 @@ class ViewModelFactory constructor(
                 isAssignableFrom(ClubVideoGameViewModel::class.java) ->
                     ClubVideoGameViewModel(swapubRepository)
 
+                isAssignableFrom(MyClubViewModel::class.java) ->
+                    MyClubViewModel(swapubRepository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

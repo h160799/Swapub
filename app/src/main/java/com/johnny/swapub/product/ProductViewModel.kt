@@ -412,6 +412,4 @@ fun getSenderInfo(userId: String){
         viewModelJob.cancel()
     }
 
-
-
 }

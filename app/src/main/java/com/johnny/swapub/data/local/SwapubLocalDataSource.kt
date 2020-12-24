@@ -111,7 +111,15 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun getUserClub(userL: String): Result<List<String>> {
+    override suspend fun getUserClub(userL: String): Result<List<String>>{
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getClub(clubIds: List<String>): Result<List<Club>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getUserClubList(userL: String): Result<User> {
         TODO("Not yet implemented")
     }
 
