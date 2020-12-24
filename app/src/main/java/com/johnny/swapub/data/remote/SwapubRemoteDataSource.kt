@@ -56,7 +56,7 @@ object SwapubRemoteDataSource : SwapubDataSource {
     override suspend fun getProduct(): Result<List<Product>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
             .collection(PATH_PRODUCT)
-            .whereEqualTo("tradable",false)
+            .whereEqualTo("tradable", false)
             .get()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -281,26 +281,27 @@ object SwapubRemoteDataSource : SwapubDataSource {
     override suspend fun updateProductToFavorList(
         productId: String,
         favoriteList: MutableList<String>
-    ): Result<Boolean> = suspendCoroutine { continuation ->
-        val addProductToFavorList = FirebaseFirestore.getInstance()
-            .collection(PATH_USER)
-            .document(UserManager.userId)
-        addProductToFavorList
-            .update("favoriteList", favoriteList)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Logger.i("Swapub: $productId")
-                    continuation.resume(Result.Success(true))
-                } else {
-                    task.exception?.let {
-                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                        continuation.resume(Result.Error(it))
-                        return@addOnCompleteListener
+    ): Result<Boolean> =
+        suspendCoroutine { continuation ->
+            val addProductToFavorList = FirebaseFirestore.getInstance()
+                .collection(PATH_USER)
+                .document(UserManager.userId)
+            addProductToFavorList
+                .update("favoriteList", favoriteList)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Logger.i("Swapub: $productId")
+                        continuation.resume(Result.Success(true))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
                     }
-                    continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
                 }
-            }
-    }
+        }
 
     override suspend fun addUserToFirebase(user: User): Result<Boolean> =
         suspendCoroutine { continuation ->
@@ -358,8 +359,8 @@ object SwapubRemoteDataSource : SwapubDataSource {
 
             chatRooms
                 .whereEqualTo("senderId", UserManager.userId)
-                .whereEqualTo("senderName",user.name)
-                .whereEqualTo("senderImage",user.image)
+                .whereEqualTo("senderName", user.name)
+                .whereEqualTo("senderImage", user.image)
                 .whereEqualTo("productId", chatRoom.productId)
                 .get()
                 .addOnSuccessListener {
@@ -508,33 +509,36 @@ object SwapubRemoteDataSource : SwapubDataSource {
         }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun updateTradingSelect(chatRoomId: String, tradingSelect: Boolean): Result<Boolean> =
+    override suspend fun updateTradingSelect(
+        chatRoomId: String,
+        tradingSelect: Boolean
+    ): Result<Boolean> =
         suspendCoroutine { continuation ->
 
-        FirebaseFirestore.getInstance()
-            .collection(PATH_CHAT_ROOM)
-            .document(chatRoomId)
-            .update("tradingSelect", tradingSelect)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Logger.i("aaaaa: $tradingSelect")
-                    continuation.resume(Result.Success(true))
-                } else {
-                    task.exception?.let {
-                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-                        continuation.resume(Result.Error(it))
-                        return@addOnCompleteListener
-                    }
-                    continuation.resume(
-                        Result.Fail(
-                            SwapubApplication.instance.getString(
-                                R.string.you_know_nothing
+            FirebaseFirestore.getInstance()
+                .collection(PATH_CHAT_ROOM)
+                .document(chatRoomId)
+                .update("tradingSelect", tradingSelect)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Logger.i("aaaaa: $tradingSelect")
+                        continuation.resume(Result.Success(true))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.you_know_nothing
+                                )
                             )
                         )
-                    )
+                    }
                 }
-            }
-    }
+        }
 
     override suspend fun getTradingType(chatRoomId: String): Result<TradingType> =
         suspendCoroutine { continuation ->
@@ -759,7 +763,7 @@ object SwapubRemoteDataSource : SwapubDataSource {
             .whereEqualTo("tradable", false)
             .orderBy(field)
             .startAt(searchKey.toUpperCase())
-            .endAt(searchKey.toLowerCase()+"\uf8ff")
+            .endAt(searchKey.toLowerCase() + "\uf8ff")
             .addSnapshotListener { snapshot, exception ->
 
                 Logger.i("addSnapshotListener detect")
@@ -781,7 +785,7 @@ object SwapubRemoteDataSource : SwapubDataSource {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override suspend fun updateUserInfo(user:User): Result<Boolean> =
+    override suspend fun updateUserInfo(user: User): Result<Boolean> =
 
         suspendCoroutine { continuation ->
             Logger.d("ggyy${user.id}")
@@ -789,7 +793,7 @@ object SwapubRemoteDataSource : SwapubDataSource {
                 .collection(PATH_USER)
                 .document(user.id)
 
-                .update("image", user.image,"name", user.name, "place", user.image)
+                .update("image", user.image, "name", user.name, "place", user.image)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         continuation.resume(Result.Success(true))
@@ -809,6 +813,58 @@ object SwapubRemoteDataSource : SwapubDataSource {
                     }
                 }.addOnSuccessListener {
 
+                }
+        }
+
+
+    override suspend fun updateToClubList(clubList: MutableList<String>): Result<Boolean> =
+        suspendCoroutine { continuation ->
+            val addToClubList = FirebaseFirestore.getInstance()
+                .collection(PATH_USER)
+                .document(UserManager.userId)
+            addToClubList
+                .update("clubList", clubList)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        continuation.resume(Result.Success(true))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                    }
+                }
+        }
+
+    override suspend fun getUserClub(userL: String): Result<List<String>> =
+        suspendCoroutine { continuation ->
+            FirebaseFirestore.getInstance()
+                .collection(PATH_USER)
+                .whereEqualTo("id", userL)
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        var userClubList = listOf<String>()
+                        for (document in task.result!!) {
+                            Logger.d(document.id + " => " + document.data)
+
+                            val user = document.toObject(User::class.java)
+                            Logger.d("880088${user.name}")
+                            if (user.clubList != null) {
+                                userClubList = user.clubList
+                            }
+                        }
+                        continuation.resume(Result.Success(userClubList))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                    }
                 }
         }
 

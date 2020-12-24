@@ -177,4 +177,58 @@
         android:id="@+id/privacyPolicyFragment"
         android:name="com.johnny.swapub.privacyPolicy.PrivacyPolicyFragment"
         android:label="PrivacyPolicyFragment" /><action android:id="@+id/action_global_privacyPolicyFragment" app:destination="@id/privacyPolicyFragment"/>
+    <fragment
+        android:id="@+id/clubArtWorkFragment"
+        android:name="com.johnny.swapub.club.clubArtWork.ClubArtWorkFragment"
+        android:label="ClubArtWorkFragment" />
+    <action android:id="@+id/action_global_clubArtWorkFragment" app:destination="@id/clubArtWorkFragment" />
+    <fragment
+        android:id="@+id/clubBookShareFragment"
+        android:name="com.johnny.swapub.club.clubBookShare.ClubBookShareFragment"
+        android:label="ClubBookShareFragment" />
+    <fragment
+        android:id="@+id/clubElectronicProductFragment"
+        android:name="com.johnny.swapub.club.clubElectronicProduct.ClubElectronicProductFragment"
+        android:label="ClubElectronicProductFragment" />
+    <fragment
+        android:id="@+id/clubFashionFragment"
+        android:name="com.johnny.swapub.club.clubFashion.ClubFashionFragment"
+        android:label="ClubFashionFragment" />
+    <fragment
+        android:id="@+id/clubLiveLifeFragment"
+        android:name="com.johnny.swapub.club.clubLiveLife.ClubLiveLifeFragment"
+        android:label="ClubLiveLifeFragment" />
+    <fragment
+        android:id="@+id/clubMakeupFragment"
+        android:name="com.johnny.swapub.club.clubMakeup.ClubMakeupFragment"
+        android:label="ClubMakeupFragment" />
+    <action android:id="@+id/action_global_clubBookShareFragment" app:destination="@id/clubBookShareFragment" />
+    <action android:id="@+id/action_global_clubElectronicProductFragment" app:destination="@id/clubElectronicProductFragment" />
+    <action android:id="@+id/action_global_clubFashionFragment" app:destination="@id/clubFashionFragment" />
+    <action android:id="@+id/action_global_clubLiveLifeFragment" app:destination="@id/clubLiveLifeFragment" />
+    <action android:id="@+id/action_global_clubMakeupFragment" app:destination="@id/clubMakeupFragment" />
+    <fragment
+        android:id="@+id/clubMenClothesFragment"
+        android:name="com.johnny.swapub.club.clubMenClothes.ClubMenClothesFragment"
+        android:label="ClubMenClothesFragment" />
+    <fragment
+        android:id="@+id/clubPlantFragment"
+        android:name="com.johnny.swapub.club.clubPlant.ClubPlantFragment"
+        android:label="ClubPlantFragment" />
+    <fragment
+        android:id="@+id/clubSportyFragment"
+        android:name="com.johnny.swapub.club.clubSporty.ClubSportyFragment"
+        android:label="ClubSportyFragment" />
+    <fragment
+        android:id="@+id/clubVideoGameFragment"
+        android:name="com.johnny.swapub.club.clubVideoGame.ClubVideoGameFragment"
+        android:label="ClubVideoGameFragment" />
+    <fragment
+        android:id="@+id/clubVolunteerFragment"
+        android:name="com.johnny.swapub.club.clubVolunteer.ClubVolunteerFragment"
+        android:label="ClubVolunteerFragment" />
+    <fragment
+        android:id="@+id/clubWomenClothesFragment"
+        android:name="com.johnny.swapub.club.clubWomenClothes.ClubWomenClothesFragment"
+        android:label="ClubWomenClothesFragment" /><action android:id="@+id/action_global_clubWomenClothesFragment" app:destination="@id/clubWomenClothesFragment"/><action android:id="@+id/action_global_clubVolunteerFragment" app:destination="@id/clubVolunteerFragment"/><action android:id="@+id/action_global_clubVideoGameFragment" app:destination="@id/clubVideoGameFragment"/><action android:id="@+id/action_global_clubSportyFragment" app:destination="@id/clubSportyFragment"/><action android:id="@+id/action_global_clubPlantFragment" app:destination="@id/clubPlantFragment"/><action android:id="@+id/action_global_clubMenClothesFragment" app:destination="@id/clubMenClothesFragment"/>
 </navigation>

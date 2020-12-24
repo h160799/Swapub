@@ -55,6 +55,8 @@ interface SwapubDataSource {
 
     suspend fun updateUserInfo(user: User): Result<Boolean>
 
+    suspend fun updateToClubList(clubList: MutableList<String>): Result<Boolean>
 
+    suspend fun getUserClub(userL: String): Result<List<String>>
 
 }

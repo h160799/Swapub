@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:text="品味生活"
+            android:text="運動健身"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -57,7 +57,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_clubLiveLife"
+            android:id="@+id/add_clubSporty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"

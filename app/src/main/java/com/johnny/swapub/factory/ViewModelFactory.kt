@@ -7,14 +7,19 @@ import com.johnny.swapub.SignInViewModel
 import com.johnny.swapub.addToFavorite.AddToFavoriteViewModel
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.messageHistory.MessageHistoryViewModel
-import com.johnny.swapub.myClub.clubArtWork.ClubArtWorkViewModel
-import com.johnny.swapub.myClub.clubBookShare.ClubBookShareViewModel
-import com.johnny.swapub.myClub.clubElectronicProduct.ClubElectronicProductViewModel
-import com.johnny.swapub.myClub.clubFashion.ClubFashionViewModel
-import com.johnny.swapub.myClub.clubLiveLife.ClubLiveLifeViewModel
-import com.johnny.swapub.myClub.clubMakeup.ClubMakeupViewModel
-import com.johnny.swapub.myClub.clubMenClothes.ClubMenClothesViewModel
-import com.johnny.swapub.myClub.clubPlant.ClubPlantViewModel
+import com.johnny.swapub.club.clubArtWork.ClubArtWorkViewModel
+import com.johnny.swapub.club.clubBookShare.ClubBookShareViewModel
+import com.johnny.swapub.club.clubElectronicProduct.ClubElectronicProductViewModel
+import com.johnny.swapub.club.clubFashion.ClubFashionViewModel
+import com.johnny.swapub.club.clubLiveLife.ClubLiveLifeViewModel
+import com.johnny.swapub.club.clubMakeup.ClubMakeupViewModel
+import com.johnny.swapub.club.clubMenClothes.ClubMenClothesViewModel
+import com.johnny.swapub.club.clubPlant.ClubPlantViewModel
+import com.johnny.swapub.club.clubSporty.ClubSportyFragment
+import com.johnny.swapub.club.clubSporty.ClubSportyViewModel
+import com.johnny.swapub.club.clubVideoGame.ClubVideoGameViewModel
+import com.johnny.swapub.club.clubVolunteer.ClubVolunteerViewModel
+import com.johnny.swapub.club.clubWomenClothes.ClubWomenClothesViewModel
 import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.myTrading.MyTradingViewModel
 import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
@@ -69,6 +74,9 @@ class ViewModelFactory constructor(
                 isAssignableFrom(SettingViewModel::class.java) ->
                     SettingViewModel(swapubRepository)
 
+                isAssignableFrom(PrivacyPolicyViewModel::class.java) ->
+                    PrivacyPolicyViewModel(swapubRepository)
+
                 isAssignableFrom(ClubArtWorkViewModel::class.java) ->
                     ClubArtWorkViewModel(swapubRepository)
 
@@ -93,10 +101,17 @@ class ViewModelFactory constructor(
                 isAssignableFrom(ClubPlantViewModel::class.java) ->
                     ClubPlantViewModel(swapubRepository)
 
-                isAssignableFrom(PrivacyPolicyViewModel::class.java) ->
-                    PrivacyPolicyViewModel(swapubRepository)
+                isAssignableFrom(ClubSportyViewModel::class.java) ->
+                    ClubSportyViewModel(swapubRepository)
 
+                isAssignableFrom(ClubVolunteerViewModel::class.java) ->
+                    ClubVolunteerViewModel(swapubRepository)
 
+                isAssignableFrom(ClubWomenClothesViewModel::class.java) ->
+                    ClubWomenClothesViewModel(swapubRepository)
+
+                isAssignableFrom(ClubVideoGameViewModel::class.java) ->
+                    ClubVideoGameViewModel(swapubRepository)
 
 
                 else ->

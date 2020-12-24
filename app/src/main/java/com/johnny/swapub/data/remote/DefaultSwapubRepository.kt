@@ -110,4 +110,11 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.updateUserInfo(user)
     }
 
+    override suspend fun updateToClubList(clubList: MutableList<String>): Result<Boolean>{
+    return swapubRemoteDataSource.updateToClubList(clubList)
+    }
+
+    override suspend fun getUserClub(userL: String): Result<List<String>>{
+        return swapubRemoteDataSource.getUserClub(userL)
+    }
 }
