@@ -165,6 +165,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.productFragment -> CurrentFragmentType.PRODUCT
                 R.id.makeWishesFragment -> CurrentFragmentType.MAKEWISHES
                 R.id.settingFragment -> CurrentFragmentType.SETTING
+                R.id.privacyPolicyFragment -> CurrentFragmentType.PRIVACYPOLICY
 
 
                 else -> viewModel.currentFragmentType.value

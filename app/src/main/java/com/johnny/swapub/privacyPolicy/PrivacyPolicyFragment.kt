@@ -10,9 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.PrivacyPolicyFragmentBinding
-import com.johnny.swapub.databinding.SettingFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
-import com.johnny.swapub.setting.SettingViewModel
+import android.webkit.WebView
+import android.webkit.WebSettings
+import android.webkit.WebViewClient
 
 class PrivacyPolicyFragment : Fragment() {
 
@@ -28,12 +29,27 @@ class PrivacyPolicyFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        val webView = binding.webview
+        webView.settings.setJavaScriptEnabled(true)
+        webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                if (url != null) {
+                    view?.loadUrl(url)
+                }
+                return true
+            }
+        }
+        webView.loadUrl("http://www.synct.com.tw/privacy.html")
 
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_homeFragment)
         }
 
+
     return binding.root
+
+
+
     }
 
 

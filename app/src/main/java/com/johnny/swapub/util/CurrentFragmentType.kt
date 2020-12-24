@@ -18,6 +18,7 @@ enum class CurrentFragmentType(val value: String) {
     CLUB(""),
     PRODUCT(""),
     MAKEWISHES(""),
-    SETTING("")
+    SETTING(""),
+    PRIVACYPOLICY("")
 
 }
