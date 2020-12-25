@@ -1,5 +1,6 @@
 package com.johnny.swapub
 
+import android.animation.Animator
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -13,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat.startActivity
+import androidx.databinding.DataBindingUtil
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -22,6 +24,8 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.johnny.swapub.data.User
+import com.johnny.swapub.databinding.ActivityMainBinding
+import com.johnny.swapub.databinding.ActivitySignInBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
@@ -37,14 +41,32 @@ class SignInActivity : AppCompatActivity() {
     lateinit var mGoogleSignInOptions: GoogleSignInOptions
 
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var binding: ActivitySignInBinding
+
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
+        binding.lifecycleOwner = this
+
         configureGoogleSignIn()
         setupUI()
         firebaseAuth = FirebaseAuth.getInstance()
+
+        binding.lightBulb.addAnimatorListener( object : Animator.AnimatorListener{
+            override fun onAnimationStart(p0: Animator?) {
+            }
+            override fun onAnimationEnd(p0: Animator?) {
+                binding.lightBulb.visibility = View.GONE
+            }
+            override fun onAnimationCancel(p0: Animator?) {
+            }
+            override fun onAnimationRepeat(p0: Animator?) {
+            }
+        })
+        binding.lightBulb.playAnimation()
+
 
 
 
