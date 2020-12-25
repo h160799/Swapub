@@ -6,19 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.MyClubFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
-import com.johnny.swapub.util.Logger
 
 class MyClubFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = MyClubFragment()
-    }
 
     val viewModel by viewModels<MyClubViewModel> { getVmFactory() }
 
@@ -26,11 +20,12 @@ class MyClubFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = MyClubFragmentBinding.inflate(inflater, container,
-            false)
+        val binding = MyClubFragmentBinding.inflate(
+            inflater, container,
+            false
+        )
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
 
         viewModel.userF.observe(viewLifecycleOwner, Observer {
             it.clubList?.let { it1 -> viewModel.getClub(it1) }
@@ -70,48 +65,46 @@ class MyClubFragment : Fragment() {
             if (it.clubList?.contains("clubWomenMenClothes")!!) {
                 viewModel.getClubWomenMenClothes.value = true
             }
-
-            Logger.d("list77777${it.clubList}")
         })
 
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_profileFragment)
         }
 
-        binding.myArtwork.setOnClickListener{
+        binding.myArtwork.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubArtWorkFragment)
         }
-        binding.myBookShare.setOnClickListener{
+        binding.myBookShare.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubBookShareFragment)
         }
-        binding.myConsumerElectronic.setOnClickListener{
+        binding.myConsumerElectronic.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubElectronicProductFragment)
         }
-        binding.myFashion.setOnClickListener{
+        binding.myFashion.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubFashionFragment)
         }
-        binding.myLifeLife.setOnClickListener{
+        binding.myLifeLife.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubLiveLifeFragment)
         }
-        binding.myMakeup.setOnClickListener{
+        binding.myMakeup.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubMakeupFragment)
         }
-        binding.myMenClothes.setOnClickListener{
+        binding.myMenClothes.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubMenClothesFragment)
         }
-        binding.myPlantDesign.setOnClickListener{
+        binding.myPlantDesign.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubPlantFragment)
         }
-        binding.mySporty.setOnClickListener{
+        binding.mySporty.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubSportyFragment)
         }
-        binding.myVideoGames.setOnClickListener{
+        binding.myVideoGames.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubVideoGameFragment)
         }
-        binding.myVolunteer.setOnClickListener{
+        binding.myVolunteer.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubVolunteerFragment)
         }
-        binding.myWomenClothes.setOnClickListener{
+        binding.myWomenClothes.setOnClickListener {
             findNavController().navigate(R.id.action_global_clubWomenClothesFragment)
         }
 
