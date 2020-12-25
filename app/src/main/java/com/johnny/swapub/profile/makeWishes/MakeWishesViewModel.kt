@@ -23,6 +23,7 @@ class MakeWishesViewModel(
     val descriptionEditText = MutableLiveData<String>()
     val tradingStyleEditText = MutableLiveData<String>()
     val categoryEditText = MutableLiveData<String>()
+    val spinnerPlace = MutableLiveData<String>()
 
     var image1 = MutableLiveData<String>()
     var image2 = MutableLiveData<String>()
@@ -103,7 +104,7 @@ class MakeWishesViewModel(
             category = categoryEditText.value,
             time = Calendar.getInstance().timeInMillis,
             productImage = images,
-            location = "",
+            location = spinnerPlace.value,
             wishable = wishableSelect.value,
             tradable = false,
             interestList = InterestList(

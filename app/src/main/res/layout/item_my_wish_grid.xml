@@ -62,7 +62,7 @@
             android:textSize="12dp"
             app:layout_constraintBottom_toBottomOf="@id/user_head"
             app:layout_constraintStart_toEndOf="@id/user_head"
-            android:text="2 小時" />
+            app:timeToDisplayFormat="@{myWish_product.time}" />
 
         <TextView
             android:id="@+id/wish"

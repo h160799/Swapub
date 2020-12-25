@@ -434,23 +434,20 @@
                     app:layout_constraintStart_toStartOf="@id/editText_trading_style"
                     app:layout_constraintTop_toBottomOf="@id/line5" />
 
-                <EditText
-                    android:id="@+id/editText_trading_location"
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/pt_sans"
-                    android:gravity="start"
-                    android:hint="請輸入交易地點..."
-                    android:background="@null"
-                    android:textCursorDrawable="@null"
-                    android:inputType="text"
-                    android:outlineSpotShadowColor="@color/black"
+                <Spinner
+                    android:id="@+id/spinner_place"
+                    android:layout_width="110dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/bg_spinner"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/city_options"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/gray_cccccc"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintStart_toStartOf="@id/trading_location"
-                    app:layout_constraintTop_toBottomOf="@id/trading_location" />
+                    app:layout_constraintTop_toBottomOf="@id/trading_location"
+                    app:layout_constraintBottom_toTopOf="@id/line6"/>
 
                 <View
                     android:id="@+id/line6"
@@ -459,7 +456,7 @@
                     android:layout_marginTop="15dp"
                     android:background="@color/gray_cccccc"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/editText_trading_location" />
+                    app:layout_constraintTop_toBottomOf="@id/spinner_place" />
 
                 <TextView
                     android:id="@+id/product_tag"
@@ -472,7 +469,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/editText_trading_location"
+                    app:layout_constraintStart_toStartOf="@id/spinner_place"
                     app:layout_constraintTop_toBottomOf="@id/line6" />
 
                 <EditText

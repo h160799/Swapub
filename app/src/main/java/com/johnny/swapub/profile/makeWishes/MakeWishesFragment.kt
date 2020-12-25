@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
@@ -71,7 +72,6 @@ class MakeWishesFragment : Fragment() {
             Manifest.permission()
             initData()
 
-
             binding.imagePost1.setOnClickListener {
                 toAlbum(PHOTO_FROM_GALLERY_1)
             }
@@ -87,10 +87,16 @@ class MakeWishesFragment : Fragment() {
             binding.imagePost5.setOnClickListener {
                 toAlbum(PHOTO_FROM_GALLERY_5)
             }
-
-
             binding.editTextWishable.setOnCheckedChangeListener { _, check ->
                 viewModel.wishableSelect.value = check
+            }
+            binding.spinnerPlace.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                    viewModel.spinnerPlace.value = parent?.selectedItem.toString()
+                }
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                    TODO("Not yet implemented")
+                }
             }
 
             binding.postContent.setOnClickListener {

@@ -59,10 +59,10 @@
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
-            android:textSize="15dp"
+            android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="@id/user_head"
             app:layout_constraintStart_toEndOf="@id/user_head"
-            android:text="2 小時" />
+            app:timeToDisplayFormat="@{wish_news_product.time}" />
 
         <TextView
             android:id="@+id/wish"
