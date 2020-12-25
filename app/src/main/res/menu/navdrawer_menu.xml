@@ -16,16 +16,17 @@
         android:id="@+id/group2"
         android:checkableBehavior="single">
     <item
-        android:id="@+id/nav_setting"
-        android:title="設定" />
+        android:id="@+id/nav_club"
+        android:title="社團分類" />
+
     </group>
 
     <group
         android:id="@+id/group3"
         android:checkableBehavior="single">
     <item
-        android:id="@+id/nav_club"
-        android:title="社團分類" />
+        android:id="@+id/nav_setting"
+        android:title="編輯個人檔案" />
     </group>
 
     <group

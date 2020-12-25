@@ -37,37 +37,37 @@ class MyClubFragment : Fragment() {
             if (it.clubList?.contains("clubArtWork")!!) {
                 viewModel.getClubArtWork.value = true
             }
-            else if (it.clubList.contains("clubBookShare")) {
+            if (it.clubList?.contains("clubBookShare")!!) {
                 viewModel.getClubBookShare.value = true
             }
-            else if (it.clubList.contains("clubElectronicProduct")) {
+            if (it.clubList?.contains("clubElectronicProduct")!!) {
                 viewModel.getClubElectronicProduct.value = true
             }
-            else if (it.clubList.contains("clubFashion")) {
+            if (it.clubList?.contains("clubFashion")!!) {
                 viewModel.getClubFashion.value = true
             }
-            else if (it.clubList.contains("clubLiveLife")) {
+            if (it.clubList?.contains("clubLiveLife")!!) {
                 viewModel.getClubLiveLife.value = true
             }
-            else if (it.clubList.contains("clubMakeup")) {
+            if (it.clubList?.contains("clubMakeup")!!) {
                 viewModel.getClubMakeup.value = true
             }
-            else if (it.clubList.contains("clubMenClothes")) {
+            if (it.clubList?.contains("clubMenClothes")!!) {
                 viewModel.getClubMenClothes.value = true
             }
-            else if (it.clubList.contains("clubPlant")) {
+            if (it.clubList?.contains("clubPlant")!!) {
                 viewModel.getClubPlant.value = true
             }
-            else if (it.clubList.contains("clubSporty")) {
+            if (it.clubList?.contains("clubSporty")!!) {
                 viewModel.getClubSporty.value = true
             }
-            else if (it.clubList.contains("clubVideoGame")) {
+            if (it.clubList?.contains("clubVideoGame")!!) {
                 viewModel.getClubVideoGame.value = true
             }
-            else if (it.clubList.contains("clubVolunteer")) {
+            if (it.clubList?.contains("clubVolunteer")!!) {
                 viewModel.getClubVolunteer.value = true
             }
-            else if (it.clubList.contains("clubWomenMenClothes")) {
+            if (it.clubList?.contains("clubWomenMenClothes")!!) {
                 viewModel.getClubWomenMenClothes.value = true
             }
 
@@ -76,6 +76,43 @@ class MyClubFragment : Fragment() {
 
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_profileFragment)
+        }
+
+        binding.myArtwork.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubArtWorkFragment)
+        }
+        binding.myBookShare.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubBookShareFragment)
+        }
+        binding.myConsumerElectronic.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubElectronicProductFragment)
+        }
+        binding.myFashion.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubFashionFragment)
+        }
+        binding.myLifeLife.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubLiveLifeFragment)
+        }
+        binding.myMakeup.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubMakeupFragment)
+        }
+        binding.myMenClothes.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubMenClothesFragment)
+        }
+        binding.myPlantDesign.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubPlantFragment)
+        }
+        binding.mySporty.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubSportyFragment)
+        }
+        binding.myVideoGames.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubVideoGameFragment)
+        }
+        binding.myVolunteer.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubVolunteerFragment)
+        }
+        binding.myWomenClothes.setOnClickListener{
+            findNavController().navigate(R.id.action_global_clubWomenClothesFragment)
         }
 
         return binding.root

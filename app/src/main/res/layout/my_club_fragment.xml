@@ -90,7 +90,7 @@
                     android:visibility="@{viewModel.getClubMenClothes == true ? View.VISIBLE : View.GONE}">
 
                 <ImageView
-                        android:id="@+id/men_clothes"
+                        android:id="@+id/my_men_clothes"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/men_clothes"
@@ -109,8 +109,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/men_clothes"
-                        app:layout_constraintTop_toTopOf="@id/men_clothes" />
+                        app:layout_constraintStart_toStartOf="@id/my_men_clothes"
+                        app:layout_constraintTop_toTopOf="@id/my_men_clothes" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -125,7 +125,7 @@
 
 
                    <ImageView
-                        android:id="@+id/women_clothes"
+                        android:id="@+id/my_women_clothes"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/women_clothes"
@@ -144,8 +144,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/women_clothes"
-                        app:layout_constraintTop_toTopOf="@id/women_clothes" />
+                        app:layout_constraintStart_toStartOf="@id/my_women_clothes"
+                        app:layout_constraintTop_toTopOf="@id/my_women_clothes" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -160,7 +160,7 @@
 
 
                 <ImageView
-                        android:id="@+id/sporty"
+                        android:id="@+id/my_sporty"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/sporty"
@@ -179,8 +179,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/sporty"
-                        app:layout_constraintTop_toTopOf="@id/sporty" />
+                        app:layout_constraintStart_toStartOf="@id/my_sporty"
+                        app:layout_constraintTop_toTopOf="@id/my_sporty" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -194,7 +194,7 @@
 
 
                 <ImageView
-                        android:id="@+id/makeup"
+                        android:id="@+id/my_makeup"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/makeup"
@@ -213,8 +213,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/makeup"
-                        app:layout_constraintTop_toTopOf="@id/makeup" />
+                        app:layout_constraintStart_toStartOf="@id/my_makeup"
+                        app:layout_constraintTop_toTopOf="@id/my_makeup" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -229,7 +229,7 @@
 
 
                     <ImageView
-                        android:id="@+id/artwork"
+                        android:id="@+id/my_artwork"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/artwork"
@@ -248,8 +248,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/artwork"
-                        app:layout_constraintTop_toTopOf="@id/artwork" />
+                        app:layout_constraintStart_toStartOf="@id/my_artwork"
+                        app:layout_constraintTop_toTopOf="@id/my_artwork" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -264,7 +264,7 @@
 
 
                 <ImageView
-                        android:id="@+id/book_share"
+                        android:id="@+id/my_book_share"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/book_share"
@@ -283,8 +283,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/book_share"
-                        app:layout_constraintTop_toTopOf="@id/book_share" />
+                        app:layout_constraintStart_toStartOf="@id/my_book_share"
+                        app:layout_constraintTop_toTopOf="@id/my_book_share" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -299,7 +299,7 @@
 
 
                 <ImageView
-                        android:id="@+id/life_life"
+                        android:id="@+id/my_life_life"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/life_life"
@@ -318,8 +318,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/life_life"
-                        app:layout_constraintTop_toTopOf="@id/life_life" />
+                        app:layout_constraintStart_toStartOf="@id/my_life_life"
+                        app:layout_constraintTop_toTopOf="@id/my_life_life" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -334,7 +334,7 @@
 
 
                 <ImageView
-                        android:id="@+id/consumer_electronic"
+                        android:id="@+id/my_consumer_electronic"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/consumer_electronic"
@@ -353,8 +353,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/consumer_electronic"
-                        app:layout_constraintTop_toTopOf="@id/consumer_electronic" />
+                        app:layout_constraintStart_toStartOf="@id/my_consumer_electronic"
+                        app:layout_constraintTop_toTopOf="@id/my_consumer_electronic" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -369,7 +369,7 @@
 
 
                 <ImageView
-                        android:id="@+id/plant_design"
+                        android:id="@+id/my_plant_design"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/plant_design"
@@ -388,8 +388,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/plant_design"
-                        app:layout_constraintTop_toTopOf="@id/plant_design" />
+                        app:layout_constraintStart_toStartOf="@id/my_plant_design"
+                        app:layout_constraintTop_toTopOf="@id/my_plant_design" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -404,7 +404,7 @@
 
 
                 <ImageView
-                        android:id="@+id/video_games"
+                        android:id="@+id/my_video_games"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:layout_marginTop="5dp"
@@ -424,8 +424,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/video_games"
-                        app:layout_constraintTop_toTopOf="@id/video_games" />
+                        app:layout_constraintStart_toStartOf="@id/my_video_games"
+                        app:layout_constraintTop_toTopOf="@id/my_video_games" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -439,7 +439,7 @@
                     android:visibility="@{viewModel.getClubFashion == true ? View.VISIBLE : View.GONE}">
 
                 <ImageView
-                        android:id="@+id/fashion"
+                        android:id="@+id/my_fashion"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/fashion"
@@ -458,8 +458,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/fashion"
-                        app:layout_constraintTop_toTopOf="@id/fashion" />
+                        app:layout_constraintStart_toStartOf="@id/my_fashion"
+                        app:layout_constraintTop_toTopOf="@id/my_fashion" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -474,7 +474,7 @@
 
 
                 <ImageView
-                        android:id="@+id/volunteer"
+                        android:id="@+id/my_volunteer"
                         android:layout_width="match_parent"
                         android:layout_height="160dp"
                         android:background="@drawable/volunteer"
@@ -493,8 +493,8 @@
                         android:textColor="@color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/volunteer"
-                        app:layout_constraintTop_toTopOf="@id/volunteer" />
+                        app:layout_constraintStart_toStartOf="@id/my_volunteer"
+                        app:layout_constraintTop_toTopOf="@id/my_volunteer" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
