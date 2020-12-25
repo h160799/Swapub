@@ -9,6 +9,8 @@ interface SwapubDataSource {
 
     suspend fun getProduct(): Result<List<Product>>
 
+    suspend fun getProductWithPlace(): Result<List<Product>>
+
     suspend fun getOneProduct(productId: String): Result<Product>
 
     fun getMessage(documentId: String): MutableLiveData<List<Message>>

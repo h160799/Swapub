@@ -81,6 +81,35 @@ object SwapubRemoteDataSource : SwapubDataSource {
             }
     }
 
+    override suspend fun getProductWithPlace(): Result<List<Product>> = suspendCoroutine { continuation ->
+        Logger.d("userI${UserManager.user.place}")
+        FirebaseFirestore.getInstance()
+            .collection(PATH_PRODUCT)
+            .whereEqualTo("tradable", false)
+            .whereEqualTo("location",UserManager.user.place)
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val list = mutableListOf<Product>()
+                    for (document in task.result!!) {
+                        Logger.d(document.id + " => " + document.data)
+
+                        val product = document.toObject(Product::class.java)
+                        Logger.d("productrr$product")
+                        list.add(product)
+                    }
+                    continuation.resume(Result.Success(list))
+                } else {
+                    task.exception?.let {
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                }
+            }
+    }
+
     override suspend fun getOneProduct(productId: String): Result<Product> =
         suspendCoroutine { continuation ->
             Logger.d("bbb$productId")

@@ -63,6 +63,7 @@ class MainViewModel(private val swapubRepository: SwapubRepository) : ViewModel(
                 is Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
+                    UserManager.user = result.data
                     result.data
                 }
                 is Result.Fail -> {
@@ -85,6 +86,8 @@ class MainViewModel(private val swapubRepository: SwapubRepository) : ViewModel(
 
         }
     }
+
+
 
 
 

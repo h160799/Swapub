@@ -18,6 +18,10 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getProduct()
     }
 
+    override suspend fun getProductWithPlace(): Result<List<Product>>{
+        return swapubRemoteDataSource.getProductWithPlace()
+    }
+
     override suspend fun getOneProduct(productId: String): Result<Product> {
         return swapubRemoteDataSource.getOneProduct(productId)
     }

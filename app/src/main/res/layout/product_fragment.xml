@@ -130,7 +130,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/pt_sans"
-                    android:text="@{viewModel.userDetail.place}"
+                    android:text="@{viewModel.productDetail.location}"
                     android:textColor="@color/black"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="@id/product_country"

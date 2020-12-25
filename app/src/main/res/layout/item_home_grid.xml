@@ -15,15 +15,6 @@
         android:layout_height="wrap_content"
         android:padding="2dp">
 
-<!--        <ImageView-->
-<!--            android:layout_width="130dp"-->
-<!--            android:layout_height="130dp"-->
-<!--            android:background="@color/white_E3DED8"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
-
         <ImageView
             android:id="@+id/image_home_main"
             android:layout_width="130dp"
@@ -35,9 +26,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:src="@color/white_E3DED8" />
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

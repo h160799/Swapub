@@ -3,13 +3,15 @@ package com.johnny.swapub.home.item
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.home.HomeTypeFilter
-import com.johnny.swapub.util.Logger
+import com.johnny.swapub.util.UserManager
+import com.johnny.swapub.util.UserManager.user
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -24,6 +26,14 @@ class HomeItemViewModel(
     private val _itemInfo = MutableLiveData<List<Product>>()
     val itemInfo: LiveData<List<Product>>
         get() = _itemInfo
+
+    private val _itemPlaceInfo = MutableLiveData<List<Product>>()
+    val itemPlaceInfo: LiveData<List<Product>>
+        get() = _itemPlaceInfo
+
+    private val _userI = MutableLiveData<User>()
+    val userI: LiveData<User>
+        get() = _userI
 
 
     private val _navigateToSelecteditemInfo = MutableLiveData<Product>()
@@ -120,7 +130,9 @@ class HomeItemViewModel(
 //        addData()
 //        getData()
 //        addUserData()
+        getUserInHome()
         getProductsResult()
+        getProductsWithPlace()
     }
 
     fun getProductsResult() {
@@ -156,6 +168,75 @@ class HomeItemViewModel(
             _refreshStatus.value = false
         }
     }
+
+    fun getProductsWithPlace() {
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            val result = swapubRepository.getProductWithPlace()
+
+            _itemPlaceInfo.value = when (result) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+            _refreshStatus.value = false
+        }
+    }
+
+    fun getUserInHome() {
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            val result = swapubRepository.getUserInfo(UserManager.userId)
+
+            _userI.value = when (result) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+            _refreshStatus.value = false
+        }
+    }
+
 
 
 
