@@ -65,4 +65,6 @@ interface SwapubDataSource {
 
     suspend fun getUserClubList(userL: String): Result<User>
 
+    suspend fun getMenClothesProduct(): Result<List<Product>>
+
 }

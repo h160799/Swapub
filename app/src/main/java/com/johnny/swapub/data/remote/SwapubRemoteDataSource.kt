@@ -960,36 +960,33 @@ object SwapubRemoteDataSource : SwapubDataSource {
                 }
         }
 
-//    override suspend fun getArtWorkProduct(productIds: List<String>): Result<List<Product>> =
-//        suspendCoroutine { continuation ->
-//            FirebaseFirestore.getInstance()
-//                .collection(PATH_PRODUCT)
-//                .whereEqualTo("category","手機3Ｃ")
-//                .get()
-//                .addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        val list = mutableListOf<Product>()
-//                        for (document in task.result!!) {
-//                            Logger.d(document.id + " => " + document.data)
-//
-//                            val product = document.toObject(Product::class.java)
-//                            for (productId in productIds) {
-//                                if (product.id == productId)
-//                                    list.add(product)
-//                            }
-//                        }
-//                        continuation.resume(Result.Success(list))
-//                    } else {
-//                        task.exception?.let {
-//                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
-//                            continuation.resume(Result.Error(it))
-//                            return@addOnCompleteListener
-//                        }
-//                        continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
-//                    }
-//                }
-//        }
 
+    override suspend fun getMenClothesProduct(): Result<List<Product>> = suspendCoroutine { continuation ->
+        FirebaseFirestore.getInstance()
+            .collection(PATH_PRODUCT)
+            .whereEqualTo("category", "男裝")
+            .get()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val list = mutableListOf<Product>()
+                    for (document in task.result!!) {
+                        Logger.d(document.id + " => " + document.data)
+
+                        val product = document.toObject(Product::class.java)
+                        list.add(product)
+                        list.sortByDescending { it.time }
+                    }
+                    continuation.resume(Result.Success(list))
+                } else {
+                    task.exception?.let {
+                        Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                        continuation.resume(Result.Error(it))
+                        return@addOnCompleteListener
+                    }
+                    continuation.resume(Result.Fail(SwapubApplication.instance.getString(R.string.error)))
+                }
+            }
+    }
 
 }
 

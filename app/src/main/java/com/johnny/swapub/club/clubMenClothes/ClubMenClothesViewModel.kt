@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.LoadApiStatus
+import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.Result
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.util.UserManager
@@ -22,10 +23,18 @@ class ClubMenClothesViewModel(
     val userClubList: LiveData<List<String>>
         get() = _userClubList
 
+    private val _menClothesProduct = MutableLiveData<List<Product>>()
+    val menClothesProduct: MutableLiveData<List<Product>>
+        get() = _menClothesProduct
+
     val isClub = MutableLiveData<Boolean>()
         .apply {
             value = false
         }
+
+    private val _navigateToDetail = MutableLiveData<Product>()
+    val navigateToDetail: LiveData<Product>
+        get() = _navigateToDetail
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -53,6 +62,7 @@ class ClubMenClothesViewModel(
 
     init {
         getUserClub()
+        getMenClothesProduct()
     }
 
     fun getUserClub() {
@@ -173,7 +183,48 @@ class ClubMenClothesViewModel(
         }
     }
 
+    fun getMenClothesProduct() {
 
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            val result = swapubRepository.getMenClothesProduct()
+
+            _menClothesProduct.value = when (result) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+
+        }
+    }
+
+
+    fun navigateToDetail(product: Product) {
+        _navigateToDetail.value = product
+    }
+
+    fun onDetailNavigated() {
+        _navigateToDetail.value = null
+    }
 
 
 

@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
-import com.johnny.swapub.club.clubPlant.ClubPlantViewModel
-import com.johnny.swapub.databinding.ClubPlantFragmentBinding
 import com.johnny.swapub.databinding.ClubSportyFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.util.Logger

@@ -29,6 +29,7 @@ import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.ChatRoom
 import com.johnny.swapub.databinding.ConversationFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
+import com.johnny.swapub.product.ProductFragmentDirections
 import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -88,7 +89,7 @@ class ConversationFragment : Fragment() {
 
 
         binding.goBack.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(ProductFragmentDirections.actionGlobalMessageHistoryFragment())
         }
 
 

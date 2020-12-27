@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.ProductFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
@@ -98,12 +99,12 @@ class ProductFragment : Fragment() {
         })
 
         viewModel.interestMessageText.observe(viewLifecycleOwner, Observer {
-            findNavController().navigate(ProductFragmentDirections.actionGlobalMessageHistoryFragment())
+            findNavController().navigate(ProductFragmentDirections.actionGlobalHomeFragment())
             Toast.makeText(context, R.string.send_successful, Toast.LENGTH_SHORT).show()
         })
 
         binding.goBack.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(NavigationDirections.actionGlobalMessageHistoryFragment())
         }
         return binding.root
     }

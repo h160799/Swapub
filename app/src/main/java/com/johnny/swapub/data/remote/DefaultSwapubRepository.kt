@@ -129,4 +129,8 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
     override suspend fun getUserClubList(userL: String): Result<User>{
         return swapubRemoteDataSource.getUserClubList(userL)
     }
+
+    override suspend fun getMenClothesProduct(): Result<List<Product>>{
+        return swapubRemoteDataSource.getMenClothesProduct()
+    }
 }

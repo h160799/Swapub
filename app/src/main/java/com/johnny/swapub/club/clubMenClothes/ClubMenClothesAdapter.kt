@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.databinding.ItemClubMakeupBinding
 import com.johnny.swapub.databinding.ItemClubMenClothesBinding
+import com.johnny.swapub.myFavorite.MyFavoriteViewModel
 import com.johnny.swapub.util.Logger
 
 
 
-class ClubMenClothesAdapter (val onClickListener: OnClickListener) :
+class ClubMenClothesAdapter (val onClickListener: OnClickListener, viewModel: ClubMenClothesViewModel) :
     ListAdapter<Product, ClubMenClothesAdapter.ClubMenClothesViewHolder>(ClubMenClothesViewHolder) {
 
     class ClubMenClothesViewHolder(private var binding: ItemClubMenClothesBinding) :
