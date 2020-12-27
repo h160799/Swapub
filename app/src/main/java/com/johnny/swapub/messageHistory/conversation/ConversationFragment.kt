@@ -74,6 +74,7 @@ class ConversationFragment : Fragment() {
         viewModel.liveMessages.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let {
                 adapter.submitList(it)
+                binding.recyclerViewConversation.smoothScrollToPosition(0)
                 Logger.d("vvvvv$it")
 
             }
@@ -87,7 +88,7 @@ class ConversationFragment : Fragment() {
 
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_messageHistoryFragment)
+            findNavController().navigateUp()
         }
 
 

@@ -35,6 +35,11 @@ class MyFavoriteViewModel(
         get() = _favoriteProduct
 
 
+    private val _navigateToDetail = MutableLiveData<Product>()
+    val navigateToDetail: LiveData<Product>
+        get() = _navigateToDetail
+
+
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
 
@@ -139,6 +144,15 @@ init {
         }
 
 
+
+
+    fun navigateToDetail(product: Product) {
+        _navigateToDetail.value = product
+    }
+
+    fun onDetailNavigated() {
+        _navigateToDetail.value = null
+    }
 
 
     override fun onCleared() {

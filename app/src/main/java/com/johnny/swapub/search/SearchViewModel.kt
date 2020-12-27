@@ -127,6 +127,7 @@ class SearchViewModel(
     }
 
 
+
     fun navigateToDetail(product: Product) {
         _navigateToDetail.value = product
     }

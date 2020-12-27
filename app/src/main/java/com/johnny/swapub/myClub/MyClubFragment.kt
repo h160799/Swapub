@@ -68,7 +68,7 @@ class MyClubFragment : Fragment() {
         })
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_profileFragment)
+            findNavController().navigateUp()
         }
 
         binding.myArtwork.setOnClickListener {

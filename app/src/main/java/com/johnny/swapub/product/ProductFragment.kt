@@ -103,7 +103,7 @@ class ProductFragment : Fragment() {
         })
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
+            findNavController().navigateUp()
         }
         return binding.root
     }

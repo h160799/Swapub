@@ -40,7 +40,7 @@ class ClubLiveLifeFragment : Fragment() {
         })
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_clubFragment)
+            findNavController().navigateUp()
         }
 
 

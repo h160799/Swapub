@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
@@ -93,8 +94,26 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        viewModel.currentFragmentType.observe(this, Observer {
+            Logger.i("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            Logger.i("[${viewModel.currentFragmentType.value}]")
+            Logger.i("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        })
 
-        Logger.d("userManager${UserManager.userId}")
+        viewModel.navigateToProfileByBottomNav.observe(this, Observer {
+            it?.let {
+                binding.bottomNavView.selectedItemId = R.id.navigation_profile
+                viewModel.onProfileNavigated()
+            }
+        })
+
+        viewModel.navigateToHomeByBottomNav.observe(this, Observer {
+            it?.let {
+                binding.bottomNavView.selectedItemId = R.id.navigation_home
+                viewModel.onHomeNavigated()
+            }
+        })
+
 
 //        val window = window
 //        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)

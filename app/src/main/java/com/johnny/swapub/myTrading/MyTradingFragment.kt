@@ -50,7 +50,7 @@ class MyTradingFragment : Fragment() {
 
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_profileFragment)
+            findNavController().navigateUp()
         }
 
         return binding.root

@@ -19,13 +19,13 @@
         android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue_gray">
+        android:background="@color/black">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/yellow_F8E2A9"
+            android:background="@color/black"
             tools:context=".MainActivity">
 
             <fragment

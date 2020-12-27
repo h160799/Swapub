@@ -28,6 +28,19 @@ class MainViewModel(private val swapubRepository: SwapubRepository) : ViewModel(
         get() = _getUserData
 
 
+    // Handle navigation to profile by bottom nav directly which includes icon change
+    private val _navigateToProfileByBottomNav = MutableLiveData<User>()
+
+    val navigateToProfileByBottomNav: LiveData<User>
+        get() = _navigateToProfileByBottomNav
+
+    // Handle navigation to home by bottom nav directly which includes icon change
+    private val _navigateToHomeByBottomNav = MutableLiveData<Boolean>()
+
+    val navigateToHomeByBottomNav: LiveData<Boolean>
+        get() = _navigateToHomeByBottomNav
+
+
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
     val status: LiveData<LoadApiStatus>
@@ -88,6 +101,17 @@ class MainViewModel(private val swapubRepository: SwapubRepository) : ViewModel(
     }
 
 
+    fun onProfileNavigated() {
+        _navigateToProfileByBottomNav.value = null
+    }
+
+    fun navigateToHomeByBottomNav() {
+        _navigateToHomeByBottomNav.value = true
+    }
+
+    fun onHomeNavigated() {
+        _navigateToHomeByBottomNav.value = null
+    }
 
 
 

@@ -39,7 +39,7 @@ class TradingPostFragment : Fragment() {
 
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_myTradingFragment)
+            findNavController().popBackStack()
         }
 
         return binding.root
