@@ -44,13 +44,14 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Johnny Lin" />
 
-                <com.github.florent37.shapeofview.shapes.CircleView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/head"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
                     android:elevation="4dp"
+                    app:cardCornerRadius="50dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name">
 
@@ -61,7 +62,7 @@
                         android:layout_height="match_parent"
                         tools:src="@drawable/me" />
 
-                </com.github.florent37.shapeofview.shapes.CircleView>
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/make_a_wish"

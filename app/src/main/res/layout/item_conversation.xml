@@ -27,7 +27,7 @@
             <ImageView
                 android:id="@+id/image_chat_sender"
                 android:layout_width="match_parent"
-                android:layout_height="41dp"
+                android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 app:imageUrl="@{message.senderImage}"
                 tools:src="@tools:sample/backgrounds/scenic" />

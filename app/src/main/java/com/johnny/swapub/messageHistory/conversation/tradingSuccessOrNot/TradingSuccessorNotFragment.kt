@@ -35,7 +35,6 @@ class TradingSuccessorNotFragment : Fragment() {
         binding.tradingStyleOk.setOnClickListener {
             viewModel.chatRoom.productId?.let { it1 -> viewModel.updateProductTradable(it1,true) }
             binding.dealSuccessfulConstraint.visibility= View.VISIBLE
-            binding.dealSuccessful.visibility = View.VISIBLE
 
         }
 
