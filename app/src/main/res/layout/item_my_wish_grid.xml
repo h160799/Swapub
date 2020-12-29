@@ -71,6 +71,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/pt_sans"
             android:text="[求]"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@id/user_head"
@@ -97,6 +98,7 @@
             android:fontFamily="@font/pt_sans"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/wish_content"
             app:layout_constraintTop_toBottomOf="@id/wish_content"
             android:text="[交換代價]" />

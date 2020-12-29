@@ -1,6 +1,7 @@
 package com.johnny.swapub.messageHistory.conversation.tradingStyle
 
 import android.Manifest
+import android.animation.Animator
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -26,6 +27,7 @@ import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.databinding.TradingStyleFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.messageHistory.conversation.ConversationFragment
+import com.johnny.swapub.messageHistory.conversation.tradingSuccessOrNot.TradingSuccessorNotFragmentDirections
 import com.johnny.swapub.util.Logger
 import kotlinx.android.synthetic.main.item_conversation.*
 import kotlinx.android.synthetic.main.trading_style_fragment.*
@@ -99,19 +101,24 @@ class TradingStyleFragment : Fragment() {
                 )
             }
             viewModel.chatRoom.id?.let { chatRoom -> viewModel.updateTradingSelect(chatRoom, true) }
-            Toast.makeText(context, R.string.trading_select, Toast.LENGTH_SHORT).show()
             viewModel.chatRoom.tradingSelect = true
-            findNavController().navigate(
-                TradingStyleFragmentDirections.actionGlobalConversationFragment(
-                    viewModel.chatRoom
-                )
-            )
 
-
-            Logger.d("7777${viewModel.chatRoom.tradingSelect}")
+            binding.selectSuccessfulConstraint.visibility= View.VISIBLE
 
         }
 
+        binding.animationSelectSuccessful.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(p0: Animator?) {
+            }
+            override fun onAnimationEnd(p0: Animator?) {
+                findNavController().navigate(TradingStyleFragmentDirections.actionGlobalConversationFragment(viewModel.chatRoom))
+            }
+            override fun onAnimationCancel(p0: Animator?) {
+            }
+            override fun onAnimationRepeat(p0: Animator?) {
+            }
+        })
+        binding.animationSelectSuccessful.playAnimation()
 
 
         binding.goBack.setOnClickListener {

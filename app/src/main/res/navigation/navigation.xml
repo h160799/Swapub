@@ -231,4 +231,8 @@
         android:id="@+id/clubWomenClothesFragment"
         android:name="com.johnny.swapub.club.clubWomenClothes.ClubWomenClothesFragment"
         android:label="ClubWomenClothesFragment" /><action android:id="@+id/action_global_clubWomenClothesFragment" app:destination="@id/clubWomenClothesFragment"/><action android:id="@+id/action_global_clubVolunteerFragment" app:destination="@id/clubVolunteerFragment"/><action android:id="@+id/action_global_clubVideoGameFragment" app:destination="@id/clubVideoGameFragment"/><action android:id="@+id/action_global_clubSportyFragment" app:destination="@id/clubSportyFragment"/><action android:id="@+id/action_global_clubPlantFragment" app:destination="@id/clubPlantFragment"/><action android:id="@+id/action_global_clubMenClothesFragment" app:destination="@id/clubMenClothesFragment"/>
+    <dialog
+        android:id="@+id/dealDialog"
+        android:name="com.johnny.swapub.DealDialog"
+        android:label="DealDialog" /><action android:id="@+id/action_global_dealDialog" app:destination="@id/dealDialog"/>
 </navigation>

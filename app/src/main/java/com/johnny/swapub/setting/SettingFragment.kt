@@ -75,10 +75,6 @@ class SettingFragment : Fragment() {
 
 
 
-//        viewModel.nameEditText.observe(viewLifecycleOwner, Observer {
-//            Logger.w("name${it}")
-//        })
-
         binding.spinnerPlace.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, v: View?, position: Int, id: Long) {
                 viewModel.editTextPlace.value = parent?.selectedItem.toString()
@@ -98,8 +94,6 @@ viewModel.userData.observe(viewLifecycleOwner, Observer {
             viewModel.updateUserInfo(viewModel.setUserData())
             findNavController().navigate(R.id.action_global_homeFragment)
         }
-
-
 
         binding.goBack.setOnClickListener {
             findNavController().navigateUp()

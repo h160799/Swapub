@@ -1,6 +1,7 @@
 package com.johnny.swapub.profile.makeWishes
 
 import android.Manifest
+import android.animation.Animator
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -29,6 +30,7 @@ import com.johnny.swapub.databinding.MakeWishesFragmentBinding
 import com.johnny.swapub.databinding.TradingPostFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.messageHistory.conversation.ConversationFragment
+import com.johnny.swapub.messageHistory.conversation.tradingSuccessOrNot.TradingSuccessorNotFragmentDirections
 import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
 import com.johnny.swapub.util.Logger
 import kotlinx.android.synthetic.main.item_conversation.*
@@ -101,8 +103,23 @@ class MakeWishesFragment : Fragment() {
 
             binding.postContent.setOnClickListener {
                 viewModel.postTradingInfo(viewModel.addProduct())
-                findNavController().navigate(R.id.action_global_profileFragment)
+                binding.updateSuccessfulConstraint.visibility= View.VISIBLE
             }
+
+            binding.animationUpdateSuccessful.addAnimatorListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(p0: Animator?) {
+                }
+                override fun onAnimationEnd(p0: Animator?) {
+                    findNavController().navigate(R.id.action_global_profileFragment)
+                }
+                override fun onAnimationCancel(p0: Animator?) {
+                }
+                override fun onAnimationRepeat(p0: Animator?) {
+                }
+            })
+            binding.animationUpdateSuccessful.playAnimation()
+
+
 
             binding.goBack.setOnClickListener {
                 findNavController().navigate(R.id.action_global_profileFragment)

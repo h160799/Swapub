@@ -15,107 +15,98 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_my_trading"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/black">
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/my_trading_bac"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginBottom="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/my_trading_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            app:imageUrl="@{myTrading_property.productImage[0]}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/black" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/black">
+        <TextView
+            android:id="@+id/my_trading_title"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/pt_sans"
+            android:text="@{myTrading_property.productTitle}"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/my_trading_image"
+            app:layout_constraintStart_toEndOf="@id/my_trading_image"
+            app:layout_constraintTop_toBottomOf="@id/post_time"
+            tools:text="MacBook Pro" />
 
-                <ImageView
-                    android:id="@+id/my_trading_image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    app:imageUrl="@{myTrading_property.productImage[0]}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:background="@color/black" />
+        <TextView
+            android:id="@+id/post_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/pt_sans"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/my_trading_image"
+            app:timeToDisplayFormat="@{myTrading_property.time}"
+            tools:text="2020-11-24 18:35" />
 
-                <TextView
-                    android:id="@+id/my_trading_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/pt_sans"
-                    android:text="@{myTrading_property.productTitle}"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="@id/my_trading_image"
-                    app:layout_constraintStart_toEndOf="@id/my_trading_image"
-                    app:layout_constraintTop_toTopOf="@id/my_trading_image"
-                    tools:text="MacBook Pro" />
+        <ImageView
+            android:id="@+id/tradable_bac"
+            android:layout_width="76dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/post_time"
+            app:layout_constraintTop_toBottomOf="@id/my_trading_title" />
 
-                <TextView
-                    android:id="@+id/post_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:fontFamily="@font/pt_sans"
-                    android:textColor="@color/white"
-                    android:textSize="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/my_trading_image"
-                    app:timeToDisplayFormat="@{myTrading_property.time}"
-                    tools:text="2020-11-24 18:35" />
+        <TextView
+            android:id="@+id/tradable_not_yet"
+            android:layout_width="74dp"
+            android:layout_height="16dp"
+            android:background="@color/black"
+            android:fontFamily="@font/pt_sans"
+            android:text="尚未交易完成"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:visibility="@{myTrading_property.tradable == false  ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/tradable_bac"
+            app:layout_constraintEnd_toEndOf="@id/tradable_bac"
+            app:layout_constraintStart_toStartOf="@id/tradable_bac"
+            app:layout_constraintTop_toTopOf="@id/tradable_bac" />
 
-                <ImageView
-                    android:id="@+id/tradable_bac"
-                    android:layout_width="76dp"
-                    android:layout_height="18dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@id/my_trading_image"
-                    app:layout_constraintEnd_toEndOf="@id/post_time" />
+        <TextView
+            android:id="@+id/tradable_ok"
+            android:layout_width="74dp"
+            android:layout_height="16dp"
+            android:background="@color/black"
+            android:fontFamily="@font/pt_sans"
+            android:gravity="center"
+            android:text="交易完成"
+            android:textColor="@color/red_FF0D0D"
+            android:textSize="12dp"
+            android:visibility="@{myTrading_property.tradable == true  ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/tradable_bac"
+            app:layout_constraintEnd_toEndOf="@id/tradable_bac"
+            app:layout_constraintStart_toStartOf="@id/tradable_bac"
+            app:layout_constraintTop_toTopOf="@id/tradable_bac" />
 
-                <TextView
-                    android:id="@+id/tradable_not_yet"
-                    android:layout_width="74dp"
-                    android:layout_height="16dp"
-                    android:background="@color/black"
-                    android:fontFamily="@font/pt_sans"
-                    android:text="尚未交易完成"
-                    android:textColor="@color/white"
-                    android:textSize="12dp"
-                    android:visibility="@{myTrading_property.tradable == false  ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintBottom_toBottomOf="@id/tradable_bac"
-                    app:layout_constraintEnd_toEndOf="@id/tradable_bac"
-                    app:layout_constraintStart_toStartOf="@id/tradable_bac"
-                    app:layout_constraintTop_toTopOf="@id/tradable_bac" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_0F0F0F"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
-                    android:id="@+id/tradable_ok"
-                    android:layout_width="74dp"
-                    android:layout_height="16dp"
-                    android:background="@color/black"
-                    android:fontFamily="@font/pt_sans"
-                    android:gravity="center"
-                    android:text="交易完成"
-                    android:textColor="@color/red_FF0D0D"
-                    android:textSize="12dp"
-                    android:visibility="@{myTrading_property.tradable == true  ? View.VISIBLE : View.GONE}"
-                    app:layout_constraintBottom_toBottomOf="@id/tradable_bac"
-                    app:layout_constraintEnd_toEndOf="@id/tradable_bac"
-                    app:layout_constraintStart_toStartOf="@id/tradable_bac"
-                    app:layout_constraintTop_toTopOf="@id/tradable_bac" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
