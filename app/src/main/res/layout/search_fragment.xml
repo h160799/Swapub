@@ -65,6 +65,7 @@
             android:fontFamily="@font/pt_sans"
             android:hint="開始搜尋"
             android:inputType="text"
+            android:textCursorDrawable="@null"
             android:text="@={viewModel.editSearch}"
             android:shadowColor="@color/black"
             android:textColor="@color/black"
@@ -98,66 +99,53 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/search_editText" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:fontFamily="@font/pt_sans"-->
-<!--            android:text="熱門搜尋"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="25sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/pt_sans"
+            android:text="熱門搜尋"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="55dp"-->
-<!--            android:fontFamily="@font/pt_sans"-->
-<!--            android:text="PS5"-->
-<!--            android:textColor="@color/gray_999999"-->
-<!--            android:textSize="15sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:fontFamily="@font/pt_sans"
+            android:text="PS5"
+            android:textColor="@color/gray_999999"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="75dp"-->
-<!--            android:fontFamily="@font/pt_sans"-->
-<!--            android:text="Dyson V11"-->
-<!--            android:textColor="@color/gray_999999"-->
-<!--            android:textSize="15sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:fontFamily="@font/pt_sans"
+            android:text="Dyson V11"
+            android:textColor="@color/gray_999999"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="100dp"-->
-<!--            android:fontFamily="@font/pt_sans"-->
-<!--            android:text="Switch"-->
-<!--            android:textColor="@color/gray_999999"-->
-<!--            android:textSize="15sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="125dp"-->
-<!--            android:fontFamily="@font/pt_sans"-->
-<!--            android:text="Iphone 11"-->
-<!--            android:textColor="@color/gray_999999"-->
-<!--            android:textSize="15sp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/line" />-->
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/pt_sans"
+            android:text="Switch"
+            android:textColor="@color/gray_999999"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -170,18 +158,20 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/white">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:overScrollMode="never"
                     android:padding="2dp"
+                    android:background="@color/white"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:spanCount="3"
                     tools:itemCount="21"
                     tools:listitem="@layout/item_search_grid" />

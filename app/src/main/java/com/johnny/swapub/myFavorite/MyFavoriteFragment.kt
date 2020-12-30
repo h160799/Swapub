@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.MyFavoriteFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
@@ -25,11 +26,15 @@ class MyFavoriteFragment : Fragment() {
     ): View? {
         val binding = MyFavoriteFragmentBinding.inflate(inflater, container,
             false)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
         val adapter = MyFavoriteAdapter(MyFavoriteAdapter.OnClickListener {
-        })
+            viewModel.navigateToDetail(it)
+        }, viewModel)
 
         binding.recyclerMyFavoriteItem.adapter = adapter
+
         viewModel.favoriteListPage.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
@@ -49,8 +54,17 @@ class MyFavoriteFragment : Fragment() {
             Logger.w("ppp$it")
         })
 
+        viewModel.navigateToDetail.observe(this.viewLifecycleOwner, Observer {
+            it?.let {
+                // Must find the NavController from the Fragment
+                findNavController().navigate(NavigationDirections.actionGlobalProductFragment(it))
+                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+                viewModel.onDetailNavigated()
+            }
+        })
+
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_profileFragment)
+            findNavController().navigateUp()
         }
 
         return binding.root

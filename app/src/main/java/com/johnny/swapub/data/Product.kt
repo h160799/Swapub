@@ -13,7 +13,7 @@ data class Product(
     val category: String? = "",
     val time: Long = -1,
     val productImage: List<String>? = listOf(),//image url
-    val location: Location? = null,
+    val location: String? = "",
     val tradable: Boolean? = false,
     val wishable: Boolean? = false,
     val interestList: InterestList? = null

@@ -22,6 +22,23 @@ object UserManager {
             sharedPreferences.edit().putString("myToken", token).apply()
         }
 
+    var userName: String
+        get() {              //取得token
+            return sharedPreferences.getString("nameToken", null)!!
+        }
+        set(token) {
+            sharedPreferences.edit().putString("nameToken", token).apply()
+        }
+    var userImage: String
+        get() {
+            return sharedPreferences.getString("imageToken", null)!!
+        }
+        set(token) {
+            sharedPreferences.edit().putString("imageToken", token).apply()
+        }
+
+
+
     fun hasToken(): Boolean {
         return userId != null   //不為空值
     }

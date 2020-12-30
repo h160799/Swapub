@@ -15,6 +15,10 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
+    override suspend fun getProductWithPlace(): Result<List<Product>> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun getOneProduct(productId: String): Result<Product> {
         TODO("Not yet implemented")
     }
@@ -55,7 +59,7 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
-    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> {
+    override suspend fun postInterestMessage(chatRoom: ChatRoom, user: User): Result<Boolean> {
         TODO("Not yet implemented")
     }
 
@@ -100,6 +104,34 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
     }
 
     override fun getLiveSearch(field: String, searchKey: String): MutableLiveData<List<Product>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateUserInfo(user: User): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun updateToClubList(clubList: MutableList<String>): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getUserClub(userL: String): Result<List<String>>{
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getClub(clubIds: List<String>): Result<List<Club>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getUserClubList(userL: String): Result<User> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun deleteProduct(productId: String): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getMenClothesProduct(): Result<List<Product>> {
         TODO("Not yet implemented")
     }
 

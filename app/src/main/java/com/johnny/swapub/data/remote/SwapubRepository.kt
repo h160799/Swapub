@@ -9,6 +9,8 @@ interface SwapubRepository {
 
     suspend fun getProduct(): Result<List<Product>>
 
+    suspend fun getProductWithPlace(): Result<List<Product>>
+
     suspend fun getOneProduct(productId: String): Result<Product>
 
     fun getMessage(documentId: String): MutableLiveData<List<Message>>
@@ -29,7 +31,7 @@ interface SwapubRepository {
 
     suspend fun postMessage(message: Message, document: String): Result<Boolean>
 
-    suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean>
+    suspend fun postInterestMessage(chatRoom: ChatRoom,user: User): Result<Boolean>
 
     suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom>
 
@@ -52,5 +54,19 @@ interface SwapubRepository {
     suspend fun getAllWishContent(): Result<List<Product>>
 
     fun getLiveSearch(field: String, searchKey: String): MutableLiveData<List<Product>>
+
+    suspend fun updateUserInfo(user: User): Result<Boolean>
+
+    suspend fun updateToClubList(clubList: MutableList<String>): Result<Boolean>
+
+    suspend fun getUserClub(userL: String): Result<List<String>>
+
+    suspend fun getClub(clubIds: List<String>): Result<List<Club>>
+
+    suspend fun getUserClubList(userL: String): Result<User>
+
+    suspend fun deleteProduct(productId: String): Result<Boolean>
+
+    suspend fun getMenClothesProduct(): Result<List<Product>>
 
 }

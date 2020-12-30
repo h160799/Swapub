@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+<variable
+    name="viewModel"
+    type="com.johnny.swapub.myClub.MyClubViewModel" />
+        <variable
+            name="clubFashion"
+            type="String" />
+        <variable
+            name="clubMenClothes"
+            type="String" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/yellow_FCF0D2"
+        android:background="@color/black"
         tools:context="com.johnny.swapub.myClub.MyClubFragment">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="@color/yellow_F8E2A9"
+            android:background="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/line"
@@ -40,265 +49,456 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/pt_sans"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/line"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/go_back"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:src="@drawable/left_arrow"
             android:layout_marginStart="20dp"
+            android:src="@drawable/left_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/title"
-            app:layout_constraintBottom_toBottomOf="@id/title"/>
+            app:layout_constraintTop_toTopOf="@id/title" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:paddingBottom="5dp"
             android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/line">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/line">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c1"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="@color/orange_ff7902"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c2"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="@color/colorPrimary"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c1"
-                app:layout_constraintTop_toTopOf="@id/c1"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c3"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#FCFC2A"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="40dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/c2"
-                app:layout_constraintTop_toTopOf="@id/c2"/>
-
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c4"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#C31818"
-                android:layout_marginTop="40dp"
-                app:layout_constraintStart_toStartOf="@id/c1"
-                app:layout_constraintTop_toBottomOf="@id/c1"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c5"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#1825C3"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c4"
-                app:layout_constraintTop_toTopOf="@id/c4"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c6"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#0A9F16"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c5"
-                app:layout_constraintTop_toTopOf="@id/c5"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c7"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#A78E09"
-                android:layout_marginTop="40dp"
-                app:layout_constraintStart_toStartOf="@id/c4"
-                app:layout_constraintTop_toBottomOf="@id/c4"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c8"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#095EA7"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c7"
-                app:layout_constraintTop_toTopOf="@id/c7"/>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/c9"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="0px"
-                app:cardBackgroundColor="#BA1B5F"
-                android:layout_marginStart="20dp"
-                app:layout_constraintStart_toEndOf="@id/c8"
-                app:layout_constraintTop_toTopOf="@id/c8"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="時尚愛美團"
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c1"
-                app:layout_constraintEnd_toEndOf="@id/c1"
-                app:layout_constraintTop_toBottomOf="@id/c1"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="婆婆媽媽團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c2"
-                app:layout_constraintEnd_toEndOf="@id/c2"
-                app:layout_constraintTop_toBottomOf="@id/c2"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="生活用品團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c3"
-                app:layout_constraintEnd_toEndOf="@id/c3"
-                app:layout_constraintTop_toBottomOf="@id/c3"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="美妝交流團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c4"
-                app:layout_constraintEnd_toEndOf="@id/c4"
-                app:layout_constraintTop_toBottomOf="@id/c4"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="書籍分享團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c5"
-                app:layout_constraintEnd_toEndOf="@id/c5"
-                app:layout_constraintTop_toBottomOf="@id/c5"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="經典男裝團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c6"
-                app:layout_constraintEnd_toEndOf="@id/c6"
-                app:layout_constraintTop_toBottomOf="@id/c6"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="健身運動團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c7"
-                app:layout_constraintEnd_toEndOf="@id/c7"
-                app:layout_constraintTop_toBottomOf="@id/c7"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="志工招募館"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c8"
-                app:layout_constraintEnd_toEndOf="@id/c8"
-                app:layout_constraintTop_toBottomOf="@id/c8"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="電玩手遊團"
-                android:textSize="15sp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/c9"
-                app:layout_constraintEnd_toEndOf="@id/c9"
-                app:layout_constraintTop_toBottomOf="@id/c9"/>
-
-
-
-
-
-
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/layout_swipe_refresh_club_item"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintVertical_bias="0.0">
+                app:layout_constraintTop_toBottomOf="@id/line">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubMenClothes == true ? View.VISIBLE : View.GONE}">
+
+                <ImageView
+                        android:id="@+id/my_men_clothes"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/men_clothes"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="男裝周邊"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_men_clothes"
+                        app:layout_constraintTop_toTopOf="@id/my_men_clothes" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubWomenMenClothes == true ? View.VISIBLE : View.GONE}">
 
 
+                   <ImageView
+                        android:id="@+id/my_women_clothes"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/women_clothes"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="女裝周邊"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_women_clothes"
+                        app:layout_constraintTop_toTopOf="@id/my_women_clothes" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubSporty == true ? View.VISIBLE : View.GONE}">
 
 
+                <ImageView
+                        android:id="@+id/my_sporty"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/sporty"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="運動健身"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_sporty"
+                        app:layout_constraintTop_toTopOf="@id/my_sporty" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubMakeup == true ? View.VISIBLE : View.GONE}">
 
 
+                <ImageView
+                        android:id="@+id/my_makeup"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/makeup"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="美妝保養"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_makeup"
+                        app:layout_constraintTop_toTopOf="@id/my_makeup" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:visibility="@{viewModel.getClubArtWork == true ? View.VISIBLE : View.GONE}">
 
 
-                <!--                <androidx.recyclerview.widget.RecyclerView-->
-                <!--                    android:id="@+id/recycler_club_item"-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="match_parent"-->
-                <!--                    android:paddingLeft="30dp"-->
-                <!--                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-                <!--                    app:spanCount="3"-->
-                <!--                    tools:itemCount="21"-->
-                <!--                    tools:listitem="@layout/item_club_grid">-->
+                    <ImageView
+                        android:id="@+id/my_artwork"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/artwork"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="藝術設計"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_artwork"
+                        app:layout_constraintTop_toTopOf="@id/my_artwork" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubBookShare == true ? View.VISIBLE : View.GONE}">
 
 
+                <ImageView
+                        android:id="@+id/my_book_share"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/book_share"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <!--                </androidx.recyclerview.widget.RecyclerView>-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="書籍分享"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_book_share"
+                        app:layout_constraintTop_toTopOf="@id/my_book_share" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubLiveLife == true ? View.VISIBLE : View.GONE}">
 
 
+                <ImageView
+                        android:id="@+id/my_life_life"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/life_life"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="品味生活"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_life_life"
+                        app:layout_constraintTop_toTopOf="@id/my_life_life" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubElectronicProduct == true ? View.VISIBLE : View.GONE}">
 
 
+                <ImageView
+                        android:id="@+id/my_consumer_electronic"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/consumer_electronic"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="電子產品"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_consumer_electronic"
+                        app:layout_constraintTop_toTopOf="@id/my_consumer_electronic" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubPlant == true ? View.VISIBLE : View.GONE}">
 
 
+                <ImageView
+                        android:id="@+id/my_plant_design"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/plant_design"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="植物盆景"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_plant_design"
+                        app:layout_constraintTop_toTopOf="@id/my_plant_design" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubVideoGame == true ? View.VISIBLE : View.GONE}">
+
+
+                <ImageView
+                        android:id="@+id/my_video_games"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/video_games"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="遊戲電玩"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_video_games"
+                        app:layout_constraintTop_toTopOf="@id/my_video_games" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubFashion == true ? View.VISIBLE : View.GONE}">
+
+                <ImageView
+                        android:id="@+id/my_fashion"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/fashion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="精品時尚"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_fashion"
+                        app:layout_constraintTop_toTopOf="@id/my_fashion" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="5dp"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.getClubVolunteer == true ? View.VISIBLE : View.GONE}">
+
+
+                <ImageView
+                        android:id="@+id/my_volunteer"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:background="@drawable/volunteer"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.7"
+                        android:fontFamily="@font/pt_sans"
+                        android:gravity="center"
+                        android:text="志工招募"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/my_volunteer"
+                        app:layout_constraintTop_toTopOf="@id/my_volunteer" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

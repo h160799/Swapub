@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-<group>
+   <group
+       android:id="@+id/group1"
+       android:checkableBehavior="single">
     <item
         android:id="@+id/nav_notify"
         android:title="官方通知" />
-    <item
-        android:id="@+id/nav_setting"
-        android:title="設定" />
+   </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
     <item
         android:id="@+id/nav_club"
         android:title="社團分類" />
+
+    </group>
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_setting"
+        android:title="編輯個人檔案" />
+    </group>
+
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single">
     <item
         android:id="@+id/nav_1"
         android:enabled="false"
@@ -33,19 +52,18 @@
         android:id="@+id/nav_5"
         android:enabled="false"
         android:title="" />
-    <item
-        android:id="@+id/nav_6"
-        android:enabled="false"
-        android:title="" />
-    <item
-        android:id="@+id/nav_7"
-        android:enabled="false"
-        android:title="" />
 
+    </group>
+
+
+    <group
+        android:id="@+id/group5"
+        android:checkableBehavior="single">
     <item
         android:id="@+id/nav_rules"
-        android:title="使用規約" />
+        android:title="隱私權政策" />
+    </group>
 
-</group>
+
 
 </menu>

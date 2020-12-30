@@ -10,48 +10,151 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#8FCFF0"
+        android:background="@color/black"
         tools:context=".SignInActivity">
 
-        <TextView
-            android:id="@+id/title"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/sign_in_lottie"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/black_outline_laptop_girl"
+            app:lottie_speed="1.5" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mine For Yours"
-            android:textSize="45sp"
-            android:textStyle="bold"
-            android:textColor="#6B78A2"
-            android:fontFamily="@font/pt_sans"
-            android:layout_marginTop="75dp"
+            android:layout_marginBottom="80dp"
+            app:layout_constraintBottom_toBottomOf="@id/sign_in_lottie"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/welcome"
+            app:lottie_speed="0.5" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/google_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_in_lottie">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_round"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="248dp"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_round_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/google_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="SIGN IN WITH GOOGLE"
+            android:textStyle="bold"
+            android:fontFamily="@font/adamina"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:src="@drawable/animation_sign_in"
-            android:layout_marginTop="30dp"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/googleg_standard_color_18"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/google_text"/>
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/google_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="#6B78A2"
-            android:layout_marginBottom="200dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/light_bulb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="false"
+            app:lottie_rawRes="@raw/light_bulb"
+            app:lottie_speed="3.8"
+            tools:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+
+
+
+
+
+
+
+
+    <!--        <com.airbnb.lottie.LottieAnimationView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            app:lottie_rawRes="@raw/white_wave"-->
+    <!--            app:lottie_loop="true"-->
+    <!--            app:lottie_autoPlay="true"-->
+    <!--            app:lottie_speed="0.6"-->
+    <!--            android:alpha="0.3"-->
+    <!--            app:layout_constraintEnd_toEndOf="@id/title"-->
+    <!--            app:layout_constraintStart_toStartOf="@id/title"-->
+    <!--            app:layout_constraintTop_toTopOf="@id/title"-->
+    <!--            app:layout_constraintBottom_toBottomOf="@id/title"/>-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="200dp"-->
+    <!--            android:background="@color/black"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintBottom_toTopOf="@id/title"/>-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/title"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="Mine For Yours"-->
+    <!--            android:background="@android:color/transparent"-->
+    <!--            android:fontFamily="@font/adamina"-->
+    <!--            android:textColor="@color/white_E3DED8"-->
+    <!--            android:textSize="35sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintBottom_toTopOf="@id/sign_in_lottie"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--        <TextView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="130dp"-->
+    <!--            android:background="@color/black"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@id/title"/>-->

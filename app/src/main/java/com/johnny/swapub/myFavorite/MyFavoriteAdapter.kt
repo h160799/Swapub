@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.User
 import com.johnny.swapub.databinding.ItemMyFavoriteGridBinding
+import com.johnny.swapub.search.SearchViewModel
 
-class MyFavoriteAdapter(val onClickListener: OnClickListener) :
+class MyFavoriteAdapter(val onClickListener: OnClickListener, viewModel: MyFavoriteViewModel) :
     ListAdapter<Product, MyFavoriteAdapter.MyFavoriteViewHolder>(MyFavoriteViewHolder) {
 
     class MyFavoriteViewHolder(private var binding: ItemMyFavoriteGridBinding) :

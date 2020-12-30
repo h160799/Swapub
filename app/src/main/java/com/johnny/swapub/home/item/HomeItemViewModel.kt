@@ -3,6 +3,7 @@ package com.johnny.swapub.home.item
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
@@ -10,6 +11,8 @@ import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.home.HomeTypeFilter
 import com.johnny.swapub.util.Logger
+import com.johnny.swapub.util.UserManager
+import com.johnny.swapub.util.UserManager.user
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -24,6 +27,14 @@ class HomeItemViewModel(
     private val _itemInfo = MutableLiveData<List<Product>>()
     val itemInfo: LiveData<List<Product>>
         get() = _itemInfo
+
+    private val _itemPlaceInfo = MutableLiveData<List<Product>>()
+    val itemPlaceInfo: LiveData<List<Product>>
+        get() = _itemPlaceInfo
+
+    private val _userI = MutableLiveData<User>()
+    val userI: LiveData<User>
+        get() = _userI
 
 
     private val _navigateToSelecteditemInfo = MutableLiveData<Product>()
@@ -81,20 +92,7 @@ class HomeItemViewModel(
             productImage = mutableListOf(
                 "https://s.yimg.com/zp/MerchandiseImages/A377C865AC-SP-6987044.jpg"
             ),
-            location = Location(
-                countries = mutableListOf(
-                    Country(
-                        id = document.id,
-                        name = "台灣",
-                        cities = mutableListOf(
-                            City(
-                                id = document.id,
-                                name = "台北市"
-                            )
-                        )
-                    )
-                )
-            ),
+            location = "",
             tradable = false,
             interestList = InterestList(
                     senderId = "23456789",
@@ -111,16 +109,9 @@ class HomeItemViewModel(
             name = "Dato",
             image = "https://files.bountyhunter.co/bhuntr/public/201508/5e68c386-cc1e-4724-b336-aa1459a90fe6_800x800.jpg",
             clubList = mutableListOf(
-                Club(
-                    id = "",
-                    name = "",
-                    productList = null
-                )
+
             ),
-            place = Place(
-                country = "台灣",
-                city = "台北市"
-            ),
+            place = "",
             favoriteList  = mutableListOf(
 
             ),
@@ -140,7 +131,10 @@ class HomeItemViewModel(
 //        addData()
 //        getData()
 //        addUserData()
+        getUserInHome()
         getProductsResult()
+        getProductsWithPlace()
+        Logger.d("34567${itemPlaceInfo.value}")
     }
 
     fun getProductsResult() {
@@ -176,6 +170,75 @@ class HomeItemViewModel(
             _refreshStatus.value = false
         }
     }
+
+    fun getProductsWithPlace() {
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            val result = swapubRepository.getProductWithPlace()
+
+            _itemPlaceInfo.value = when (result) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+            _refreshStatus.value = false
+        }
+    }
+
+    fun getUserInHome() {
+
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            val result = swapubRepository.getUserInfo(UserManager.userId)
+
+            _userI.value = when (result) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+            }
+            _refreshStatus.value = false
+        }
+    }
+
 
 
 

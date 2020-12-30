@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.databinding.ItemHomeGridBinding
 import com.johnny.swapub.databinding.ItemHomeGridBinding.inflate
+import com.johnny.swapub.util.Logger
 
 class HomeItemAdapter(val onClickListener: OnClickListener) :
     ListAdapter<Product, HomeItemAdapter.HomeItemViewHolder>(HomeItemViewHolder) {
@@ -15,7 +16,7 @@ class HomeItemAdapter(val onClickListener: OnClickListener) :
     class HomeItemViewHolder(private var binding: ItemHomeGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
-            binding.homeProperty= product
+            binding.homeProperty = product
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
             binding.executePendingBindings()
@@ -56,6 +57,7 @@ class HomeItemAdapter(val onClickListener: OnClickListener) :
     override fun onBindViewHolder(holder: HomeItemViewHolder, position: Int) {
         val product = getItem(position)
         holder.itemView.setOnClickListener {
+            Logger.d("product$product")
             onClickListener.onClick(product)
         }
         holder.bind(product)

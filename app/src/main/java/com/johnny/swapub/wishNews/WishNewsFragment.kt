@@ -36,7 +36,11 @@ class WishNewsFragment : Fragment() {
         })
 
 
-
+        val swipeRefresh = binding.layoutSwipeRefreshWishNewsItem
+        swipeRefresh.setOnRefreshListener {
+            viewModel.getAllWishContent()
+            swipeRefresh.isRefreshing = false
+        }
 
 
 

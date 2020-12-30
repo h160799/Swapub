@@ -23,7 +23,6 @@ class TradingPostViewModel(
     val tradingStyleEditText = MutableLiveData<String>()
     val categoryEditText = MutableLiveData<String>()
 
-
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
 
@@ -47,7 +46,6 @@ class TradingPostViewModel(
 
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
 
 
 
@@ -90,20 +88,7 @@ class TradingPostViewModel(
             productImage = mutableListOf(
                 ""
             ),
-            location = Location(
-                countries = mutableListOf(
-                    Country(
-                        id = "",
-                        name = "",
-                        cities = mutableListOf(
-                            City(
-                                id = "",
-                                name = ""
-                            )
-                        )
-                    )
-                )
-            ),
+            location = "",
             tradable = false,
             interestList = InterestList(
                 senderId = "",

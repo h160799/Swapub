@@ -7,7 +7,7 @@
     <color name="translucent_30">#4D000000</color>
 
     <!-- Main Color-->
-    <color name="blue_gray">#FCF0D2</color>
+    <color name="blue_gray">#000000</color>
 
     <!-- White Series -->
     <color name="white">#ffffff</color>
@@ -16,6 +16,8 @@
 
     <!-- Orange Series -->
     <color name="orange_ff7902">#ff7902</color>
+    <color name="orange_FAC943">#FAC943</color>
+
 
     <!-- Black Series -->
     <color name="black">#000000</color>

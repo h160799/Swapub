@@ -18,6 +18,10 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getProduct()
     }
 
+    override suspend fun getProductWithPlace(): Result<List<Product>>{
+        return swapubRemoteDataSource.getProductWithPlace()
+    }
+
     override suspend fun getOneProduct(productId: String): Result<Product> {
         return swapubRemoteDataSource.getOneProduct(productId)
     }
@@ -58,8 +62,8 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.postMessage(message, document)
     }
 
-    override suspend fun postInterestMessage(chatRoom: ChatRoom): Result<Boolean> {
-        return swapubRemoteDataSource.postInterestMessage(chatRoom)
+    override suspend fun postInterestMessage(chatRoom: ChatRoom,user: User): Result<Boolean> {
+        return swapubRemoteDataSource.postInterestMessage(chatRoom,user)
     }
 
     override suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom>{
@@ -106,4 +110,31 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getLiveSearch(field, searchKey)
     }
 
+    override suspend fun updateUserInfo(user: User): Result<Boolean>{
+        return swapubRemoteDataSource.updateUserInfo(user)
+    }
+
+    override suspend fun updateToClubList(clubList: MutableList<String>): Result<Boolean>{
+    return swapubRemoteDataSource.updateToClubList(clubList)
+    }
+
+    override suspend fun getUserClub(userL: String): Result<List<String>>{
+        return swapubRemoteDataSource.getUserClub(userL)
+    }
+
+    override suspend fun getClub(clubIds: List<String>): Result<List<Club>>{
+        return swapubRemoteDataSource.getClub(clubIds)
+    }
+
+    override suspend fun getUserClubList(userL: String): Result<User>{
+        return swapubRemoteDataSource.getUserClubList(userL)
+    }
+
+    override suspend fun deleteProduct(productId: String): Result<Boolean>{
+        return swapubRemoteDataSource.deleteProduct(productId)
+    }
+
+    override suspend fun getMenClothesProduct(): Result<List<Product>>{
+        return swapubRemoteDataSource.getMenClothesProduct()
+    }
 }

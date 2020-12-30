@@ -36,6 +36,14 @@ class SearchFragment : Fragment() {
         adapter.setHasStableIds(true)
         binding.recyclerviewSearch.adapter = adapter
 
+        viewModel.navigateToDetail.observe(this.viewLifecycleOwner, Observer {
+            it?.let {
+                // Must find the NavController from the Fragment
+                findNavController().navigate(NavigationDirections.actionGlobalProductFragment(it))
+                // Tell the ViewModel we've made the navigate call to prevent multiple navigation
+                viewModel.onDetailNavigated()
+            }
+        })
 
 
 
@@ -68,7 +76,7 @@ class SearchFragment : Fragment() {
 
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
+            findNavController().navigateUp()
         }
         return binding.root
     }

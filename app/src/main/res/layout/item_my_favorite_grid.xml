@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:imageUrl="@{myFavorite_property.productImage[0]}"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:src="@color/black" />
+            tools:src="@color/white_E3DED8" />
 
 
 

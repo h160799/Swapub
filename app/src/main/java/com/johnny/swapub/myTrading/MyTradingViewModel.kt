@@ -28,6 +28,10 @@ class MyTradingViewModel(
     val postProduct: MutableLiveData<List<Product>>
         get() = _postProduct
 
+    val editProduct = MutableLiveData<Boolean>()
+    val finishEditProduct = MutableLiveData<Boolean>()
+
+
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -57,6 +61,8 @@ class MyTradingViewModel(
 
     init {
         getPostProduct(userId)
+        editProduct.value = false
+        finishEditProduct.value = true
     }
 
 
@@ -94,15 +100,36 @@ class MyTradingViewModel(
         }
     }
 
+    fun deleteProduct(productId: String) {
 
+        coroutineScope.launch {
+
+            _status.value = LoadApiStatus.LOADING
+
+            when (val result = swapubRepository.deleteProduct(productId)) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                }
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.you_know_nothing)
+                    _status.value = LoadApiStatus.ERROR
+                }
+            }
+        }
+    }
 
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
-
-
-
 }

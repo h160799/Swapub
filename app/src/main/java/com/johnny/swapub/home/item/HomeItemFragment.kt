@@ -2,6 +2,7 @@ package com.johnny.swapub.home.item
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,23 +10,29 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.FragmentHomeItemBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.home.HomeTypeFilter
 import com.johnny.swapub.util.Logger
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
+class HomeItemFragment(val homeTypeFilter: HomeTypeFilter) : Fragment() {
 
     val viewModel by viewModels<HomeItemViewModel> { getVmFactory(homeTypeFilter) }
 
+    private lateinit var  binding: FragmentHomeItemBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
+
+
+
 
         val binding = FragmentHomeItemBinding.inflate(inflater, container, false)
 
@@ -39,11 +46,23 @@ class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
         binding.recyclerHomeItem.adapter = adapter
         viewModel.itemInfo.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
-                Logger.d("get$it")
+                if(homeTypeFilter.value == "newest"){
+                    adapter.submitList(it)
+                }
             }
         })
+        viewModel.userI.observe(viewLifecycleOwner, Observer {
+             Logger.d("userI$it")
+        })
 
+        viewModel.itemPlaceInfo.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                if (homeTypeFilter.value == "nearest") {
+                    adapter.submitList(it)
+                    Logger.d("placept$it")
+                }
+            }
+        })
 
         viewModel.navigateToSelecteditemInfo.observe(this.viewLifecycleOwner, Observer {
             it?.let {
@@ -56,9 +75,22 @@ class HomeItemFragment(homeTypeFilter: HomeTypeFilter) : Fragment() {
 
         val swipeRefresh = binding.layoutSwipeRefreshHomeItem
         swipeRefresh.setOnRefreshListener {
+            viewModel.getProductsResult()
+            viewModel.getProductsWithPlace()
             swipeRefresh.isRefreshing = false
         }
+        Handler().postDelayed({
+            viewModel.getProductsWithPlace()
+        },1000)
 
         return binding.root
     }
+
+    override fun onResume() {
+        super.onResume()
+        Logger.d("gggggg$homeTypeFilter")
+
+    }
+
+
 }

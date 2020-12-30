@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
+import com.johnny.swapub.data.Product
 import com.johnny.swapub.databinding.MyTradingFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.myFavorite.MyFavoriteAdapter
 import com.johnny.swapub.util.Logger
+import com.johnny.swapub.util.UserManager
+import kotlinx.android.synthetic.main.item_my_trading.view.*
 import java.util.Observer
 
 class MyTradingFragment : Fragment() {
@@ -27,9 +30,11 @@ class MyTradingFragment : Fragment() {
         val binding = MyTradingFragmentBinding.inflate(inflater, container,
             false)
 
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
         val adapter = MyTradingAdapter(MyTradingAdapter.OnClickListener {
-        })
+        },viewModel)
         binding.recyclerMyTradingItem.adapter = adapter
         viewModel.myTradingList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let {
@@ -39,18 +44,35 @@ class MyTradingFragment : Fragment() {
         })
 
 
+
+
+
         viewModel.postProduct.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             adapter.submitList(it)
             Logger.w("getPostProduct$it")
         })
 
+        binding.editProduct.setOnClickListener {
+            viewModel.editProduct.value = true
+            viewModel.finishEditProduct.value = false
 
+            binding.editProduct.visibility = View.GONE
+            binding.finishProduct.visibility = View.VISIBLE
+            adapter.notifyDataSetChanged()
+        }
 
+        binding.finishProduct.setOnClickListener {
+            viewModel.finishEditProduct.value = true
+            viewModel.editProduct.value = false
 
+            binding.editProduct.visibility = View.VISIBLE
+            binding.finishProduct.visibility = View.GONE
+            adapter.notifyDataSetChanged()
 
+        }
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_profileFragment)
+            findNavController().navigateUp()
         }
 
         return binding.root

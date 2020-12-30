@@ -62,9 +62,8 @@ class ProfileViewModel(
     init {
         getUserInfoToProfilePage(userId)
         getWishContent(userId)
-
+        Logger.d("我有run")
     }
-
 
     fun getUserInfoToProfilePage(userId:String) {
 

@@ -29,6 +29,9 @@ class TradingStyleViewModel(
         value = TradingType()
     }
 
+    var image = MutableLiveData<String>()
+
+
     val tradingEditText = MutableLiveData<String>()
 
 
@@ -95,7 +98,7 @@ fun addTradingType(): TradingType{
             productId = chatRoom.productId,
             type = tradingTypeSelect.value.toString(),
             time = Calendar.getInstance().timeInMillis,
-            image = "",
+            image = image.value,
             text = tradingEditText.value
         )
     }

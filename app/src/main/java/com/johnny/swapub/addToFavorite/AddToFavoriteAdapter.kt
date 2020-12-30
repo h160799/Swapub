@@ -21,7 +21,7 @@ class AddToFavoriteAdapter(private var products: List<Product> = mutableListOf()
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val product = products[position]
         holder.name.text = product.productTitle
-        holder.city.text = product.location?.countries?.get(0)?.cities?.get(0)?.name
+        holder.city.text = product.location
         viewModel.productId.value = products[position].id
         Glide.with(holder.image)
             .load(product.productImage?.get(0))
