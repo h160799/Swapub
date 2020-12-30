@@ -9,6 +9,7 @@ import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubRepository
+import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -58,6 +59,7 @@ class SettingViewModel(
 
 init {
     getUser(userId)
+    Logger.d("asdf${userData.value}")
 }
 
 
@@ -95,6 +97,8 @@ init {
 
     fun updateUserInfo(user: User) {
 
+        Logger.d("setInfo$user")
+
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
@@ -102,6 +106,7 @@ init {
             when (val result = swapubRepository.updateUserInfo(user)) {
                 is com.johnny.swapub.data.Result.Success -> {
                     userData.value?.image = userImage.value.toString()
+                    UserManager.user.place = editTextPlace.value
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
                 }
@@ -122,6 +127,15 @@ init {
     }
 
     fun setUserData(): User{
+        if(userImage.value == ""){
+           userImage.value = UserManager.userImage
+        }
+        if(editTextPlace.value == ""){
+            editTextPlace.value = userData.value?.place
+        }
+        if(nameEditText.value == ""){
+            nameEditText.value = UserManager.userName
+        }
         return User(
             id = UserManager.userId,
             image = userImage.value.toString(),
@@ -131,10 +145,10 @@ init {
             favoriteList = userData.value?.favoriteList,
             swappingList = userData.value?.swappingList,
             swappedList = userData.value?.swappedList
-
-
         )
     }
 
-
+    fun preLoad() {
+        userImage.value = userData.value?.image
+    }
 }

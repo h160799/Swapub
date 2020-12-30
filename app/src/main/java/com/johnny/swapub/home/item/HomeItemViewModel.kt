@@ -10,6 +10,7 @@ import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.home.HomeTypeFilter
+import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
 import com.johnny.swapub.util.UserManager.user
 import kotlinx.coroutines.CoroutineScope
@@ -133,6 +134,7 @@ class HomeItemViewModel(
         getUserInHome()
         getProductsResult()
         getProductsWithPlace()
+        Logger.d("34567${itemPlaceInfo.value}")
     }
 
     fun getProductsResult() {

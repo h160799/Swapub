@@ -827,8 +827,7 @@ object SwapubRemoteDataSource : SwapubDataSource {
             FirebaseFirestore.getInstance()
                 .collection(PATH_USER)
                 .document(user.id)
-
-                .update("image", user.image, "name", user.name, "place", user.image)
+                .update("image", user.image, "name", user.name, "place", user.place)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         continuation.resume(Result.Success(true))
@@ -960,6 +959,34 @@ object SwapubRemoteDataSource : SwapubDataSource {
                 }
         }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    override suspend fun deleteProduct(productId: String): Result<Boolean> =
+        suspendCoroutine { continuation ->
+
+            FirebaseFirestore.getInstance()
+                .collection(PATH_PRODUCT)
+                .document(productId)
+                .delete()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Logger.i("delete: $productId")
+                        continuation.resume(Result.Success(true))
+                    } else {
+                        task.exception?.let {
+                            Logger.w("[${this::class.simpleName}] Error getting documents. ${it.message}")
+                            continuation.resume(Result.Error(it))
+                            return@addOnCompleteListener
+                        }
+                        continuation.resume(
+                            Result.Fail(
+                                SwapubApplication.instance.getString(
+                                    R.string.you_know_nothing
+                                )
+                            )
+                        )
+                    }
+                }
+        }
 
     override suspend fun getMenClothesProduct(): Result<List<Product>> = suspendCoroutine { continuation ->
         FirebaseFirestore.getInstance()
@@ -987,6 +1014,7 @@ object SwapubRemoteDataSource : SwapubDataSource {
                 }
             }
     }
+
 
 }
 

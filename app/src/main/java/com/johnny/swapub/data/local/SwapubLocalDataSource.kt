@@ -127,6 +127,10 @@ class SwapubLocalDataSource(val context: Context) : SwapubDataSource {
         TODO("Not yet implemented")
     }
 
+    override suspend fun deleteProduct(productId: String): Result<Boolean> {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun getMenClothesProduct(): Result<List<Product>> {
         TODO("Not yet implemented")
     }

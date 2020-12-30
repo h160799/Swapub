@@ -130,6 +130,10 @@ class DefaultSwapubRepository(private val swapubRemoteDataSource: SwapubDataSour
         return swapubRemoteDataSource.getUserClubList(userL)
     }
 
+    override suspend fun deleteProduct(productId: String): Result<Boolean>{
+        return swapubRemoteDataSource.deleteProduct(productId)
+    }
+
     override suspend fun getMenClothesProduct(): Result<List<Product>>{
         return swapubRemoteDataSource.getMenClothesProduct()
     }

@@ -78,20 +78,22 @@ class SettingFragment : Fragment() {
         binding.spinnerPlace.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, v: View?, position: Int, id: Long) {
                 viewModel.editTextPlace.value = parent?.selectedItem.toString()
+
+                Logger.d("getPlace${viewModel.editTextPlace.value}")
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
         }
 
-
-
-viewModel.userData.observe(viewLifecycleOwner, Observer {
-    binding.drawerName.setText(it.name)
-})
+        viewModel.userData.observe(viewLifecycleOwner, Observer {
+            binding.drawerName.setText(it.name)
+            viewModel.preLoad()
+        })
 
         binding.saveContent.setOnClickListener {
             viewModel.updateUserInfo(viewModel.setUserData())
+
             findNavController().navigate(R.id.action_global_homeFragment)
         }
 

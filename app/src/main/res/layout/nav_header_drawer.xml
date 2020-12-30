@@ -34,42 +34,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <com.github.florent37.shapeofview.shapes.CircleView
-            android:id="@+id/image_drawer_avatar_bac"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/user_head"
+            android:layout_width="81dp"
+            android:layout_height="81dp"
+            app:imageUrl="@{viewModel.getUserData.image}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                tools:src="@color/white" />
-
-        </com.github.florent37.shapeofview.shapes.CircleView>
-
-        <com.github.florent37.shapeofview.shapes.CircleView
-            android:id="@+id/image_drawer_avatar"
-            android:layout_width="78dp"
-            android:layout_height="78dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@id/image_drawer_avatar_bac"
-            app:layout_constraintEnd_toEndOf="@id/image_drawer_avatar_bac"
-            app:layout_constraintStart_toStartOf="@id/image_drawer_avatar_bac"
-            app:layout_constraintTop_toTopOf="@id/image_drawer_avatar_bac">
-
-            <ImageView
-                android:id="@+id/user_head"
-                imageUrl="@{viewModel.getUserData.image}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:src="@drawable/me" />
-
-        </com.github.florent37.shapeofview.shapes.CircleView>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/me" />
 
         <TextView
             android:id="@+id/image_drawer_name"
@@ -81,9 +55,9 @@
             android:text="@{viewModel.getUserData.name}"
             android:textColor="@color/white"
             android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="@id/image_drawer_avatar_bac"
-            app:layout_constraintStart_toStartOf="@id/image_drawer_avatar_bac"
-            app:layout_constraintTop_toBottomOf="@id/image_drawer_avatar_bac"
+            app:layout_constraintEnd_toEndOf="@id/user_head"
+            app:layout_constraintStart_toStartOf="@id/user_head"
+            app:layout_constraintTop_toBottomOf="@id/user_head"
             tools:text="Johnny Lin" />
 
 

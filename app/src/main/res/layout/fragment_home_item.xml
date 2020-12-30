@@ -8,12 +8,29 @@
             name="viewModel"
             type="com.johnny.swapub.home.item.HomeItemViewModel"/>
 
+        <import type="android.view.View" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black">
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="目前尚無任何物件\n請至「編輯個人資訊」設定目前所在位置"-->
+<!--            android:fontFamily="@font/pt_sans"-->
+<!--            android:textSize="15dp"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/white"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:visibility="@{viewModel.getProductsWithPlace() == null ? View.VISIBLE : View.GONE}"/>-->
+
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/layout_swipe_refresh_home_item"
@@ -38,24 +55,5 @@
 
             </androidx.recyclerview.widget.RecyclerView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-<!--        <ProgressBar-->
-<!--            android:theme="@style/ProgressTheme"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:setupApiStatus="@{viewModel.status}"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
-
-<!--        <TextView android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:setupApiErrorMessage="@{viewModel.error}"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

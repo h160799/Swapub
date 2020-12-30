@@ -65,6 +65,8 @@ interface SwapubRepository {
 
     suspend fun getUserClubList(userL: String): Result<User>
 
+    suspend fun deleteProduct(productId: String): Result<Boolean>
+
     suspend fun getMenClothesProduct(): Result<List<Product>>
 
 }

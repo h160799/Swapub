@@ -10,6 +10,9 @@
         <variable
             name="myTrading_property"
             type="com.johnny.swapub.data.Product" />
+        <variable
+            name="myTrading"
+            type="com.johnny.swapub.myTrading.MyTradingViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,8 +27,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
             app:imageUrl="@{myTrading_property.productImage[0]}"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:background="@color/black" />
@@ -57,6 +60,19 @@
             app:layout_constraintTop_toTopOf="@id/my_trading_image"
             app:timeToDisplayFormat="@{myTrading_property.time}"
             tools:text="2020-11-24 18:35" />
+
+        <TextView
+            android:id="@+id/remove_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pt_sans"
+            android:textColor="@color/orange_FAC943"
+            android:textSize="15dp"
+            android:text="移除項目"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@id/post_time"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/tradable_bac"
@@ -103,7 +119,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_0F0F0F"
+            android:background="@color/gray_cccccc"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

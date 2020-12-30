@@ -16,6 +16,8 @@
 
     <!-- Orange Series -->
     <color name="orange_ff7902">#ff7902</color>
+    <color name="orange_FAC943">#FAC943</color>
+
 
     <!-- Black Series -->
     <color name="black">#000000</color>

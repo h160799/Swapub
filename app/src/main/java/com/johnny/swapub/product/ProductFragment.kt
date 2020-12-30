@@ -17,13 +17,7 @@ import com.johnny.swapub.util.Logger
 
 class ProductFragment : Fragment() {
 
-    val viewModel by viewModels<ProductViewModel> {
-        getVmFactory(
-            ProductFragmentArgs.fromBundle(
-                requireArguments()
-            ).productArg
-        )
-    }
+    val viewModel by viewModels<ProductViewModel> { getVmFactory(ProductFragmentArgs.fromBundle(requireArguments()).productArg) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +46,6 @@ class ProductFragment : Fragment() {
         })
 
         viewModel.userFavorList.observe(viewLifecycleOwner, {
-            Logger.d("userFavorList$it")
             viewModel.isFavor(it)
         })
 
@@ -75,7 +68,6 @@ class ProductFragment : Fragment() {
         }
 
         viewModel.isFavor.observe(viewLifecycleOwner, {
-            Logger.d("isFavor$it")
         })
 
         binding.interestToTrade.setOnClickListener {
@@ -104,7 +96,7 @@ class ProductFragment : Fragment() {
         })
 
         binding.goBack.setOnClickListener {
-            findNavController().navigate(NavigationDirections.actionGlobalMessageHistoryFragment())
+            findNavController().navigate(NavigationDirections.actionGlobalHomeFragment())
         }
         return binding.root
     }

@@ -13,6 +13,7 @@
         android:id="@+id/item_my_wish_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
         android:background="@color/white">
 
         <androidx.cardview.widget.CardView
@@ -30,6 +31,7 @@
                 android:id="@+id/image_user_head"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +119,6 @@
             android:text="@{myWish_product.tradingStyle}"
             tools:text="物品交換--兒童木桌．" />
 
-
         <ImageView
             android:id="@+id/myWish_image"
             android:layout_width="match_parent"
@@ -128,14 +129,6 @@
             app:layout_constraintTop_toBottomOf="@id/swap_content"
             app:imageUrl="@{myWish_product.productImage[0]}"
             tools:background="@color/white_E3DED8" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/myWish_image" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

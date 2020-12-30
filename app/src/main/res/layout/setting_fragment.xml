@@ -91,8 +91,8 @@
 
         <com.github.florent37.shapeofview.shapes.CircleView
             android:id="@+id/image_drawer_avatar_bac"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@id/setting_bac"
             app:layout_constraintEnd_toEndOf="@id/setting_bac"
@@ -106,24 +106,17 @@
 
         </com.github.florent37.shapeofview.shapes.CircleView>
 
-        <com.github.florent37.shapeofview.shapes.CircleView
-            android:id="@+id/image_drawer_avatar"
-            android:layout_width="76dp"
-            android:layout_height="76dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@id/image_drawer_avatar_bac"
-            app:layout_constraintEnd_toEndOf="@id/image_drawer_avatar_bac"
-            app:layout_constraintStart_toStartOf="@id/image_drawer_avatar_bac"
-            app:layout_constraintTop_toTopOf="@id/image_drawer_avatar_bac">
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/user_head"
+            android:layout_width="81dp"
+            android:layout_height="81dp"
+            imageUrl="@{viewModel.userData.image}"
+            app:layout_constraintBottom_toBottomOf="@id/setting_bac"
+            app:layout_constraintEnd_toEndOf="@id/setting_bac"
+            app:layout_constraintStart_toStartOf="@id/setting_bac"
+            app:layout_constraintTop_toTopOf="@id/setting_bac"
+            tools:background="@drawable/me" />
 
-            <ImageView
-                android:id="@+id/user_head"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                imageUrl="@{viewModel.userData.image}"
-                tools:src="@drawable/me" />
-
-        </com.github.florent37.shapeofview.shapes.CircleView>
 
         <ImageView
             android:layout_width="25dp"
@@ -250,7 +243,7 @@
             android:layout_width="110dp"
             android:layout_height="20dp"
             android:background="@drawable/bg_spinner"
-            android:spinnerMode="dialog"
+            android:spinnerMode="dropdown"
             android:entries="@array/city_options"
             android:textColor="@color/black"
             android:textSize="13sp"
