@@ -206,7 +206,6 @@ object SwapubRemoteDataSource : SwapubDataSource {
                         }
             }
 
-
     override suspend fun getUserFavor(userL: String): Result<List<String>> =
             suspendCoroutine { continuation ->
                 FirebaseFirestore.getInstance()

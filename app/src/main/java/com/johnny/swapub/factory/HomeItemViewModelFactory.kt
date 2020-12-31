@@ -5,22 +5,20 @@ import androidx.lifecycle.ViewModelProvider
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.home.HomeTypeFilter
 import com.johnny.swapub.home.item.HomeItemViewModel
-import com.johnny.swapub.product.ProductFragmentArgs
-
 
 @Suppress("UNCHECKED_CAST")
 class HomeItemViewModelFactory(
-    private val swapubRepository: SwapubRepository,
-    private val homeTypeFilter: HomeTypeFilter
+        private val swapubRepository: SwapubRepository,
+        private val homeTypeFilter: HomeTypeFilter
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>) =
-        with(modelClass) {
-            when {
-                isAssignableFrom(HomeItemViewModel::class.java) ->
-                    HomeItemViewModel(homeTypeFilter, swapubRepository)
-                else ->
-                    throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
-            }
-        } as T
+            with(modelClass) {
+                when {
+                    isAssignableFrom(HomeItemViewModel::class.java) ->
+                        HomeItemViewModel(homeTypeFilter, swapubRepository)
+                    else ->
+                        throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+                }
+            } as T
 }

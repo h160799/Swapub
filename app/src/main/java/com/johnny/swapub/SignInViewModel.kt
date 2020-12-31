@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.johnny.swapub.data.Result
 import com.johnny.swapub.data.User
 import com.johnny.swapub.data.remote.SwapubRepository
+import com.johnny.swapub.util.LoadApiStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -15,7 +15,6 @@ import com.johnny.swapub.club.clubLiveLife.ClubLiveLifeViewModel
 import com.johnny.swapub.club.clubMakeup.ClubMakeupViewModel
 import com.johnny.swapub.club.clubMenClothes.ClubMenClothesViewModel
 import com.johnny.swapub.club.clubPlant.ClubPlantViewModel
-import com.johnny.swapub.club.clubSporty.ClubSportyFragment
 import com.johnny.swapub.club.clubSporty.ClubSportyViewModel
 import com.johnny.swapub.club.clubVideoGame.ClubVideoGameViewModel
 import com.johnny.swapub.club.clubVolunteer.ClubVolunteerViewModel
@@ -33,92 +32,92 @@ import com.johnny.swapub.wishNews.WishNewsViewModel
 
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory constructor(
-    private val swapubRepository: SwapubRepository
+        private val swapubRepository: SwapubRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel> create(modelClass: Class<T>) =
-        with(modelClass) {
-            when {
-                isAssignableFrom(MainViewModel::class.java) ->
-                    MainViewModel(swapubRepository)
+            with(modelClass) {
+                when {
+                    isAssignableFrom(MainViewModel::class.java) ->
+                        MainViewModel(swapubRepository)
 
-                isAssignableFrom(SignInViewModel::class.java) ->
-                    SignInViewModel(swapubRepository)
+                    isAssignableFrom(SignInViewModel::class.java) ->
+                        SignInViewModel(swapubRepository)
 
-                isAssignableFrom(WishNewsViewModel::class.java) ->
-                   WishNewsViewModel(swapubRepository)
+                    isAssignableFrom(WishNewsViewModel::class.java) ->
+                        WishNewsViewModel(swapubRepository)
 
-                isAssignableFrom(MyFavoriteViewModel::class.java) ->
-                    MyFavoriteViewModel(swapubRepository)
+                    isAssignableFrom(MyFavoriteViewModel::class.java) ->
+                        MyFavoriteViewModel(swapubRepository)
 
-                isAssignableFrom(AddToFavoriteViewModel::class.java) ->
-                    AddToFavoriteViewModel(swapubRepository)
+                    isAssignableFrom(AddToFavoriteViewModel::class.java) ->
+                        AddToFavoriteViewModel(swapubRepository)
 
-                isAssignableFrom(MessageHistoryViewModel::class.java) ->
-                    MessageHistoryViewModel(swapubRepository)
+                    isAssignableFrom(MessageHistoryViewModel::class.java) ->
+                        MessageHistoryViewModel(swapubRepository)
 
-                isAssignableFrom(TradingPostViewModel::class.java) ->
-                    TradingPostViewModel(swapubRepository)
+                    isAssignableFrom(TradingPostViewModel::class.java) ->
+                        TradingPostViewModel(swapubRepository)
 
-                isAssignableFrom(MyTradingViewModel::class.java) ->
-                MyTradingViewModel(swapubRepository)
+                    isAssignableFrom(MyTradingViewModel::class.java) ->
+                        MyTradingViewModel(swapubRepository)
 
-                isAssignableFrom(MakeWishesViewModel::class.java) ->
-                    MakeWishesViewModel(swapubRepository)
+                    isAssignableFrom(MakeWishesViewModel::class.java) ->
+                        MakeWishesViewModel(swapubRepository)
 
-                isAssignableFrom(ProfileViewModel::class.java) ->
-                    ProfileViewModel(swapubRepository)
+                    isAssignableFrom(ProfileViewModel::class.java) ->
+                        ProfileViewModel(swapubRepository)
 
-                isAssignableFrom(SearchViewModel::class.java) ->
-                    SearchViewModel(swapubRepository)
+                    isAssignableFrom(SearchViewModel::class.java) ->
+                        SearchViewModel(swapubRepository)
 
-                isAssignableFrom(SettingViewModel::class.java) ->
-                    SettingViewModel(swapubRepository)
+                    isAssignableFrom(SettingViewModel::class.java) ->
+                        SettingViewModel(swapubRepository)
 
-                isAssignableFrom(PrivacyPolicyViewModel::class.java) ->
-                    PrivacyPolicyViewModel(swapubRepository)
+                    isAssignableFrom(PrivacyPolicyViewModel::class.java) ->
+                        PrivacyPolicyViewModel(swapubRepository)
 
-                isAssignableFrom(ClubArtWorkViewModel::class.java) ->
-                    ClubArtWorkViewModel(swapubRepository)
+                    isAssignableFrom(ClubArtWorkViewModel::class.java) ->
+                        ClubArtWorkViewModel(swapubRepository)
 
-                isAssignableFrom(ClubBookShareViewModel::class.java) ->
-                    ClubBookShareViewModel(swapubRepository)
+                    isAssignableFrom(ClubBookShareViewModel::class.java) ->
+                        ClubBookShareViewModel(swapubRepository)
 
-                isAssignableFrom(ClubElectronicProductViewModel::class.java) ->
-                    ClubElectronicProductViewModel(swapubRepository)
+                    isAssignableFrom(ClubElectronicProductViewModel::class.java) ->
+                        ClubElectronicProductViewModel(swapubRepository)
 
-                isAssignableFrom(ClubFashionViewModel::class.java) ->
-                    ClubFashionViewModel(swapubRepository)
+                    isAssignableFrom(ClubFashionViewModel::class.java) ->
+                        ClubFashionViewModel(swapubRepository)
 
-                isAssignableFrom(ClubLiveLifeViewModel::class.java) ->
-                    ClubLiveLifeViewModel(swapubRepository)
+                    isAssignableFrom(ClubLiveLifeViewModel::class.java) ->
+                        ClubLiveLifeViewModel(swapubRepository)
 
-                isAssignableFrom(ClubMakeupViewModel::class.java) ->
-                    ClubMakeupViewModel(swapubRepository)
+                    isAssignableFrom(ClubMakeupViewModel::class.java) ->
+                        ClubMakeupViewModel(swapubRepository)
 
-                isAssignableFrom(ClubMenClothesViewModel::class.java) ->
-                    ClubMenClothesViewModel(swapubRepository)
+                    isAssignableFrom(ClubMenClothesViewModel::class.java) ->
+                        ClubMenClothesViewModel(swapubRepository)
 
-                isAssignableFrom(ClubPlantViewModel::class.java) ->
-                    ClubPlantViewModel(swapubRepository)
+                    isAssignableFrom(ClubPlantViewModel::class.java) ->
+                        ClubPlantViewModel(swapubRepository)
 
-                isAssignableFrom(ClubSportyViewModel::class.java) ->
-                    ClubSportyViewModel(swapubRepository)
+                    isAssignableFrom(ClubSportyViewModel::class.java) ->
+                        ClubSportyViewModel(swapubRepository)
 
-                isAssignableFrom(ClubVolunteerViewModel::class.java) ->
-                    ClubVolunteerViewModel(swapubRepository)
+                    isAssignableFrom(ClubVolunteerViewModel::class.java) ->
+                        ClubVolunteerViewModel(swapubRepository)
 
-                isAssignableFrom(ClubWomenClothesViewModel::class.java) ->
-                    ClubWomenClothesViewModel(swapubRepository)
+                    isAssignableFrom(ClubWomenClothesViewModel::class.java) ->
+                        ClubWomenClothesViewModel(swapubRepository)
 
-                isAssignableFrom(ClubVideoGameViewModel::class.java) ->
-                    ClubVideoGameViewModel(swapubRepository)
+                    isAssignableFrom(ClubVideoGameViewModel::class.java) ->
+                        ClubVideoGameViewModel(swapubRepository)
 
-                isAssignableFrom(MyClubViewModel::class.java) ->
-                    MyClubViewModel(swapubRepository)
+                    isAssignableFrom(MyClubViewModel::class.java) ->
+                        MyClubViewModel(swapubRepository)
 
-                else ->
-                    throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
-            }
-        } as T
+                    else ->
+                        throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+                }
+            } as T
 }

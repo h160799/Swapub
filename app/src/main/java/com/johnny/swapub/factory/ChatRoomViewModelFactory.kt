@@ -10,24 +10,23 @@ import com.johnny.swapub.messageHistory.conversation.tradingSuccessOrNot.Trading
 
 @Suppress("UNCHECKED_CAST")
 class ChatRoomViewModelFactory(
-    private val swapubRepository: SwapubRepository,
-    private val chatRoom: ChatRoom,
+        private val swapubRepository: SwapubRepository,
+        private val chatRoom: ChatRoom,
 ) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>) =
-        with(modelClass) {
-            when {
-                isAssignableFrom(ConversationViewModel::class.java) ->
-                    ConversationViewModel(swapubRepository,chatRoom)
+            with(modelClass) {
+                when {
+                    isAssignableFrom(ConversationViewModel::class.java) ->
+                        ConversationViewModel(swapubRepository, chatRoom)
 
-                isAssignableFrom(TradingStyleViewModel::class.java) ->
-                    TradingStyleViewModel(swapubRepository,chatRoom)
+                    isAssignableFrom(TradingStyleViewModel::class.java) ->
+                        TradingStyleViewModel(swapubRepository, chatRoom)
 
-                isAssignableFrom(TradingSuccessorNotViewModel::class.java) ->
-                    TradingSuccessorNotViewModel(swapubRepository,chatRoom)
+                    isAssignableFrom(TradingSuccessorNotViewModel::class.java) ->
+                        TradingSuccessorNotViewModel(swapubRepository, chatRoom)
 
-
-                else ->
-                    throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
-            }
-        } as T
+                    else ->
+                        throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
+                }
+            } as T
 }
