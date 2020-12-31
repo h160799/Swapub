@@ -45,9 +45,16 @@ class HomeItemFragment(val homeTypeFilter: HomeTypeFilter) : Fragment() {
         })
         binding.recyclerHomeItem.adapter = adapter
         viewModel.itemInfo.observe(viewLifecycleOwner, Observer {
+//            if (it.isEmpty()){
+//                binding.remindText.visibility = View.GONE
+//            }else{
+//                binding.remindText.visibility = View.GONE
+//
+//            }
             it?.let {
                 if(homeTypeFilter.value == "newest"){
                     adapter.submitList(it)
+                }else{
                 }
             }
         })
@@ -56,10 +63,17 @@ class HomeItemFragment(val homeTypeFilter: HomeTypeFilter) : Fragment() {
         })
 
         viewModel.itemPlaceInfo.observe(viewLifecycleOwner, Observer {
+            if (it.isEmpty()){
+                binding.remindText.setText("目前尚無任何物件\n請至「編輯個人資訊」設定目前所在位置")
+            }else{
+                binding.remindText.visibility = View.GONE
+
+            }
             it?.let {
                 if (homeTypeFilter.value == "nearest") {
                     adapter.submitList(it)
                     Logger.d("placept$it")
+                }else{
                 }
             }
         })

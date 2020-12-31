@@ -11,6 +11,8 @@ import com.johnny.swapub.R
 import com.johnny.swapub.databinding.ProfileFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.util.Logger
+import com.johnny.swapub.util.UserManager
+import com.johnny.swapub.util.UserManager.userId
 
 class ProfileFragment : Fragment() {
 
@@ -50,7 +52,11 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_global_myFavoriteFragment)
         }
 
-
+        val swipeRefresh = binding.layoutSwipeRefreshProfile
+        swipeRefresh.setOnRefreshListener {
+            viewModel.getWishContent(userId)
+            swipeRefresh.isRefreshing = false
+        }
 
         return binding.root
     }
@@ -61,5 +67,7 @@ class ProfileFragment : Fragment() {
         val viewModel by viewModels<ProfileViewModel> { getVmFactory() }
 
     }
+
+
 
 }

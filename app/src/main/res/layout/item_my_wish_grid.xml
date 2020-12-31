@@ -123,6 +123,7 @@
             android:id="@+id/myWish_image"
             android:layout_width="match_parent"
             android:layout_height="400dp"
+            android:scaleType="centerCrop"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

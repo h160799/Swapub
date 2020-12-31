@@ -21,12 +21,18 @@
         android:layout_height="wrap_content"
         android:background="@color/black">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toStartOf="@id/remove_product"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/my_trading_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
             app:imageUrl="@{myTrading_property.productImage[0]}"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +68,6 @@
             tools:text="2020-11-24 18:35" />
 
         <TextView
-            android:id="@+id/remove_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/pt_sans"
@@ -70,9 +75,9 @@
             android:textSize="15dp"
             android:text="移除項目"
             android:visibility="gone"
-            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="@id/post_time"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/post_time"/>
 
         <ImageView
             android:id="@+id/tradable_bac"
@@ -116,10 +121,28 @@
             app:layout_constraintStart_toStartOf="@id/tradable_bac"
             app:layout_constraintTop_toTopOf="@id/tradable_bac" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/remove_product"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:background="@color/red_A44F3C"
+            android:textColor="@color/white"
+            android:fontFamily="@font/pt_sans"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="刪除"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_cccccc"
+            android:background="@color/gray_646464"
+            android:alpha="0.3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

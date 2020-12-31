@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zhpan.library:bannerview:2.4.3.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/250139127cda94bd4fde557cf3302d93/jetified-bannerview-2.4.3.1/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/250139127cda94bd4fde557cf3302d93/jetified-bannerview-2.4.3.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/250139127cda94bd4fde557cf3302d93/jetified-bannerview-2.4.3.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/250139127cda94bd4fde557cf3302d93/jetified-bannerview-2.4.3.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zhpan.library/bannerview/2.4.3.1/62c08709b3fdd9dbdeadae66cdb41f2c102c2ad2/bannerview-2.4.3.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zhpan.library/bannerview/2.4.3.1/b62a0323a45f65c69feafca589e6f63172ced457/bannerview-2.4.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

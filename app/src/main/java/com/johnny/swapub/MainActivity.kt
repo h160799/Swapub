@@ -133,6 +133,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {

@@ -3,8 +3,6 @@ package com.johnny.swapub.setting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
