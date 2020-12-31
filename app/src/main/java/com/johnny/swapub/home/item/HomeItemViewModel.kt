@@ -32,6 +32,9 @@ class HomeItemViewModel(
     val itemPlaceInfo: LiveData<List<Product>>
         get() = _itemPlaceInfo
 
+    val itemInfoSelector = MutableLiveData<List<Product>>()
+
+
     private val _userI = MutableLiveData<User>()
     val userI: LiveData<User>
         get() = _userI
