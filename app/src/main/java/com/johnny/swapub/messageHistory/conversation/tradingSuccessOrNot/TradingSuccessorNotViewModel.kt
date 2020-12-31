@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.ChatRoom
-import com.johnny.swapub.data.LoadApiStatus
-import com.johnny.swapub.data.Product
+import com.johnny.swapub.util.LoadApiStatus
 import com.johnny.swapub.data.TradingType
 import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.util.Logger

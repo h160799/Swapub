@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.johnny.swapub.util.LoadApiStatus
 import com.johnny.swapub.data.*
 import com.johnny.swapub.data.remote.SwapubRepository
 import kotlinx.coroutines.CoroutineScope

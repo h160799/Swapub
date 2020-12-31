@@ -3,8 +3,8 @@ package com.johnny.swapub.home.item
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.johnny.swapub.util.LoadApiStatus
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
@@ -12,12 +12,10 @@ import com.johnny.swapub.data.remote.SwapubRepository
 import com.johnny.swapub.home.HomeTypeFilter
 import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
-import com.johnny.swapub.util.UserManager.user
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlin.Result
 
 class HomeItemViewModel(
     val homeTypeFilter: HomeTypeFilter,

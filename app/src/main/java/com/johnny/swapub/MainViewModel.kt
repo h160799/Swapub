@@ -3,8 +3,6 @@ package com.johnny.swapub
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.johnny.swapub.data.ChatRoom
-import com.johnny.swapub.data.LoadApiStatus
 import com.johnny.swapub.data.Result
 import com.johnny.swapub.data.User
 import com.johnny.swapub.data.remote.SwapubRepository

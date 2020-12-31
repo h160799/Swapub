@@ -1,9 +1,7 @@
 package com.johnny.swapub.util
 
 import android.content.Context
-import androidx.lifecycle.MutableLiveData
 import com.johnny.swapub.SwapubApplication
-import com.johnny.swapub.data.LoadApiStatus
 import com.johnny.swapub.data.User
 
 object UserManager {

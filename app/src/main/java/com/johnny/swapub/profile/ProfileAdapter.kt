@@ -6,14 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
-import com.johnny.swapub.R
-import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.bindImage
-import com.johnny.swapub.data.LoadApiStatus
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.User
 import com.johnny.swapub.databinding.ItemMyWishGridBinding
-import kotlinx.coroutines.launch
 
 class ProfileAdapter (val onClickListener: OnClickListener) :
         ListAdapter<Product, ProfileAdapter.ProfileViewHolder>(ProfileViewHolder) {

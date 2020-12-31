@@ -6,5 +6,4 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Club(
     val id: String? = ""
-
 ) : Parcelable
