@@ -62,5 +62,10 @@
         <item name="lienchiang_county">連江縣</item>
     </string-array>
 
+    <!-- HomePage -->
+    <string name="nearest_page">目前尚無物件\n請至「編輯個人檔案」更改所在地點</string>
+
+
+
 
 </resources>
