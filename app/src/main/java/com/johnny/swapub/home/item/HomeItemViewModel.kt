@@ -20,7 +20,7 @@ class HomeItemViewModel(
         val homeTypeFilter: HomeTypeFilter,
         val swapubRepository: SwapubRepository
 ) : ViewModel() {
-    
+
     private val _itemInfo = MutableLiveData<List<Product>>()
     val itemInfo: LiveData<List<Product>>
         get() = _itemInfo
@@ -63,57 +63,6 @@ class HomeItemViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    val product = FirebaseFirestore.getInstance()
-            .collection("product")
-    val user = FirebaseFirestore.getInstance()
-            .collection("user")
-
-    fun addData() {
-        val document = product.document()
-        val data = Product(
-                id = document.id,
-                user = "12345678", //userId
-                productTitle =
-                "日本KINTO 提式輕巧保溫瓶 500ml共8色可選",
-                description = "時尚又實用",
-                tradingStyle = "物品交換．大容量馬克杯",
-                category = "配件",
-                time = 0,
-                productImage = mutableListOf(
-                        "https://s.yimg.com/zp/MerchandiseImages/A377C865AC-SP-6987044.jpg"
-                ),
-                location = "",
-                tradable = false,
-                interestList = InterestList(
-                        senderId = "23456789",
-                        status = false
-                )
-        )
-        document.set(data)
-    }
-
-    fun addUserData() {
-        val document = user.document()
-        val data = User(
-                id = "12345678",
-                name = "Dato",
-                image = "https://files.bountyhunter.co/bhuntr/public/201508/5e68c386-cc1e-4724-b336-aa1459a90fe6_800x800.jpg",
-                clubList = mutableListOf(
-
-                ),
-                place = "",
-                favoriteList = mutableListOf(
-
-                ),
-                swappingList = mutableListOf(
-
-                ),
-                swappedList = mutableListOf(
-
-                )
-        )
-        document.set(data)
-    }
 
     init {
         getUserInHome()

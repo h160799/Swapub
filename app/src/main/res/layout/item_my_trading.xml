@@ -142,7 +142,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray_646464"
-            android:alpha="0.3"
+            android:alpha="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
