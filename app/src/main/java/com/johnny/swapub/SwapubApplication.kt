@@ -7,7 +7,7 @@ import kotlin.properties.Delegates
 
 class SwapubApplication : Application() {
 
-    // Depends on the flavor,
+    // Depends on the flavor
     val swapubRepository: SwapubRepository
         get() = ServiceLocator.provideTasksRepository(this)
 

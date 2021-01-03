@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 
-
 class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +20,5 @@ class SplashScreen : AppCompatActivity() {
             finish()
         }, SPLASH_TIME_OUT.toLong())
     }
-
 }
 
