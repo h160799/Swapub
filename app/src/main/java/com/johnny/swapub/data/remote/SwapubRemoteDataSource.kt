@@ -450,7 +450,6 @@ object SwapubRemoteDataSource : SwapubDataSource {
 
     override suspend fun getAddedChatRoom(chatRoom: ChatRoom): Result<ChatRoom> =
             suspendCoroutine { continuation ->
-
                 FirebaseFirestore.getInstance()
                         .collection(PATH_CHAT_ROOM)
                         .whereEqualTo("senderId", chatRoom.senderId)

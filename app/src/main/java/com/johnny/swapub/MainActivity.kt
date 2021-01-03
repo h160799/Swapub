@@ -128,11 +128,7 @@ class MainActivity : AppCompatActivity() {
         setupBottomNav()
         setupNavController()
         setupDrawer()
-
-
-
     }
-
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -160,7 +156,6 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-
     private fun setupBottomNav() {
         binding.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
@@ -186,7 +181,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.makeWishesFragment -> CurrentFragmentType.MAKEWISHES
                 R.id.settingFragment -> CurrentFragmentType.SETTING
                 R.id.privacyPolicyFragment -> CurrentFragmentType.PRIVACYPOLICY
-
 
                 else -> viewModel.currentFragmentType.value
             }
@@ -249,7 +243,6 @@ class MainActivity : AppCompatActivity() {
             syncState()
         }
 
-
         // Set up header of drawer ui using data binding
         val bindingNavHeader = NavHeaderDrawerBinding.inflate(
             LayoutInflater.from(this), binding.drawerNavView, false
@@ -257,14 +250,11 @@ class MainActivity : AppCompatActivity() {
 
         bindingNavHeader.lifecycleOwner = this
         bindingNavHeader.viewModel = viewModel
+
         binding.drawerNavView.addHeaderView(bindingNavHeader.root)
 
         binding.toolbar.setNavigationIcon(R.drawable.baseline_menu_white_18)
-
     }
-
-
-
 }
 
 
