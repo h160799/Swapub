@@ -18,37 +18,42 @@ import com.johnny.swapub.util.Logger
 
 class TradingSuccessorNotFragment : Fragment() {
 
-    val viewModel by viewModels<TradingSuccessorNotViewModel> { getVmFactory(
-        TradingSuccessorNotFragmentArgs.fromBundle(requireArguments()).chatRoom) }
+    val viewModel by viewModels<TradingSuccessorNotViewModel> {
+        getVmFactory(
+                TradingSuccessorNotFragmentArgs.fromBundle(requireArguments()).chatRoom)
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val binding = TradingSuccessorNotFragmentBinding.inflate(inflater, container,
-            false)
+                false)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-
         binding.tradingStyleOk.setOnClickListener {
-            viewModel.chatRoom.productId?.let { it1 -> viewModel.updateProductTradable(it1,true) }
-            binding.dealSuccessfulConstraint.visibility= View.VISIBLE
+            viewModel.chatRoom.productId?.let { it1 -> viewModel.updateProductTradable(it1, true) }
+            binding.dealSuccessfulConstraint.visibility = View.VISIBLE
 
         }
 
         binding.animationDealSuccessful.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(p0: Animator?) {
             }
+
             override fun onAnimationEnd(p0: Animator?) {
                 findNavController().navigate(TradingSuccessorNotFragmentDirections.actionGlobalConversationFragment(viewModel.chatRoom))
             }
+
             override fun onAnimationCancel(p0: Animator?) {
             }
+
             override fun onAnimationRepeat(p0: Animator?) {
             }
         })
+
         binding.animationDealSuccessful.playAnimation()
 
         binding.tradingStyleNo.setOnClickListener {
@@ -65,7 +70,4 @@ class TradingSuccessorNotFragment : Fragment() {
 
         return binding.root
     }
-
-
-
 }

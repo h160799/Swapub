@@ -28,7 +28,6 @@ import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.databinding.ConversationFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.product.ProductFragmentDirections
-import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_conversation.*
@@ -76,6 +75,7 @@ class ConversationFragment : Fragment() {
                 binding.recyclerViewConversation.smoothScrollToPosition(0)
             }
         })
+
 
         binding.goBack.setOnClickListener {
             findNavController().navigate(ProductFragmentDirections.actionGlobalMessageHistoryFragment())
@@ -134,7 +134,7 @@ class ConversationFragment : Fragment() {
                     android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
         if (permission != PackageManager.PERMISSION_GRANTED) {
-            //未取得權限，向使用者要求允許權限
+            //ask user for permission
             ActivityCompat.requestPermissions(
                     context as Activity,
                     arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
@@ -185,7 +185,7 @@ class ConversationFragment : Fragment() {
                 }
             }
             ImagePicker.RESULT_ERROR -> Toast.makeText(context, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
-            else -> Toast.makeText(context, "Task Cancelled", Toast.LENGTH_SHORT).show()
+            else -> Toast.makeText(context, R.string.task_cancelled, Toast.LENGTH_SHORT).show()
         }
     }
 

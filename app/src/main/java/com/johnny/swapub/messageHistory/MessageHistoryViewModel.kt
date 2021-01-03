@@ -13,9 +13,10 @@ import kotlinx.coroutines.Job
 import java.util.*
 
 class MessageHistoryViewModel(
-    private val swapubRepository: SwapubRepository
+        private val swapubRepository: SwapubRepository
 
-    ) : ViewModel() {
+) : ViewModel() {
+
     private val _allMessageHistory = MutableLiveData<List<ChatRoom>>()
     val allMessageHistory: LiveData<List<ChatRoom>>
         get() = _allMessageHistory
@@ -36,28 +37,18 @@ class MessageHistoryViewModel(
         get() = _navigateToConversation
 
 
-    val chatRoomA = FirebaseFirestore.getInstance()
-        .collection("chatRoom")
-
-    val message = FirebaseFirestore.getInstance()
-        .collection("message")
-
-
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
-
     val status: LiveData<LoadApiStatus>
         get() = _status
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
-
     val error: LiveData<String>
         get() = _error
 
     // status for the loading icon of swl
     private val _refreshStatus = MutableLiveData<Boolean>()
-
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
@@ -67,28 +58,9 @@ class MessageHistoryViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-
-
     init {
-//        addMessage()
         getMessageHistory()
     }
-
-
-
-    fun addMessage() {
-        val document = chatRoomA.document().collection("message").document()
-        val data = Message(
-            id = "12345678",
-            senderImage = "https://stickershop.line-scdn.net/stickershop/v1/product/583/LINEStorePC/main.png;compress=true",
-            text = "好像不錯唷",
-            time = Calendar.getInstance().timeInMillis,
-            image = ""
-               )
-
-        document.set(data)
-    }
-
 
     fun getMessageHistory() {
         liveChatRooms = swapubRepository.getMessageHistory()

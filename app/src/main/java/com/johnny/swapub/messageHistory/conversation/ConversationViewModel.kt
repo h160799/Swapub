@@ -37,7 +37,7 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
     }
 
     val document = MutableLiveData<String>().apply {
-        value =  chatRoom.value?.id
+        value = chatRoom.value?.id
     }
 
     val tradingStyle = MutableLiveData<Boolean>().apply {
@@ -47,7 +47,6 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
     private val _conversationProduct = MutableLiveData<Product>()
     val conversationProduct: LiveData<Product>
         get() = _conversationProduct
-
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -91,7 +90,6 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
         _refreshStatus.value = false
     }
 
-
     fun postMessage(message: Message, document: String) {
 
         coroutineScope.launch {
@@ -118,7 +116,6 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
             }
         }
     }
-
 
     fun getOneProduct(productId: String) {
 
@@ -155,13 +152,8 @@ class ConversationViewModel(private val swapubRepository: SwapubRepository,
         }
     }
 
-
-
-
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
 }

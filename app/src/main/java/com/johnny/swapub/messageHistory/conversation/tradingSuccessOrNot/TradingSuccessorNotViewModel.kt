@@ -16,10 +16,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class TradingSuccessorNotViewModel(
-    val swapubRepository: SwapubRepository,
-    val arguments: ChatRoom
+        val swapubRepository: SwapubRepository,
+        val arguments: ChatRoom
 
-): ViewModel() {
+) : ViewModel() {
 
     val chatRoom = arguments
 
@@ -27,11 +27,8 @@ class TradingSuccessorNotViewModel(
     val tradingTypeInfo: LiveData<TradingType>
         get() = _tradingTypeInfo
 
-
-
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
-
     val status: LiveData<LoadApiStatus>
         get() = _status
 
@@ -54,11 +51,9 @@ class TradingSuccessorNotViewModel(
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
 
-init {
-    chatRoom.id?.let { getTradingType(it) }
-}
-
-
+    init {
+        chatRoom.id?.let { getTradingType(it) }
+    }
 
     fun getTradingType(chatRoomId: String) {
 
@@ -68,7 +63,7 @@ init {
 
             val result = swapubRepository.getTradingType(chatRoomId)
 
-           _tradingTypeInfo.value = when (result) {
+            _tradingTypeInfo.value = when (result) {
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -176,10 +171,8 @@ init {
         }
     }
 
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
 }
