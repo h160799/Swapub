@@ -2,7 +2,6 @@
     <string name="app_name">MineForYours</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -25,15 +24,13 @@
     <!-- ProductFragment -->
     <string name="send_successful">已發送訊息給對方</string>
 
-    <string name="newest">Newest</string>
-    <string name="nearest">Nearest</string>
-
     <string name="error">Error</string>
     <string name="you_know_nothing">You know nothing</string>
 
+    <!-- Camera -->
     <string name="load_img_fail">讀取圖片失敗</string>
-    <string name="do_nothing">無權限無法做事!</string>
-    <!-- TradingSuccessOrNotFragment -->
+    <string name="do_nothing">無權限使用此功能</string>
+    <string name="task_cancelled">執行失敗</string>
 
     <!-- CityOptions -->
     <string-array name="city_options">
@@ -61,6 +58,14 @@
         <item name="kinmen_county">金門縣</item>
         <item name="lienchiang_county">連江縣</item>
     </string-array>
+
+    <!-- HomePage -->
+    <string name="newest">Newest</string>
+    <string name="nearest">Nearest</string>
+    <string name="nearest_page">目前尚無物件\n請至「編輯個人檔案」更改所在地點</string>
+
+    <!-- SignInActivity -->
+    <string name="google_sign_in_failed">Google 登入失敗</string>
 
 
 </resources>

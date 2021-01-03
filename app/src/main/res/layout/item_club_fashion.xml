@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="property_fashion"
             type="com.johnny.swapub.data.Product" />
@@ -20,10 +21,10 @@
             android:layout_height="130dp"
             android:scaleType="centerCrop"
             app:imageUrl="@{property_fashion.productImage[0]}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:src="@color/white_E3DED8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

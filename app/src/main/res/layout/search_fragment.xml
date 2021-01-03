@@ -10,6 +10,7 @@
             type="com.johnny.swapub.search.SearchViewModel" />
 
         <import type="android.view.View" />
+
         <import type="android.text.TextUtils" />
     </data>
 
@@ -61,17 +62,17 @@
             android:id="@+id/edit_search"
             android:layout_width="300dp"
             android:layout_height="30dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginEnd="27dp"
             android:background="@null"
             android:fontFamily="@font/pt_sans"
             android:hint="開始搜尋"
             android:inputType="text"
-            android:textCursorDrawable="@null"
-            android:text="@={viewModel.editSearch}"
             android:shadowColor="@color/black"
+            android:text="@={viewModel.editSearch}"
             android:textColor="@color/black"
+            android:textCursorDrawable="@null"
             android:textSize="15sp"
-            android:layout_marginStart="27dp"
-            android:layout_marginEnd="27dp"
             app:layout_constraintBottom_toBottomOf="@id/search_editText"
             app:layout_constraintEnd_toEndOf="@id/search_editText"
             app:layout_constraintStart_toStartOf="@id/search_editText"
@@ -165,17 +166,16 @@
                     android:id="@+id/recyclerview_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="2dp"
                     android:background="@color/white"
+                    android:padding="2dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:spanCount="3"
                     tools:itemCount="21"
                     tools:listitem="@layout/item_search_grid" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

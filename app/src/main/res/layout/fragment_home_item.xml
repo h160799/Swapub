@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.johnny.swapub.home.item.HomeItemViewModel"/>
+            type="com.johnny.swapub.home.item.HomeItemViewModel" />
 
         <import type="android.view.View" />
 
@@ -16,21 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black">
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="目前尚無任何物件\n請至「編輯個人資訊」設定目前所在位置"-->
-<!--            android:fontFamily="@font/pt_sans"-->
-<!--            android:textSize="15dp"-->
-<!--            android:gravity="center"-->
-<!--            android:textColor="@color/white"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:visibility="@{viewModel.getProductsWithPlace() == null ? View.VISIBLE : View.GONE}"/>-->
-
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/layout_swipe_refresh_home_item"
@@ -47,13 +33,28 @@
                 android:id="@+id/recycler_home_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/black"
                 android:padding="2dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"
                 tools:itemCount="21"
-                tools:listitem="@layout/item_home_grid">
+                tools:listitem="@layout/item_home_grid"/>
 
-            </androidx.recyclerview.widget.RecyclerView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/remind_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/pt_sans"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

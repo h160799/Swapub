@@ -3,6 +3,7 @@ package com.johnny.swapub.myTrading.tradingPost
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.johnny.swapub.util.LoadApiStatus
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.*
@@ -15,7 +16,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class TradingPostViewModel(
-    val swapubRepository: SwapubRepository
+        val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
     val productTitleEditText = MutableLiveData<String>()
@@ -25,19 +26,16 @@ class TradingPostViewModel(
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
-
     val status: LiveData<LoadApiStatus>
         get() = _status
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
-
     val error: LiveData<String>
         get() = _error
 
     // status for the loading icon of swl
     private val _refreshStatus = MutableLiveData<Boolean>()
-
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
@@ -46,7 +44,6 @@ class TradingPostViewModel(
 
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
 
 
     fun postTradingInfo(product: Product) {
@@ -76,28 +73,26 @@ class TradingPostViewModel(
         }
     }
 
-    fun addProduct() : Product{
+    fun addProduct(): Product {
         return Product(
-            id = "",
-            user = UserManager.userId,
-            productTitle = productTitleEditText.value,
-            description = descriptionEditText.value,
-            tradingStyle = tradingStyleEditText.value,
-            category = categoryEditText.value,
-            time = Calendar.getInstance().timeInMillis,
-            productImage = mutableListOf(
-                ""
-            ),
-            location = "",
-            tradable = false,
-            interestList = InterestList(
-                senderId = "",
-                status = false
-            )
+                id = "",
+                user = UserManager.userId,
+                productTitle = productTitleEditText.value,
+                description = descriptionEditText.value,
+                tradingStyle = tradingStyleEditText.value,
+                category = categoryEditText.value,
+                time = Calendar.getInstance().timeInMillis,
+                productImage = mutableListOf(
+                        ""
+                ),
+                location = "",
+                tradable = false,
+                interestList = InterestList(
+                        senderId = "",
+                        status = false
+                )
         )
     }
-
-
 
     override fun onCleared() {
         super.onCleared()

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
-        name="favorite_property"
-        type="com.johnny.swapub.data.Product"/>
+            name="favorite_property"
+            type="com.johnny.swapub.data.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,12 +19,12 @@
         <ImageView
             android:layout_width="280dp"
             android:layout_height="280dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:imageUrl="@{favorite_property.productImage[0]}"
-            tools:background="@color/black"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/black" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

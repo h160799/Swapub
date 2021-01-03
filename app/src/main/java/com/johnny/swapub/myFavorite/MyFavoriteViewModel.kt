@@ -1,17 +1,14 @@
 package com.johnny.swapub.myFavorite
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.firestore.FirebaseFirestore
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
-import com.johnny.swapub.data.LoadApiStatus
+import com.johnny.swapub.util.LoadApiStatus
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.User
 import com.johnny.swapub.data.remote.SwapubRepository
-import com.johnny.swapub.util.ServiceLocator
 import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +16,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MyFavoriteViewModel(
-    val swapubRepository: SwapubRepository
+        val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
     private val _userF = MutableLiveData<User>()
@@ -38,7 +35,6 @@ class MyFavoriteViewModel(
     private val _navigateToDetail = MutableLiveData<Product>()
     val navigateToDetail: LiveData<Product>
         get() = _navigateToDetail
-
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -64,13 +60,9 @@ class MyFavoriteViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-
-init {
-    getFavoriteList()
-}
-
-
-
+    init {
+        getFavoriteList()
+    }
 
     fun getFavoriteList() {
 
@@ -84,8 +76,6 @@ init {
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
-                    Log.d("fff","${result.data}")
-
                     result.data
                 }
                 is com.johnny.swapub.data.Result.Fail -> {
@@ -111,40 +101,37 @@ init {
     fun getFavoriteProduct(productId: List<String>) {
 
 
-            coroutineScope.launch {
+        coroutineScope.launch {
 
-                _status.value = LoadApiStatus.LOADING
+            _status.value = LoadApiStatus.LOADING
 
-                val result = swapubRepository.getFavoriteProduct(productId)
+            val result = swapubRepository.getFavoriteProduct(productId)
 
-                _favoriteProduct.value = when (result) {
-                    is com.johnny.swapub.data.Result.Success -> {
-                        _error.value = null
-                        _status.value = LoadApiStatus.DONE
-                        result.data
-                    }
-                    is com.johnny.swapub.data.Result.Fail -> {
-                        _error.value = result.error
-                        _status.value = LoadApiStatus.ERROR
-                        null
-                    }
-                    is com.johnny.swapub.data.Result.Error -> {
-                        _error.value = result.exception.toString()
-                        _status.value = LoadApiStatus.ERROR
-                        null
-                    }
-                    else -> {
-                        _error.value = SwapubApplication.instance.getString(R.string.error)
-                        _status.value = LoadApiStatus.ERROR
-                        null
-                    }
+            _favoriteProduct.value = when (result) {
+                is com.johnny.swapub.data.Result.Success -> {
+                    _error.value = null
+                    _status.value = LoadApiStatus.DONE
+                    result.data
                 }
-
+                is com.johnny.swapub.data.Result.Fail -> {
+                    _error.value = result.error
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                is com.johnny.swapub.data.Result.Error -> {
+                    _error.value = result.exception.toString()
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
+                else -> {
+                    _error.value = SwapubApplication.instance.getString(R.string.error)
+                    _status.value = LoadApiStatus.ERROR
+                    null
+                }
             }
+
         }
-
-
-
+    }
 
     fun navigateToDetail(product: Product) {
         _navigateToDetail.value = product
@@ -154,12 +141,8 @@ init {
         _navigateToDetail.value = null
     }
 
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
-
-
 }

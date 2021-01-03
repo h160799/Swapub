@@ -16,8 +16,8 @@ class WrapContentHeightViewPager : ViewPager {
         for (i in 0 until childCount) {
             val child: View = getChildAt(i)
             child.measure(
-                widthMeasureSpec,
-                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
+                    widthMeasureSpec,
+                    MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
             )
             val h: Int = child.getMeasuredHeight()
             if (h > height) height = h

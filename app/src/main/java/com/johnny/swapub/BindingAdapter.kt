@@ -8,19 +8,17 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.johnny.swapub.util.TimeUtil
 
-
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = it.toUri().buildUpon().build()
         Glide.with(imgView.context)
-            .load(imgUri)
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.bg_round_button)
-                    .error(R.drawable.bg_round_button))
-                    .into(imgView)
-
+                .load(imgUri)
+                .apply(
+                        RequestOptions()
+                                .placeholder(R.drawable.bg_round_button)
+                                .error(R.drawable.bg_round_button))
+                .into(imgView)
     }
 }
 

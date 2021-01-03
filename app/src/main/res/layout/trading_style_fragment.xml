@@ -184,12 +184,12 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:hint="請填寫交易敘述"
                     android:background="@null"
-                    android:textCursorDrawable="@null"
+                    android:hint="請填寫交易敘述"
                     android:text="@={viewModel.tradingEditText}"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray_cccccc"
+                    android:textCursorDrawable="@null"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/title2"
                     app:layout_constraintTop_toBottomOf="@id/title2" />
@@ -225,10 +225,10 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/trading_product_image"
+                    app:layout_constraintBottom_toBottomOf="@id/trading_product_image"
                     app:layout_constraintEnd_toEndOf="@id/trading_product_image"
-                    app:layout_constraintTop_toTopOf="@id/trading_product_image"
-                    app:layout_constraintBottom_toBottomOf="@id/trading_product_image"/>
+                    app:layout_constraintStart_toStartOf="@id/trading_product_image"
+                    app:layout_constraintTop_toTopOf="@id/trading_product_image" />
 
                 <ImageView
                     android:id="@+id/trading_product_image"
@@ -236,11 +236,11 @@
                     android:layout_height="300dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="40dp"
-                    android:scaleType="centerCrop"
                     android:background="@drawable/bg_border_stroke"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/title3"
-                    app:layout_constraintTop_toBottomOf="@id/title3"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/title3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
@@ -254,20 +254,20 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/black"
-                android:alpha="0.8"/>
+                android:alpha="0.8"
+                android:background="@color/black" />
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/animation_select_successful"
-                    android:layout_width="350dp"
-                    android:layout_height="350dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:lottie_autoPlay="false"
-                    app:lottie_loop="false"
-                    app:lottie_rawRes="@raw/deal_success"/>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_select_successful"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/deal_success" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

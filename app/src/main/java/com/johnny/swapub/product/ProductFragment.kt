@@ -13,7 +13,6 @@ import com.johnny.swapub.NavigationDirections
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.ProductFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
-import com.johnny.swapub.util.Logger
 
 class ProductFragment : Fragment() {
 
@@ -53,9 +52,7 @@ class ProductFragment : Fragment() {
             if (viewModel.isFavor.value == true) {
                 viewModel.isFavor.value = false
                 viewModel.productDetail.value?.id?.let { productId ->
-                    viewModel.removeProductToFavorList(
-                        productId
-                    )
+                    viewModel.removeProductToFavorList(productId)
                 }
             } else {
                 viewModel.isFavor.value = true
@@ -71,12 +68,10 @@ class ProductFragment : Fragment() {
         })
 
         binding.interestToTrade.setOnClickListener {
-
             viewModel.getSenderInfo(viewModel.userId)
 
             val chatRoom = viewModel.addChatRoom()
             viewModel.senderInfo.value?.let { it1 -> viewModel.postInterestMessage(chatRoom, it1) }
-            Logger.d("")
         }
 
         viewModel.interestMessage.observe(viewLifecycleOwner, Observer {

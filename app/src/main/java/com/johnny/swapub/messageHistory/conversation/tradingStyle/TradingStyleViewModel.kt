@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.ChatRoom
-import com.johnny.swapub.data.LoadApiStatus
+import com.johnny.swapub.util.LoadApiStatus
 import com.johnny.swapub.data.TradingType
 import com.johnny.swapub.data.remote.SwapubRepository
 import kotlinx.coroutines.CoroutineScope
@@ -16,10 +16,10 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class TradingStyleViewModel(
-    val swapubRepository: SwapubRepository,
-    val arguments: ChatRoom
+        val swapubRepository: SwapubRepository,
+        val arguments: ChatRoom
 
-): ViewModel() {
+) : ViewModel() {
 
     val chatRoom = arguments
 
@@ -31,25 +31,20 @@ class TradingStyleViewModel(
 
     var image = MutableLiveData<String>()
 
-
     val tradingEditText = MutableLiveData<String>()
-
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
-
     val status: LiveData<LoadApiStatus>
         get() = _status
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
-
     val error: LiveData<String>
         get() = _error
 
     // status for the loading icon of swl
     private val _refreshStatus = MutableLiveData<Boolean>()
-
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
@@ -59,19 +54,13 @@ class TradingStyleViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-
-
-
-
-
-
-    fun postTradingType(chatRoomId: String,tradingType: TradingType) {
+    fun postTradingType(chatRoomId: String, tradingType: TradingType) {
 
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
 
-            when (val result = swapubRepository.postTradingType(chatRoomId,tradingType)) {
+            when (val result = swapubRepository.postTradingType(chatRoomId, tradingType)) {
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
@@ -92,17 +81,16 @@ class TradingStyleViewModel(
         }
     }
 
-fun addTradingType(): TradingType{
+    fun addTradingType(): TradingType {
         return TradingType(
-            id = chatRoom.id,
-            productId = chatRoom.productId,
-            type = tradingTypeSelect.value.toString(),
-            time = Calendar.getInstance().timeInMillis,
-            image = image.value,
-            text = tradingEditText.value
+                id = chatRoom.id,
+                productId = chatRoom.productId,
+                type = tradingTypeSelect.value.toString(),
+                time = Calendar.getInstance().timeInMillis,
+                image = image.value,
+                text = tradingEditText.value
         )
     }
-
 
     fun updateTradingSelect(chatRoomId: String, tradingSelect: Boolean) {
 
@@ -131,13 +119,8 @@ fun addTradingType(): TradingType{
         }
     }
 
-
-
-
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
 }

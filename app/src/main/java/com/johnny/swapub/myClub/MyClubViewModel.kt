@@ -7,12 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.data.Club
-import com.johnny.swapub.data.LoadApiStatus
-import com.johnny.swapub.data.Product
-import com.johnny.swapub.data.Result
+import com.johnny.swapub.util.LoadApiStatus
 import com.johnny.swapub.data.User
 import com.johnny.swapub.data.remote.SwapubRepository
-import com.johnny.swapub.util.Logger
 import com.johnny.swapub.util.UserManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +17,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MyClubViewModel(
-    val swapubRepository: SwapubRepository
+        val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
 
@@ -46,25 +43,18 @@ class MyClubViewModel(
     val getClubWomenMenClothes = MutableLiveData<Boolean>()
 
 
-
-
-
-
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
-
     val status: LiveData<LoadApiStatus>
         get() = _status
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
-
     val error: LiveData<String>
         get() = _error
 
     // status for the loading icon of swl
     private val _refreshStatus = MutableLiveData<Boolean>()
-
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
@@ -77,7 +67,6 @@ class MyClubViewModel(
 
     init {
         getUserClubList()
-//        Logger.d("7777777777${_userClubList.value}")
     }
 
 
@@ -93,7 +82,7 @@ class MyClubViewModel(
                 is com.johnny.swapub.data.Result.Success -> {
                     _error.value = null
                     _status.value = LoadApiStatus.DONE
-                    Log.d("fff","${result.data}")
+                    Log.d("fff", "${result.data}")
 
                     result.data
                 }
@@ -151,14 +140,8 @@ class MyClubViewModel(
         }
     }
 
-
-
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
-
-
 }

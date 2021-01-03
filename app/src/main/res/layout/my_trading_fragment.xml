@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.johnny.swapub.myTrading.MyTradingViewModel" />
@@ -62,9 +63,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/line"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_my_trading" />
 
         <TextView
@@ -78,9 +79,9 @@
             android:textColor="@color/gray_999999"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@id/title"
             app:layout_constraintBottom_toBottomOf="@id/title"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title" />
 
         <TextView
             android:id="@+id/finish_product"
@@ -90,13 +91,13 @@
             android:fontFamily="@font/pt_sans"
             android:gravity="center"
             android:text="完成"
-            android:visibility="gone"
             android:textColor="@color/gray_999999"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@id/title"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/title"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

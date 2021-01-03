@@ -18,7 +18,6 @@
     <color name="orange_ff7902">#ff7902</color>
     <color name="orange_FAC943">#FAC943</color>
 
-
     <!-- Black Series -->
     <color name="black">#000000</color>
     <color name="black_3f3a3a">#3f3a3a</color>
@@ -36,7 +35,6 @@
     <color name="gray_4C4E58">#4C4E58</color>
     <color name="gray_0F0F0F">#0F0F0F</color>
 
-
     <!-- Red Series -->
     <color name="red_FF0D0D">#FF0D0D</color>
     <color name="red_A44F3C">#A44F3C</color>
@@ -48,19 +46,9 @@
     <!-- Blue Series -->
     <color name="blue_36A6D8">#36A6D8</color>
 
-
-
-
-
-
-
-
-
     <!-- Bottom Navigation -->
     <color name="bottom_navigation_item_normal">@color/white</color>
     <color name="bottom_navigation_item_selected">@color/gray_999999</color>
-
-
 
 
 </resources>

@@ -10,11 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.NavigationDirections
-import com.johnny.swapub.R
-import com.johnny.swapub.data.Product
 import com.johnny.swapub.databinding.SearchFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
-import com.johnny.swapub.ext.hideKeyboard
 
 class SearchFragment : Fragment() {
 
@@ -22,15 +19,15 @@ class SearchFragment : Fragment() {
     lateinit var binding: SearchFragmentBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val binding = SearchFragmentBinding.inflate(inflater, container,
-            false)
+                false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val adapter = SearchAdapter(SearchAdapter.OnClickListener{
+        val adapter = SearchAdapter(SearchAdapter.OnClickListener {
             viewModel.navigateToDetail(it)
         }, viewModel)
         adapter.setHasStableIds(true)
@@ -45,44 +42,30 @@ class SearchFragment : Fragment() {
             }
         })
 
-
-
-//        binding.editSearch.setOnEditorActionListener { v, actionId, event ->
-//            if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-//                binding.editSearch.hideKeyboard()
-//
-//            }
-//            return@setOnEditorActionListener false
-//        }
-
         binding.editSearch.addTextChangedListener {
-            viewModel.liveSearch.value = viewModel.allProducts.value?.let { it1 -> viewModel.editSearch.value?.let { it2 ->
-                viewModel.filter(it1,
-                    it2
-                )
-            } }
+            viewModel.liveSearch.value = viewModel.allProducts.value?.let { it1 ->
+                viewModel.editSearch.value?.let { it2 ->
+                    viewModel.filter(it1, it2
+                    )
+                }
+            }
         }
 
         viewModel.liveSearch.observe(viewLifecycleOwner, Observer {
-                it?.let {
-                    adapter.submitList(it)
-                }
-            })
-
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
 
         binding.imageSearchClear.setOnClickListener {
             binding.editSearch.text.clear()
         }
-
 
         binding.goBack.setOnClickListener {
             findNavController().navigateUp()
         }
         return binding.root
     }
-
-
-
 }
 
 

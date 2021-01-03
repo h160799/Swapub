@@ -10,10 +10,10 @@ import com.johnny.swapub.databinding.ItemSearchGridBinding
 
 
 class SearchAdapter(val onClickListener: OnClickListener, viewModel: SearchViewModel) :
-    ListAdapter<Product, SearchAdapter.SearchViewHolder>(SearchViewHolder) {
+        ListAdapter<Product, SearchAdapter.SearchViewHolder>(SearchViewHolder) {
 
     class SearchViewHolder(private var binding: ItemSearchGridBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+            RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.mySearchProperty = product
             // This is important, because it forces the data binding to execute immediately,
@@ -31,15 +31,15 @@ class SearchAdapter(val onClickListener: OnClickListener, viewModel: SearchViewM
             }
 
             override fun areItemsTheSame(
-                oldItem: Product,
-                newItem: Product,
+                    oldItem: Product,
+                    newItem: Product,
             ): Boolean {
                 return oldItem === newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: Product,
-                newItem: Product,
+                    oldItem: Product,
+                    newItem: Product,
             ): Boolean {
                 return oldItem.user == newItem.user
             }
@@ -47,8 +47,8 @@ class SearchAdapter(val onClickListener: OnClickListener, viewModel: SearchViewM
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int,
+            parent: ViewGroup,
+            viewType: Int,
     ): SearchViewHolder {
         return SearchViewHolder.from(parent)
     }

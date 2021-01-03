@@ -57,7 +57,7 @@ class MessageHistoryFragment : Fragment() {
 
         val swipeRefresh = binding.layoutSwipeRefreshMessageHistoryItem
         swipeRefresh.setOnRefreshListener {
-            viewModel.addMessage()
+            viewModel.getMessageHistory()
             swipeRefresh.isRefreshing = false
         }
 

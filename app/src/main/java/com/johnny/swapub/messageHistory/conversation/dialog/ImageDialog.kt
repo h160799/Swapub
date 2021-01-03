@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.DialogImageBinding
 
-class ImageDialog:  AppCompatDialogFragment() {
+class ImageDialog : AppCompatDialogFragment() {
 
     var iconRes: Drawable? = null
     var message: String? = null
@@ -43,6 +43,8 @@ class ImageDialog:  AppCompatDialogFragment() {
         private var _message = ""
         override var message: String
             get() = _message
-            set(value) { _message = value }
+            set(value) {
+                _message = value
+            }
     }
 }

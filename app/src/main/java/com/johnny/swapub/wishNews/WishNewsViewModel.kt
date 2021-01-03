@@ -5,10 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
-import com.johnny.swapub.data.LoadApiStatus
+import com.johnny.swapub.util.LoadApiStatus
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.data.Result
-import com.johnny.swapub.data.User
 import com.johnny.swapub.data.remote.SwapubRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,13 +15,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class WishNewsViewModel(
-    val swapubRepository: SwapubRepository
+        val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
     private val _getAllWishProduct = MutableLiveData<List<Product>>()
     val getAllWishProduct: LiveData<List<Product>>
         get() = _getAllWishProduct
-
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -45,14 +43,14 @@ class WishNewsViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-
-init {
-    getAllWishContent()
-}
-
+    init {
+        getAllWishContent()
+    }
 
     fun getAllWishContent() {
+
         coroutineScope.launch {
+
             _status.value = LoadApiStatus.LOADING
             val result = swapubRepository.getAllWishContent()
             _getAllWishProduct.value = when (result) {
@@ -81,8 +79,6 @@ init {
 
         }
     }
-
-
 
     override fun onCleared() {
         super.onCleared()

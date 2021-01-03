@@ -17,12 +17,12 @@ class MyClubFragment : Fragment() {
     val viewModel by viewModels<MyClubViewModel> { getVmFactory() }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val binding = MyClubFragmentBinding.inflate(
-            inflater, container,
-            false
+                inflater, container,
+                false
         )
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -110,6 +110,4 @@ class MyClubFragment : Fragment() {
 
         return binding.root
     }
-
-
 }

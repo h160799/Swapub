@@ -1,27 +1,15 @@
 package com.johnny.swapub
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.media.Image
-import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
-import android.view.WindowManager
-import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -30,32 +18,26 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.bumptech.glide.Glide
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import com.johnny.swapub.databinding.ActivityMainBinding
 import com.johnny.swapub.databinding.NavHeaderDrawerBinding
 import com.johnny.swapub.util.CurrentFragmentType
 import com.johnny.swapub.ext.getVmFactory
 import com.johnny.swapub.util.Logger
-import com.johnny.swapub.util.UserManager
-import kotlinx.android.synthetic.main.item_product.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import java.io.File
 
 class MainActivity : AppCompatActivity() {
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, MainActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         }
-
     }
 
     /**
@@ -69,14 +51,10 @@ class MainActivity : AppCompatActivity() {
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-
     private lateinit var binding: ActivityMainBinding
     private var actionBarDrawerToggle: ActionBarDrawerToggle? = null
     private lateinit var appBarConfiguration: AppBarConfiguration
-
     private lateinit var firebaseAnalytics: FirebaseAnalytics
-
-
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,19 +64,13 @@ class MainActivity : AppCompatActivity() {
         firebaseAnalytics = Firebase.analytics
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
         binding.search.setOnClickListener {
             findNavController(R.id.myNavHostFragment).navigate(R.id.action_global_searchFragment)
         }
-
-
-        viewModel.currentFragmentType.observe(this, Observer {
-            Logger.i("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-            Logger.i("[${viewModel.currentFragmentType.value}]")
-            Logger.i("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        })
 
         viewModel.navigateToProfileByBottomNav.observe(this, Observer {
             it?.let {
@@ -114,23 +86,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
-//        val window = window
-//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-//        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-//                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
-//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-//        window.statusBarColor =
-//            Color.TRANSPARENT // calculateStatusColor(Color.WHITE, (int) alphaValue)
-
-
         setupBottomNav()
         setupNavController()
         setupDrawer()
-
-
-
     }
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -159,7 +117,6 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-
     private fun setupBottomNav() {
         binding.bottomNavView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
@@ -185,7 +142,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.makeWishesFragment -> CurrentFragmentType.MAKEWISHES
                 R.id.settingFragment -> CurrentFragmentType.SETTING
                 R.id.privacyPolicyFragment -> CurrentFragmentType.PRIVACYPOLICY
-
 
                 else -> viewModel.currentFragmentType.value
             }
@@ -227,17 +183,17 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
         binding.drawerLayout.fitsSystemWindows = true
+
         binding.drawerLayout.clipToPadding = false
 
-
-
         actionBarDrawerToggle = object : ActionBarDrawerToggle(
-            this,
-            binding.drawerLayout,
-            binding.toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
+                this,
+                binding.drawerLayout,
+                binding.toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
         ) {
             override fun onDrawerOpened(drawerView: View) {
                 super.onDrawerOpened(drawerView)
@@ -248,22 +204,18 @@ class MainActivity : AppCompatActivity() {
             syncState()
         }
 
-
         // Set up header of drawer ui using data binding
         val bindingNavHeader = NavHeaderDrawerBinding.inflate(
-            LayoutInflater.from(this), binding.drawerNavView, false
+                LayoutInflater.from(this), binding.drawerNavView, false
         )
 
         bindingNavHeader.lifecycleOwner = this
         bindingNavHeader.viewModel = viewModel
+
         binding.drawerNavView.addHeaderView(bindingNavHeader.root)
 
-        binding.toolbar.setNavigationIcon(R.drawable.baseline_menu_white_18)
-
+        binding.toolbar.setNavigationIcon(R.drawable.toolbar_24)
     }
-
-
-
 }
 
 

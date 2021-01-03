@@ -17,15 +17,15 @@ object ServiceLocator {
     fun provideTasksRepository(context: Context): SwapubRepository {
         synchronized(this) {
             return swapubRepository
-                ?: swapubRepository
-                ?: createSwapubRepository(context)
+                    ?: swapubRepository
+                    ?: createSwapubRepository(context)
         }
     }
 
     private fun createSwapubRepository(context: Context): SwapubRepository {
         return DefaultSwapubRepository(
-            SwapubRemoteDataSource,
-            createLocalDataSource(context)
+                SwapubRemoteDataSource,
+                createLocalDataSource(context)
         )
     }
 

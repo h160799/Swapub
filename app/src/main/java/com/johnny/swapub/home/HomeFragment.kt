@@ -19,14 +19,10 @@ import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
 
-
-
 class HomeFragment : Fragment() {
     private lateinit var homeViewPagerAdapter: HomeViewPagerAdapter
     private lateinit var viewPager: ViewPager
     private lateinit var wrapContentHeightViewPager: WrapContentHeightViewPager
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         homeViewPagerAdapter = HomeViewPagerAdapter(childFragmentManager)
@@ -36,20 +32,22 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentHomeBinding.inflate(inflater, container,
-            false)
+                false)
 
         var banner: Banner<DataBean, BannerImageAdapter<DataBean>> = binding.banner as Banner<DataBean, BannerImageAdapter<DataBean>>
         banner.setAdapter(object : BannerImageAdapter<DataBean>(DataBean.testData3) {
+
             override fun onBindView(holder: BannerImageHolder, data: DataBean, position: Int, size: Int) {
-                //加圖片
+                //add images
                 Glide.with(holder.itemView)
-                    .load(data.imageUrl)
-                    .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
-                    .into(holder.imageView) }
+                        .load(data.imageUrl)
+                        .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
+                        .into(holder.imageView)
+            }
         }).addBannerLifecycleObserver(this).setIndicator(CircleIndicator(context))
 
         binding.buttonFloatingFavorite.setOnClickListener {
@@ -58,7 +56,4 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
-
-
-
 }

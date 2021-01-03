@@ -6,10 +6,8 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,27 +18,20 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.johnny.swapub.R
 import com.johnny.swapub.SwapubApplication
 import com.johnny.swapub.databinding.MakeWishesFragmentBinding
-import com.johnny.swapub.databinding.TradingPostFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
-import com.johnny.swapub.messageHistory.conversation.ConversationFragment
-import com.johnny.swapub.messageHistory.conversation.tradingSuccessOrNot.TradingSuccessorNotFragmentDirections
-import com.johnny.swapub.myTrading.tradingPost.TradingPostViewModel
 import com.johnny.swapub.util.Logger
-import kotlinx.android.synthetic.main.item_conversation.*
-import kotlinx.android.synthetic.main.make_wishes_fragment.*
 import java.util.*
 
 
 class MakeWishesFragment : Fragment() {
 
-        val viewModel by viewModels<MakeWishesViewModel> { getVmFactory() }
+    val viewModel by viewModels<MakeWishesViewModel> { getVmFactory() }
 
     private var mStorageRef: StorageReference? = null
     private var imgPath: String = ""
@@ -58,75 +49,77 @@ class MakeWishesFragment : Fragment() {
 
     lateinit var binding: MakeWishesFragmentBinding
 
-        override fun onCreateView(
+    override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-        ): View? {
-            binding = MakeWishesFragmentBinding.inflate(inflater, container,
+    ): View? {
+        binding = MakeWishesFragmentBinding.inflate(inflater, container,
                 false)
-            binding.viewModel = viewModel
-            binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
-            if (savedInstanceState != null) {
-                saveUri = Uri.parse(savedInstanceState.getString("saveUri"))
-            }
+        if (savedInstanceState != null) {
+            saveUri = Uri.parse(savedInstanceState.getString("saveUri"))
+        }
 
-            Manifest.permission()
-            initData()
+        Manifest.permission()
+        initData()
 
-            binding.imagePost1.setOnClickListener {
-                toAlbum(PHOTO_FROM_GALLERY_1)
-            }
-            binding.imagePost2.setOnClickListener {
-                toAlbum(PHOTO_FROM_GALLERY_2)
-            }
-            binding.imagePost3.setOnClickListener {
-                toAlbum(PHOTO_FROM_GALLERY_3)
-            }
-            binding.imagePost4.setOnClickListener {
-                toAlbum(PHOTO_FROM_GALLERY_4)
-            }
-            binding.imagePost5.setOnClickListener {
-                toAlbum(PHOTO_FROM_GALLERY_5)
-            }
-            binding.editTextWishable.setOnCheckedChangeListener { _, check ->
-                viewModel.wishableSelect.value = check
-            }
-            binding.spinnerPlace.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                    viewModel.spinnerPlace.value = parent?.selectedItem.toString()
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    TODO("Not yet implemented")
-                }
+        binding.imagePost1.setOnClickListener {
+            toAlbum(PHOTO_FROM_GALLERY_1)
+        }
+        binding.imagePost2.setOnClickListener {
+            toAlbum(PHOTO_FROM_GALLERY_2)
+        }
+        binding.imagePost3.setOnClickListener {
+            toAlbum(PHOTO_FROM_GALLERY_3)
+        }
+        binding.imagePost4.setOnClickListener {
+            toAlbum(PHOTO_FROM_GALLERY_4)
+        }
+        binding.imagePost5.setOnClickListener {
+            toAlbum(PHOTO_FROM_GALLERY_5)
+        }
+        binding.editTextWishable.setOnCheckedChangeListener { _, check ->
+            viewModel.wishableSelect.value = check
+        }
+        binding.spinnerPlace.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                viewModel.spinnerPlace.value = parent?.selectedItem.toString()
             }
 
-            binding.postContent.setOnClickListener {
-                viewModel.postTradingInfo(viewModel.addProduct())
-                binding.updateSuccessfulConstraint.visibility= View.VISIBLE
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
+
+        binding.postContent.setOnClickListener {
+            viewModel.postTradingInfo(viewModel.addProduct())
+            binding.updateSuccessfulConstraint.visibility = View.VISIBLE
+        }
+
+        binding.animationUpdateSuccessful.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(p0: Animator?) {
             }
 
-            binding.animationUpdateSuccessful.addAnimatorListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(p0: Animator?) {
-                }
-                override fun onAnimationEnd(p0: Animator?) {
-                    findNavController().navigate(R.id.action_global_profileFragment)
-                }
-                override fun onAnimationCancel(p0: Animator?) {
-                }
-                override fun onAnimationRepeat(p0: Animator?) {
-                }
-            })
-            binding.animationUpdateSuccessful.playAnimation()
-
-
-
-            binding.goBack.setOnClickListener {
+            override fun onAnimationEnd(p0: Animator?) {
                 findNavController().navigate(R.id.action_global_profileFragment)
             }
 
-            return binding.root
+            override fun onAnimationCancel(p0: Animator?) {
+            }
+
+            override fun onAnimationRepeat(p0: Animator?) {
+            }
+        })
+        binding.animationUpdateSuccessful.playAnimation()
+
+        binding.goBack.setOnClickListener {
+            findNavController().navigate(R.id.action_global_profileFragment)
         }
+        return binding.root
+    }
+
     private fun initData() {
         mStorageRef = FirebaseStorage.getInstance().reference
     }
@@ -134,28 +127,27 @@ class MakeWishesFragment : Fragment() {
     private fun checkPermission() {
         val permission = context?.let {
             ActivityCompat.checkSelfPermission(
-                it,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    it,
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
         if (permission != PackageManager.PERMISSION_GRANTED) {
             //未取得權限，向使用者要求允許權限
             ActivityCompat.requestPermissions(
-                context as Activity,
-                arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                MakeWishesFragment.REQUEST_EXTERNAL_STORAGE
+                    context as Activity,
+                    arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    MakeWishesFragment.REQUEST_EXTERNAL_STORAGE
             )
         } else {
             getLocalImg()
         }
     }
 
-
     private fun getLocalImg() {
         ImagePicker.with(this)
-            .crop()                    //Crop image(Optional), Check Customization for more option
-            .compress(1024)            //Final image size will be less than 1 MB(Optional)
-            .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
-            .start()
+                .crop()                    //Crop image(Optional), Check Customization for more option
+                .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
+                .start()
     }
 
     private fun toAlbum(photoFromGallery: Int) {
@@ -178,15 +170,14 @@ class MakeWishesFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Logger.d("datadata$data")
         when (requestCode) {
             PHOTO_FROM_GALLERY_1 -> {
                 when (resultCode) {
                     Activity.RESULT_OK -> {
                         saveUri = data?.data
                         val bitmap = MediaStore.Images.Media.getBitmap(
-                            SwapubApplication.instance.contentResolver,
-                            saveUri
+                                SwapubApplication.instance.contentResolver,
+                                saveUri
                         )
                         binding.imagePost1.setImageBitmap(bitmap)
                         uploadImage(viewModel.image1)
@@ -201,14 +192,13 @@ class MakeWishesFragment : Fragment() {
                     Activity.RESULT_OK -> {
                         saveUri = data?.data
                         val bitmap = MediaStore.Images.Media.getBitmap(
-                            SwapubApplication.instance.contentResolver,
-                            saveUri
+                                SwapubApplication.instance.contentResolver,
+                                saveUri
                         )
                         binding.imagePost2.setImageBitmap(bitmap)
                         uploadImage(viewModel.image2)
                     }
                     Activity.RESULT_CANCELED -> {
-                        Log.wtf("getImageResult", resultCode.toString())
                     }
                 }
             }
@@ -217,14 +207,13 @@ class MakeWishesFragment : Fragment() {
                     Activity.RESULT_OK -> {
                         saveUri = data?.data
                         val bitmap = MediaStore.Images.Media.getBitmap(
-                            SwapubApplication.instance.contentResolver,
-                            saveUri
+                                SwapubApplication.instance.contentResolver,
+                                saveUri
                         )
                         binding.imagePost3.setImageBitmap(bitmap)
                         uploadImage(viewModel.image3)
                     }
                     Activity.RESULT_CANCELED -> {
-                        Log.wtf("getImageResult", resultCode.toString())
                     }
                 }
             }
@@ -233,14 +222,13 @@ class MakeWishesFragment : Fragment() {
                     Activity.RESULT_OK -> {
                         saveUri = data?.data
                         val bitmap = MediaStore.Images.Media.getBitmap(
-                            SwapubApplication.instance.contentResolver,
-                            saveUri
+                                SwapubApplication.instance.contentResolver,
+                                saveUri
                         )
                         binding.imagePost4.setImageBitmap(bitmap)
                         uploadImage(viewModel.image4)
                     }
                     Activity.RESULT_CANCELED -> {
-                        Log.wtf("getImageResult", resultCode.toString())
                     }
                 }
             }
@@ -249,33 +237,29 @@ class MakeWishesFragment : Fragment() {
                     Activity.RESULT_OK -> {
                         saveUri = data?.data
                         val bitmap = MediaStore.Images.Media.getBitmap(
-                            SwapubApplication.instance.contentResolver,
-                            saveUri
+                                SwapubApplication.instance.contentResolver,
+                                saveUri
                         )
                         binding.imagePost5.setImageBitmap(bitmap)
                         uploadImage(viewModel.image5)
                     }
                     Activity.RESULT_CANCELED -> {
-                        Log.wtf("getImageResult", resultCode.toString())
                     }
                 }
             }
-
         }
     }
-
-
 
     private fun uploadImage(image: MutableLiveData<String>) {
         val filename = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
         saveUri?.let { uri ->
             ref.putFile(uri)
-                .addOnSuccessListener {
-                    ref.downloadUrl.addOnSuccessListener {
-                        image.value = it.toString()
+                    .addOnSuccessListener {
+                        ref.downloadUrl.addOnSuccessListener {
+                            image.value = it.toString()
+                        }
                     }
-                }
         }
     }
 
