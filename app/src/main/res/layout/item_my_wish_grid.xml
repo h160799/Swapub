@@ -7,6 +7,8 @@
         <variable
             name="myWish_product"
             type="com.johnny.swapub.data.Product" />
+
+        <import type="com.johnny.swapub.util.UserManager"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,6 +38,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:imageUrl="@{UserManager.INSTANCE.user.image}"
                 tools:src="@drawable/me" />
 
         </androidx.cardview.widget.CardView>
@@ -52,6 +55,7 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/user_head"
             app:layout_constraintTop_toTopOf="@id/user_head"
+            android:text="@{UserManager.INSTANCE.user.name}"
             tools:text="Johnny Lin" />
 
         <TextView

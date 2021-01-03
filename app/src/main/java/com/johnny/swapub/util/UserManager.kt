@@ -35,8 +35,6 @@ object UserManager {
             sharedPreferences.edit().putString("imageToken", token).apply()
         }
 
-
-
     fun hasToken(): Boolean {
         return userId != null   //不為空值
     }

@@ -10,20 +10,18 @@ import androidx.navigation.fragment.findNavController
 import com.johnny.swapub.R
 import com.johnny.swapub.databinding.ProfileFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
-import com.johnny.swapub.util.Logger
-import com.johnny.swapub.util.UserManager
 import com.johnny.swapub.util.UserManager.userId
 
 class ProfileFragment : Fragment() {
 
-    val viewModel by viewModels<ProfileViewModel> { getVmFactory()  }
+    val viewModel by viewModels<ProfileViewModel> { getVmFactory() }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val binding = ProfileFragmentBinding.inflate(inflater, container,
-            false)
+                false)
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
@@ -35,7 +33,6 @@ class ProfileFragment : Fragment() {
         viewModel.getWishProduct.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let {
                 adapter.submitList(it)
-                Logger.d( "5566$it")
             }
         })
 
@@ -57,17 +54,6 @@ class ProfileFragment : Fragment() {
             viewModel.getWishContent(userId)
             swipeRefresh.isRefreshing = false
         }
-
         return binding.root
     }
-
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val viewModel by viewModels<ProfileViewModel> { getVmFactory() }
-
-    }
-
-
-
 }
