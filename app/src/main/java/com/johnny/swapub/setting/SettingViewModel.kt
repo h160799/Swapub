@@ -16,7 +16,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class SettingViewModel(
-    val swapubRepository: SwapubRepository
+        val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
     var userId: String = UserManager.userId
@@ -30,8 +30,6 @@ class SettingViewModel(
     val editTextPlace = MutableLiveData<String>()
 
     var userImage = MutableLiveData<String>()
-
-    val newUserData = MutableLiveData<User>()
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -54,14 +52,11 @@ class SettingViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    init {
+        getUser(userId)
+    }
 
-init {
-    getUser(userId)
-    Logger.d("asdf${userData.value}")
-}
-
-
-    fun getUser(userId:String) {
+    fun getUser(userId: String) {
 
         coroutineScope.launch {
             _status.value = LoadApiStatus.LOADING
@@ -95,8 +90,6 @@ init {
 
     fun updateUserInfo(user: User) {
 
-        Logger.d("setInfo$user")
-
         coroutineScope.launch {
 
             _status.value = LoadApiStatus.LOADING
@@ -124,25 +117,25 @@ init {
         }
     }
 
-    fun setUserData(): User{
-        if(userImage.value == ""){
-           userImage.value = UserManager.userImage
+    fun setUserData(): User {
+        if (userImage.value == "") {
+            userImage.value = UserManager.userImage
         }
-        if(editTextPlace.value == ""){
+        if (editTextPlace.value == "") {
             editTextPlace.value = userData.value?.place
         }
-        if(nameEditText.value == ""){
+        if (nameEditText.value == "") {
             nameEditText.value = UserManager.userName
         }
         return User(
-            id = UserManager.userId,
-            image = userImage.value.toString(),
-            name = nameEditText.value,
-            place = editTextPlace.value,
-            clubList = userData.value?.clubList,
-            favoriteList = userData.value?.favoriteList,
-            swappingList = userData.value?.swappingList,
-            swappedList = userData.value?.swappedList
+                id = UserManager.userId,
+                image = userImage.value.toString(),
+                name = nameEditText.value,
+                place = editTextPlace.value,
+                clubList = userData.value?.clubList,
+                favoriteList = userData.value?.favoriteList,
+                swappingList = userData.value?.swappingList,
+                swappedList = userData.value?.swappedList
         )
     }
 
