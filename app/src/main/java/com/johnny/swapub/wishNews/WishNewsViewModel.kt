@@ -15,13 +15,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class WishNewsViewModel(
-    val swapubRepository: SwapubRepository
+        val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
     private val _getAllWishProduct = MutableLiveData<List<Product>>()
     val getAllWishProduct: LiveData<List<Product>>
         get() = _getAllWishProduct
-
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -44,14 +43,14 @@ class WishNewsViewModel(
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-
-init {
-    getAllWishContent()
-}
-
+    init {
+        getAllWishContent()
+    }
 
     fun getAllWishContent() {
+
         coroutineScope.launch {
+
             _status.value = LoadApiStatus.LOADING
             val result = swapubRepository.getAllWishContent()
             _getAllWishProduct.value = when (result) {
@@ -80,8 +79,6 @@ init {
 
         }
     }
-
-
 
     override fun onCleared() {
         super.onCleared()

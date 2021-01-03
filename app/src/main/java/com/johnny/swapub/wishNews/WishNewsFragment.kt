@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.johnny.swapub.databinding.WishNewsFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
-import com.johnny.swapub.profile.ProfileAdapter
 import com.johnny.swapub.util.Logger
 
 class WishNewsFragment : Fragment() {
@@ -16,11 +15,11 @@ class WishNewsFragment : Fragment() {
     val viewModel by viewModels<WishNewsViewModel> { getVmFactory() }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val binding = WishNewsFragmentBinding.inflate(inflater, container,
-            false)
+                false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -31,20 +30,14 @@ class WishNewsFragment : Fragment() {
         viewModel.getAllWishProduct.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             it?.let {
                 adapter.submitList(it)
-                Logger.d( "getget$it")
             }
         })
-
 
         val swipeRefresh = binding.layoutSwipeRefreshWishNewsItem
         swipeRefresh.setOnRefreshListener {
             viewModel.getAllWishContent()
             swipeRefresh.isRefreshing = false
         }
-
-
-
-
         return binding.root
     }
 }
