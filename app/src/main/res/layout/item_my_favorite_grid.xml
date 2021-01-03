@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="myFavorite_property"
             type="com.johnny.swapub.data.Product" />
@@ -15,22 +16,17 @@
         android:layout_height="wrap_content"
         android:padding="2dp">
 
-
-
         <ImageView
             android:id="@+id/image_my_favorite_main"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:scaleType="centerCrop"
+            app:imageUrl="@{myFavorite_property.productImage[0]}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:imageUrl="@{myFavorite_property.productImage[0]}"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:src="@color/white_E3DED8" />
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,15 +10,14 @@ apply plugin: 'com.google.firebase.crashlytics'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
-
 
     defaultConfig {
         applicationId "com.johnny.swapub"
@@ -27,14 +26,12 @@ android {
         versionCode 4
         versionName "3.1.0"
         multiDexEnabled true
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             buildConfigField("Boolean", "LOGGER_VISIABLE", "false")
-
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -118,5 +115,4 @@ dependencies {
 
     //Lottie
     implementation 'com.airbnb.android:lottie:3.4.1'
-
 }

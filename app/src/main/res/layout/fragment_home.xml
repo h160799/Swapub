@@ -50,8 +50,6 @@
                         app:tabTextColor="@color/gray_999999" />
 
                 </androidx.viewpager.widget.ViewPager>
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

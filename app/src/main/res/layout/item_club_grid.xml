@@ -17,29 +17,25 @@
             android:id="@+id/image_club_main"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:background="@color/white_E3DED8"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@color/white_E3DED8"
             tools:src="@color/white_E3DED8" />
 
         <TextView
             android:id="@+id/club_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/pt_sans"
+            android:gravity="center"
             android:text="婆婆媽媽團"
             android:textColor="@color/white_E3DED8"
-            android:gravity="center"
-            android:fontFamily="@font/pt_sans"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_club_main"/>
-
-
-
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_club_main" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,6 +10,7 @@
         <variable
             name="myTrading_property"
             type="com.johnny.swapub.data.Product" />
+
         <variable
             name="myTrading"
             type="com.johnny.swapub.myTrading.MyTradingViewModel" />
@@ -21,131 +22,130 @@
         android:layout_height="wrap_content"
         android:background="@color/black">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toStartOf="@id/remove_product"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/black">
-
-        <ImageView
-            android:id="@+id/my_trading_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:scaleType="centerCrop"
-            app:imageUrl="@{myTrading_property.productImage[0]}"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/black" />
-
-        <TextView
-            android:id="@+id/my_trading_title"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/pt_sans"
-            android:text="@{myTrading_property.productTitle}"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/my_trading_image"
-            app:layout_constraintStart_toEndOf="@id/my_trading_image"
-            app:layout_constraintTop_toBottomOf="@id/post_time"
-            tools:text="MacBook Pro" />
-
-        <TextView
-            android:id="@+id/post_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/pt_sans"
-            android:textColor="@color/white"
-            android:textSize="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/my_trading_image"
-            app:timeToDisplayFormat="@{myTrading_property.time}"
-            tools:text="2020-11-24 18:35" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/pt_sans"
-            android:textColor="@color/orange_FAC943"
-            android:textSize="15dp"
-            android:text="移除項目"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@id/post_time"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/post_time"/>
-
-        <ImageView
-            android:id="@+id/tradable_bac"
-            android:layout_width="76dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/post_time"
-            app:layout_constraintTop_toBottomOf="@id/my_trading_title" />
-
-        <TextView
-            android:id="@+id/tradable_not_yet"
-            android:layout_width="74dp"
-            android:layout_height="16dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@color/black"
-            android:fontFamily="@font/pt_sans"
-            android:text="尚未交易完成"
-            android:textColor="@color/white"
-            android:textSize="12dp"
-            android:visibility="@{myTrading_property.tradable == false  ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toBottomOf="@id/tradable_bac"
-            app:layout_constraintEnd_toEndOf="@id/tradable_bac"
-            app:layout_constraintStart_toStartOf="@id/tradable_bac"
-            app:layout_constraintTop_toTopOf="@id/tradable_bac" />
+            app:layout_constraintEnd_toStartOf="@id/remove_product"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tradable_ok"
-            android:layout_width="74dp"
-            android:layout_height="16dp"
-            android:background="@color/black"
-            android:fontFamily="@font/pt_sans"
-            android:gravity="center"
-            android:text="交易完成"
-            android:textColor="@color/red_FF0D0D"
-            android:textSize="12dp"
-            android:visibility="@{myTrading_property.tradable == true  ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toBottomOf="@id/tradable_bac"
-            app:layout_constraintEnd_toEndOf="@id/tradable_bac"
-            app:layout_constraintStart_toStartOf="@id/tradable_bac"
-            app:layout_constraintTop_toTopOf="@id/tradable_bac" />
+            <ImageView
+                android:id="@+id/my_trading_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{myTrading_property.productImage[0]}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:background="@color/black" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/my_trading_title"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:text="@{myTrading_property.productTitle}"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@id/my_trading_image"
+                app:layout_constraintStart_toEndOf="@id/my_trading_image"
+                app:layout_constraintTop_toBottomOf="@id/post_time"
+                tools:text="MacBook Pro" />
+
+            <TextView
+                android:id="@+id/post_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:textColor="@color/white"
+                android:textSize="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/my_trading_image"
+                app:timeToDisplayFormat="@{myTrading_property.time}"
+                tools:text="2020-11-24 18:35" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pt_sans"
+                android:text="移除項目"
+                android:textColor="@color/orange_FAC943"
+                android:textSize="15dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/post_time"
+                app:layout_constraintEnd_toEndOf="@id/post_time"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/tradable_bac"
+                android:layout_width="76dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/post_time"
+                app:layout_constraintTop_toBottomOf="@id/my_trading_title" />
+
+            <TextView
+                android:id="@+id/tradable_not_yet"
+                android:layout_width="74dp"
+                android:layout_height="16dp"
+                android:background="@color/black"
+                android:fontFamily="@font/pt_sans"
+                android:text="尚未交易完成"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:visibility="@{myTrading_property.tradable == false  ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/tradable_bac"
+                app:layout_constraintEnd_toEndOf="@id/tradable_bac"
+                app:layout_constraintStart_toStartOf="@id/tradable_bac"
+                app:layout_constraintTop_toTopOf="@id/tradable_bac" />
+
+            <TextView
+                android:id="@+id/tradable_ok"
+                android:layout_width="74dp"
+                android:layout_height="16dp"
+                android:background="@color/black"
+                android:fontFamily="@font/pt_sans"
+                android:gravity="center"
+                android:text="交易完成"
+                android:textColor="@color/red_FF0D0D"
+                android:textSize="12dp"
+                android:visibility="@{myTrading_property.tradable == true  ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="@id/tradable_bac"
+                app:layout_constraintEnd_toEndOf="@id/tradable_bac"
+                app:layout_constraintStart_toStartOf="@id/tradable_bac"
+                app:layout_constraintTop_toTopOf="@id/tradable_bac" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/remove_product"
             android:layout_width="80dp"
             android:layout_height="0dp"
             android:background="@color/red_A44F3C"
-            android:textColor="@color/white"
             android:fontFamily="@font/pt_sans"
-            android:textSize="15sp"
             android:gravity="center"
-            android:textStyle="bold"
             android:text="刪除"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_646464"
             android:alpha="0.5"
+            android:background="@color/gray_646464"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

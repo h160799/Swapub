@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.johnny.swapub.home.item.HomeItemViewModel"/>
+            type="com.johnny.swapub.home.item.HomeItemViewModel" />
 
         <import type="android.view.View" />
 
@@ -37,24 +38,23 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="3"
                 tools:itemCount="21"
-                tools:listitem="@layout/item_home_grid">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                tools:listitem="@layout/item_home_grid"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
         <TextView
             android:id="@+id/remind_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/pt_sans"
-            android:textSize="15dp"
             android:gravity="center"
+            android:text=""
             android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="40dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

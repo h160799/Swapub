@@ -4,26 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="myWish_product"
             type="com.johnny.swapub.data.Product" />
 
-        <import type="com.johnny.swapub.util.UserManager"/>
+        <import type="com.johnny.swapub.util.UserManager" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_my_wish_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:paddingBottom="20dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/user_head"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
             android:elevation="4dp"
             app:cardCornerRadius="50dp"
             app:layout_constraintStart_toStartOf="@id/myWish_image"
@@ -34,11 +35,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
+                app:imageUrl="@{UserManager.INSTANCE.user.image}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:imageUrl="@{UserManager.INSTANCE.user.image}"
                 tools:src="@drawable/me" />
 
         </androidx.cardview.widget.CardView>
@@ -50,12 +51,12 @@
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/pt_sans"
+            android:text="@{UserManager.INSTANCE.user.name}"
             android:textColor="@color/black"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/user_head"
             app:layout_constraintTop_toTopOf="@id/user_head"
-            android:text="@{UserManager.INSTANCE.user.name}"
             tools:text="Johnny Lin" />
 
         <TextView
@@ -78,9 +79,9 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/pt_sans"
             android:text="[求]"
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/user_head"
             app:layout_constraintTop_toBottomOf="@id/user_head" />
 
@@ -90,11 +91,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/pt_sans"
+            android:text="@{myWish_product.productTitle}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/wish"
             app:layout_constraintTop_toBottomOf="@id/wish"
-            android:text="@{myWish_product.productTitle}"
             tools:text="招募志工參與 2020/12/25 聖誕活動 6 小時．" />
 
         <TextView
@@ -103,12 +104,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/pt_sans"
+            android:text="[交換代價]"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/wish_content"
-            app:layout_constraintTop_toBottomOf="@id/wish_content"
-            android:text="[交換代價]" />
+            app:layout_constraintTop_toBottomOf="@id/wish_content" />
 
         <TextView
             android:id="@+id/swap_content"
@@ -116,23 +117,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/pt_sans"
+            android:text="@{myWish_product.tradingStyle}"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/swap"
             app:layout_constraintTop_toBottomOf="@id/swap"
-            android:text="@{myWish_product.tradingStyle}"
             tools:text="物品交換--兒童木桌．" />
 
         <ImageView
             android:id="@+id/myWish_image"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            android:scaleType="centerCrop"
             android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{myWish_product.productImage[0]}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/swap_content"
-            app:imageUrl="@{myWish_product.productImage[0]}"
             tools:background="@color/white_E3DED8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
