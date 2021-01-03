@@ -9,36 +9,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.johnny.swapub.data.Product
 import com.johnny.swapub.databinding.ItemMyTradingBinding
 import com.johnny.swapub.util.UserManager
-import kotlinx.android.synthetic.main.item_my_trading.view.*
 
 class MyTradingAdapter(val onClickListener: OnClickListener, val viewModel: MyTradingViewModel) :
-    ListAdapter<Product, MyTradingAdapter.MyTradingViewHolder>(MyTradingViewHolder) {
-
+        ListAdapter<Product, MyTradingAdapter.MyTradingViewHolder>(MyTradingViewHolder) {
 
     class MyTradingViewHolder(private var binding: ItemMyTradingBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+            RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product, viewModel: MyTradingViewModel) {
             binding.myTradingProperty = product
 
-            if (viewModel.editProduct.value == true){
+            if (viewModel.editProduct.value == true) {
                 binding.removeProduct.visibility = View.VISIBLE
                 binding.removeProduct.setOnClickListener {
                     product.id?.let { it1 -> viewModel.deleteProduct(it1) }
                     viewModel.getPostProduct(UserManager.userId)
                 }
-            }else{
+            } else {
                 binding.removeProduct.visibility = View.GONE
-
             }
-            if(viewModel.finishEditProduct.value == true){
+            if (viewModel.finishEditProduct.value == true) {
                 binding.removeProduct.visibility = View.GONE
-            }else{
+            } else {
                 binding.removeProduct.visibility = View.VISIBLE
-
             }
-
-
-
 
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
@@ -46,7 +39,6 @@ class MyTradingAdapter(val onClickListener: OnClickListener, val viewModel: MyTr
         }
 
         companion object DiffCallback : DiffUtil.ItemCallback<Product>() {
-
             fun from(parent: ViewGroup
             ): MyTradingViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
@@ -56,15 +48,15 @@ class MyTradingAdapter(val onClickListener: OnClickListener, val viewModel: MyTr
             }
 
             override fun areItemsTheSame(
-                oldItem: Product,
-                newItem: Product,
+                    oldItem: Product,
+                    newItem: Product,
             ): Boolean {
                 return oldItem === newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: Product,
-                newItem: Product,
+                    oldItem: Product,
+                    newItem: Product,
             ): Boolean {
                 return oldItem == newItem
             }
@@ -72,8 +64,8 @@ class MyTradingAdapter(val onClickListener: OnClickListener, val viewModel: MyTr
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int,
+            parent: ViewGroup,
+            viewType: Int,
     ): MyTradingViewHolder {
         return MyTradingViewHolder.from(parent)
     }
@@ -83,8 +75,7 @@ class MyTradingAdapter(val onClickListener: OnClickListener, val viewModel: MyTr
         holder.itemView.setOnClickListener {
             onClickListener.onClick(product)
         }
-        holder.bind(product,viewModel)
-
+        holder.bind(product, viewModel)
     }
 
     class OnClickListener(val clickListener: (product: Product) -> Unit) {

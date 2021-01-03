@@ -15,7 +15,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MyTradingViewModel(
-    val swapubRepository: SwapubRepository
+        val swapubRepository: SwapubRepository
 ) : ViewModel() {
 
     val userId: String = UserManager.userId
@@ -32,22 +32,18 @@ class MyTradingViewModel(
     val finishEditProduct = MutableLiveData<Boolean>()
 
 
-
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
-
     val status: LiveData<LoadApiStatus>
         get() = _status
 
     // error: The internal MutableLiveData that stores the error of the most recent request
     private val _error = MutableLiveData<String>()
-
     val error: LiveData<String>
         get() = _error
 
     // status for the loading icon of swl
     private val _refreshStatus = MutableLiveData<Boolean>()
-
     val refreshStatus: LiveData<Boolean>
         get() = _refreshStatus
 
@@ -58,7 +54,6 @@ class MyTradingViewModel(
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
 
-
     init {
         getPostProduct(userId)
         editProduct.value = false
@@ -66,7 +61,7 @@ class MyTradingViewModel(
     }
 
 
-    fun getPostProduct( userId: String) {
+    fun getPostProduct(userId: String) {
 
         coroutineScope.launch {
 
@@ -96,7 +91,6 @@ class MyTradingViewModel(
                     null
                 }
             }
-
         }
     }
 
@@ -126,7 +120,6 @@ class MyTradingViewModel(
             }
         }
     }
-
 
     override fun onCleared() {
         super.onCleared()
