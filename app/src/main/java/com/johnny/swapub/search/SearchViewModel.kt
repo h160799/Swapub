@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class SearchViewModel(
-    val swapubRepository: SwapubRepository
+        val swapubRepository: SwapubRepository
 
 ) : ViewModel() {
 
@@ -23,17 +23,15 @@ class SearchViewModel(
     val allProducts: LiveData<List<Product>>
         get() = _allProducts
 
-   var liveSearch = MutableLiveData<List<Product>>()
-
+    var liveSearch = MutableLiveData<List<Product>>()
 
     val editSearch = MutableLiveData<String>()
+
     val search = MutableLiveData<String>()
 
     private val _navigateToDetail = MutableLiveData<Product>()
     val navigateToDetail: LiveData<Product>
         get() = _navigateToDetail
-
-
 
     // status: The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<LoadApiStatus>()
@@ -45,8 +43,8 @@ class SearchViewModel(
 
     val error: LiveData<String>
         get() = _error
-    private val _leave = MutableLiveData<Boolean>()
 
+    private val _leave = MutableLiveData<Boolean>()
     val leave: LiveData<Boolean>
         get() = _leave
 
@@ -57,21 +55,18 @@ class SearchViewModel(
 
     // Create a Coroutine scope using a job to be able to cancel when needed
     private var viewModelJob = Job()
+
     // the Coroutine runs using the Main (UI) dispatcher
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
-
 
     init {
         getAllProducts()
     }
 
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
     }
-
-
 
     fun getAllProducts() {
 
@@ -126,8 +121,6 @@ class SearchViewModel(
         return filteredList
     }
 
-
-
     fun navigateToDetail(product: Product) {
         _navigateToDetail.value = product
     }
@@ -135,7 +128,6 @@ class SearchViewModel(
     fun onDetailNavigated() {
         _navigateToDetail.value = null
     }
-
 }
 
 
