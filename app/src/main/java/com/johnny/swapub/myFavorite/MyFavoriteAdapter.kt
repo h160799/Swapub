@@ -6,15 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.johnny.swapub.data.Product
-import com.johnny.swapub.data.User
 import com.johnny.swapub.databinding.ItemMyFavoriteGridBinding
-import com.johnny.swapub.search.SearchViewModel
 
 class MyFavoriteAdapter(val onClickListener: OnClickListener, viewModel: MyFavoriteViewModel) :
-    ListAdapter<Product, MyFavoriteAdapter.MyFavoriteViewHolder>(MyFavoriteViewHolder) {
+        ListAdapter<Product, MyFavoriteAdapter.MyFavoriteViewHolder>(MyFavoriteViewHolder) {
 
     class MyFavoriteViewHolder(private var binding: ItemMyFavoriteGridBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+            RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.myFavoriteProperty = product
             // This is important, because it forces the data binding to execute immediately,
@@ -32,15 +30,15 @@ class MyFavoriteAdapter(val onClickListener: OnClickListener, viewModel: MyFavor
             }
 
             override fun areItemsTheSame(
-                oldItem: Product,
-                newItem: Product,
+                    oldItem: Product,
+                    newItem: Product,
             ): Boolean {
                 return oldItem === newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: Product,
-                newItem: Product,
+                    oldItem: Product,
+                    newItem: Product,
             ): Boolean {
                 return oldItem == newItem
             }
@@ -48,8 +46,8 @@ class MyFavoriteAdapter(val onClickListener: OnClickListener, viewModel: MyFavor
     }
 
     override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int,
+            parent: ViewGroup,
+            viewType: Int,
     ): MyFavoriteViewHolder {
         return MyFavoriteViewHolder.from(parent)
     }
