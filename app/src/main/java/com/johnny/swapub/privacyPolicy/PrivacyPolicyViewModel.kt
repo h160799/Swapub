@@ -5,5 +5,4 @@ import com.johnny.swapub.data.remote.SwapubRepository
 
 class PrivacyPolicyViewModel(
     val swapubRepository: SwapubRepository
-) : ViewModel() {
-}
+) : ViewModel() {}

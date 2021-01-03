@@ -2,7 +2,6 @@
     <string name="app_name">MineForYours</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -32,7 +31,6 @@
     <string name="load_img_fail">讀取圖片失敗</string>
     <string name="do_nothing">無權限使用此功能</string>
     <string name="task_cancelled">執行失敗</string>
-
 
     <!-- CityOptions -->
     <string-array name="city_options">
@@ -65,8 +63,6 @@
     <string name="newest">Newest</string>
     <string name="nearest">Nearest</string>
     <string name="nearest_page">目前尚無物件\n請至「編輯個人檔案」更改所在地點</string>
-
-
 
 
 </resources>

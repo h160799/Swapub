@@ -1,6 +1,5 @@
 package com.johnny.swapub.privacyPolicy
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,20 +11,18 @@ import com.johnny.swapub.R
 import com.johnny.swapub.databinding.PrivacyPolicyFragmentBinding
 import com.johnny.swapub.ext.getVmFactory
 import android.webkit.WebView
-import android.webkit.WebSettings
 import android.webkit.WebViewClient
 
 class PrivacyPolicyFragment : Fragment() {
 
     val viewModel by viewModels<PrivacyPolicyViewModel> { getVmFactory() }
 
-
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         val binding = PrivacyPolicyFragmentBinding.inflate(inflater, container,
-            false)
+                false)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
@@ -44,14 +41,6 @@ class PrivacyPolicyFragment : Fragment() {
         binding.goBack.setOnClickListener {
             findNavController().navigate(R.id.action_global_homeFragment)
         }
-
-
-    return binding.root
-
-
-
+        return binding.root
     }
-
-
-
 }
