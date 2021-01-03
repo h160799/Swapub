@@ -214,7 +214,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.drawerNavView.addHeaderView(bindingNavHeader.root)
 
-        binding.toolbar.setNavigationIcon(R.drawable.baseline_menu_white_18)
+        binding.toolbar.setNavigationIcon(R.drawable.toolbar_24)
     }
 }
 
