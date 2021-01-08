@@ -1,5 +1,5 @@
 # MineForYours
-有別於以往普通的電商拍賣平台，這是一款以交換為設計概念的App，卻不侷限以物易物的交易模式，
+有別於普通的電商拍賣平台，這是一款以交換為設計概念的App，卻不侷限以物易物的交易模式，
 顛覆你的想像，找到你心中最棒的寶物
 
 <a href="https://reurl.cc/q89e6g"><img src="https://i.imgur.com/JRTOl7I.png" width="230" height="90"></a>
