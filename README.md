@@ -32,13 +32,17 @@
 
 
 ### Screenshot 截圖畫面
-<img src="https://i.imgur.com/v03qSb1.png" width="175" height="355"></a> <img src="https://i.imgur.com/JY9sMoQ.png" width="175" height="355"></a> <img src="https://i.imgur.com/rbloSCG.png" width="175" height="355"></a> <img src="https://i.imgur.com/bpQ0dXn.png" width="175" height="355"></a> 
+<img src="https://i.imgur.com/iBcK2Dx.png" width="175" height="355"></a><img src="https://i.imgur.com/v03qSb1.png" width="175" height="355"></a> 
+<img src="https://i.imgur.com/JY9sMoQ.png" width="175" height="355"></a> <img src="https://i.imgur.com/rbloSCG.png" width="175" height="355"></a> 
 
-<img src="https://i.imgur.com/NHR1a3N.png" width="170" height="355">    </a><img src="https://i.imgur.com/8XmwF2Y.png" width="175" height="355"></a> <img src="https://i.imgur.com/MJJ524p.png" width="175" height="355"></a> <img src="https://i.imgur.com/E6fIitM.png" width="175" height="355"></a> 
+<img src="https://i.imgur.com/bpQ0dXn.png" width="175" height="355"></a> <img src="https://i.imgur.com/NHR1a3N.png" width="170" height="355"></a>
+<img src="https://i.imgur.com/8XmwF2Y.png" width="175" height="355"></a> <img src="https://i.imgur.com/MJJ524p.png" width="175" height="355"></a> 
 
-<img src="https://i.imgur.com/ne8e5Ns.png" width="175" height="355"></a> <img src="https://i.imgur.com/7A5SibF.png" width="175" height="355"></a> <img src="https://i.imgur.com/omY12FE.png" width="175" height="355"></a> <img src="https://i.imgur.com/laXVIBC.png" width="175" height="355"></a> 
+<img src="https://i.imgur.com/E6fIitM.png" width="175" height="355"></a> <img src="https://i.imgur.com/ne8e5Ns.png" width="175" height="355"></a> 
+<img src="https://i.imgur.com/7A5SibF.png" width="175" height="355"></a> <img src="https://i.imgur.com/omY12FE.png" width="175" height="355"></a> 
 
-<img src="https://i.imgur.com/X6GoM3Q.png" width="175" height="355"></a> <img src="https://i.imgur.com/3pOqnBY.png" width="175" height="355"></a> <img src="https://i.imgur.com/JoT1tny.png" width="175" height="355"></a>
+<img src="https://i.imgur.com/laXVIBC.png" width="175" height="355"></a> <img src="https://i.imgur.com/X6GoM3Q.png" width="175" height="355"></a>
+<img src="https://i.imgur.com/3pOqnBY.png" width="175" height="355"></a> <img src="https://i.imgur.com/JoT1tny.png" width="175" height="355"></a>
 
 
 ### Implementation 使用技術
