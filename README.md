@@ -55,10 +55,14 @@
 * Android SDK 28+
 
 ### Update 版本更新
-* 1.0.0：2020/12/24 版本第一次上架
-* 2.0.0：2020/12/30 解決登入問題
-* 3.0.0：2021/01/01 系統優化
-* 3.1.0：2021/01/02 系統優化
+![](https://img.shields.io/badge/1.0.0-2020%2F12%2F24%20%E7%89%88%E6%9C%AC%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9E%B6-blue)
+
+![](https://img.shields.io/badge/2.0.0-2020%2F12%2F30%20%E8%A7%A3%E6%B1%BA%E7%99%BB%E5%85%A5%E5%95%8F%E9%A1%8C-blue)
+
+![](https://img.shields.io/badge/3.0.0-2021%2F01%2F01%20%E7%B3%BB%E7%B5%B1%E5%84%AA%E5%8C%96-blue)
+
+![](https://img.shields.io/badge/3.1.0-2021%2F01%2F02%20%E7%B3%BB%E7%B5%B1%E5%84%AA%E5%8C%96%EF%BC%8C%E6%94%B9%E5%96%84%E5%80%8B%E4%BA%BA%E9%A0%81%E9%9D%A2-red
+)
 
 ### Contact 聯絡資訊
 Johnny Lin 
