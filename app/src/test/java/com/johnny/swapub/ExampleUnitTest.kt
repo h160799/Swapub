@@ -1,11 +1,8 @@
 package com.johnny.swapub
 
-
 import com.johnny.swapub.util.TimeUtil
 import org.junit.Assert.assertEquals
 import org.junit.Test
-
-
 
 /**
  * Example com.johnny.swapub.data.local unit test, which will execute on the development machine (host).
@@ -19,11 +16,9 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun stampToDate() {
-        //arrange
+    fun bindDisplayFormatTime() {
         val first = 1608693426918
         val second = 2
-
         val simpleDateFormat = "2020-12-23 11:17"
 
         //assert
