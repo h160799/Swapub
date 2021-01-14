@@ -15,6 +15,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    //unit test
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
@@ -23,8 +28,8 @@ android {
         applicationId "com.johnny.swapub"
         minSdkVersion 28
         targetSdkVersion 30
-        versionCode 4
-        versionName "3.1.0"
+        versionCode 5
+        versionName "3.1.1"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
